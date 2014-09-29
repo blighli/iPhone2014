@@ -7,4 +7,4 @@ iPhone2014
 使用commit和push进行版本管理和同步
 
 完成一次作业后提交Pull request
-
+1
