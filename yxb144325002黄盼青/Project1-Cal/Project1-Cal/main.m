@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PQCal.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        
+        [PQCal printCal:9 andYears:2014];
     }
     return 0;
 }
