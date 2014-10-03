@@ -14,7 +14,7 @@
 -(NSInteger) firstWeekDay:(long)month theYear:(long)year{
     _month=month;
     _year=year;
-    NSDate *date = [NSDate date];    
+    NSDate *date = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *comps;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -22,8 +22,8 @@
     [formatter setTimeZone:timeZone];
     [formatter setDateFormat:@"MM/dd/yyyy"];
     NSString *firstDay = [NSString stringWithFormat:@"%ld/%d/%ld",(long)_month,1,(long)_year];
-   date = [formatter dateFromString:firstDay];
-   comps = [calendar components:(NSWeekdayCalendarUnit) fromDate:date];
+    date = [formatter dateFromString:firstDay];
+    comps = [calendar components:(NSWeekdayCalendarUnit) fromDate:date];
     _weekday = [comps weekday];
     return _weekday;
 }
@@ -51,12 +51,13 @@
     comps = [calendar components:(NSDayCalendarUnit) fromDate:date3];
     _maxDays = [comps day];
     return _maxDays;
-
+    
     
 }
 //输出日历
 -(void) print{
-    NSLog(@"     %ld月 %ld",(long)_month,(long)_year);
+    NSArray *yue=@[@"wu",@"一",@"二",@"三",@"四",@"五",@"六",@"七",@"八",@"九",@"十",@"十一",@"十二"];
+    NSLog(@"     %@月 %ld",yue[_month],(long)_year);
     NSLog(@"日 一 二 三 四 五 六");
     for(int i=1;i<_weekday;i++){
         printf("   ");
@@ -73,6 +74,6 @@
         
     }
     printf("\n");
-
+    
 }
 @end
