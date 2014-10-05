@@ -5,7 +5,7 @@
 //  Created by drh on 14-10-2.
 //  Copyright (c) 2014年 guest. All rights reserved.
 //
-
+//calculate the days of a month
 #import <Foundation/Foundation.h>
 
 int daysOfMonth(int month, int year){
@@ -22,7 +22,7 @@ int daysOfMonth(int month, int year){
     int numberOfMonth = range.length;
     return numberOfMonth;
 }
-
+//get the first weekday of the month
 int weekDayofDay(int month, int year){
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setDay:1];
