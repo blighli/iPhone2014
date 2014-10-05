@@ -1,5 +1,5 @@
 cal: 
-	gcc -o cal CalendarUtils.m main.m -framework Foundation
+	clang -o cal CalendarUtils.m main.m -framework Foundation
 run: 
 	./cal
 clean:
