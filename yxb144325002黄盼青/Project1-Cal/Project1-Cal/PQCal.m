@@ -10,62 +10,101 @@
 
 @implementation PQCal
 
-
-//根据年月打印出日历
-+(NSString *)printCal:(NSUInteger)months andYears:(NSUInteger)years
-{
-    NSUInteger _months;
-    NSUInteger _years;
-    
-    //创建缺省日期
-    NSDate *defaultDate=[NSDate date];
-    NSCalendar *gregorianCalendar=[[NSCalendar alloc]initWithCalendarIdentifier:NSGregorianCalendar];
-    NSUInteger calendarUnitFlag=(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit);
-    NSDateComponents *defaultComp=[gregorianCalendar components:calendarUnitFlag fromDate:defaultDate];
-    
-    NSArray *chineseMonth=[[NSArray alloc]initWithObjects:@"一",@"二",@"三",@"四",@"五",@"六",@"七",@"八",@"九",@"十",@"十一",@"十二", nil];
-    
-
-    //判断输入的月份是否合法
-    if(months>0 && months<=12)
-    {
-        _months=months;
-    }else
-    {
-        //使用当前月份
-        _months=[defaultComp month];
+/**
+* 初始化一整年日历
+*/
+- (id)initWithYear:(NSUInteger)years {
+    self = [super init];
+    if (self) {
+        //计算一整年12个月的日历
+        self->OneYearCalendar = [[NSMutableArray alloc] init];
+        for (int i = 1; i <= 12; i++) {
+            [self->OneYearCalendar addObject:[self calculateCalendar:i andYears:years]];
+        }
     }
-    //判断输入的年份是否合法
-    if(years>0)
-    {
-        _years=years;
-    }else
-    {
-        //使用当前年份
-        _years=[defaultComp year];
+    return self;
+}
+
+
+/***
+* 计算某年某月日历，并返回每行日历数组
+*/
+- (NSMutableArray *)calculateCalendar:(NSUInteger)months andYears:(NSUInteger)years {
+    NSMutableArray *monthCalendar = [NSMutableArray new];
+    //检验年月格式是否符合
+    if (months > 0 && months <= 12 && years > 0 && years <= 9999) {
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents *defaultDateComp = [[NSDateComponents alloc] init];
+        [defaultDateComp setYear:years];
+        [defaultDateComp setMonth:months];
+        [defaultDateComp setDay:1];
+        NSDate *defaultDate = [gregorian dateFromComponents:defaultDateComp];
+
+        NSRange range = [gregorian rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:defaultDate];
+        //该月总天数
+        NSUInteger totalDays = range.length;
+        //该月1号为星期几
+        NSUInteger firstDayWeekday = [[gregorian components:NSWeekdayCalendarUnit fromDate:defaultDate] weekday];
+
+        NSUInteger currentDays = 1;
+
+        for (NSUInteger i = 0; i < 6; i++) {
+            if (i == 0) {
+                NSMutableArray *rowMonthCalendarArray = [NSMutableArray new];
+                //首行天数
+                NSUInteger firstRowDaysCount = 7 - firstDayWeekday + 1;
+                //首行空位置数
+                NSUInteger firstRowSpaceCount = firstDayWeekday - 1;
+                for (int firstRowSpace = 0; firstRowSpace < firstRowSpaceCount; firstRowSpace++) {
+                    [rowMonthCalendarArray addObject:@"  "];
+                }
+                for (int firstRowDays = 0; firstRowDays < firstRowDaysCount; firstRowDays++) {
+                    if (currentDays <= totalDays) {
+                        [rowMonthCalendarArray addObject:currentDays < 10 ? [NSString stringWithFormat:@" %ld", currentDays] : [NSString stringWithFormat:@"%ld", currentDays]];
+                        currentDays++;
+                    }
+                }
+                [monthCalendar addObject:rowMonthCalendarArray];
+            } else {
+                NSMutableArray *rowMonthCalendarArray = [NSMutableArray new];
+                for (int otherRowDays = 0; otherRowDays < 7; otherRowDays++) {
+                    if (currentDays <= totalDays) {
+                        [rowMonthCalendarArray addObject:currentDays < 10 ? [NSString stringWithFormat:@" %ld", currentDays] : [NSString stringWithFormat:@"%ld", currentDays]];
+                        currentDays++;
+                    }
+                }
+                [monthCalendar addObject:rowMonthCalendarArray];
+            }
+        }
+
+
+    } else {
+        @throw [NSException exceptionWithName:@"格式错误" reason:@"年或月格式错误" userInfo:nil];
     }
-    
-    //创建新的NSDateComponents用于日历计算
-    NSDateComponents *tempComp=[[NSDateComponents alloc]init];
-    [tempComp setMonth:_months];
-    [tempComp setYear:_years];
-    [tempComp setDay:1];
-    NSDate *tempDate=[gregorianCalendar dateFromComponents:tempComp];
-    NSDateComponents *userComp=[gregorianCalendar components:calendarUnitFlag fromDate:tempDate];
-    
-    NSString *currentChineseMonth=[chineseMonth objectAtIndex:[userComp month]];
-    
-    NSMutableString *printResult=[NSMutableString stringWithFormat:@"\r\n         %@月  %ld",currentChineseMonth,[userComp year]];
-    [printResult appendString:@"\r\n  日  一  二  三  四  五  六  "];
-    
-    NSLog(@"%@",printResult);
-    
-    
+    return monthCalendar;
+}
+
+/***
+* 打印某月日历
+*/
+- (void)printCalculateByMonth:(NSUInteger)months {
+    if (months > 0 && months <= 12) {
+        printf("日 一 二 三 四 五 六\r\n");
+        NSArray *currentMonthArray = self->OneYearCalendar;
+
+        NSArray *rowMonthArray = [currentMonthArray objectAtIndex:months];
+        for (int j = 0; j < rowMonthArray.count; j++) {
+            NSArray *daysArray = [rowMonthArray objectAtIndex:j];
+            for (int k = 0; k < daysArray.count; k++) {
+                printf("%s ", [[daysArray objectAtIndex:k] UTF8String]);
+            }
+            printf("\r\n");
+        }
 
 
-    
-    return @"haha";
-    
+    } else {
+        @throw [NSException exceptionWithName:@"参数格式错误" reason:@"月份必须是1-12之间的整数" userInfo:nil];
+    }
 }
 
 @end

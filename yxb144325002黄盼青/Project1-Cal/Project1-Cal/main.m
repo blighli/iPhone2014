@@ -11,8 +11,8 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        
-        [PQCal printCal:9 andYears:2014];
+        PQCal *cal=[[PQCal alloc]initWithYear:2014];
+        [cal printCalculateByMonth:10];
     }
     return 0;
 }
