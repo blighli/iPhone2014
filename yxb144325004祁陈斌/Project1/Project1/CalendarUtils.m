@@ -70,6 +70,7 @@
     
 }
 - (void)printCalendar {
+    NSArray *monthChs = @[@"一月",@"二月",@"三月",@"四月",@"五月",@"六月",@"七月",@"八月",@"九月",@"十月",@"十一月",@"十二月"];
     //日历按maxMonthInOneRow分的行数
     NSInteger rowStartIndex = 0;
     NSInteger rowEndIndex = array.count/_maxMonthInOneRow;
@@ -89,14 +90,27 @@
         //该行月结束下标
         NSInteger columnEndIndex = columnStartIndex+_maxMonthInOneRow<array.count?columnStartIndex+_maxMonthInOneRow:array.count;
         for (NSInteger j=columnStartIndex; j<columnEndIndex; j++) {
+            NSString *monthChsName = [monthChs objectAtIndex:[[[array objectAtIndex:j] objectForKey:@"month"] intValue]-1];
             if (_isShowYearInFirstLine == YES) {
-                printf("        ");
-                printf("%2d月",[[[array objectAtIndex:j] objectForKey:@"month"] intValue]);
-                printf("        ");
+                printf("       ");
+                if ([monthChsName length]==2) {
+                    printf(" ");
+                }
+                printf("%s",[monthChsName UTF8String]);
+                printf("       ");
+                if ([monthChsName length]==2) {
+                    printf(" ");
+                }
             }else{
-                printf("     ");
-                printf("%2d月 %4d",[[[array objectAtIndex:j] objectForKey:@"month"] intValue],[[[array objectAtIndex:j] objectForKey:@"year"] intValue]);
-                printf("      ");
+                printf("    ");
+                if ([monthChsName length]==2) {
+                    printf(" ");
+                }
+                printf("%s %4d",[monthChsName UTF8String],[[[array objectAtIndex:j] objectForKey:@"year"] intValue]);
+                printf("    ");
+                if ([monthChsName length]==2) {
+                    printf(" ");
+                }
             }
             if(j<columnEndIndex-1){
                 printf("  ");
