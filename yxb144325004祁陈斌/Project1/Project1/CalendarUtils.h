@@ -12,7 +12,7 @@
  * 日历工具类
  */
 @interface CalendarUtils : NSObject{
-@public
+@private
     NSCalendar *calender;
     NSMutableArray *array;
 }

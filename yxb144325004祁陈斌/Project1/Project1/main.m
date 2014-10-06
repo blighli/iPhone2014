@@ -78,7 +78,6 @@ int main(int argc, const char * argv[]) {
                         utils.maxMonthInOneRow = 1;
                         utils.isShowYearInFirstLine = NO;
                         [utils calcCalendarWithYear:year andMonth:month];
-//                        NSLog(@"%@",utils->array);
                         [utils printCalendar];
                     } else {
                         printf("month %ld not in range 1..12\n",(long)month);
