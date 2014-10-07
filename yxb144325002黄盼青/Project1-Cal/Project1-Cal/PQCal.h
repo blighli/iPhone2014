@@ -12,6 +12,8 @@
 {
 @private
     NSMutableArray *OneYearCalendar;
+    NSArray *chineseMonthName;
+    NSUInteger *currentYears;
 }
 
 
@@ -28,6 +30,10 @@
 /***
 * 打印某月日历
 */
--(void)printCalculateByMonth:(NSUInteger)months;
+-(void)printCalendarByMonth:(NSUInteger)months;
 
+/***
+* 打印一年日历
+*/
+-(void)printAllYearCalendar;
 @end
