@@ -21,4 +21,5 @@ static const char *monthName[]= {
 +(void) printSpecialMonth:(NSDateComponents *)comps :(BOOL)inSingMonth;
 +(void) printTitle:(NSDateComponents *)comps :(BOOL)inSingMonth;
 +(long) ConvertToJulian:(NSDateComponents *)comps :(NSUInteger)dayNum;
++(void) printCalendarWith:(NSDateComponents *)comps :(BOOL)with1752Flag;
 @end
