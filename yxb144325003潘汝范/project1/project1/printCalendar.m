@@ -45,7 +45,6 @@
             }
              printf("\n");
         }
-   
     printf("\n\n");
 }
 +(void)printTitle:(NSDateComponents *)comps :(BOOL)inSingMonth{
@@ -111,7 +110,6 @@
             }else{
                 printf("  %ld ",dayNum);
             }
-            
         }
         printf("\n");
     }
