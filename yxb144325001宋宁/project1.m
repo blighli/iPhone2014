@@ -16,7 +16,7 @@ int daytoweek(int d,int m, int y){
         m+=12;
         y--;
     }
-    a=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7;//Important code.I dont know why,but it works.
+    a=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7;//计算对应的星期几
     return a;
 }
 
@@ -40,11 +40,14 @@ int main(int argc, const char * argv[]) {
         
         char str[50] = {0};
         
+        //将输入以换行符作为截止符
         scanf("%[^\n]",str);
         
         NSString *Str = [NSString stringWithUTF8String:str];
         NSString *basic=@"cal";
         NSString *basicSpa=@"cal ";
+        
+        //利用正则表达式对输入的字符串进行分类
         NSString *regM=@"cal -m ([0-1]{0,1}[0-9])";
         NSString *regYear=@"cal ([0-9]{0,4})";
         NSString *regYearandMonth=@"cal ([0-1]{0,1}[0-9]) ([0-9]{0,4})";
@@ -72,14 +75,14 @@ int main(int argc, const char * argv[]) {
         
         int year =(int) [comps year];
         int month =(int) [comps month];
-        //int day=(int) [comps date];
+        
         
         
         
         
         if ([Str isEqualToString:basic ]||[Str isEqualToString:basicSpa ]) {
            
-            //Mon,Tues,Wed,Thur,Fri,Sat,Sun
+           
             printf("              %d年%d月\n\n",year,month);
             printf(" Mon  Tues Wed  Thur Fri  Sat  Sun \n");
             int a=daytoweek(1,month,year);
@@ -101,7 +104,7 @@ int main(int argc, const char * argv[]) {
             NSLog(@"%d",a);
             
         }else if (isM){
-            //NSLog(@"-m");
+            
             NSArray *array = [Str componentsSeparatedByString:@" "];
             int MonthValue=[[array objectAtIndex:2] intValue];
             printf("              %d年%d月\n\n",year,MonthValue);
@@ -124,7 +127,7 @@ int main(int argc, const char * argv[]) {
             printf("\n\n");
             
         }else if (isYear){
-            //NSLog(@"year");
+            
             NSArray *array = [Str componentsSeparatedByString:@" "];
             int YearValue=[[array objectAtIndex:1] intValue];
             for (int i=1; i<=12; i++) {
@@ -148,7 +151,7 @@ int main(int argc, const char * argv[]) {
                 printf("\n\n");
             }
         }else if (isYearandMonth){
-            //NSLog(@"year and month");
+            
             NSArray *array = [Str componentsSeparatedByString:@" "];
             int YearValue=[[array objectAtIndex:2] intValue];
             int MonthValue=[[array objectAtIndex:1] intValue];
