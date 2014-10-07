@@ -13,8 +13,14 @@
     [printCalendar printTitle:comps :inSingMonth];
     if([comps year] == 1752 && [comps month] == 9){
         [printCalendar printSpecialMonth:comps :inSingMonth];
-    }else{
-            }
+    }else if([comps year]< 1752){
+        [printCalendar printCalendarWith:comps :YES];
+    }else if ([comps year] == 1752 && [comps month] < 9){
+        [printCalendar printCalendarWith:comps :YES];
+    }
+    else{
+        [printCalendar printCalendarWith:comps :NO];
+    }
     
 }
 +(void)printSpecialMonth:(NSDateComponents *)comps :(BOOL)inSingMonth{
