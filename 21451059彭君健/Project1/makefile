@@ -1,10 +1,13 @@
-CL = clang -framework Foundation
+CC = clang -framework Foundation
 DIR = Project1
 TARGET = cal
+SOURCE = main.m MyCalendar.m DateUtil.m
 build:
-	$(CL) -o $(TARGET) $(DIR)/main.m
-	./cal
-	./cal 10 2014
-	./cal -m 10
-	./cal 2014
-	rm cal
+	cd $(DIR); $(CC) -o $(TARGET) $(SOURCE)
+	mv $(DIR)/$(TARGET) .
+	./$(TARGET)
+	./$(TARGET) 10 2014
+	./$(TARGET) -m 10
+	./$(TARGET) 2014
+clean:
+	rm $(TARGET)

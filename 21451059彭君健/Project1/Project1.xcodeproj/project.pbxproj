@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2FA4CE19E40E180089477B /* MyCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2FA4CD19E40E180089477B /* MyCalendar.m */; };
+		2F6494BF19E43435003D5E0F /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6494BE19E43435003D5E0F /* DateUtil.m */; };
 		2FA57B2B19E3E07200982EA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA57B2A19E3E07200982EA2 /* main.m */; };
 		2FA57B3219E3E22B00982EA2 /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2FA57B3119E3E22B00982EA2 /* makefile */; };
 /* End PBXBuildFile section */
@@ -24,6 +26,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2F2FA4CC19E40E180089477B /* MyCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCalendar.h; sourceTree = "<group>"; };
+		2F2FA4CD19E40E180089477B /* MyCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCalendar.m; sourceTree = "<group>"; };
+		2F6494BD19E43435003D5E0F /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
+		2F6494BE19E43435003D5E0F /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
 		2FA57B2719E3E07200982EA2 /* Project1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project1; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA57B2A19E3E07200982EA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2FA57B3119E3E22B00982EA2 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
@@ -60,6 +66,10 @@
 		2FA57B2919E3E07200982EA2 /* Project1 */ = {
 			isa = PBXGroup;
 			children = (
+				2F2FA4CC19E40E180089477B /* MyCalendar.h */,
+				2F2FA4CD19E40E180089477B /* MyCalendar.m */,
+				2F6494BD19E43435003D5E0F /* DateUtil.h */,
+				2F6494BE19E43435003D5E0F /* DateUtil.m */,
 				2FA57B2A19E3E07200982EA2 /* main.m */,
 			);
 			path = Project1;
@@ -122,7 +132,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA57B3219E3E22B00982EA2 /* makefile in Sources */,
+				2F6494BF19E43435003D5E0F /* DateUtil.m in Sources */,
 				2FA57B2B19E3E07200982EA2 /* main.m in Sources */,
+				2F2FA4CE19E40E180089477B /* MyCalendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +248,7 @@
 				2FA57B3019E3E07200982EA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
