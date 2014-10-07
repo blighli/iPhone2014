@@ -81,7 +81,7 @@
     NSUInteger leftDayNum = 0;
     if(with1752Flag){
         day = day + 4;
-        if (day>7) {
+        if (day>=7) {
             day = day -7;
         }
     }
