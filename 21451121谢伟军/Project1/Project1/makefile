@@ -1,4 +1,4 @@
-#This is a simple makefile file~
+#This is a simple makefile~
 .PHONY: cal
 objects = main.m WeekDay.m DrawPic.m
 cal : $(objects)
