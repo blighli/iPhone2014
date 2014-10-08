@@ -35,6 +35,23 @@ void systemcal(NSArray *args) {
     system([cmd cStringUsingEncoding:NSASCIIStringEncoding]);
 }
 
+void Error(NSString *s) {
+    printf("cal: %s\n", [s cStringUsingEncoding:NSUTF8StringEncoding]);
+    exit(1);
+}
+
+void validateYear(int year) {
+    if (year < 1 || year > 9999	) {
+        Error([NSString stringWithFormat:@"year %d not in range 1..9999", year]);
+    }
+}
+
+void validateMonth(int month) {
+    if (month < 1 || month > 12) {
+        Error([NSString stringWithFormat:@"month %d not in range 1..12", month]);
+    }
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSArray *args = [NSArray arrayWithArguments:argv count:argc];
@@ -45,23 +62,35 @@ int main(int argc, const char * argv[]) {
                 [cal printMonth];
                 break;
             case 1:
-                cal = [[MyCalendar alloc] initWithYear:[args[0] intValue]];
+                if ([@"-y" compare:args[0]] == NSOrderedSame) {
+                    cal = [[MyCalendar alloc] init];
+                } else {
+                    validateYear([args[0] intValue]);
+                    cal = [[MyCalendar alloc] initWithYear:[args[0] intValue]];
+                }
                 [cal printYear];
                 break;
             case 2:
                 if ([@"-m" compare:args[0]] == NSOrderedSame) {
+                    validateMonth([args[1] intValue]);
                     cal = [[MyCalendar alloc] initWithMonth:[args[1] intValue]];
+                    [cal printMonth];
+                } else if ([@"-y" compare:args[0]] == NSOrderedSame){
+                    validateYear([args[1] intValue]);
+                    cal = [[MyCalendar alloc] initWithYear:[args[1] intValue]];
+                    [cal printYear];
                 } else {
+                    validateYear([args[1] intValue]);
+                    validateMonth([args[0] intValue]);
                     cal = [[MyCalendar alloc] initWithYear:[args[1] intValue]
                                                   andMonth:[args[0] intValue]];
+                    [cal printMonth];
                 }
-                [cal printMonth];
                 break;
             default:
                 systemcal(args);
                 break;
         }
-        printf("\n");
     }
     return 0;
 }
