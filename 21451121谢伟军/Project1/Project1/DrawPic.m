@@ -11,6 +11,7 @@
 @implementation DrawPic
 //日历图像绘制
 -(void)draw{
+    char *theMonth[12] = {"一","二","三","四","五","六","七","八","九","十","十一","十二"};
     switch (self.month) {
             //当月份是正确时间时
         case 1:
@@ -25,8 +26,8 @@
         case 10:
         case 11:
         case 12:{
-            printf("                  %2ld月  %ld年                      \n",self.month,self.year);
-            printf("    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("                  %s月  %ld年                      \n",theMonth[self.month-1],self.year);
+            printf("    _____________________________________________\n");
             printf("    Sun    Mon    Tue    Wed    Thu    Fri    Sat\n");
             //            printf("    日  一  二  三  四  五  六\n");
             int dayNumber = 1;
