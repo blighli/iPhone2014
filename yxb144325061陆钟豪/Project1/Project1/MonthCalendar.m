@@ -31,13 +31,25 @@
 }
 
 - (void) calcuate {
+    NSInteger year = [_dateCompt year];
+    NSInteger month = [_dateCompt month];
     NSDate* date = [_cal dateFromComponents:_dateCompt];
-    NSRange range = [_cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:date];
-    NSInteger weekDayOf1th = [_cal ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:date];
+    NSRange range;
+    NSInteger weekDayOf1th;
+    if(year < 1752 || (year == 1752 && month <= 9)){
+        range = calcuteRangeOfMonth_old(year, month);
+        weekDayOf1th = calcuteWeekday_old(year, month, 1);
+    }
+    else{
+        range = [_cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:date];
+        weekDayOf1th = [_cal ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:date];
+    }
     NSInteger l = 0;
     NSInteger w = 0;
     NSString* s = [NSString new];
     for(NSInteger i = range.location - weekDayOf1th + 1; i <= (NSInteger) range.length || l < MONTH_WEEK_LINE; ++i) {
+        if(year == 1752 && month == 9 && 2 < i  && i < 14)
+            continue;
         s = [s stringByAppendingFormat:@"%s", w > 0 ? " " : ""];
         if(i < range.location || i > range.length) {
             s = [s stringByAppendingString:@"  "];

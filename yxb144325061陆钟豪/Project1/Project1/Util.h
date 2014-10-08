@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 NSString* createMidTitle(NSString* title, NSInteger lenOfTitle, NSInteger length);
-
+NSInteger calcuteDays_old(NSInteger year, NSInteger month, NSInteger day);
+NSInteger calcuteWeekday_old(NSInteger year, NSInteger month, NSInteger day);
+NSRange calcuteRangeOfMonth_old(NSInteger year, NSInteger month);
 
 #define MIN_YEAR 1
 #define MAX_YEAR 9999
