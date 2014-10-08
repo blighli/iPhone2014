@@ -46,61 +46,40 @@ static NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |
     return self;
 }
 
-static const int WIDTH = 20;
-static const char *WEEKS = "日 一 二 三 四 五 六";
 - (void)printMonth {
-    NSRange range;
-    range.length = 1;
-    range.location = self.components.month;
-    NSString *month;
-    if (range.location <= 10) {
-        month = [@"0一二三四五六七八九十" substringWithRange:range];
-    } else if (range.location == 11) {
-        month = @"十一";
-    } else {
-        month = @"十二";
+    NSMutableArray *ss = [NSMutableArray arrayWithCapacity:8];
+    for (int i = 0; i < 8; i++) {
+        [ss addObject:[NSMutableString stringWithCapacity:100]];
     }
-    NSString *year = [[NSNumber numberWithInteger:self.components.year] stringValue];
-    int days = [DateUtil daysOfMonth:(int)self.components.month inYear:(int)self.components.year];
-    
-    // first line
-    int before = (WIDTH -  ((int)month.length * 2 + 2 + 1 + (int)year.length)) / 2;
-    while (before--) printf(" ");
-    printf("%s月 %s\n", [month cStringUsingEncoding:NSUTF8StringEncoding],
-           [year cStringUsingEncoding:NSUTF8StringEncoding]);
-    
-    // second line
-    printf("%s\n", WEEKS);
-    
-    int d = 1;
-    int weekday = (int) self.components.weekday;
-    int pos = 1;
-    while (d <= days) {
-        if (--weekday > 0) {
-            printf("  ");
-        } else {
-            printf("%2d", d++);
-        }
-        if ((pos++) % 7 == 0) {
-            printf("\n");
-        } else {
-            printf(" ");
-        }
+    [DateUtil generateMonthWithComponents:self.components into:ss hasYear:YES];
+    for (NSString *s in ss) {
+        printf("%s\n", [s cStringUsingEncoding:NSUTF8StringEncoding]);
     }
-    printf("\n");
 }
 
 - (void)printYear {
     NSString *year = [[NSNumber numberWithInteger:self.components.year] stringValue];
     // first line
-    int before = (WIDTH -  (int)year.length) / 2;
+    int before = (64 -  (int)year.length) / 2;
     while (before--) printf(" ");
     printf("%s\n\n", [year cStringUsingEncoding:NSUTF8StringEncoding]);
     
     int y = (int) self.components.year;
-    for (int i = 1; i <= 12; i++) {
-        self.components = [DateUtil componentsFromYear: y andMonth:i];
-        [self printMonth];
+    for (int row = 0; row < 4; row++) {
+        NSMutableArray *ss = [NSMutableArray arrayWithCapacity:8];
+        for (int i = 0; i < 8; i++) {
+            [ss addObject:[NSMutableString stringWithCapacity:100]];
+        }
+        for (int col = 1; col <= 3; col++) {
+            self.components = [DateUtil componentsFromYear: y andMonth:row * 3 + col];
+            [DateUtil generateMonthWithComponents:self.components into:ss hasYear:NO];
+            if (col < 3) {
+                for (NSMutableString *s in ss) [s appendString:@"  "];
+            }
+        }
+        for (NSString *s in ss) {
+            printf("%s\n", [s cStringUsingEncoding:NSUTF8StringEncoding]);
+        }
     }
 }
 @end	

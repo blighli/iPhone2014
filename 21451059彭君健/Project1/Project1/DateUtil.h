@@ -15,4 +15,8 @@
 + (NSDateComponents *) componentsFromYear:(int) year andMonth:(int) month;
 + (NSDateComponents *) componentsFromMonth:(int) month;
 + (NSDateComponents *) componentsOfThisMonth;
+
++ (void) generateMonthWithComponents:(NSDateComponents *) comp
+                                into:(NSArray *) ss
+                             hasYear:(BOOL) hasYear;
 @end
