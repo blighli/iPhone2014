@@ -77,6 +77,19 @@
     }
 }
 
+-(void) printwithArray:(NSMutableArray *) array andCount:(int) count{
+    if ([array objectAtIndex:count]) {
+        int cell=[[array objectAtIndex:count] intValue];
+        if (cell>0) {
+            printf("%2d ",cell);
+        }else{
+            printf("   ");
+        }
+    }else{
+        printf("   ");
+    }
+}
+
 -(void) printcanlendarYear:(int) year{
     printf("                             %d\n",year);
     for (int i=1; i<=10; i=i+3) {
@@ -90,55 +103,24 @@
         [self putintheArray:array1 andMonth:i andYear:year];
         [self putintheArray:array2 andMonth:i+1 andYear:year];
         [self putintheArray:array3 andMonth:i+2 andYear:year];
-        //int count=0;
         int arrayNum=1;
         for (int j=0; j<=35;) {
             if (arrayNum==1) {
                 for (int count=j; count<=j+6; count++) {
-                    if ([array1 objectAtIndex:count]) {
-                        int cell=[[array1 objectAtIndex:count] intValue];
-                        if (cell>0) {
-                            printf("%2d ",cell);
-                        }else{
-                            printf("   ");
-                        }
-                    }else{
-                        printf("   ");
-                    }
-                    
+                    [self printwithArray:array1 andCount:count];
                 }
                 printf("  ");
                 arrayNum+=1;
             }else if (arrayNum==2){
                 for (int count=j; count<=j+6; count++) {
-                    if ([array2 objectAtIndex:count]) {
-                        int cell=[[array2 objectAtIndex:count] intValue];
-                        if (cell>0) {
-                            printf("%2d ",cell);
-                        }else{
-                            printf("   ");
-                        }
-                    }else{
-                        printf("   ");
-                    }
-                    
+                    [self printwithArray:array2 andCount:count];
                 }
                 printf("  ");
                 arrayNum+=1;
                 
             }else if (arrayNum==3){
                 for (int count=j; count<=j+6; count++) {
-                    if ([array3 objectAtIndex:count]) {
-                        int cell=[[array3 objectAtIndex:count] intValue];
-                        if (cell>0) {
-                            printf("%2d ",cell);
-                        }else{
-                            printf("   ");
-                        }
-                    }else{
-                        printf("   ");
-                    }
-                    
+                    [self printwithArray:array3 andCount:count];
                 }
                 printf(" \n");
                 arrayNum=1;
