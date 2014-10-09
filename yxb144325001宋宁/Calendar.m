@@ -11,6 +11,7 @@
 
 @implementation Calendar
 
+ char *Month[]={"月","一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"};
 
 -(int) daytoweek:(int)d andMonth:(int) m andYear:(int) y{
     int a=0;
@@ -19,9 +20,9 @@
         y--;
     }
     a=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400+1)%7;//计算对应的星期几
-    
-    
-    
+    if (y<=1752 && m<=9 && d<=3) {
+        a=(d+2*m+3*(m+1)/5+y+y/4+5+1)%7;
+    }
     return a;
 }
 
@@ -41,34 +42,31 @@
 
 
 -(void) printcanlendar:(int) month andYear:(int)year{
-    char *Month[]={"月","一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"};
-    
     printf("     %s %d\n",Month[month],year);
     printf("日 一 二 三 四 五 六\n");
-    int a=[self daytoweek:1 andMonth:month andYear:year];
-    int cont=0;
-    for (int flag=0-a+1; flag<=[self DaysinYear:year andMonth:month]; flag++) {
-        if (flag>0) {
-            printf("%2d ",flag);
-        }else{
-            printf("   ");
+    NSMutableArray *array1=[NSMutableArray arrayWithCapacity:50];
+    [self putintheArray:array1 andMonth:month andYear:year];
+    for (int i=0; i<=35;i+=7) {
+        for (int count=i; count<=i+6; count++) {
+            [self printwithArray:array1 andCount:count];
         }
-        if (cont==6) {
-            printf("\n");
-            cont=0;
-        }else{
-            cont++;
-        }
+        printf(" \n");
     }
     printf("\n\n");
 }
 
 -(void) putintheArray:(NSMutableArray *) array andMonth:(int) month andYear:(int) year{
     int a=[self daytoweek:1 andMonth:month andYear:year];
-    for (int i=0-a+1; i<=50; i++) {
-        if (i<=[self DaysinYear:year andMonth:month]) {
-            NSNumber *cell =[NSNumber numberWithInt:i];
-            [array addObject:cell];
+    int date=0-a+1;
+    for (int i=0; i<=50; i++) {
+        if (date<=[self DaysinYear:year andMonth:month]) {
+            if(year==1752 && month == 9 && date==3){
+                date=14;
+            }else{
+                NSNumber *cell =[NSNumber numberWithInt:date];
+                [array addObject:cell];
+                date++;
+            }
         }else{
             NSNumber *cell =[NSNumber numberWithInt:-1];
             [array addObject:cell];
@@ -94,8 +92,12 @@
     printf("                             %d\n",year);
     for (int i=1; i<=10; i=i+3) {
         printf("  \n");
-        char *Month[]={"月","一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"};
-        printf("        %s                  %s                  %s\n",Month[i],Month[i+1],Month[i+2]);
+        if (i<10) {
+            printf("        %s                  %s                  %s\n",Month[i],Month[i+1],Month[i+2]);
+        }else{
+            printf("        %s                 %s                %s\n",Month[i],Month[i+1],Month[i+2]);
+        }
+        
         printf("日 一 二 三 四 五 六   日 一 二 三 四 五 六   日 一 二 三 四 五 六       \n");
         NSMutableArray *array1=[NSMutableArray arrayWithCapacity:50];
         NSMutableArray *array2=[NSMutableArray arrayWithCapacity:50];

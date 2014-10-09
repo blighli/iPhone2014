@@ -35,7 +35,7 @@ int main(int argc, const char * argv[]) {
                 [cal printcanlendar:month andYear:year];
                 break;
             case 2:
-                if (atoi(argv[1])<0||atoi(argv[1])>9999) {
+                if (atoi(argv[1])<1||atoi(argv[1])>9999) {
                     printf("year %d not in range 1..9999",atoi(argv[1]));
                 }else{
                     [cal printcanlendarYear:atoi(argv[1])];
