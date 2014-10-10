@@ -72,6 +72,10 @@ int main(int argc, const char * argv[]) {
         else if(argc==2){
             NSString *aa=[[NSString alloc] initWithCString:(const char*)argv[1] encoding:NSASCIIStringEncoding];
             NSInteger year=[aa integerValue];
+            if (year<=0||year>9999) {
+                NSLog(@"mycal: year %ld not in range 1..9999",year);
+                return 0;
+            }
             mycal *cal=[[mycal alloc] init];
             //首先输入该年份
             //输出整年的月历
@@ -290,6 +294,9 @@ int main(int argc, const char * argv[]) {
                 NSString *dd=[days objectAtIndex:i-1];
                 NSLog(@"%@",dd);
             }
+        }
+        else{
+            NSLog(@"usage: cal [[month] year] cal [-m month] [year]");
         }
     }
     
