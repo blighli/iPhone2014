@@ -20,6 +20,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSTimeZone *timeZone = [NSTimeZone localTimeZone];
     [formatter setTimeZone:timeZone];
+    //设置日期格式
     [formatter setDateFormat:@"MM/dd/yyyy"];
     NSString *firstDay = [NSString stringWithFormat:@"%ld/%d/%ld",(long)_month,1,(long)_year];
     date = [formatter dateFromString:firstDay];
@@ -62,7 +63,7 @@
     for(int i=1;i<_weekday;i++){
         printf("   ");
     }
-    int k=_weekday-1;
+    NSInteger k=_weekday-1;
     for(int i=1;i<=_maxDays;i++){
         printf("%2i ",i);
         k++;
@@ -76,4 +77,5 @@
     printf("\n");
     
 }
+
 @end

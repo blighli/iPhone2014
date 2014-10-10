@@ -57,7 +57,7 @@ int main(int argc, const char * argv[]) {
                 }
                 else{
                     NSLog(@"mycal: %ld is neither a month number (1..12) nor a name",month);
-                return 0;
+                    return 0;
                 }
             }
             //本月第一天是星期几
@@ -67,7 +67,229 @@ int main(int argc, const char * argv[]) {
             [cal theMaxDay:month theYear:year];
             //输出日历
             [cal print];
+            
+        }
+        else if(argc==2){
+            NSString *aa=[[NSString alloc] initWithCString:(const char*)argv[1] encoding:NSASCIIStringEncoding];
+            NSInteger year=[aa integerValue];
+            mycal *cal=[[mycal alloc] init];
+            //首先输入该年份
+            //输出整年的月历
+            NSLog(@"                              %li",(long)year);
+            NSLog(@"");
+            NSLog(@"        一月                  二月                 三月");
+            NSLog(@"日 一 二 三 四 五 六  日 一 二 三 四 五 六  日 一 二 三 四 五 六");
+            NSMutableString *a=[NSMutableString stringWithCapacity:0];
+            NSMutableString *b=[NSMutableString stringWithCapacity:0];
+            NSMutableString *c=[NSMutableString stringWithCapacity:0];
+            NSMutableString *d=[NSMutableString stringWithCapacity:0];
+            NSMutableString *e=[NSMutableString stringWithCapacity:0];
+            NSMutableString *f=[NSMutableString stringWithCapacity:0];
+            NSMutableArray *days=[[NSMutableArray alloc] initWithObjects:a,b,c,d,e,f,nil];
+            int hang;
+            for(int i=1;i<=3;i++){
+                NSInteger firstWeekDay=[cal firstWeekDay:i theYear:year];
+                //该月共多少天
+                NSInteger theMaxDay=[cal theMaxDay:i theYear:year];
+                for(int j=1;j<firstWeekDay;j++){
+                    [a appendFormat:@"   "];
+                }
+                NSInteger k=firstWeekDay-1;
+                //记录行
+                hang=1;
+                for(int j=1;j<=theMaxDay;j++){
+                    NSMutableString *thedays=[days objectAtIndex:hang-1];
+                    [thedays appendFormat:@"%2i ",j];
+                    [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                    k++;
+                    if(j==theMaxDay&&k!=7){
+                        for(int l=k+1;l<=7;l++){
+                            [thedays appendFormat:@"   "];
+                        }
+                        [thedays appendFormat:@" "];
+                        [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                        
+                    }
 
+                    if(k==7){
+                        [thedays appendFormat:@" "];
+                        [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                        hang++;
+                        k=0;
+                    }
+                    
+                    
+                }
+                if (hang==5) {
+                    NSMutableString *thedays=[days objectAtIndex:5];
+                    [thedays appendFormat:@"                      "];
+                    [days replaceObjectAtIndex:5 withObject:thedays];
+                }
+            }
+            for(int i=1;i<=hang;i++){
+                NSString *dd=[days objectAtIndex:i-1];
+            NSLog(@"%@",dd);
+            }
+            [a setString:@""];
+            [b setString:@""];
+            [c setString:@""];
+            [d setString:@""];
+            [e setString:@""];
+            [f setString:@""];
+            days=[[NSMutableArray alloc] initWithObjects:a,b,c,d,e,f,nil];
+            
+            NSLog(@"        四月                  五月                 六月");
+            NSLog(@"日 一 二 三 四 五 六  日 一 二 三 四 五 六  日 一 二 三 四 五 六");
+            for(int i=4;i<=6;i++){
+                NSInteger firstWeekDay=[cal firstWeekDay:i theYear:year];
+                //该月共多少天
+                NSInteger theMaxDay=[cal theMaxDay:i theYear:year];
+                for(int j=1;j<firstWeekDay;j++){
+                    [a appendFormat:@"   "];
+                }
+                NSInteger k=firstWeekDay-1;
+                //记录行
+                hang=1;
+                for(int j=1;j<=theMaxDay;j++){
+                    NSMutableString *thedays=[days objectAtIndex:hang-1];
+                    [thedays appendFormat:@"%2i ",j];
+                    [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                    k++;
+                    if(j==theMaxDay&&k!=7){
+                        for(int l=k+1;l<=7;l++){
+                            [thedays appendFormat:@"   "];
+                        }
+                        [thedays appendFormat:@" "];
+                        [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                        
+                    }
+
+                    if(k==7){
+                        [thedays appendFormat:@" "];
+                        [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                        hang++;
+                        k=0;
+                    }
+                    
+                    
+                }
+                if (hang==5) {
+                    NSMutableString *thedays=[days objectAtIndex:5];
+                    [thedays appendFormat:@"                      "];
+                    [days replaceObjectAtIndex:5 withObject:thedays];
+                }
+            }
+            for(int i=1;i<=6;i++){
+                NSString *dd=[days objectAtIndex:i-1];
+                NSLog(@"%@",dd);
+            }
+            [a setString:@""];
+            [b setString:@""];
+            [c setString:@""];
+            [d setString:@""];
+            [e setString:@""];
+            [f setString:@""];
+            days=[[NSMutableArray alloc] initWithObjects:a,b,c,d,e,f,nil];
+            
+            NSLog(@"        七月                  八月                 九月");
+            NSLog(@"日 一 二 三 四 五 六  日 一 二 三 四 五 六  日 一 二 三 四 五 六");
+            for(int i=7;i<=9;i++){
+                NSInteger firstWeekDay=[cal firstWeekDay:i theYear:year];
+                //该月共多少天
+                NSInteger theMaxDay=[cal theMaxDay:i theYear:year];
+                for(int j=1;j<firstWeekDay;j++){
+                    [a appendFormat:@"   "];
+                }
+                NSInteger k=firstWeekDay-1;
+                //记录行
+                hang=1;
+                for(int j=1;j<=theMaxDay;j++){
+                    NSMutableString *thedays=[days objectAtIndex:hang-1];
+                    [thedays appendFormat:@"%2i ",j];
+                    [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                    k++;
+                    if(j==theMaxDay&&k!=7){
+                        for(int l=k+1;l<=7;l++){
+                            [thedays appendFormat:@"   "];
+                        }
+                        [thedays appendFormat:@" "];
+                        [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                        
+                    }
+
+                    if(k==7){
+                        [thedays appendFormat:@" "];
+                        [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                        hang++;
+                        k=0;
+                    }
+                    
+                    
+                }
+                if (hang==5) {
+                    NSMutableString *thedays=[days objectAtIndex:5];
+                    [thedays appendFormat:@"                      "];
+                    [days replaceObjectAtIndex:5 withObject:thedays];
+                }
+            }
+            for(int i=1;i<=6;i++){
+                NSString *dd=[days objectAtIndex:i-1];
+                NSLog(@"%@",dd);
+            }
+            [a setString:@""];
+            [b setString:@""];
+            [c setString:@""];
+            [d setString:@""];
+            [e setString:@""];
+            [f setString:@""];
+            days=[[NSMutableArray alloc] initWithObjects:a,b,c,d,e,f,nil];
+            
+            NSLog(@"        十月                 十一月                十二月");
+            NSLog(@"日 一 二 三 四 五 六  日 一 二 三 四 五 六  日 一 二 三 四 五 六");
+            
+            for(int i=10;i<=12;i++){
+                NSInteger firstWeekDay=[cal firstWeekDay:i theYear:year];
+                //该月共多少天
+                NSInteger theMaxDay=[cal theMaxDay:i theYear:year];
+                for(int j=1;j<firstWeekDay;j++){
+                    [a appendFormat:@"   "];
+                }
+                NSInteger k=firstWeekDay-1;
+                //记录行
+                hang=1;
+                for(int j=1;j<=theMaxDay;j++){
+                    NSMutableString *thedays=[days objectAtIndex:hang-1];
+                    [thedays appendFormat:@"%2i ",j];
+                    [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                    k++;
+                    if(j==theMaxDay&&k!=7){
+                        for(int l=k+1;l<=7;l++){
+                            [thedays appendFormat:@"   "];
+                        }
+                        [thedays appendFormat:@" "];
+                        [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                        
+                    }
+
+                    if(k==7){
+                        [thedays appendFormat:@" "];
+                        [days replaceObjectAtIndex:hang-1 withObject:thedays];
+                        hang++;
+                        k=0;
+                    }
+                    
+                    
+                }
+                if (hang==5) {
+                    NSMutableString *thedays=[days objectAtIndex:5];
+                    [thedays appendFormat:@"                      "];
+                    [days replaceObjectAtIndex:5 withObject:thedays];
+                }
+            }
+            for(int i=1;i<=6;i++){
+                NSString *dd=[days objectAtIndex:i-1];
+                NSLog(@"%@",dd);
+            }
         }
     }
     
