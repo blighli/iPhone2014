@@ -11,7 +11,7 @@
 @implementation WeekDay
 
 //用输入的日期进行初始化
--(id)initWithInputDayWithYear:(NSInteger)year Month:(NSInteger)month{
+-(instancetype)initWithInputDayWithYear:(NSInteger)year Month:(NSInteger)month{
     self = [super init];
     if (self) {
         self.year = year;
@@ -22,7 +22,7 @@
 
 
 //用今天的日期进行初始化
--(id)initWithToday{
+-(instancetype)initWithToday{
     self = [super init];
     if (self) {
         NSDate *today = [NSDate date];

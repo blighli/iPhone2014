@@ -11,8 +11,8 @@
 @interface WeekDay : NSObject
 -(NSInteger)weekDay;
 -(NSInteger)numberOfDayInMonth;
--(id)initWithInputDayWithYear:(NSInteger)year Month:(NSInteger)month;
--(id)initWithToday;
+-(instancetype)initWithInputDayWithYear:(NSInteger)year Month:(NSInteger)month;
+-(instancetype)initWithToday;
 @property NSInteger month;
 @property NSInteger year;
 @end
