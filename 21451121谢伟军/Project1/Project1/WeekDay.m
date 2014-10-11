@@ -39,7 +39,7 @@
 
 
 
-//用于查询year年month月的第一天是周几
+//查询year年month月的第一天是周几
 -(NSInteger)weekDay{
     NSDateComponents *comps = [[NSDateComponents alloc]init];
     [comps setDay:1];

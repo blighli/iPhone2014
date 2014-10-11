@@ -9,5 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "WeekDay.h"
 @interface DrawPic : WeekDay
+
 -(void)draw;
+-(void)drawLine:(int)i;
++(void)drawTag1;
++(void)drawTag2;
++(void)drawTag3;
++(void)drawTag4;
 @end
