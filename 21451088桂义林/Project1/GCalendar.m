@@ -46,25 +46,25 @@
     NSInteger num_of_days_in_month = range.length;
     
     // 输出第一行的月份标识和年份标识
-    for (int i = 0; i < 2; ++i) {
-        printf(" \t");
+    for (int i = 0; i < 5; ++i) {
+        printf(" ");
     }
     printf("%s %ld\n", [[GCalendar getTagOfMonth:_month] UTF8String], _year);
     
     // 输出第二行的星期几标识
     for (int i = 0; i < 7; ++i) {
-        printf("%s\t", [[GCalendar getTagOfWeekday:i] UTF8String]);
+        printf("%s ", [[GCalendar getTagOfWeekday:i] UTF8String]);
     }
     printf("\n");
     
     // 输出日历的第一行
     for (int i = 0; i < weekday - 1; ++i) {
-        printf(" \t");
+        printf("   ");
     }
     int day = 1;
-    printf("%d\t", day++);
+    printf(" %d ", day++);
     for (int i = (int)weekday; i < 7; ++i) {
-        printf("%d\t", day++);
+        printf(" %d ", day++);
     }
     
     // 输出剩余行
@@ -73,7 +73,11 @@
         if (cnt % 7 == 0) {
             printf("\n");
         }
-        printf("%d\t", day++);
+        if (day < 10) {
+            printf(" %d ", day++);
+        } else {
+            printf("%d ", day++);
+        }
         ++cnt;
     }
     printf("\n\n");
@@ -88,17 +92,18 @@
     // NSCalendar对象，用于获取某个月第一天是星期几
     NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
-    // 输出第一行的年份标识
-    for (int i = 0; i < 7; ++i) {
-        printf(" \t");
+    /* 1. 输出第一行的年份标识 */
+    for (int i = 0; i < 29; ++i) {
+        printf(" ");
     }
     printf("%ld\n\n", _year);
     
-    // 分6大“行”输出，每行两个月
-    for (int row = 0; row < 6; ++row) {
+    /* 2. 分4大“行”输出，每行3个月 */
+    for (int row = 0; row < 4; ++row) {
         
-        NSInteger month1 = 2 * row + 1;
-        NSInteger month2 = month1 + 1;
+        NSInteger month1 = 3 * row + 1;  // 第一列，月份1
+        NSInteger month2 = month1 + 1;  // 月份2
+        NSInteger month3 = month1 + 2;  // 月份3
         
         // 日期格式对象，用于构建日期
         NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
@@ -112,6 +117,10 @@
         // 获取月份2第一天的日期
         NSString *firstDay2 = [NSString stringWithFormat:@"%ld/%d/%ld", (long)month2, 1, (long)_year];
         NSDate *date2 = [date_formatter dateFromString:firstDay2];
+        
+        // 获取月份3第一天的日期
+        NSString *firstDay3 = [NSString stringWithFormat:@"%ld/%d/%ld", (long)month3, 1, (long)_year];
+        NSDate *date3 = [date_formatter dateFromString:firstDay3];
         
         // 获取月份1第一天是星期几
         [comps setMonth:month1];
@@ -131,75 +140,145 @@
         NSRange range2 = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:date2];
         NSInteger num_of_days_in_month2 = range2.length;
         
-        // 输出月份标识
-        for (int i = 0; i < 3; ++i) {
-            printf(" \t");
-        }
-        printf("%s", [[GCalendar getTagOfMonth:month1] UTF8String]);
-        for (int i = 0; i < 3; ++i) {
-            printf(" \t");
-        }
-        printf("\t");
-        for (int i = 0; i < 3; ++i) {
-            printf(" \t");
-        }
-        printf("%s\n", [[GCalendar getTagOfMonth:month2] UTF8String]);
+        // 获取月份3第一天是星期几
+        [comps setMonth:month3];
+        comps = [cal components:(NSWeekdayCalendarUnit) fromDate:date3];
+        NSInteger weekday3 = [comps weekday];
         
-        // 输出星期几标识
-        for (int i = 0; i < 2; ++i) {
-            for (int j = 0; j < 7; ++j) {
-                printf("%s\t", [[GCalendar getTagOfWeekday:j] UTF8String]);
+        // 获取月份3有多少天
+        NSRange range3 = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:date3];
+        NSInteger num_of_days_in_month3 = range3.length;
+        
+        //---------------//
+        /* 下面开始逐行输出 */
+        //---------------//
+        
+        /* 输出月份标识 */
+        for (int i = 0; i < 8; ++i) {
+            printf(" ");
+        }
+        printf("%s", [[GCalendar getTagOfMonth:month1] UTF8String]);  // 月份1
+        for (int i = 0; i < 8; ++i) {
+            printf(" ");
+        }
+        printf("  ");
+        if (month2 > 10) {  // 对11月、12月特殊处理
+            for (int i = 0; i < 7; ++i) {
+                printf(" ");
             }
-            printf("\t");
+            printf("%s", [[GCalendar getTagOfMonth:month2] UTF8String]);  // 月份2
+            for (int i = 0; i < 7; ++i) {
+                printf(" ");
+            }
+            printf("  ");
+            for (int i = 0; i < 7; ++i) {
+                printf(" ");
+            }  /* END for */
+            printf("%s\n", [[GCalendar getTagOfMonth:month3] UTF8String]);  // 月份3
+        } else {
+            for (int i = 0; i < 8; ++i) {
+                printf(" ");
+            }
+            printf("%s", [[GCalendar getTagOfMonth:month2] UTF8String]);  // 月份2
+            for (int i = 0; i < 8; ++i) {
+                printf(" ");
+            }
+            printf("  ");
+            for (int i = 0; i < 8; ++i) {
+                printf(" ");
+            }  /* END for */
+            printf("%s\n", [[GCalendar getTagOfMonth:month3] UTF8String]);  // 月份3
+        }  /* END if-else */
+        
+        /* 输出星期几标识 */
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 7; ++j) {
+                printf("%s ", [[GCalendar getTagOfWeekday:j] UTF8String]);
+            }
+            printf(" ");
         }
         printf("\n");
         
-        // 输出日历的第一行
-        NSInteger day1 = 1, day2 = 1;
+        /* 输出日历的第一行 */
+        NSInteger day1 = 1, day2 = 1, day3 = 1;
         for (int i = 0; i < weekday1 - 1; ++i) {
-            printf(" \t");
+            printf("   ");
         }
-        printf("%ld\t", day1++);
+        printf(" %ld ", day1++);
         for (int i = (int)weekday1; i < 7; ++i) {
-            printf("%ld\t", day1++);
-        }
-        printf("\t");
+            printf(" %ld ", day1++);
+        }  // 月份1
+        printf(" ");
         for (int i = 0; i < weekday2 - 1; ++i) {
-            printf(" \t");
+            printf("   ");
         }
-        printf("%ld\t", day2++);
+        printf(" %ld ", day2++);
         for (int i = (int)weekday2; i < 7; ++i) {
-            printf("%ld\t", day2++);
+            printf(" %ld ", day2++);
+        }  // 月份2
+        printf(" ");
+        for (int i = 0; i < weekday3 - 1; ++i) {
+            printf("   ");
         }
+        printf(" %ld ", day3++);
+        for (int i = (int)weekday3; i < 7; ++i) {
+            printf(" %ld ", day3++);
+        }  // 月份3
         
-        // 输出剩余行
+        /* 输出剩余行 */
         printf("\n");
         
         while (true) {
             if (day1 > num_of_days_in_month1 &&
-                day2 > num_of_days_in_month2) {
+                day2 > num_of_days_in_month2 &&
+                day3 > num_of_days_in_month3) {
                 break;
             }
             
+            // 月份1
             for (int i = 0; i < 7; ++i) {
                 if (day1 <= num_of_days_in_month1) {
-                    printf("%ld\t", day1++);
+                    if (day1 < 10) {
+                        printf(" %ld ", day1++);
+                    } else {
+                        printf("%ld ", day1++);
+                    }  /* END if-else */
                 } else {
-                    printf(" \t");
-                }
-            }
-            printf("\t");
+                    printf("   ");
+                }  /* END if-else */
+            }  /* END for */
+            printf(" ");
+            
+            // 月份2
             for (int i = 0; i < 7; ++i) {
                 if (day2 <= num_of_days_in_month2) {
-                    printf("%ld\t", day2++);
+                    if (day2 < 10) {
+                        printf(" %ld ", day2++);
+                    } else {
+                        printf("%ld ", day2++);
+                    }  /* END if-else */
                 } else {
-                    printf(" \t");
-                }
-            }
+                    printf("   ");
+                }  /* END if-else */
+            }  /* END for */
+            printf(" ");
+            
+            // 月份3
+            for (int i = 0; i < 7; ++i) {
+                if (day3 <= num_of_days_in_month3) {
+                    if (day3 < 10) {
+                        printf(" %ld ", day3++);
+                    } else {
+                        printf("%ld ", day3++);
+                    }  /* END if-else */
+                } else {
+                    printf("   ");
+                }  /* END if-else */
+            }  /* END for */
             printf("\n");
-        }
-        printf("\n");
-    }
+        }  /* END while */
+    }  /* END for */
+    printf("\n");
 }
 
 // Implementation of private methods

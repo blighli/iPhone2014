@@ -11,21 +11,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        // NSLog(@"Hello, World!");
-        
-//        [GCalendar printCalendarOfMonth:10 inYear:2014];
-//        
-//        [GCalendar printCalendarOfMonth:2 inYear:2012];
-//        
-//        [GCalendar printCalendarOfYear:2013];
-//        
-//        [GCalendar printCalendarOfYear:2014];
-//        
-//        [GCalendar printCalendarOfYear:2000];
-//        
-//        [GCalendar printCalendarOfMonth:6 inYear:2000];
-        
+                
         /* 输出当前月的日历 */
         if (argc == 1) {
             
@@ -48,7 +34,12 @@ int main(int argc, const char * argv[]) {
         if (argc == 2) {
             NSString *str_year = [NSString stringWithCString:argv[1] encoding:NSUTF8StringEncoding];
             NSInteger int_year = [str_year integerValue];
-            if (int_year < 1 || int_year > 9999) {
+            
+            if ([str_year hasPrefix:@"-"]) {
+                printf("cal: illegal option\n");
+                printf("usage: cal [[month] year]\n");
+                printf("       cal -m month\n");
+            } else if (int_year < 1 || int_year > 9999) {
                 printf("cal: year %ld not in range 1..9999\n", int_year);
             } else {
                 [GCalendar printCalendarOfYear:int_year];
