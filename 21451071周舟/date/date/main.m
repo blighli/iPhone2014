@@ -13,7 +13,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        if(argc == 1)
+        if(argc == 1)//输出当前的月历
         {
         int year;
         int month;
@@ -43,7 +43,8 @@ int main(int argc, const char * argv[]) {
         }else if (argc == 3){
             NSString *yStr =[NSString stringWithFormat:@"%s", argv[2] ];
             NSString *mStr =[NSString stringWithFormat:@"%s", argv[1]];
-            if([mStr isEqualToString:@"-m"] ){
+            //判断
+            if([mStr isEqualToString:@"-m"] ){//当年某月的月历
                 
                 int year;
                
@@ -65,7 +66,7 @@ int main(int argc, const char * argv[]) {
                 [Month year:(int)pon.year month:(int)pon.month weekday:(int)pon.weekday];
                 
                 
-            }else{
+            }else{//某年某月的月历
             
                 int year = [yStr intValue];
             int month = [mStr intValue];
@@ -82,7 +83,7 @@ int main(int argc, const char * argv[]) {
             
             [Month year:(int)pon.year month:(int)pon.month weekday:(int)pon.weekday];
             }
-        }else if(argc == 2){
+        }else if(argc == 2){//某年的月历
             NSString *yStr = [NSString stringWithFormat:@"%s",argv[1]];
             int year = [yStr intValue];
             
