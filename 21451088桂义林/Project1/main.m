@@ -67,7 +67,7 @@ int main(int argc, const char * argv[]) {
                     printf("usage: cal [[month] year]\n");
                     printf("       cal -m month\n");
                 } else if (int_month < 1 || int_month > 12) {
-                    printf("cal: %s is neither a month number (1..12) nor a name\n", [str_option UTF8String]);
+                    printf("cal: %s is neither a month number (1..12) nor a name\n", [str_arg3 UTF8String]);
                 } else {
                     [GCalendar printCalendarOfMonth:int_month inYear:current_year];
                 }  /* END if-else */
@@ -85,6 +85,11 @@ int main(int argc, const char * argv[]) {
                 }  /* END if-else */
             }  /* END if-else */
         }  /* END if */
+        
+        if (argc > 3) {
+            printf("usage: cal [[month] year]\n");
+            printf("       cal -m month\n");
+        }
     }
     return 0;
 }
