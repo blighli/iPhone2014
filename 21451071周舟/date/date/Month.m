@@ -65,10 +65,12 @@
             yue = @"十二";
             break;
     }
-    NSLog(@"         %@ 月  %d",yue, year);
-    printf("   日  一  二  三   四  五  六\n");
+    printf("\n");
+    NSLog(@"     %@ 月  %d",yue, year);
+    printf(" 日 一 二 三 四 五 六\n");
     int number = 0;
-    int temp = day;
+    int temp = day - 1 ;
+    //printf(" ");
     while(temp--){
         printf("   ");
     }
@@ -76,9 +78,9 @@
     {
         int row = (i - 1 + day) / 7;
         if(i > 9){
-            printf("  %i", i);
+            printf(" %i", i);
         }else{
-            printf("   %i", i);
+            printf("  %i", i);
         }
         
         if(number != row)

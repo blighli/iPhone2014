@@ -38,9 +38,39 @@ int main(int argc, const char * argv[]) {
         NSDateComponents *pon = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit fromDate:date];
         
         [Month year:(int)pon.year month:(int)pon.month weekday:(int)pon.weekday];
+            
+            
         }else if (argc == 3){
-            int year =(int) argv[2];
-            int month = (int) argv[1];
+            NSString *yStr =[NSString stringWithFormat:@"%s", argv[2] ];
+            NSString *mStr =[NSString stringWithFormat:@"%s", argv[1]];
+            if([mStr isEqualToString:@"-m"] ){
+                
+                int year;
+               
+                NSDate *now = [NSDate date];
+                NSCalendar *calendar = [NSCalendar currentCalendar];
+                NSDateComponents *component = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit fromDate:now];
+            
+                year =(int ) component.year;
+                
+                NSString *dateString = [NSString stringWithFormat:@"%d-%d-01",year, 10];
+                NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+                [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+                
+                NSDate *date=[dateFormatter dateFromString:dateString];
+                
+                
+                NSDateComponents *pon = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit fromDate:date];
+                
+                [Month year:(int)pon.year month:(int)pon.month weekday:(int)pon.weekday];
+                
+                
+            }else{
+            
+                int year = [yStr intValue];
+            int month = [mStr intValue];
+            
+          
             NSString *dateString = [NSString stringWithFormat:@"%d-%d-01",year, month];
             NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
             [dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -51,6 +81,25 @@ int main(int argc, const char * argv[]) {
             NSDateComponents *pon = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit fromDate:date];
             
             [Month year:(int)pon.year month:(int)pon.month weekday:(int)pon.weekday];
+            }
+        }else if(argc == 2){
+            NSString *yStr = [NSString stringWithFormat:@"%s",argv[1]];
+            int year = [yStr intValue];
+            
+             for(int i = 1;i < 13 ;i ++){
+                 int month = i;
+
+                 NSString *dateString = [NSString stringWithFormat:@"%d-%d-01",year, month];
+                 NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+                 [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+                 
+                 NSDate *date=[dateFormatter dateFromString:dateString];
+                 
+                 NSCalendar *calendar = [NSCalendar currentCalendar];
+                 NSDateComponents *pon = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit fromDate:date];
+                 
+                 [Month year:(int)pon.year month:(int)pon.month weekday:(int)pon.weekday];
+            }
         }
     }
     return 0;
