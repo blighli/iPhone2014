@@ -88,9 +88,7 @@
             printf("\n");
             number = row;
         }
-       
-        
-        
     }
+    printf("\n");
 }
 @end

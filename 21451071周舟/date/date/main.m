@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
         NSDate *now = [NSDate date];
         NSCalendar *calendar = [NSCalendar currentCalendar];
         NSDateComponents *component = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit fromDate:now];
-        NSLog(@"%@", component);
+        
         year =(int ) component.year;
         month = (int ) component.month;
         weekday = (int) component.weekday;
