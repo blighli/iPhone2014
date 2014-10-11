@@ -25,22 +25,27 @@
     [components setDay:1];
     [components setMonth:month];
     [components setYear:year];
-    BOOL isBefore1752 = false;
+    BOOL isBeforeUseGregorian = false;
     //获得指定日期实例
     NSDate *date = [calender dateFromComponents:components];
     NSRange range = [calender rangeOfUnit:NSDayCalendarUnit inUnit: NSMonthCalendarUnit forDate:date];
     //当月的天数
     NSInteger dayCount = (int)range.length;
+    //1752年之前的能被100整除但不能被400整除的2月有29天
+    if (year<1752 && (year%100==0) && (year%400!=0) && month==2) {
+        dayCount++;
+    }
     //当月第一天星期几
     NSInteger firstDayWeekday = [[calender components:NSWeekdayCalendarUnit fromDate:date]weekday];
     //存储一个月的信息
     NSMutableArray *monthArray = [NSMutableArray new];
+    
     for(int i=0;i<dayCount;i++){
         //确定该日为星期几
         NSInteger weekday = -1;
         //使用格里高利历之前
         if ((year<1752) || (year==1752&&month<9) || (year==1752&&month==9&&i<13)) {
-            isBefore1752 = true;
+            isBeforeUseGregorian = true;
             weekday = (firstDayWeekday+i+3)%7;
             //世界上不存在的11天
             if (year==1752 && month==9 && i<13 && i>1) {
@@ -49,10 +54,18 @@
         } else {
           weekday = (firstDayWeekday+i-1)%7;
         }
+        //1752年前由于闰年计算方法不同造成的偏移,偏差都发生在2月
+        if (year<1752) {
+            if ((month>2) && (year%100==0) && (year%400!=0)) {
+                weekday = (weekday+ 14 - (1800-year)/100 + (2000-year)/400 + 1)%7;
+            } else {
+                weekday = (weekday+ 14 - (1800-year)/100 + (2000-year)/400)%7;
+            }
+        }
         [monthArray addObject:[NSNumber numberWithInteger: weekday]];
     }
     //使用格里高利历前要修正一月第一天是周几
-    if (isBefore1752) {
+    if (isBeforeUseGregorian) {
         if(firstDayWeekday>3){
             firstDayWeekday = (firstDayWeekday+4)%7;
         } else {
@@ -137,7 +150,7 @@
         }
         NSInteger _dayPeek = 0;//修正一周开始的日子
         NSInteger peekClumnNo = -1;//在同一行的第几个月需要dayPeek修正
-        for (NSInteger j=0; j<maxWeekCountInOneRow; j++) {
+        for (NSInteger j=0; j<6; j++) {
             
             for (NSInteger k=columnStartIndex; k<columnEndIndex; k++) {
                 NSInteger dayPeek = 0;
