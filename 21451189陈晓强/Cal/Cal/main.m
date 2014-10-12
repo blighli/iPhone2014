@@ -34,7 +34,7 @@ int main(int argc, const char * argv[]) {
             cal.day = days[monthComponents.month];
             [cal printCalendarForMonth];
         }else if (argc == 2)
-        {            //整年处理
+        {           //整年处理
             Calendar *cal = [[Calendar alloc] init];
             NSString *second = [NSString stringWithFormat:@"%s",argv[1]];
             int year = [second intValue];
