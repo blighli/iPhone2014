@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MyCal.h"
 
+//去掉nslog的时间戳
 #define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String])
 
 int main(int argc, const char * argv[]) {
@@ -16,8 +17,10 @@ int main(int argc, const char * argv[]) {
         MyCal *util=[MyCal new];
         
         if(argc==1){
+            //cal
             [util outputMonthByYM:-1 month:-1];
         }else if (argc==2){
+            //cal 2014
             NSString *year=[NSString stringWithUTF8String:argv[1]];
             NSInteger y=[year integerValue];
             if(y>=1&&y<=9999){
@@ -32,6 +35,7 @@ int main(int argc, const char * argv[]) {
         }else if (argc==3){
             NSString *str2=[NSString stringWithUTF8String:argv[1]];
             if([[str2 substringToIndex:1] compare:@"-"]==NSOrderedSame){
+                //cal -m 10
                 if([str2 compare:@"-m"]==NSOrderedSame){
                     NSString *str3=[NSString stringWithUTF8String:argv[2]];
                     NSInteger month=[str3 integerValue];
@@ -44,6 +48,7 @@ int main(int argc, const char * argv[]) {
                     NSLog(@"cal: illegal option");
                 }
             }else{
+                //cal 10 2104
                 NSInteger month=[str2 integerValue];
                 
                 NSString *str3=[NSString stringWithUTF8String:argv[2]];

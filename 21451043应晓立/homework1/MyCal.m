@@ -11,6 +11,7 @@
 
 @implementation MyCal
 
+//用于填补前后空格
 -(NSString *)addSpace:(NSInteger)n string:(NSString *)str len:(NSInteger)len{
     int left=(n-len)/2;
     int i;
@@ -26,6 +27,7 @@
     return str1;
 }
 
+//获得每月天数
 -(int)calDayNums:(NSInteger)year month:(NSInteger)month{
     int daynums;
     NSArray *nums=[NSArray arrayWithObjects:@"31",@"28",@"31",@"30",@"31",@"30",@"31",@"31",@"30",@"31",@"30",@"31",nil];
@@ -38,6 +40,7 @@
     return daynums;
 }
 
+//获得每月对应的月份字符串
 -(NSString *)printMonth:(NSInteger)month{
     NSArray *mons=[NSArray arrayWithObjects:@"一月",@"二月",@"三月",@"四月",@"五月",@"六月",@"七月",@"八月",@"九月",@"十月",@"十一月",@"十二月",nil];
     NSString *strm;
@@ -45,6 +48,7 @@
     return strm;
 }
 
+//获取每月的月历
 -(NSArray *) calOneMonth: (NSInteger)y month:(NSInteger)month type:(NSInteger)type {
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
@@ -139,6 +143,7 @@
     return array;
 }
 
+//输出制定年月的月历
 -(void) outputMonthByYM:(NSInteger)year month:(NSInteger)month{
     NSArray *mon=[self calOneMonth:year month:month type:2];
     for (int i=0; i<8; i++) {
@@ -146,6 +151,7 @@
     }
 }
 
+//输出年历
 -(void) outputYear:(NSInteger) year{
     for (int i=1; i<=12; ) {
         NSArray *mon1=[self calOneMonth:year month:i++ type:1];
