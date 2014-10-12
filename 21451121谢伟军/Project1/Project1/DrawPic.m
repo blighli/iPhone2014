@@ -173,7 +173,7 @@
 
     }
 
-    if (i == 5){
+    if (i == 5 || i ==6){
         switch (self.month) {
             case 1:
             case 2:
@@ -238,65 +238,6 @@
                 break;
         }
     }
-
-    if (i == 6) {
-        switch (self.month) {
-        case 1:
-        case 2:
-        case 4:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 11:
-        {
-            for ( int i=0; i<=6; i++,dayNumber++) {
-                if (dayNumber <= [self numberOfDayInMonth]) {
-                    printf("%2d ",dayNumber);
-                }
-                else if(i<=6 && dayNumber >= [self numberOfDayInMonth]){
-                    printf("   ");
-                }
-                if (i == 6 && dayNumber >= [self numberOfDayInMonth]){
-                    printf(" ");
-                }
-        }
-}
-            break;
-        case 3:
-        case 6:
-        case 9:
-        case 12:
-        {
-            if (dayNumber == self.weekDay) {
-                int i = 7;
-                while (i--) {
-                    printf("   ");
-                }
-                printf(" ");
-                printf("\n");
-                break;
-            }
-            for ( int i=0; i<=6; i++,dayNumber++) {
-                if (dayNumber <= [self numberOfDayInMonth]) {
-                    printf("%2d ",dayNumber);
-                }
-                else if(i<=6 && dayNumber >= [self numberOfDayInMonth]){
-                    printf("   ");
-                }
-                if (i == 6 && dayNumber >= [self numberOfDayInMonth]){
-                    printf(" ");
-                }
-            }
-            printf("\n");
-        }
-            break;
-            
-        default:
-            break;
-    }
-
-}
 }
 @end
 
