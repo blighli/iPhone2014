@@ -67,7 +67,7 @@
     int totalCount = 0;
     
     for (int i = lastRow; i < row; i++) {
-        if (i == lastRow) {
+        if (i == lastRow && days[i][0] == 0) {
             printf(" ");
         }
         totalCount = 0;
@@ -81,7 +81,7 @@
             {
                 int countNumber = 0;
                 countNumber = count+count/2;
-                if (count) {
+                if (count > 0) {
                     if (totalCount > 13 && count > 2) {
                         countNumber = countNumber -1 + (count % 2);
                         //                        printf(" \n totalcount= %i i= %i countNumber = %i\n",totalCount,i,countNumber);
@@ -194,10 +194,10 @@
             weekday++;
         }
     }
-    
-    //    for (int i = 0; i < 43; i++) {
-    //        printf(" %i",days[18][i]);
-    //    }
+//    
+//        for (int i = 0; i < 43; i++) {
+//            printf(" %i",days[18][i]);
+//        }
     
     
 }
@@ -219,11 +219,16 @@
     NSDate *date = [calendar dateFromComponents:dateComponents];
     NSDateComponents *weekdayComponents = [calendar components:NSWeekdayCalendarUnit fromDate:date];
     NSUInteger weekday = [weekdayComponents weekday];
-    
     for (int k = 0; k < (weekday - 1) * 3; k++) {
         printf(" ");
     }
-    printf(" 1");
+    if (weekday == 1) {
+        printf("1");
+    }else
+    {
+        printf(" 1");
+
+    }
     
     for (int k = 2; k <= _day; k++) {
         if (weekday == 7) {
