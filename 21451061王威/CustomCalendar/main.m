@@ -19,10 +19,10 @@ BOOL isMonthValid(long month)
     return YES;
 }
 
-BOOL isYearValid(long yearToValid)
+BOOL isYearValid(long year)
 {
-    if (yearToValid < 1 || yearToValid >9999) {
-        NSLog(@"year %ld not in range 0...9999", yearToValid);
+    if (year < 1 || year >9999) {
+        NSLog(@"year %ld not in range 0...9999", year);
         return NO;
     }
     return YES;
