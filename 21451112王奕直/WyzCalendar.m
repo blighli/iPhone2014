@@ -10,7 +10,7 @@
 
 @implementation WyzCalendar
 
- int buffer[12][2];
+int buffer[12][2];
 +(void) setCurrentYear:(int)year andMonth:(int)month{
     NSArray *monthArray = [NSArray arrayWithObjects:@"一", @"二",@"三",@"四",@"五",@"六", @"七",@"八",@"九",@"十",@"十一",@"十二",nil];
     month > 10?printf(""):printf(" ");
@@ -22,16 +22,68 @@
 
 +(void) setYear:(int)year{
     NSArray *monthArray = [NSArray arrayWithObjects:@"一", @"二",@"三",@"四",@"五",@"六", @"七",@"八",@"九",@"十",@"十一",@"十二",nil];
-    NSArray *calendarArray;
-    printf("         %d\n\n",year);
-    for(int i = 1;i <= 12;i++){
-        for (int j = 0; j < 12; j++) {
-            [WyzCalendar calculateYear:year andMonth:j+1];
+    NSArray *array =[NSArray arrayWithObjects:@"日",@" 一", @" 二",@" 三",@" 四",@" 五",@" 六",nil];
+    NSMutableArray *calendarArr;
+    printf("                              %d\n\n",year);
+    for (int i = 0; i < 12; i++) {
+        [WyzCalendar calculateYear:year andMonth:i+1];
+    }
+    int count = 0;
+    for(int i = 0;i < 4;i++){
+        int dayCount[3] = {1,1,1};
+        int firstWeek[3];
+        firstWeek[0] = buffer[i * 3][0];
+        firstWeek[1] = buffer[i * 3 + 1][0];
+        firstWeek[2] = buffer[i * 3 + 2][0];
+        for (int j = 0; j < 8; j++) {
+            switch (j) {
+                case 0:
+                    printf("\t%s月\t\t      ",[[monthArray objectAtIndex:i * 3] UTF8String]);
+                    i * 3 + 2 > 10?printf(""):printf(" ");
+                    printf("%s月\t\t   ",[[monthArray objectAtIndex:i * 3 + 1] UTF8String]);
+                    i * 3 + 3 > 10?printf(""):printf(" ");
+                    printf("%s月\n",[[monthArray objectAtIndex:i * 3 + 2] UTF8String]);
+                    break;
+                case 1:
+                    for (int k = 0; k < 3; k++) {
+                        for(int l = 0;l < 7;l++){
+                            printf("%s",[[array objectAtIndex:l] UTF8String]);
+                        }
+                        printf("  ");
+                    }
+                    printf("\n");
+                    break;
+                case 2:
+                    for (int k = 0; k < 3; k++) {
+                        while(buffer[i * 3 + k][0]-- > 1){
+                            printf("   ");
+                        }
+                        printf(" ");
+                        for (int l = 0; l <= 7 - firstWeek[(i * 3 + k) % 3]; l++) {
+                            buffer[i * 3 + k][1]--;
+                            printf("%d  ",dayCount[( i * 3 + k) % 3]++);
+                        }
+                    }
+                    printf("\n");
+                    break;
+                default:
+                    for (int k = 0; k < 3; k++) {
+                        for(int l = 0;l < 7;l++){
+                            if (buffer[i * 3 + k][1]-- > 0) {
+                                l == 0 && dayCount[(i * 3 + k) %3 ] < 10?printf(" "):printf("");
+                                printf("%d ",dayCount[(i * 3 + k) % 3]++);
+                                dayCount[(i * 3 + k)%3] > 9||(dayCount[(i * 3 + k) % 3] == 9 && l == 6)?printf(""):printf(" ");
+                            }
+                            else{
+                                printf("   ");
+                            }
+                        }
+                        printf(" ");
+                    }
+                    printf("\n");
+                    break;
+            }
         }
-        i > 10?printf(""):printf(" ");
-        printf("       %s月\n",[[monthArray objectAtIndex:i - 1] UTF8String]);
-        [WyzCalendar showCalendarSetYear:year andMonth:i];
-        printf("\n\n");
     }
 }
 
@@ -96,7 +148,6 @@
                 printf(" ");
             currentWeek ++;
         }
-        
     }
 }
 @end
