@@ -29,7 +29,6 @@ int main(int argc, const char * argv[]) {
                     } else {
                         [myCal showCurrentYearWithMonth:month];
                     }
-                    
                 } else {
                     month = atoi(argv[1]);
                     year = atoi(argv[2]);
@@ -37,8 +36,7 @@ int main(int argc, const char * argv[]) {
                     {
                         NSLog(@"illegal month or year");
                     } else {
-                        [myCal setDateWithMonth:month Year:year];
-                        
+                        [myCal showMonth:month andYear:year];
                     }
                 }
                 break;
