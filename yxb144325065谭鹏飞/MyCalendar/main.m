@@ -11,7 +11,7 @@
 #include "CalendarController.h"
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSArray * input;
+        NSArray * input;;
         switch(argc){
             case 2: input = @[[NSString stringWithUTF8String:argv[1]]];break;
             case 3: input = @[[NSString stringWithUTF8String:argv[1]],[NSString stringWithUTF8String:argv[2]]];break;
