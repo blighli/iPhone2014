@@ -11,7 +11,7 @@
 @interface CalendarController : NSObject
 @property (strong, nonatomic)NSArray * commandArray;
 @property (strong, nonatomic)NSDateComponents * date;
--(CalendarController *)initWithCommandStr:(NSArray *)commands;
+-(instancetype)initWithCommandStr:(NSArray *)commands;
 -(int)dealWithCommandStr;
 +(BOOL)isPureInt:(NSString *) sourceStr;
 @end

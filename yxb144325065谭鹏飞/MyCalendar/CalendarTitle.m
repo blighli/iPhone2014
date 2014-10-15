@@ -23,9 +23,13 @@
     }
     return _monthName;
 }
--(CalendarTitle *)initWithMonth:(NSUInteger)month WithYear:(NSUInteger)year{
-    _month = month;
-    _year = year;
+-(instancetype)initWithMonth:(NSUInteger)month WithYear:(NSUInteger)year{
+    self = [super init];
+    
+    if (self) {
+        _month = month;
+        _year = year;
+    }
     return self;
 }
 

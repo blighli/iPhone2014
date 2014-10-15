@@ -12,10 +12,13 @@
 @synthesize whichWeekday = _whichWeekday;
 @synthesize monthdays = _monthdays;
 
--(ShowOnScreen *)initforweekday:(NSInteger)whichWeekday formonthdays:
-       (NSInteger)monthdays{
-    self.whichWeekday = whichWeekday;
-    self.monthdays = monthdays;
+-(instancetype)initForweekday:(NSUInteger)whichWeekday formonthdays:(NSUInteger)monthdays{
+    self = [super init];
+    if (self) {
+        self.whichWeekday = whichWeekday;
+        self.monthdays = monthdays;
+    }
+    
     return self;
 }
 
@@ -36,7 +39,7 @@
     printf("\n");
 }
 
--(void)dealTab:(NSInteger) tabCount{
+-(void)dealTab:(NSUInteger) tabCount{
     for (int i=0; i < tabCount; i++) {
         printf(" ");
     }

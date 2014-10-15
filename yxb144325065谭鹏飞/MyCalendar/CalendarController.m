@@ -42,7 +42,7 @@
 
 /*处理传入命令字符串数组的方法*/
 -(int)dealWithCommandStr{
-    NSInteger length = [self.commandArray count];
+    NSUInteger length = [self.commandArray count];
     
     switch (length) {
         case 1: [self dealWithOneCommandStr];
@@ -79,7 +79,7 @@
     
     [CalendarTitle showWeekdayName];
     
-    ShowOnScreen * show = [[ShowOnScreen alloc] initforweekday:weekDay formonthdays:monthdays];
+    ShowOnScreen * show = [[ShowOnScreen alloc] initForweekday:weekDay formonthdays:monthdays];
     [show ShowCalendar];
 }
 
@@ -170,7 +170,7 @@
     [title showTitle];
     [CalendarTitle showWeekdayName];
     
-    ShowOnScreen * show = [[ShowOnScreen alloc] initforweekday:weekDay formonthdays:monthdays];
+    ShowOnScreen * show = [[ShowOnScreen alloc] initForweekday:weekDay formonthdays:monthdays];
     [show ShowCalendar];
 }
 
@@ -199,7 +199,7 @@
     [title showTitle];
     [CalendarTitle showWeekdayName];
     
-    ShowOnScreen * show = [[ShowOnScreen alloc] initforweekday:weekDay formonthdays:monthdays];
+    ShowOnScreen * show = [[ShowOnScreen alloc] initForweekday:weekDay formonthdays:monthdays];
     [show ShowCalendar];
 }
 
