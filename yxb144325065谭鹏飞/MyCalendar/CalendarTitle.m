@@ -9,11 +9,14 @@
 #import "CalendarTitle.h"
 
 @interface CalendarTitle()
-@property (strong, nonatomic) NSArray *monthName;;
+@property (strong, nonatomic) NSArray *monthName;
 
 @end
 @implementation CalendarTitle
 
++(void)showWeekdayName{
+    printf("日   一  二  三   四  五  六\n");
+}
 -(NSArray *)monthName{
     if (!_monthName) {
         _monthName = @[@"一月",@"二月",@"三月",@"四月",@"五月",@"六月",@"七月",@"八月",@"九月",@"十月",@"十一月",@"十二月",];

@@ -11,7 +11,7 @@
 #import "CalendarTitle.h"
 
 @interface CalendarController()
-@property (strong, nonatomic)NSCalendar *currentCal;;
+@property (strong, nonatomic)NSCalendar *currentCal;
 @property (strong, nonatomic)NSArray * leapYear;
 @property (strong, nonatomic)NSArray * commonYear;
 @end
@@ -19,23 +19,28 @@
 @implementation CalendarController
 @synthesize currentCal = _currentCal;
 
--(CalendarController *)initWithCommandStr:(NSArray *)commands{
-    if (!commands) {
-        [self errorInformationLog:@"Command is Empty!"];
-        return nil;
+/*CalendarController类的初始化，对于命令参数数组的长度1-3判断在此方法完成，对符合cal命令参数个数的字符串数组具体的处理在内部方法里面分析和处理*/
+-(instancetype )initWithCommandStr:(NSArray *)commands{
+    self = [super init];
+    if (self) {
+       if (!commands) {
+           NSLog(@"Command is Empty!");
+           return nil;
+       }
+       if ([commands count] > 3) {
+           NSLog(@"Command arguments count should be less than 3");
+           return nil;
+       }
+       if (![[commands objectAtIndex:0] isEqualToString:@"cal"]) {
+           NSLog(@"Command not found!Please make sure your command begin with cal");
+           return nil;
+       }
+       self.commandArray = commands;
     }
-    if ([commands count] > 3) {
-        [self errorInformationLog:@"Command arguments count should be less than 3"];
-        return nil;
-    }
-    if (![[commands objectAtIndex:0] isEqualToString:@"cal"]) {
-        [self errorInformationLog:@"Command not found!Please make sure your command begin with cal"];
-        return nil;
-    }
-    self.commandArray = commands;
     return self;
 }
 
+/*处理传入命令字符串数组的方法*/
 -(int)dealWithCommandStr{
     NSInteger length = [self.commandArray count];
     
@@ -46,26 +51,21 @@
             break;
         case 3: [self dealWithThreeCommandStr];
             break;
-            
         default:
             break;
     }
-    
     return 0;
 }
 
 /*处理1个命令参数的方法，即cal*/
 -(void)dealWithOneCommandStr{
-    NSDate * date ;
-    NSDateComponents * dateComponents;
-    date = [NSDate date];
-    dateComponents =[self.currentCal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:date];
-    [dateComponents setDay:1];
-    NSDate * monthBegin = [self.currentCal dateFromComponents:dateComponents];
-    NSDateComponents *nowComp = [self.currentCal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:monthBegin];
+    NSDateComponents * dateComponents = [self firstDateComonents];
+    NSDateComponents *nowComp = [self targetDateComponents:dateComponents];
+    
     NSUInteger year = nowComp.year;
     NSUInteger month = nowComp.month;
     NSUInteger weekDay = nowComp.weekday;
+    
     int monthdays;
     BOOL isLeap = [CalendarController isLeap:year];
     if (isLeap) {
@@ -77,7 +77,7 @@
     CalendarTitle * title = [[CalendarTitle alloc] initWithMonth:month WithYear:year];
     [title showTitle];
     
-    printf("日   一  二  三   四  五  六\n");
+    [CalendarTitle showWeekdayName];
     
     ShowOnScreen * show = [[ShowOnScreen alloc] initforweekday:weekDay formonthdays:monthdays];
     [show ShowCalendar];
@@ -140,25 +140,25 @@
        NSLog(@"illegal option %@", secondCommand);
     }
 }
-
+/*判断字符串对象是否为纯数字*/
 +(BOOL)isPureInt:(NSString *) sourceStr{
     NSScanner *scan = [NSScanner scannerWithString:sourceStr];
     int val;
     return [scan scanInt:&val] && [scan isAtEnd];
 }
 
+/*处理当年某月份的日期具体实现方法，即年份由终端系统决定，月份由用户指定*/
 -(void)dealWithCurrentYearMonthCal:(NSUInteger) monthSet{
-    NSDate * date ;
-    NSDateComponents * dateComponents;
-    date = [NSDate date];
-    dateComponents =[self.currentCal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:date];
+    NSDateComponents * dateComponents = [self firstDateComonents];
+    
     [dateComponents setMonth:monthSet];
-    [dateComponents setDay:1];
-    NSDate * monthBegin = [self.currentCal dateFromComponents:dateComponents];
-    NSDateComponents *nowComp = [self.currentCal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:monthBegin];
+    
+    NSDateComponents *nowComp = [self targetDateComponents:dateComponents];
+    
     NSUInteger year = nowComp.year;
     NSUInteger weekDay = nowComp.weekday;
     NSUInteger monthdays;
+    
     BOOL isLeap = [CalendarController isLeap:year];
     if (isLeap) {
         monthdays = [[self.leapYear objectAtIndex:monthSet-1] intValue];
@@ -168,25 +168,25 @@
     }
     CalendarTitle * title = [[CalendarTitle alloc] initWithMonth:monthSet WithYear:year];
     [title showTitle];
-    printf("日   一  二  三   四  五  六\n");
+    [CalendarTitle showWeekdayName];
     
     ShowOnScreen * show = [[ShowOnScreen alloc] initforweekday:weekDay formonthdays:monthdays];
     [show ShowCalendar];
 }
 
+/*处理某年某月的方法，即年份和月份都由用户决定*/
 -(void)dealWithCertainCal:(NSUInteger) monthSet withYear:(NSUInteger) yearSet{
-    NSDate * date ;
-    NSDateComponents * dateComponents;
-    date = [NSDate date];
-    dateComponents =[self.currentCal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:date];
+    NSDateComponents * dateComponents = [self firstDateComonents];
+    
     [dateComponents setYear:yearSet];
     [dateComponents setMonth:monthSet];
-    [dateComponents setDay:1];
-    NSDate * monthBegin = [self.currentCal dateFromComponents:dateComponents];
-    NSDateComponents *nowComp = [self.currentCal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:monthBegin];
+    
+    NSDateComponents *nowComp = [self targetDateComponents:dateComponents];
+    
     NSUInteger year = nowComp.year;
     NSUInteger weekDay = nowComp.weekday;
     NSUInteger monthdays;
+    
     BOOL isLeap = [CalendarController isLeap:year];
     if (isLeap) {
         monthdays = [[self.leapYear objectAtIndex:monthSet-1] intValue];
@@ -197,13 +197,29 @@
     
     CalendarTitle * title = [[CalendarTitle alloc] initWithMonth:monthSet WithYear:yearSet];
     [title showTitle];
-    printf("日   一  二  三   四  五  六\n");
+    [CalendarTitle showWeekdayName];
     
     ShowOnScreen * show = [[ShowOnScreen alloc] initforweekday:weekDay formonthdays:monthdays];
     [show ShowCalendar];
 }
 
+/*返回与设定的月历关联的初始NSDateCalendar对象，根据api需要在初始对象里面讲day属性设定为1*/
+-(NSDateComponents *)firstDateComonents{
+    NSDate * date = [NSDate date];
+    NSDateComponents * firstComponents = [self.currentCal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:date];
+    [firstComponents setDay:1];
+    return firstComponents;
+}
 
+/*通过cal命令参数对初始的NSDateCalendar设定目标年份和月份，再次关联月历对象，返回最终需要的目标NSDateCalendar对象*/
+-(NSDateComponents *)targetDateComponents:(NSDateComponents *)dateComponents{
+    NSDate * monthBegin = [self.currentCal dateFromComponents:dateComponents];
+    NSDateComponents * target = [self.currentCal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate:monthBegin];
+    
+    return target;
+}
+
+/*判断某年是否为闰年*/
 +(BOOL)isLeap:(NSUInteger) year{
     if (year%4==0) {
         if (year%100==0 && year%400==0) {
@@ -215,19 +231,21 @@
     }
     return NO;
 }
-
+/*currentCal的get方法*/
 -(NSCalendar *)currentCal{
     if (!_currentCal) {
         _currentCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     }
     return _currentCal;
 }
+/*闰年月份天数的数组*/
 -(NSArray *)leapYear{
     if (!_leapYear) {
         _leapYear = @[@"31",@"29",@"31",@"30",@"31",@"30",@"31",@"31",@"30",@"31",@"30",@"31"];
     }
     return _leapYear;
 }
+/*平年月份天数的数组*/
 -(NSArray *)commonYear{
     if (!_commonYear) {
         _commonYear = @[@"31",@"28",@"31",@"30",@"31",@"30",@"31",@"31",@"30",@"31",@"30",@"31"];
@@ -235,7 +253,4 @@
     return _commonYear;
 }
 
--(void) errorInformationLog:(NSString*)log{
-    NSLog(@"%@",log);
-}
 @end
