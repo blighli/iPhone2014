@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface CalendarTitle : NSObject
-@property (nonatomic)NSUInteger year;
+@property (nonatomic)NSUInteger year;;
 @property (nonatomic)NSUInteger month;
 -(CalendarTitle *)initWithMonth:(NSUInteger)month WithYear:(NSUInteger)year;
 

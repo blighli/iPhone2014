@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ShowOnScreen : NSObject
-@property (nonatomic)NSInteger whichWeekday;
+@property (nonatomic)NSInteger whichWeekday;;
 @property (nonatomic)NSInteger monthdays;
 -(ShowOnScreen *)initforweekday:(NSInteger)whichWeekday formonthdays:
        (NSInteger)monthdays;

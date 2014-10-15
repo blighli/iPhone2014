@@ -11,7 +11,7 @@
 #import "CalendarTitle.h"
 
 @interface CalendarController()
-@property (strong, nonatomic)NSCalendar *currentCal;
+@property (strong, nonatomic)NSCalendar *currentCal;;
 @property (strong, nonatomic)NSArray * leapYear;
 @property (strong, nonatomic)NSArray * commonYear;
 @end

@@ -10,7 +10,7 @@
 
 @implementation ShowOnScreen
 @synthesize whichWeekday = _whichWeekday;
-@synthesize monthdays = _monthdays;
+@synthesize monthdays = _monthdays;;
 
 -(ShowOnScreen *)initforweekday:(NSInteger)whichWeekday formonthdays:
        (NSInteger)monthdays{

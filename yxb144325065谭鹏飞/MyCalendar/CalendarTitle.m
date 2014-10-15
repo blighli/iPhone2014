@@ -9,7 +9,7 @@
 #import "CalendarTitle.h"
 
 @interface CalendarTitle()
-@property (strong, nonatomic) NSArray *monthName;
+@property (strong, nonatomic) NSArray *monthName;;
 
 @end
 @implementation CalendarTitle

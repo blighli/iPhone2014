@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface CalendarController : NSObject
-@property (strong, nonatomic)NSArray * commandArray;
+@property (strong, nonatomic)NSArray * commandArray;;
 @property (strong, nonatomic)NSDateComponents * date;
 -(CalendarController *)initWithCommandStr:(NSArray *)commands;
 -(int)dealWithCommandStr;
