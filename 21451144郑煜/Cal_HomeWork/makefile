@@ -5,3 +5,4 @@ run:
 	./cal
 clean:
 	rm cal
+	
