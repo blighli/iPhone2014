@@ -1,11 +1,9 @@
-//
-//  main.m
-//  canlendar
-//
-//  Created by drh on 14-10-2.
-//  Copyright (c) 2014年 guest. All rights reserved.
-//
-//calculate the days of a month
+﻿+//
++//  main.m
++//  calender
++//
++//  Created by laotou on 14-10-14.
++//  Copyright (c) 2014年 laotou. All rights reserved.
 
 #import <Foundation/Foundation.h>
 #import "calenderOut.h"
