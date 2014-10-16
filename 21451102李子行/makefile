@@ -1,4 +1,4 @@
-cal : main.m
+cal : main.m calenderOut.m
 	clang -framework foundation calenderOut.m main.m -o cal
 
 run:
