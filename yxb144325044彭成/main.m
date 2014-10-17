@@ -1,8 +1,6 @@
 //
 //  main.m
 //  OC_Assignment_1
-//
-//  Created by 林海洋 on 14-10-12.
 //  Copyright (c) 2014年 pengcheng. All rights reserved.
 //
 
