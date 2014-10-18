@@ -169,11 +169,11 @@ char *months[12]={"一月","二月","三月","四月","五月","六月","七月"
     printf("%30d",year);
     for(int i=0;i<4;i++)
     {
-        printf("%12s%24s%24s",months[i],months[i+1],months[i+2]);
-        printf("日 一 二 三 四 五 六  日 一 二 三 四 五 六  日 一 二 三 四 五 六");
+        printf("%12s%24s%24s\n",months[i],months[i+1],months[i+2]);
+        printf("日 一 二 三 四 五 六  日 一 二 三 四 五 六  日 一 二 三 四 五 六\n");
         for(int j=0;j<5;j++)
         {
-            printf("%s%s%s",buff[i%3][j],buff[i*3+1][j],buff[i*3+2][j]);
+            printf("%s%s%s\n",buff[i%3][j],buff[i*3+1][j],buff[i*3+2][j]);
         }
         
     }
