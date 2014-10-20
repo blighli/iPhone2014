@@ -10,7 +10,7 @@
 @implementation Module
 
 char *months[]={"一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"};
-
+ //NSString *months=@"一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月";未实现
 
 -(id) init
 {
@@ -54,7 +54,7 @@ char *months[]={"一月","二月","三月","四月","五月","六月","七月","
     int col2;
     printf("%c[%d;%df",0x1b,psw,col+6);
     psw++;
-    printf("%s ",months[month-1]);
+    printf("%s %d",months[month-1],year);
     printf("%c[%d;%df",0x1b,psw,col);
     printf("日 一 二 三 四 五 六");
     int i=1;
