@@ -1,4 +1,4 @@
-//
+	//
 //  ViewController.m
 //  Calculator
 //
@@ -24,4 +24,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)buttonClear:(id)sender {
+    self.label.text = @"Clear Pressed";
+}
+
+- (IBAction)buttonInput:(id)sender {
+    self.label.text = @"Input Pressed";
+}
+
+- (IBAction)buttonResult:(id)sender {
+    self.label.text = @"Result Pressed";
+}
 @end
