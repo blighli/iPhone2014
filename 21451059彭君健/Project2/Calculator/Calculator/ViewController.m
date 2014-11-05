@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Util.h"
 
 @interface ViewController ()
 
@@ -25,14 +26,21 @@
 }
 
 - (IBAction)buttonClear:(id)sender {
-    self.label.text = @"Clear Pressed";
+    self.label.text = @"";
+    self.showingResult = NO;
 }
 
 - (IBAction)buttonInput:(id)sender {
-    self.label.text = @"Input Pressed";
+    unichar input = [((UIButton*) sender).titleLabel.text characterAtIndex:0];
+    unichar last = [self.label.text characterAtIndex:self.label.text.length-1];
+    if (self.showingResult == YES && [Util isNumber:input]) [self buttonClear:sender];
+    if (![Util isNumber:last] && ![Util isNumber:input]) return;
+    self.label.text = [NSString stringWithFormat:@"%@%c", self.label.text, input];
+    self.showingResult = NO;
 }
 
 - (IBAction)buttonResult:(id)sender {
-    self.label.text = @"Result Pressed";
+    self.label.text = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:[Util calculate:self.label.text]]];
+    self.showingResult = YES;
 }
 @end

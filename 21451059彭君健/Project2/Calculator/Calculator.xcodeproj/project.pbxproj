@@ -14,6 +14,7 @@
 		2F32045F1A072335005996BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F32045E1A072335005996BC /* Images.xcassets */; };
 		2F3204621A072335005996BC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3204601A072335005996BC /* LaunchScreen.xib */; };
 		2F32046E1A072335005996BC /* CalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F32046D1A072335005996BC /* CalculatorTests.m */; };
+		2F3204831A0889FE005996BC /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3204821A0889FD005996BC /* Util.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		2F3204671A072335005996BC /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F32046C1A072335005996BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F32046D1A072335005996BC /* CalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorTests.m; sourceTree = "<group>"; };
+		2F3204811A0889FD005996BC /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		2F3204821A0889FD005996BC /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 		2F3204501A072334005996BC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				2F3204851A088B61005996BC /* Util */,
 				2F3204551A072334005996BC /* AppDelegate.h */,
 				2F3204561A072334005996BC /* AppDelegate.m */,
 				2F3204581A072334005996BC /* ViewController.h */,
@@ -117,6 +121,15 @@
 				2F32046C1A072335005996BC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2F3204851A088B61005996BC /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2F3204811A0889FD005996BC /* Util.h */,
+				2F3204821A0889FD005996BC /* Util.m */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +235,7 @@
 				2F32045A1A072334005996BC /* ViewController.m in Sources */,
 				2F3204571A072334005996BC /* AppDelegate.m in Sources */,
 				2F3204541A072334005996BC /* main.m in Sources */,
+				2F3204831A0889FE005996BC /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

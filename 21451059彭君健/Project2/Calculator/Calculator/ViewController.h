@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property BOOL showingResult;
 - (IBAction)buttonClear:(id)sender;
 - (IBAction)buttonInput:(id)sender;
 - (IBAction)buttonResult:(id)sender;
