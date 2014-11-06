@@ -9,8 +9,16 @@
 #import "Util.h"
 
 @implementation Util
++ (bool)isOperator:(unichar)c {
+    return c == '%' || c == '/' || c == 'x' || c == '-' || c == '+';
+}
+
 + (bool)isNumber:(unichar)c {
     return (c >= '0' && c <= '9') || c == '.';
+}
+
++ (bool)isBrackets:(unichar)c {
+    return c == '(' || c == ')';
 }
 
 + (double)readDouble:(NSString *)s atIndex:(int*)index {
@@ -29,6 +37,11 @@
                 *index += 1;
                 if (*index >= s.length) return res;
                 res *= [self readDouble:s atIndex:index];
+                break;
+            case '%':
+                *index += 1;
+                if (*index >= s.length) return res;
+                res = (int)res % (int)[self readDouble:s atIndex:index];
                 break;
             case '/':
                 *index += 1;
@@ -62,5 +75,28 @@
         }
     }
     return res;
+}
+
++ (double)expr:(NSString *)s {
+    NSMutableArray *st = [NSMutableArray arrayWithCapacity:10];
+    [st addObject:[NSMutableString stringWithString:@""]];
+    NSString *tmp;
+    for (int i = 0; i < s.length; i++) {
+        unichar c = [s characterAtIndex:i];
+        switch (c) {
+            case '(':
+                [st addObject:[NSMutableString stringWithFormat:@""]];
+                break;
+            case ')':
+                tmp = [[NSNumber numberWithDouble:[self calculate:[st lastObject]]] stringValue];
+                [st removeLastObject];
+                [(NSMutableString*)[st lastObject] appendString:tmp];
+                break;
+            default:
+                [((NSMutableString*)[st lastObject]) appendFormat:@"%c", c];
+                break;
+        }
+    }
+    return [self calculate:[st lastObject]];
 }
 @end
