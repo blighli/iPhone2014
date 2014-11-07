@@ -218,7 +218,9 @@ NSString* lastOperation;
     double result = 0;
     NSNumber* _numberOne = [NSNumber numberWithDouble:[numberOne doubleValue]];
     NSNumber* _numberTwo = [NSNumber numberWithDouble:[numberTwo doubleValue]];
-    
+    if ([_numberOne doubleValue] == INFINITY || [_numberTwo doubleValue] == INFINITY) {
+        return [NSNumber numberWithDouble:0];
+    }
     if ([operation isEqualToString:@"+"]) {
         result = [_numberOne doubleValue] + [_numberTwo doubleValue];
     }else if([operation isEqualToString:@"﹣"]){
