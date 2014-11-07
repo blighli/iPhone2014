@@ -53,7 +53,7 @@
     //如果未做任何修改，则禁止保存
     if([self.editingTask.text isEqualToString:[self.delegate tasks][self.taskIndex.row]])
     {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"保存失败！内容未做修改!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"你没有做任何修改!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
