@@ -32,6 +32,7 @@
     else{
         _tasks=[[NSMutableArray alloc]init];
     }
+    //默认项
     if ([_tasks count] == 0) {
         [_tasks addObject:@"你可以添加任务"];
         [_tasks addObject:@"你可以删除这个任务"];
@@ -47,10 +48,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+//路径
 NSString *docPath() {
     NSArray *pathList = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES);
     return [[pathList objectAtIndex:0] stringByAppendingPathComponent:@"data.txt"];
 }
+//添加任务按钮
 - (IBAction)addTask:(id)sender {
     NSString *text = [_taskField text]; //从输入框获取新的任务
     if ([text isEqualToString:@""]) {
@@ -81,11 +84,17 @@ NSString *docPath() {
     [[cell textLabel] setText:item];
     return cell ;
 }
+//列表项删除
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     [_tasks removeObjectAtIndex:indexPath.row];
     [_taskTable reloadData];
     [_tasks writeToFile:docPath() atomically:YES];
 }
+// 确认删除字符串
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"确认删除？";
+}
+//传递另一界面数值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
