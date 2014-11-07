@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#include "Calc.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *display;
@@ -17,7 +18,6 @@
 @property double fstOperand;
 @property double sumOperand;
 @property BOOL bBegin;     //YES为重新显示，NO为后面追加
-@property BOOL cptOpen;
 @property BOOL backOpen;
 @property double mrOperand;
 @end
@@ -33,7 +33,6 @@
     _fstOperand = 0;
     _sumOperand = 0;
     _bBegin = YES;
-    _cptOpen = NO;
     _display.userInteractionEnabled = NO;
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -59,11 +58,7 @@
             break;
             
             // 双操作数运算符
-        case plusBtn:	// +    3
-        case subBtn:	// -    4
-        case mulBtn:	// x    5
-        case divBtn:	// ÷    6
-        case percBtn:	// %	9
+       
         case equalBtn:	// =    7
             [self inputDoubleOperator:btn.titleLabel.text];
             break;
@@ -84,10 +79,18 @@
             [self addDot];
             break;
             
-            // 数字分支
+            // 数字以及加减乘除百分号处理
         default:
+        {
+           
+            unichar input = [((UIButton*) sender).titleLabel.text characterAtIndex:0];
+            unichar last = [_display.text characterAtIndex:_display.text.length-1];
+            //测试
+            NSLog(@"%c",last);
+            if ([Calc isOperator:last] && [Calc isOperator:input]) return;
             [self inputNumber:btn.titleLabel.text];
             break;
+        }
     }
  
     
@@ -100,7 +103,7 @@
     _fstOperand = 0;
     _sumOperand = 0;
     _bBegin = YES;
-    _cptOpen = NO;
+
 }
 - (void)backSpace
 {
@@ -119,71 +122,74 @@
         }
     }
 }
+//等号处理
 - (void)inputDoubleOperator: (NSString *)dbopt
 {
     _showFoperator.text = dbopt;
     _backOpen = NO;
-    
-    if(![_display.text isEqualToString:@""])
-    {
-        _fstOperand = [_display.text doubleValue];
-        
-        if(_bBegin)
-        {
-            _operator = dbopt;
-        }
-        else
-        {
-            if([_operator isEqualToString:@"="])
-            {
-                _sumOperand = _fstOperand;
-            }
-            else if([_operator isEqualToString:@"+"])
-            {
-                _sumOperand += _fstOperand;
-                _display.text = [NSString stringWithFormat:@"%g",_sumOperand];
-            }
-            else if([_operator isEqualToString:@"-"])
-            {
-                _sumOperand -= _fstOperand;
-                _display.text = [NSString stringWithFormat:@"%g",_sumOperand];
-            }
-            else if([_operator isEqualToString:@"x"])
-            {
-                _sumOperand *= _fstOperand;
-                _display.text = [NSString stringWithFormat:@"%g",_sumOperand];
-            }
-            else if([_operator isEqualToString:@"÷"])
-            {
-                if(_fstOperand!= 0)
-                {
-                    _sumOperand /= _fstOperand;
-                    _display.text = [NSString stringWithFormat:@"%g",_sumOperand];
-                }
-                else
-                {
-                    _display.text = @"nan";
-                    _operator= @"=";
-                }
-            }
-            else if([_operator isEqualToString:@"%"]){
-                if(_fstOperand!= 0)
-                {
-                    _sumOperand = ((int)_sumOperand)%(int)_fstOperand;
-                    _display.text = [NSString stringWithFormat:@"%g",_sumOperand];
-                }
-                else
-                {
-                    _display.text = @"nan";
-                    _operator= @"=";
-                }
-            }
-            
-            _bBegin= YES;
-            _operator= dbopt;
-        }
-    }
+//    
+//    if(![_display.text isEqualToString:@""])
+//    {
+//        _fstOperand = [_display.text doubleValue];
+//        
+//        if(_bBegin)
+//        {
+//            _operator = dbopt;
+//        }
+//        else
+//        {
+//            if([_operator isEqualToString:@"="])
+//            {
+//                _sumOperand = _fstOperand;
+//            }
+//            else if([_operator isEqualToString:@"+"])
+//            {
+//                _sumOperand += _fstOperand;
+//                _display.text = [NSString stringWithFormat:@"%g",_sumOperand];
+//            }
+//            else if([_operator isEqualToString:@"-"])
+//            {
+//                _sumOperand -= _fstOperand;
+//                _display.text = [NSString stringWithFormat:@"%g",_sumOperand];
+//            }
+//            else if([_operator isEqualToString:@"x"])
+//            {
+//                _sumOperand *= _fstOperand;
+//                _display.text = [NSString stringWithFormat:@"%g",_sumOperand];
+//            }
+//            else if([_operator isEqualToString:@"÷"])
+//            {
+//                if(_fstOperand!= 0)
+//                {
+//                    _sumOperand /= _fstOperand;
+//                    _display.text = [NSString stringWithFormat:@"%g",_sumOperand];
+//                }
+//                else
+//                {
+//                    _display.text = @"nan";
+//                    _operator= @"=";
+//                }
+//            }
+//            else if([_operator isEqualToString:@"%"]){
+//                if(_fstOperand!= 0)
+//                {
+//                    _sumOperand = ((int)_sumOperand)%(int)_fstOperand;
+//                    _display.text = [NSString stringWithFormat:@"%g",_sumOperand];
+//                }
+//                else
+//                {
+//                    _display.text = @"nan";
+//                    _operator= @"=";
+//                }
+//            }
+//            
+//            _bBegin= YES;
+//            _operator= dbopt;
+//        }
+//    }
+    _display.text=[[NSNumber numberWithDouble:[Calc calculate:_display.text]] stringValue];
 }
+//+/-处理
 - (void)addSign
 {
     _showFoperator.text = @"+/-";
@@ -221,8 +227,8 @@
 - (void)inputNumber: (NSString *)nbstr
 {
     _backOpen = YES;
-    _cptOpen = NO;
-    
+
+   
     if(_bBegin)
     {
         _showFoperator.text = @"";
