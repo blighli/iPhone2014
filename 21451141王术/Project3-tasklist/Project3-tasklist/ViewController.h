@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+NSMutableArray *_tasks;
 @interface ViewController : UIViewController
+<UITableViewDataSource,UITableViewDelegate>
 
 
+
+NSString *docPath(void);
 @end
 
