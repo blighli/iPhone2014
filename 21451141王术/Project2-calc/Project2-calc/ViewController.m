@@ -16,7 +16,7 @@
 @property NSString *operator;
 @property double fstOperand;
 @property double sumOperand;
-@property BOOL bBegin;
+@property BOOL bBegin;     //YES为重新显示，NO为后面追加
 @property BOOL cptOpen;
 @property BOOL backOpen;
 @property double mrOperand;
@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _display.text = @"";
+    _display.text = @"0";
     _showFoperator.text = @"";
     _showSpecial.text = @"";
     _operator = @"=";
@@ -34,6 +34,7 @@
     _sumOperand = 0;
     _bBegin = YES;
     _cptOpen = NO;
+    _display.userInteractionEnabled = NO;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -93,7 +94,7 @@
 }
 - (void)clearDisplay
 {
-    _display.text = @"";
+    _display.text = @"0";
     _showFoperator.text = @"C";
     _operator = @"=";
     _fstOperand = 0;
@@ -109,7 +110,8 @@
     {
         if (_display.text.length == 1)
         {
-            _display.text = @"";
+            _display.text = @"0";
+            _bBegin=YES;
         }
         else if (![_display.text isEqualToString:@""])
         {
@@ -213,6 +215,7 @@
             _display.text= currentStr;
         }
     }
+    _bBegin = NO;
 }
 // 数字输入方法
 - (void)inputNumber: (NSString *)nbstr
