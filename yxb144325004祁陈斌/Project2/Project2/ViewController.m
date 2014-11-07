@@ -50,14 +50,6 @@ NSString* lastOperation;
     
 }
 
--(BOOL)shouldAutorotate {
-    return NO;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
-    return NO;
-}
-
 - (IBAction) buttonPress:(UIButton *)sender {
 //    NSLog(@"%@",sender.currentTitle);
     
@@ -118,7 +110,7 @@ NSString* lastOperation;
         memoryValue = [NSNumber numberWithDouble:0];
         self.memoryLabel.hidden = YES;
     } else if([operationString isEqualToString:@"MR"]){
-        self.outputTextField.text = [memoryValue stringValue];
+        self.outputTextField.text = [self fixDisplayTextLength:[memoryValue stringValue] maxLength:18];
         tempValue = memoryValue;
     } else if([operationString isEqualToString:@"M+"]){
         memoryValue = [NSNumber numberWithDouble:[memoryValue doubleValue]+[self.outputTextField.text doubleValue]];
@@ -132,17 +124,17 @@ NSString* lastOperation;
         if (displayText.length > 1 && range.location == NSNotFound) {
             self.outputTextField.text = (displayText = [displayText substringToIndex:displayText.length-1]);
         } else if(range.location != NSNotFound){
-            NSString* prefix = [displayText substringToIndex:range.location];
-            NSString* suffix = [displayText substringFromIndex:range.location];
-            if (prefix.length > 1) {
-                prefix = [prefix substringToIndex:prefix.length-1];
-                if ([prefix hasSuffix:@"."]) {
-                    prefix = [prefix substringToIndex:prefix.length-1];
-                }
-                self.outputTextField.text = displayText = [prefix stringByAppendingString:suffix];
-            } else {
-                self.outputTextField.text = displayText = @"0";
-            }
+//            NSString* prefix = [displayText substringToIndex:range.location];
+//            NSString* suffix = [displayText substringFromIndex:range.location];
+//            if (prefix.length > 1) {
+//                prefix = [prefix substringToIndex:prefix.length-1];
+//                if ([prefix hasSuffix:@"."]) {
+//                    prefix = [prefix substringToIndex:prefix.length-1];
+//                }
+//                self.outputTextField.text = displayText = [prefix stringByAppendingString:suffix];
+//            } else {
+//                self.outputTextField.text = displayText = @"0";
+//            }
         } else {
             self.outputTextField.text = displayText = @"0";
         }
