@@ -21,6 +21,7 @@
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     [self.taskTable setDataSource:self];
     [self.taskTable setDelegate:self];
+    self.isModifying = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,15 +29,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)buttonAdd:(id)sender {
+- (IBAction)buttonAddPushed:(id)sender {
     if ([self.taskField.text isEqualToString:@""]) return;
-    [self.appDelegate.tasks addObject:self.taskField.text];
+    if (self.isModifying) {
+        [self.appDelegate.tasks replaceObjectAtIndex:self.modifyingRow withObject:self.taskField.text];
+        self.isModifying = NO;
+        [self.buttonAdd setTitle:@"添加" forState:UIControlStateNormal];
+    } else {
+        [self.appDelegate.tasks addObject:self.taskField.text];
+    }
     [self.taskTable reloadData];
     self.taskField.text = @"";
     [self.taskField resignFirstResponder];//关闭软键盘
 }
 
-- (IBAction)buttonEdit:(id)sender {
+- (IBAction)buttonEditPushed:(id)sender {
+    self.isModifying = NO;
+    self.taskField.text = @"";
+    [self.buttonAdd setTitle:@"添加" forState:UIControlStateNormal];
     UIButton *button = (UIButton*)sender;
     NSString *toEdit = @"编辑", *cancelEdit = @"取消编辑";
     if ([button.titleLabel.text isEqualToString:toEdit]) {
@@ -89,7 +99,10 @@
 
 // 点击后的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%@", [self.appDelegate.tasks objectAtIndex:indexPath.row]);
+    self.taskField.text = [self.appDelegate.tasks objectAtIndex:indexPath.row];
+    self.isModifying = YES;
+    self.modifyingRow = indexPath.row;
+    [self.buttonAdd setTitle:@"修改" forState:UIControlStateNormal];
 }
 
 @end

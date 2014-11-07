@@ -14,8 +14,12 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *taskField;
 @property (weak, nonatomic) IBOutlet UITableView *taskTable;
+@property (weak, nonatomic) IBOutlet UIButton *buttonAdd;
 
-- (IBAction)buttonAdd:(id)sender;
-- (IBAction)buttonEdit:(id)sender;
+@property BOOL isModifying;
+@property NSInteger modifyingRow;
+
+- (IBAction)buttonAddPushed:(id)sender;
+- (IBAction)buttonEditPushed:(id)sender;
 @end
 
