@@ -61,10 +61,14 @@
         self.memory += result;
     }
     if ([op isEqualToString:@"M-"]) {
-        
+        double result = [self evaluate:[self separateString:_inputExpression]];
+        self.screenLabel.text = [NSString stringWithFormat:@"%g", result];
+        _inputExpression = [NSMutableString stringWithFormat:@"%g", result];
+        self.memory -= result;
     }
     if ([op isEqualToString:@"MR"]) {
-        
+        self.screenLabel.text = [NSString stringWithFormat:@"%g", self.memory];
+        _inputExpression = [NSMutableString stringWithFormat:@"%g", self.memory];
     }
 }
 
