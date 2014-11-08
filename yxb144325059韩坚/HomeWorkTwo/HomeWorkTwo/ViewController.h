@@ -40,7 +40,7 @@
 - (IBAction)clickLeftParet:(UIButton *)sender;
 //')'
 - (IBAction)clickRightParet:(UIButton *)sender;
-//"%"
+//'%'
 - (IBAction)clickRemain:(UIButton *)sender;
 //mc
 - (IBAction)clickMc:(UIButton *)sender;
