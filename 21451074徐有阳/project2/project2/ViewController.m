@@ -26,8 +26,6 @@
     _inputExpression = [[NSMutableString alloc]initWithString:@""];
     _memory = 0.0;
     _screenLabel.text = @"0";
-    double r = [self evaluate:[self separateString:@"(1+2*3)+1"]];
-    NSLog(@"%lf", r);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +35,17 @@
 
 // 数字和运算符点击事件
 - (IBAction)numberClick:(id)sender {
-    [_inputExpression appendString:((UIButton*)sender).titleLabel.text];
+    NSString *op = ((UIButton*)sender).titleLabel.text;
+    if ([op isEqualToString:@"."] && [_inputExpression isEqualToString:@""]){
+        // 第一个输入如果是小数点，自动再最前面加0
+        _inputExpression = [NSMutableString stringWithString:@"0."];
+    }
+    else if ([op isEqualToString:@"."] && [[_inputExpression substringWithRange:NSMakeRange(_inputExpression.length - 1, 1)] isEqualToString:@"."]){
+        // 小数点后不能加小数点
+    }
+    else {
+        [_inputExpression appendString:op];
+    }
     self.screenLabel.text = _inputExpression;
 }
 
@@ -146,18 +154,6 @@
             NSLog(@"%@", s);
             [self pushOperator:s];
         }
-//        if ([s isEqualToString:@"("])
-//            [self pushOperator:s];
-//        else if ([s isEqualToString:@"+"])
-//            [self pushOperator:s];
-//        else if ([s isEqualToString:@"-"])
-//            [self pushOperator:s];
-//        else if ([s isEqualToString:@"*"])
-//            [self pushOperator:s];
-//        else if ([s isEqualToString:@"/"])
-//            [self pushOperator:s];
-//        else if ([s isEqualToString:@"%"])
-//            [self pushOperator:s];
         else if ([s isEqualToString:@")"])
         {
             while ([_operatorStack count]) {
