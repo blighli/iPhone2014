@@ -15,8 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *display;
 
 - (void) senMclickwithBlock: (void(^)()) myblock and:(UIButton *) sender;
-- (void)senbtclickwithBlock: (void(^)()) myblock and:(UIButton *) sender;
-- (BOOL)stringToCaculator;
+- (void) senbtclickwithBlock: (void(^)()) myblock and:(UIButton *) sender;
+- (BOOL) stringToCaculator;
 
 //数字键
 - (IBAction)clickDigit:(UIButton *)sender;
