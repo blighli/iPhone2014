@@ -6,8 +6,6 @@
 //  Copyright (c) 2014年 HJ. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 #import "FormulaStringCalcUtility.h"
 
 @implementation FormulaStringCalcUtility

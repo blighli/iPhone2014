@@ -21,8 +21,6 @@
    
 }
 
-typedef void (^ArrayEnumerationBlock)(UIButton *);
-
 @synthesize display;
 
 - (void)viewDidLoad
