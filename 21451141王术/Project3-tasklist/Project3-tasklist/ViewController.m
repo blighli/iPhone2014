@@ -12,7 +12,6 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *taskField;
 @property (weak, nonatomic) IBOutlet UIButton *insertButton;
-
 @property (weak, nonatomic) IBOutlet UITableView *taskTable;
 
 @end
@@ -51,6 +50,7 @@
 //路径
 NSString *docPath() {
     NSArray *pathList = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES);
+    //NSLog(@"%@",pathList[0]);
     return [[pathList objectAtIndex:0] stringByAppendingPathComponent:@"data.txt"];
 }
 //添加任务按钮
@@ -64,7 +64,6 @@ NSString *docPath() {
     [_taskField setText:@""]; //清空输入框
     [_taskField resignFirstResponder]; //关闭软键盘
     [_tasks writeToFile:docPath() atomically:YES];
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -72,7 +71,7 @@ NSString *docPath() {
 {
     return [_tasks count];
 }
-
+//table cell 的设置
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
