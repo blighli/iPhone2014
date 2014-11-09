@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		E24F045719EA1A1700F3F41E /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = E24F045519EA1A1700F3F41E /* makefile */; };
 		E2C7EBD619E970960046A2EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C7EBD519E970960046A2EA /* main.m */; };
-		E2C7EBE119E975F30046A2EA /* MyCal.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C7EBE019E975F30046A2EA /* MyCal.m */; };
+		E2DEA2CA19F292E6007B94E5 /* MonthCal.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DEA2C919F292E6007B94E5 /* MonthCal.m */; };
+		E2DEA2CD19F2934D007B94E5 /* YearCal.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DEA2CC19F2934D007B94E5 /* YearCal.m */; };
+		E2DEA2D019F29910007B94E5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DEA2CF19F29910007B94E5 /* Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,8 +31,12 @@
 		E24F045619EA1A1700F3F41E /* mycal */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = mycal; path = homework1/mycal; sourceTree = "<group>"; };
 		E2C7EBD219E970960046A2EA /* homework1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = homework1; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C7EBD519E970960046A2EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E2C7EBDF19E975F30046A2EA /* MyCal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCal.h; sourceTree = "<group>"; };
-		E2C7EBE019E975F30046A2EA /* MyCal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCal.m; sourceTree = "<group>"; };
+		E2DEA2C819F292E6007B94E5 /* MonthCal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthCal.h; sourceTree = "<group>"; };
+		E2DEA2C919F292E6007B94E5 /* MonthCal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthCal.m; sourceTree = "<group>"; };
+		E2DEA2CB19F2934D007B94E5 /* YearCal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearCal.h; sourceTree = "<group>"; };
+		E2DEA2CC19F2934D007B94E5 /* YearCal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearCal.m; sourceTree = "<group>"; };
+		E2DEA2CE19F29910007B94E5 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		E2DEA2CF19F29910007B94E5 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +71,13 @@
 			isa = PBXGroup;
 			children = (
 				E24F045519EA1A1700F3F41E /* makefile */,
-				E2C7EBDF19E975F30046A2EA /* MyCal.h */,
-				E2C7EBE019E975F30046A2EA /* MyCal.m */,
+				E2DEA2C819F292E6007B94E5 /* MonthCal.h */,
+				E2DEA2C919F292E6007B94E5 /* MonthCal.m */,
 				E2C7EBD519E970960046A2EA /* main.m */,
+				E2DEA2CB19F2934D007B94E5 /* YearCal.h */,
+				E2DEA2CE19F29910007B94E5 /* Utils.h */,
+				E2DEA2CF19F29910007B94E5 /* Utils.m */,
+				E2DEA2CC19F2934D007B94E5 /* YearCal.m */,
 			);
 			path = homework1;
 			sourceTree = "<group>";
@@ -128,8 +138,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2C7EBE119E975F30046A2EA /* MyCal.m in Sources */,
+				E2DEA2CA19F292E6007B94E5 /* MonthCal.m in Sources */,
+				E2DEA2CD19F2934D007B94E5 /* YearCal.m in Sources */,
 				E2C7EBD619E970960046A2EA /* main.m in Sources */,
+				E2DEA2D019F29910007B94E5 /* Utils.m in Sources */,
 				E24F045719EA1A1700F3F41E /* makefile in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
