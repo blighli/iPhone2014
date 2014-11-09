@@ -42,7 +42,6 @@ BOOL firstNum = false;
     return _numberArray;
 }
 
-
 - (void)updateCurrentNum:(NSString*)newNum {
     if (firstNum) {
         [self.numberArray push:self.currentNum];
@@ -63,6 +62,11 @@ BOOL firstNum = false;
     } else {
         [self.currentNum appendString:newNum];
     }
+}
+
+- (void)storeCurrentNum {
+    [self.numberArray push:self.currentNum];
+    _currentNum = nil;
 }
 
 - (void)clearCurrentNum {
@@ -194,14 +198,19 @@ BOOL firstNum = false;
 
 - (void)MClean {
     self.memoryNum = nil;
+    self.isMemoryed = false;
 }
 - (void)MAdd {
     double result = [self caculate:self.memoryNum and:self.currentNum and:@"+"];
     self.memoryNum = [NSMutableString stringWithFormat:@"%g",result];
+    self.isMemoryed = true;
+    [self storeCurrentNum];
 }
 - (void)MMinus {
     double result = [self caculate:self.memoryNum and:self.currentNum and:@"-"];
     self.memoryNum = [NSMutableString stringWithFormat:@"%g",result];
+    self.isMemoryed = true;
+    [self storeCurrentNum];
 }
 
 @end

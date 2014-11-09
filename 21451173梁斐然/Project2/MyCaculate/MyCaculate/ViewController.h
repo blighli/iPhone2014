@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *currentNumView;
+@property (weak, nonatomic) IBOutlet UIButton *MRBtn;
 
 @end
 

@@ -73,24 +73,33 @@
 
 - (IBAction)MCleanBtn:(UIButton *)sender {
     [_myCaculate MClean];
-    self.currentNumView.text = _myCaculate.memoryNum;
+    [self changeMRColor];
 }
 
 - (IBAction)MAddBtn:(id)sender {
     [_myCaculate MAdd];
     self.currentNumView.text = _myCaculate.memoryNum;
+    [self changeMRColor];
 }
 
 - (IBAction)MMinus:(id)sender {
     [_myCaculate MMinus];
     self.currentNumView.text = _myCaculate.memoryNum;
+    [self changeMRColor];
 }
 
-- (IBAction)MRBtn:(id)sender {
+- (IBAction)MRBtn:(UIButton *)sender {
+    [_myCaculate storeCurrentNum];
     self.currentNumView.text = _myCaculate.memoryNum;
 }
 
-
+- (void)changeMRColor {
+    if (_myCaculate.isMemoryed) {
+        self.MRBtn.backgroundColor = [UIColor blueColor];
+    } else {
+        self.MRBtn.backgroundColor = [UIColor colorWithRed:0.4 green:0.8 blue:1.0 alpha:1];
+    }
+}
 
 
 

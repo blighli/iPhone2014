@@ -16,8 +16,10 @@
 @property (nonatomic,strong) NSMutableString* memoryNum;
 @property (nonatomic,strong) NSMutableArray* operationArray;
 @property (nonatomic,strong) NSMutableArray* numberArray;
+@property (nonatomic,assign) BOOL isMemoryed;
 
 - (void)updateCurrentNum:(NSString*)newNum;
+- (void)storeCurrentNum;
 - (void)clearCurrentNum;
 - (void)changeOperator;
 - (void)deleteNum;
