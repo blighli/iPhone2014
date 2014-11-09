@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zYj-oa-fon">
+                                <rect key="frame" x="16" y="20" width="292" height="62"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="textColor" red="0.5807686237373737" green="0.5807686237373737" blue="0.5807686237373737" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iW6-HH-evV">
+                                <rect key="frame" x="16" y="90" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.59193768806701652" green="0.84781407828282829" blue="0.79735537457816275" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="MC">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="memoryOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yXi-bH-fXb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cV-5V-a0b">
+                                <rect key="frame" x="16" y="143" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.89488636363636365" green="0.85479737224398178" blue="0.77833040354976346" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="⌫">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="W4p-OB-Ocw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6X1-dR-OFq">
+                                <rect key="frame" x="16" y="196" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.7121974792397231" green="0.94324100378787878" blue="0.6863391633556255" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="AC">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="allClearButMemory:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ljg-R8-Znw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgI-TK-VuQ">
+                                <rect key="frame" x="16" y="249" width="67" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="7">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="g7P-AN-XzB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="12" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oD6-Be-Sq2">
+                                <rect key="frame" x="91" y="90" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.59193768810000003" green="0.8478140783" blue="0.79735537460000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="M+">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="memoryOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JCX-eN-voz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="13" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2BL-bR-fvA">
+                                <rect key="frame" x="166" y="90" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.59193768810000003" green="0.8478140783" blue="0.79735537460000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="M-">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="memoryOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="t1K-2d-RTc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="14" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecW-t5-zZN">
+                                <rect key="frame" x="241" y="90" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.59193768810000003" green="0.8478140783" blue="0.79735537460000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="MR">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="memoryOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pas-Db-Dfp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="21" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8t-aW-ZD2">
+                                <rect key="frame" x="166" y="143" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.89488636359999996" green="0.85479737219999996" blue="0.77833040350000005" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="）">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="IUG-Ye-yUH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="22" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxD-Ke-XTv">
+                                <rect key="frame" x="241" y="143" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.89488636359999996" green="0.85479737219999996" blue="0.77833040350000005" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="%">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vBZ-Fc-6x9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="23" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTL-Da-xgK">
+                                <rect key="frame" x="91" y="196" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.71219747919999998" green="0.94324100379999998" blue="0.68633916340000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="➗">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="STa-eS-tN4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="24" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8GE-ru-55w">
+                                <rect key="frame" x="166" y="196" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.71219747919999998" green="0.94324100379999998" blue="0.68633916340000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="✖️">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5HQ-0N-RKh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="25" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjc-L7-49R">
+                                <rect key="frame" x="241" y="196" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.71219747919999998" green="0.94324100379999998" blue="0.68633916340000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="➖">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="nUf-A2-Peo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="26" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yu0-di-A1q">
+                                <rect key="frame" x="241" y="249" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.71219747919999998" green="0.94324100379999998" blue="0.68633916340000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="➕">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qoA-R7-UYX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="py4-Jh-vkQ">
+                                <rect key="frame" x="91" y="249" width="67" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="8">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4cl-JA-dlT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHo-Wh-Yak">
+                                <rect key="frame" x="166" y="249" width="67" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="9">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mUZ-9x-dKa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOq-Tb-hWx">
+                                <rect key="frame" x="16" y="302" width="67" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="4">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="f5y-6t-4ck"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MB7-Qp-Srh">
+                                <rect key="frame" x="91" y="302" width="67" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="5">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="17H-Ey-eYs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJM-Zh-3oV">
+                                <rect key="frame" x="166" y="302" width="67" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="6">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pUE-3W-tzP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKI-Y5-NeR">
+                                <rect key="frame" x="16" y="355" width="67" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="1">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0bf-d2-YXM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TG-3x-blh">
+                                <rect key="frame" x="91" y="355" width="67" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="2">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kne-Ez-hJN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQI-IA-qpu">
+                                <rect key="frame" x="166" y="355" width="67" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="3">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HuY-5a-EDS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFl-Xb-BiD">
+                                <rect key="frame" x="166" y="408" width="67" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title=".">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Mk3-uF-HvK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykj-Te-r7a">
+                                <rect key="frame" x="16" y="408" width="142" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="0">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperand:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SZF-lL-9eR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpZ-xK-ZSd">
+                                <rect key="frame" x="241" y="301" width="67" height="152"/>
+                                <color key="backgroundColor" red="0.95686274509803926" green="0.69600889369545038" blue="0.49182838975036569" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="=">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="equalOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="sru-N7-5Lq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="20" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xe-mG-ycv">
+                                <rect key="frame" x="91" y="143" width="67" height="45"/>
+                                <color key="backgroundColor" red="0.89488636359999996" green="0.85479737219999996" blue="0.77833040350000005" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="（">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOperation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="a0U-V2-zHg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="displayField" destination="zYj-oa-fon" id="XtA-Ng-PKJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
