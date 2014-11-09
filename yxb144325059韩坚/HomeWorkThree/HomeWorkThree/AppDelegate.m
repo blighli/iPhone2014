@@ -190,7 +190,7 @@ NSString *docPath()
         [tasks addObject:@"修改：点cell，输入，点return"];
         [tasks addObject:@"删除：向左滑动cell，点删除"];
         [tasks addObject:@"增加：输入，点return"];
-        [tasks addObject:@"支持退出时保存到文件"];
+        [tasks addObject:@"适配iphone6和6plus"];
     }
     
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
