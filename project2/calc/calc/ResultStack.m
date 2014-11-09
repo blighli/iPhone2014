@@ -298,6 +298,11 @@
     }
     else
         self.console = [self.valueStackArr top]; // 更新计算结果label
+    
+    NSUInteger explength = [self.expersion length];
+    if (explength>=27) {
+        self.expersion = [self.expersion substringFromIndex:explength-27];
+    }
 }
 
 - (void)clear
