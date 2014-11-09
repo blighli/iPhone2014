@@ -14,6 +14,9 @@
 		21ED69FB1A0F2BD600CFA338 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21ED69FA1A0F2BD600CFA338 /* Images.xcassets */; };
 		21ED69FE1A0F2BD600CFA338 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21ED69FC1A0F2BD600CFA338 /* LaunchScreen.xib */; };
 		21ED6A0A1A0F2BD600CFA338 /* calculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ED6A091A0F2BD600CFA338 /* calculatorTests.m */; };
+		21ED6A151A0FA85100CFA338 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ED6A141A0FA85100CFA338 /* Stack.m */; };
+		21ED6A181A0FAA3F00CFA338 /* InfixToPostfix.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ED6A171A0FAA3F00CFA338 /* InfixToPostfix.m */; };
+		21ED6A1B1A0FABA500CFA338 /* PostfixCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 21ED6A1A1A0FABA500CFA338 /* PostfixCalculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,12 @@
 		21ED6A031A0F2BD600CFA338 /* calculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21ED6A081A0F2BD600CFA338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21ED6A091A0F2BD600CFA338 /* calculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = calculatorTests.m; sourceTree = "<group>"; };
+		21ED6A131A0FA85100CFA338 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		21ED6A141A0FA85100CFA338 /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
+		21ED6A161A0FAA3F00CFA338 /* InfixToPostfix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfixToPostfix.h; sourceTree = "<group>"; };
+		21ED6A171A0FAA3F00CFA338 /* InfixToPostfix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfixToPostfix.m; sourceTree = "<group>"; };
+		21ED6A191A0FABA500CFA338 /* PostfixCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostfixCalculator.h; sourceTree = "<group>"; };
+		21ED6A1A1A0FABA500CFA338 /* PostfixCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostfixCalculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +98,12 @@
 				21ED69FA1A0F2BD600CFA338 /* Images.xcassets */,
 				21ED69FC1A0F2BD600CFA338 /* LaunchScreen.xib */,
 				21ED69ED1A0F2BD600CFA338 /* Supporting Files */,
+				21ED6A131A0FA85100CFA338 /* Stack.h */,
+				21ED6A141A0FA85100CFA338 /* Stack.m */,
+				21ED6A161A0FAA3F00CFA338 /* InfixToPostfix.h */,
+				21ED6A171A0FAA3F00CFA338 /* InfixToPostfix.m */,
+				21ED6A191A0FABA500CFA338 /* PostfixCalculator.h */,
+				21ED6A1A1A0FABA500CFA338 /* PostfixCalculator.m */,
 			);
 			path = calculator;
 			sourceTree = "<group>";
@@ -219,7 +234,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21ED6A151A0FA85100CFA338 /* Stack.m in Sources */,
+				21ED6A181A0FAA3F00CFA338 /* InfixToPostfix.m in Sources */,
 				21ED69F61A0F2BD600CFA338 /* ViewController.m in Sources */,
+				21ED6A1B1A0FABA500CFA338 /* PostfixCalculator.m in Sources */,
 				21ED69F31A0F2BD600CFA338 /* AppDelegate.m in Sources */,
 				21ED69F01A0F2BD600CFA338 /* main.m in Sources */,
 			);

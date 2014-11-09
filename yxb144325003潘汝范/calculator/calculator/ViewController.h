@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *showLabel;
 
+@property NSMutableString *expression;
+@property BOOL state;
+@property NSString *lastReuslt;
+@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
+@property (weak, nonatomic) IBOutlet UIButton *clearAllBtn;
+@property (weak, nonatomic) IBOutlet UIButton *delBtn;
 
+- (IBAction)GetResult:(id)sender;
+- (IBAction)buttonTap:(id)sender;
+- (IBAction)mBtnTap:(id)sender;
 @end
 
