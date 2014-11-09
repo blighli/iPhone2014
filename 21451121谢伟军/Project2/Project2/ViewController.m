@@ -11,7 +11,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelScreen;
 
 @property (nonatomic) BOOL dotTag;
-//@property (nonatomic) BOOL plusOrMinusTag;
 @end
 
 @implementation ViewController
@@ -22,22 +21,15 @@
     self.labelScreen.adjustsFontSizeToFitWidth = YES;
     self.labelScreen.numberOfLines = 1;
     self.dotTag = NO;
-    //    self.plusOrMinusTag = YES;
-    
-    
-    //    self.lastNumber = 0;
-    //    self.currentNumber = 0;
     self.memoryString = [NSMutableString stringWithString:@"0"];
     self.displayString = [NSMutableString stringWithString:@"0"];
     self.currentString = [NSMutableString stringWithString:@""];
     self.lastString = [NSMutableString stringWithString:@""];
     self.operatorStackLevel = [NSMutableString stringWithString:@"0"];
     self.stackLevelDictionary =[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"+",@"1", @"-",@"2",@"*",@"2",@"/" ,@"2", @"%",@"0", @"=", nil];
-    
     self.variableStack = [NSMutableArray array];
     self.operatorStack = [NSMutableArray array];
     [self initProcess];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +61,6 @@
         default:
             break;
     }
-    
     self.memoryString = [NSMutableString stringWithString:[NSString stringWithFormat:@"%.14lf",memoryNumber]];
 }
 
@@ -83,18 +74,12 @@
             [self.displayString setString:[self.displayString substringToIndex:self.displayString.length-1]];
         }
     }
-    
     [self display];
 }
 
 #pragma buttonBrckerts
 - (IBAction)buttonBrackets:(UIButton *)sender {
-    
     self.dotTag = NO;
-    
-    
-    
-    
     [self.lastString setString:self.currentString];
     switch (sender.tag) {
         case 1:
@@ -102,7 +87,6 @@
             [self pushStack:self.operatorStack with:self.currentString];
             break;
         case 2:
-            
             if (![self.operatorStack containsObject:@"("]) {
                 [self.displayString setString:self.labelScreen.text];
                 [self display];
@@ -110,7 +94,6 @@
                 [self.displayString setString:@"0"];
                 return;
             }
-            
             //若上次输入是 运算符 ，
             if ([self.lastString isEqualToString:@"+"]
                 || [self.lastString isEqualToString:@"-"]
@@ -123,55 +106,27 @@
             //上次输入是 操作数
             else{
                 [self pushStack:self.variableStack with:[NSString stringWithString:self.labelScreen.text]];
-                
-                
                 double variable1 = [[self popStack:self.variableStack]doubleValue];
                 double variable2 = [[self popStack:self.variableStack]doubleValue];
-                //
+
                 //弹出一个低级运算符
                 NSString* operator = [NSString stringWithString:[self popStack:self.operatorStack]];
-                
-                //得到弹出低级运算符之后的栈等级
-                //self.operatorStackLevel = [self.stackLevelDictionary objectForKey:[self.operatorStack lastObject]];
-                
-                //
+
                 NSString* temp = [NSString stringWithString:[self calculateOperator:operator Number1:variable2 Number2:variable1]];
-                //        NSLog(@"结果%@",temp);
+
                 if ([temp isEqualToString:@"错误:除数为0"]) {
                     [self.displayString setString:@"错误:除数为0"];
                     [self display];
                     [self initProcess];
                     return;
                 }
-                
-                //                [self pushStack:self.variableStack with:[NSString stringWithString:temp]];
                 [self.displayString setString:temp];
                 [self clearZero];
                 [self display];
-                
-                
-                
-                
-                
                 [self.currentString setString:@")"];
                 if ([self.operatorStack.lastObject isEqualToString:@"("]) {
                     [self popStack:self.operatorStack];
-                    
-#warning ) 运算
-                    
-                    
                 }
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
             }
             break;
         default:
@@ -221,6 +176,13 @@
         }
             //ops =
         case 6:
+            if ([self.lastString isEqualToString:@"="]) {
+                return;
+            }
+            while ([self.lastString isEqualToString:@"("]) {
+                [self popStack:self.operatorStack];
+            }
+            
             [self.currentString setString:@"+"];
             break;
             
@@ -261,26 +223,6 @@
             break;
     }
     
-    
-    
-    
-    
-    
-    //若运算符栈为空
-    if (![self.operatorStack count]) {
-        [self pushStack:self.variableStack with:[NSString stringWithString:self.displayString]];
-        [self pushStack:self.operatorStack  with:[NSString stringWithString:self.currentString]];
-        if ([sender.titleLabel.text isEqualToString:@"="]){
-            [self clearStack:self.variableStack];
-            [self clearStack:self.operatorStack];
-            [self.displayString setString:self.labelScreen.text];
-            [self.variableStack addObject:[NSString stringWithString:self.labelScreen.text]];
-            //            [self.currentString setString:@"="];
-            [self.currentString setString:self.labelScreen.text];
-        }
-        [self.displayString setString:@"0"];
-        return;
-    }
     //若上次输入是 运算符 ， 取消上次运算符 return
     if ([self.lastString isEqualToString:@"+"]
         || [self.lastString isEqualToString:@"-"]
@@ -292,12 +234,46 @@
             //            NSLog(@"after pop %@",self.operatorStack.lastObject);
             [self pushStack:self.operatorStack with:[NSString stringWithString:self.currentString]];
             //            NSLog(@"after push %@",self.operatorStack.lastObject);
+            if ([sender.titleLabel.text isEqualToString:@"="]){
+                [self clearStack:self.variableStack];
+                [self clearStack:self.operatorStack];
+                [self.displayString setString:self.labelScreen.text];
+                
+                [self pushStack:self.variableStack with:[NSString stringWithString:self.labelScreen.text]];
+                [self.displayString setString:self.variableStack.lastObject];
+                [self clearZero];
+                [self displayString];
+                
+                [self.currentString setString:@"="];
+                [self.displayString setString:@"0"];
+                return;
+                //                [self.currentString setString:self.labelScreen.text];
+            }
             [self.displayString setString:@"0"];
             return;
         }
     }
     //上次输入是 操作数
     else{
+        
+        //若运算符栈为空
+        if (![self.operatorStack count]) {
+            [self pushStack:self.variableStack with:[NSString stringWithString:self.labelScreen.text]];
+            [self pushStack:self.operatorStack  with:[NSString stringWithString:self.currentString]];
+            if ([sender.titleLabel.text isEqualToString:@"="]){
+                [self clearStack:self.variableStack];
+                [self clearStack:self.operatorStack];
+                [self.displayString setString:self.labelScreen.text];
+
+                [self pushStack:self.variableStack with:[NSString stringWithString:self.labelScreen.text]];
+                [self.currentString setString:@"="];
+            }
+            [self.displayString setString:@"0"];
+            return;
+        }
+        
+        
+        
         [self pushStack:self.variableStack with:[NSString stringWithString:self.labelScreen.text]];
     }
     //若栈顶元素不是(
@@ -305,7 +281,6 @@
         NSString* inputLevel = [self.stackLevelDictionary objectForKey:self.currentString];
         //若运算符栈非空，取栈顶元素 得出栈内运算符等级
         self.operatorStackLevel = [self.stackLevelDictionary objectForKey:[self.operatorStack lastObject]];
-        
         //输入运算符优先级 高于 站定运算符优先级
         while   ([[self.stackLevelDictionary objectForKey:[self.operatorStack lastObject]] intValue] >= [inputLevel intValue])  {
             //弹出两个栈顶操作数
@@ -348,16 +323,11 @@
             
         }
     }
-    
     //若栈顶元素是(
     else{
         [self pushStack:self.operatorStack with:[NSString stringWithString:self.currentString]];
     }
-    
     [self.displayString setString:@"0"];
-    
-    
-    
 }
 
 
@@ -399,14 +369,6 @@
 #pragma buttonDigit
 - (IBAction)buttonDigit:(UIButton *)sender {
     [self.lastString setString:self.currentString];
-    //    if ([self.lastString isEqualToString:@"+"]
-    //        || [self.lastString isEqualToString:@"-"]
-    //        || [self.lastString isEqualToString:@"*"]
-    //        || [self.lastString isEqualToString:@"/"]
-    //        || [self.lastString isEqualToString:@"%"]
-    //        || [self.lastString isEqualToString:@"="]){
-    //        [self.displayString setString:@"0"];
-    //    }
     NSString *inputDigit = sender.titleLabel.text;
     NSInteger digit = [inputDigit intValue];
     if ([self.displayString isEqualToString:@"0"]) {
@@ -477,14 +439,11 @@
         temp = number1 / number2;
     }
     return [NSString stringWithFormat:@"%.12f",temp];
-    
-    
 }
 
 -(void)clearZero{
     //处理memory中为1时，输出1.00000000的问题
     NSInteger length = [self.displayString length];
-    //    NSLog(@"%d",length);
     while ([self.displayString characterAtIndex:(length-1)] == '0') {
         self.displayString = [NSMutableString stringWithString:[self.displayString substringToIndex:length-1]];
         length--;
@@ -492,7 +451,6 @@
     if ([self.displayString characterAtIndex:(length-1)] == '.') {
         self.displayString = [NSMutableString stringWithString:[self.displayString substringToIndex:length-1]];
     }
-    
 }
 
 
