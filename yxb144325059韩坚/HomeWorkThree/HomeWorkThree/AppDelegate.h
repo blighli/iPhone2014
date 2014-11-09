@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-
 NSString *docPath(void);
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
@@ -21,7 +20,6 @@ NSString *docPath(void);
 
 - (void)addTask:(id)sender;
 @property (strong, nonatomic) UIWindow *window;
-
 
 @end
 

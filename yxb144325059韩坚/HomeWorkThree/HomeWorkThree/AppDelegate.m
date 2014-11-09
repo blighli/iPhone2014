@@ -12,7 +12,8 @@
 {
     BOOL clickTable;
     int row;
-    NSIndexPath * myIndexPath;
+    //NSIndexPath * myIndexPath;
+    CGRect bounds;
 }
 
 @end
@@ -56,7 +57,7 @@ NSString *docPath()
             [tasks addObject: text]; //将新的任务添加到模型
             [taskTable reloadData]; //表格视图重新载入数据
         }
-        [self reloadcellbackground:myIndexPath];
+        //[self reloadcellbackground:myIndexPath];
     }
     [taskField setText:@""]; //清空输入框
     [taskField resignFirstResponder]; //关闭软键盘
@@ -69,9 +70,9 @@ NSString *docPath()
     //[UIView setAnimationDuration: 1.0];
     [UIView setAnimationCurve: UIViewAnimationCurveLinear];
     
-    CGRect fieldFrame2 = CGRectMake(10, 40, 240, 31);
+    CGRect fieldFrame2 = CGRectMake(10, 40, bounds.size.width-80, 31);
     taskField.frame = fieldFrame2;
-    CGRect buttonFrame2 = CGRectMake(240, 40, 80, 31);
+    CGRect buttonFrame2 = CGRectMake(bounds.size.width-80, 40, 80, 31);
     insertButton.frame = buttonFrame2;
     
     [UIView commitAnimations];
@@ -83,9 +84,9 @@ NSString *docPath()
     //[UIView setAnimationDuration: 1.0];
     [UIView setAnimationCurve: UIViewAnimationCurveLinear];
     
-    CGRect fieldFrame3 = CGRectMake(10, 40, 300, 31);
+    CGRect fieldFrame3 = CGRectMake(10, 40, bounds.size.width-20, 31);
     taskField.frame = fieldFrame3;
-    CGRect buttonFrame2 = CGRectMake(300, 40, 80, 31);
+    CGRect buttonFrame2 = CGRectMake(bounds.size.width, 40, 80, 31);
     insertButton.frame = buttonFrame2;
     
     [UIView commitAnimations];
@@ -113,33 +114,33 @@ NSString *docPath()
     return cell ;
 }
 
-//table背景颜色
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    myIndexPath = indexPath;
-    if (indexPath.row%2!=0) {
-        cell.backgroundColor=[UIColor colorWithRed:244/255.0 green:200/255.0 blue:255/255.0 alpha:0.2];
-    }
-}
-
-
--(void)reloadcellbackground:(NSIndexPath *)indexPath
-{
-    for (NSInteger i = indexPath.row; i<=(NSInteger) [tasks count]; i++)
-    {
-        UITableViewCell *cell = [taskTable  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:indexPath.section]];
-        if (cell)
-        {
-            if (i%2!=0)
-            {
-                cell.backgroundColor=[UIColor colorWithRed:244/255.0 green:200/255.0 blue:255/255.0 alpha:0.2];
-            }
-            else
-            {
-                cell.backgroundColor=[UIColor whiteColor];
-            }
-        }
-    }
-}
+////table背景颜色
+//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    myIndexPath = indexPath;
+//    if (indexPath.row%2!=0) {
+//        cell.backgroundColor=[UIColor colorWithRed:244/255.0 green:200/255.0 blue:255/255.0 alpha:0.2];
+//    }
+//}
+//
+//
+//-(void)reloadcellbackground:(NSIndexPath *)indexPath
+//{
+//    for (NSInteger i = indexPath.row; i<=(NSInteger) [tasks count]; i++)
+//    {
+//        UITableViewCell *cell = [taskTable  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:indexPath.section]];
+//        if (cell)
+//        {
+//            if (i%2!=0)
+//            {
+//                cell.backgroundColor=[UIColor colorWithRed:244/255.0 green:200/255.0 blue:255/255.0 alpha:0.2];
+//            }
+//            else
+//            {
+//                cell.backgroundColor=[UIColor whiteColor];
+//            }
+//        }
+//    }
+//}
 
 //按下table
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -162,6 +163,7 @@ NSString *docPath()
 //进入删除模式，按下出现的删除按钮后
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         clickTable = NO;
@@ -169,13 +171,13 @@ NSString *docPath()
         [taskTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         [taskField setText:@""];
         [taskField resignFirstResponder];
-        [self reloadcellbackground:indexPath];
+        //[self reloadcellbackground:indexPath];
     }
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"aaaaaa");
+    bounds = [UIScreen mainScreen].bounds;
     clickTable = NO;
     NSArray *plist = [NSArray arrayWithContentsOfFile:docPath()];
     if (plist)
@@ -194,9 +196,9 @@ NSString *docPath()
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
     UIWindow *theWindow = [[UIWindow alloc] initWithFrame: windowFrame];
     [self setWindow: theWindow];
-    CGRect tableFrame = CGRectMake(0, 80, 320, 380);
-    CGRect fieldFrame = CGRectMake(10, 40, 300, 31);
-    CGRect buttonFrame = CGRectMake(300, 40, 80, 31);
+    CGRect tableFrame = CGRectMake(0, 80, bounds.size.width, bounds.size.height-80);
+    CGRect fieldFrame = CGRectMake(10, 40, bounds.size.width-20, 31);
+    CGRect buttonFrame = CGRectMake(bounds.size.width, 40, 80, 31);
     
     taskTable = [[UITableView alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
     [taskTable setSeparatorStyle: UITableViewCellSeparatorStyleNone];
@@ -224,7 +226,7 @@ NSString *docPath()
     [[self window] setBackgroundColor:
     [UIColor whiteColor]];
     [[self window] makeKeyAndVisible];
-    
+
     return YES;
 }
 
@@ -233,5 +235,6 @@ NSString *docPath()
     //将缓冲的数据写入到文件中
     [tasks writeToFile:docPath() atomically:YES];
 }
+
 
 @end
