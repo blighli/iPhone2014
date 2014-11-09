@@ -8,19 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
+#import <Foundation/Foundation.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
     UITableView *taskTable;
     UITextField *taskField;
     UIButton *insertButton;
     UIButton *editButton;
     NSMutableArray *tasks;
-    NSInteger *selected;
+    NSIndexPath* selected;
     BOOL flag;
     BOOL isEdit;
+    BOOL isFocus;
 }
 
+
+-(void)reloadcellbackground:(NSIndexPath *)indexPath;
 -(void)addTask:(id) sender;
 -(void)editTask:(id) sender;
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
@@ -31,6 +35,7 @@
 -(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath;
 -(void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
 
 
 @property (strong, nonatomic) UIWindow *window;
