@@ -172,7 +172,9 @@ typedef enum {
 
 - (IBAction)enterPressed:(UIButton *)sender {
     //如果按下“＝”键前，正在输入数值或者“）”，则调用
-    if ([self lastDisplayTextType] == isNumber || ([self lastDisplayTextType] == isRightBracket && self.Main.bracketCount == 0)) {
+    if(self.Main.bracketCount > 0)
+        return;
+    if ([self lastDisplayTextType] == isNumber || [self lastDisplayTextType] == isRightBracket) {
         isAnswered = YES;
     } else {
         return;
