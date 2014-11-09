@@ -1,6 +1,6 @@
 //
-//  homeword2Tests.m
-//  homeword2Tests
+//  Project2Tests.m
+//  Project2Tests
 //
 //  Created by jingcheng407 on 14-11-9.
 //  Copyright (c) 2014年 chenkaifeng. All rights reserved.
@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface homeword2Tests : XCTestCase
+@interface Project2Tests : XCTestCase
 
 @end
 
-@implementation homeword2Tests
+@implementation Project2Tests
 
 - (void)setUp {
     [super setUp];
