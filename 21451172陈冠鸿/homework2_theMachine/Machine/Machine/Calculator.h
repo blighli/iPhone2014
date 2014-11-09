@@ -10,5 +10,6 @@
 
 @interface Calculator : NSObject
 -(NSMutableArray *)stringParser:(NSString *)str;
--(double)evaluate:(NSMutableArray *)expression;
+-(NSMutableArray *)in2Post:(NSMutableArray *)infix;
+-(double)evaluate:(NSMutableArray *)postfix;
 @end

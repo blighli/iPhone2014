@@ -41,7 +41,7 @@
 - (IBAction)pressEnterButton {
     NSString * str = self.display.text;
     double result = [self.cal evaluate:
-                     [self.cal stringParser:str]];
+                     [self.cal in2Post:[self.cal stringParser:str]]];
     self.display.text =
     [NSString stringWithFormat:@"%g",result];
 }
