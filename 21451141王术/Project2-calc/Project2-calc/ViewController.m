@@ -86,7 +86,7 @@
             unichar input = [((UIButton*) sender).titleLabel.text characterAtIndex:0];
             unichar last = [_display.text characterAtIndex:_display.text.length-1];
             //测试
-            NSLog(@"%c",last);
+            //NSLog(@"%c",last);
             if ([Calc isOperator:last] && [Calc isOperator:input]) return;
             [self inputNumber:btn.titleLabel.text];
             break;
