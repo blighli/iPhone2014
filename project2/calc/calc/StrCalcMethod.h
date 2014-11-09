@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Operation.h"
 
 @interface StrCalcMethod : NSObject
 
@@ -15,4 +16,7 @@
 + (NSString *)deciDivide:(NSString *)lstr withString:(NSString   * )rstr;
 + (NSString *)deciPlus:(NSString *)lstr withString:(NSString     * )rstr;
 + (NSString *)deciMinus:(NSString *)lstr withString:(NSString    * )rstr;
+
+
++ (NSString*) calcWithOpType:(NSString *)lstr withRStr:(NSString * )rstr withOP:(OPTYPE) op;
 @end

@@ -23,6 +23,13 @@ ResultStack *stack;
     
     stack = [[ResultStack alloc] init];
     [self.mFlag setText:@""];
+    
+    self.expText.adjustsFontSizeToFitWidth=YES;
+    self.expText.minimumScaleFactor=0.5;
+    
+    self.consoleText.adjustsFontSizeToFitWidth=YES;
+    self.consoleText.minimumScaleFactor=0.5;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -31,131 +38,153 @@ ResultStack *stack;
 }
 
 //=============NUM PAD==============
-- (IBAction)btn0OnTouch:(id)sender
+- (IBAction)btn0:(id)sender
 {
     [stack pushNum:@"0"];
     [self.consoleText setText:stack.console];
 }
-- (IBAction)btn1OnTouch:(id)sender
+- (IBAction)btn1:(id)sender
 {
     [stack pushNum:@"1"];
     [self.consoleText setText:stack.console];
 }
-- (IBAction)btn2OnTouch:(id)sender
+- (IBAction)btn2:(id)sender
 {
     [stack pushNum:@"2"];
     [self.consoleText setText:stack.console];
 }
-- (IBAction)btn3OnTouch:(id)sender
+- (IBAction)btn3:(id)sender
 {
     [stack pushNum:@"3"];
     [self.consoleText setText:stack.console];
 }
-- (IBAction)btn4OnTouch:(id)sender
+- (IBAction)btn4:(id)sender
 {
     [stack pushNum:@"4"];
     [self.consoleText setText:stack.console];
 }
-- (IBAction)btn5OnTouch:(id)sender
+- (IBAction)btn5:(id)sender
 {
     [stack pushNum:@"5"];
     [self.consoleText setText:stack.console];
 }
-- (IBAction)btn6OnTouch:(id)sender
+- (IBAction)btn6:(id)sender
 {
     [stack pushNum:@"6"];
     [self.consoleText setText:stack.console];
 }
-- (IBAction)btn7OnTouch:(id)sender
+- (IBAction)btn7:(id)sender
 {
     [stack pushNum:@"7"];
     [self.consoleText setText:stack.console];
 }
-- (IBAction)btn8OnTouch:(id)sender
+- (IBAction)btn8:(id)sender
 {
     [stack pushNum:@"8"];
     [self.consoleText setText:stack.console];
 }
-- (IBAction)btn9OnTouch:(id)sender
+- (IBAction)btn9:(id)sender
 {
     [stack pushNum:@"9"];
     [self.consoleText setText:stack.console];
 }
 
-- (IBAction)btnDotOnTouch:(id)sender
+- (IBAction)btnDot:(id)sender
 {
     [stack pushDot];
     [self.consoleText setText:stack.console];
 }
 
+
+-(IBAction)btnLbrace:(id)sender{
+    [stack pushOp:LBRACE];
+    [self.expText setText:stack.expersion];
+}
+
+-(IBAction)btnRbrace:(id)sender{
+    [stack pushOp:RBRACE];
+    [self.expText setText:stack.expersion];
+}
+
 //==========OPERATOR PAD ==============
-- (IBAction)btnEqualOnTouch:(id)sender
+- (IBAction)btnEqual:(id)sender
 {
-    [stack pushOperation:EQUAL];
-    [self.consoleText setText:stack.lvaueStack];
-    [self.expText setText:stack.expersion];
-}
-- (IBAction)btnPlusOnTouch:(id)sender
-{
-    [stack pushOperation:PLUS];
+    [stack pushOp:EQUAL];
     [self.consoleText setText:stack.console];
     [self.expText setText:stack.expersion];
 }
-- (IBAction)btnMinusOnTouch:(id)sender
+- (IBAction)btnPlus:(id)sender
 {
-    [stack pushOperation:MINUS];
+    //[stack pushOperation:PLUS];
+    [stack pushOp:PLUS];
     [self.consoleText setText:stack.console];
     [self.expText setText:stack.expersion];
 }
-- (IBAction)btnMultiplyOnTouch:(id)sender
+- (IBAction)btnMinus:(id)sender
 {
-    [stack pushOperation:MULTIPLY];
+    //[stack pushOperation:MINUS];
+     [stack pushOp:MINUS];
     [self.consoleText setText:stack.console];
     [self.expText setText:stack.expersion];
 }
-- (IBAction)btnDivideOnTouch:(id)sender
+- (IBAction)btnMultiply:(id)sender
 {
-    [stack pushOperation:DIVIDE];
+    //[stack pushOperation:MULTIPLY];
+     [stack pushOp:MULTIPLY];
+    [self.consoleText setText:stack.console];
+    [self.expText setText:stack.expersion];
+}
+- (IBAction)btnDivide:(id)sender
+{
+    //[stack pushOperation:DIVIDE];
+     [stack pushOp:DIVIDE];
     [self.consoleText setText:stack.console];
     [self.expText setText:stack.expersion];
 }
 
-- (IBAction)btnSgnOnTouch:(id)sender
+- (IBAction)btnSgn:(id)sender
 {
-    [stack pushOperation:SGN];
+    [stack pushOp:SGN];
     [self.consoleText setText:stack.console];
 }
-- (IBAction)btnPercentOnTouch:(id)sender
+- (IBAction)btnPercent:(id)sender
 {
-    [stack pushOperation:PERCENT];
+    [stack pushOp:PERCENT];
 }
 
 //=========FUNCTION PAD============
-- (IBAction)btnClearOnTouch:(id)sender
+- (IBAction)btnClear:(id)sender
 {
     [stack clear];
     [self.consoleText setText:stack.console];
     [self.expText setText:stack.expersion];
 }
-- (IBAction)btnDeleteOnTouch:(id)sender
+- (IBAction)btnDelete:(id)sender
 {
     [stack popNum];
     [self.consoleText setText:stack.console];
 }
 
-- (IBAction)btnMemoryClearOnTouch:(id)sender
+- (IBAction)btnMemoryClear:(id)sender
 {
     [stack memoryClear];
     [self.mFlag setText:@""];
 }
 
-- (IBAction)btnMemoryWriteOnTouch:(id)sender
+- (IBAction)btnMemoryAdd:(id)sender
 {
-    [stack memoryWrite];
+    [stack memoryAdd];
     [self.mFlag setText:@"M"];
 }
 
-- (IBAction)btnMemoryReadOnTouch:(id)sender
+
+- (IBAction)btnMemoryMinus:(id)sender
+{
+    [stack memoryMinus];
+    //[self.mFlag setText:@"M"];
+
+}
+- (IBAction)btnMemoryRead:(id)sender
 {
     [stack memoryRead];
     [self.consoleText setText:stack.console];

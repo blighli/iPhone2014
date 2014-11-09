@@ -9,6 +9,11 @@
 #import "ResultStack.h"
 #import "StrCalcMethod.h"
 
+@interface ResultStack ()
+@property int LbraceCount;
+
+@end
+
 @implementation ResultStack
 
 - (id)init
@@ -18,9 +23,15 @@
         self.console = @"0";
         self.memoryReg = @"0";
         self.expersion = @"";
-        self.lvaueStack = @"";
-        self.opStack = NUL;
-        self.isLastPushNum = NO;
+
+        self.LbraceCount = 0;
+
+        self.isLastPushItemUnaryable = NO;
+        self.isConsoleWriteToStackable = NO;
+
+        self.opStackArr = [[Stack alloc] init];
+        [self.opStackArr push:[[Operation alloc] initWithOPS:NUL]];
+        self.valueStackArr = [[Stack alloc] init];
     }
 
     return self;
@@ -28,19 +39,8 @@
 
 - (void)pushNum:(NSString *)number
 {
-    /**
-   *  如果上次的操作符是等号，则重新开始新的计算
-   *  TODO : 支持连续等号来重复上次操作（需要增加栈的一个深度）
-   */
-    if (self.opStack == EQUAL)
-    {
-        self.expersion = @"";
-        self.lvaueStack = @"";
-        self.opStack = NUL;
-    }
-
-    //如果上次操作不是一元操作符，则这之后期待输入右值。因此console清零
-    if (!self.isLastPushNum)
+    //如果上次push item不可一元操作，则这之后期待输入新的右值。因此console清零
+    if (!self.isLastPushItemUnaryable)
     {
         self.console = @"0";
     }
@@ -74,7 +74,8 @@
             }
         }
     }
-    self.isLastPushNum = YES;
+    self.isLastPushItemUnaryable = YES;
+    self.isConsoleWriteToStackable = YES;
 }
 
 // limit the . is show only once
@@ -100,127 +101,203 @@
     }
 }
 
-- (void)pushOperation:(Operation)operater
+- (void)runStack
 {
-    //当前屏幕上的数值记录为右值
-    NSString *rvalue = self.console;
+    Operation *opLast = [self.opStackArr top];
 
-    //当上一次输入为二元操作符时,在表达式记录栏记录右值
-    if (operater != SGN && operater != PERCENT) {
-          self.expersion = [self.expersion stringByAppendingString:rvalue];
+
+
+    if (opLast.opType == RBRACE)
+    {
+        [self.opStackArr pop];
+        [self runStack];
+        opLast = [self.opStackArr top];
     }
     
-    
-    
-
-   // NSLog(@"运算前栈中op: %@,lv%@,rv%@,exp%@", OpString(self.opStack), self.lvaueStack, rvalue, self.expersion);
-
-    // init 左值
-    if (self.opStack == NUL && operater != SGN && operater != PERCENT)
+    else if (opLast.opType == LBRACE)
     {
-        self.lvaueStack = self.console;
+        [self.opStackArr pop];
+        opLast = [self.opStackArr top];
+       // [self runStack];
+        //return;
     }
-    //如果左值堆栈和操作符堆栈都不为空，且当前操作符是二元操作符则更新左值
-    if (self.opStack != NUL && ![self.lvaueStack isEqualToString:@""] && operater!=SGN && operater != PERCENT)
+
+    //操作栈为空时,停止递归
+    if (opLast.opType == NUL)
     {
-        switch (self.opStack)
+        return;
+    }
+    else if (opLast.opType != NUL && opLast.opType != LBRACE && opLast.opType != RBRACE)
+    {
+        NSString *rvalue = [self.valueStackArr top];
+        [self.valueStackArr pop];                    //弹出右值
+        NSString *lvalue = [self.valueStackArr top]; //读取左值
+        [self.valueStackArr pop];                    //弹出左值
+
+        NSString *result = [StrCalcMethod calcWithOpType:lvalue withRStr:rvalue withOP:opLast.opType];
+        [self.valueStackArr push:result]; //更新值栈
+        [self.opStackArr pop];            //弹出上次操作符
+
+        [self runStack];
+    }
+}
+- (void)pushOp:(OPTYPE)opEnum
+{
+    if (!self.isLastPushItemUnaryable && opEnum != LBRACE)
+    {
+        return;
+    }
+
+    Operation *opLast = [self.opStackArr top];
+    if (self.isConsoleWriteToStackable && opEnum != LBRACE)
+    {
+        [self.valueStackArr push:self.console];
+    }
+
+    Operation *opNow = [[Operation alloc] initWithOPS:opEnum];
+
+    //弹出所有栈
+    if (opNow.opType == EQUAL)
+    {
+        [self runStack];
+        self.console = [self.valueStackArr top];
+        self.expersion = @"";
+        self.LbraceCount = 0;
+
+        self.isLastPushItemUnaryable = YES;
+
+        return;
+    }
+
+    NSString *rvalue = [self.valueStackArr top];
+
+    if (opNow.isBinaryOperator)
+    {
+        if (opNow.priority < opLast.priority) // 将之前的栈中的高优先级的操作计算掉
         {
-            case PLUS:
-                self.lvaueStack =
-                    [StrCalcMethod deciPlus:self.lvaueStack withString:rvalue];
+            [self runStack];
+            [self.opStackArr push:opNow];
+            if (opNow.opType != LBRACE && opLast.opType != RBRACE && self.isLastPushItemUnaryable)
+            {
+                self.expersion = [self.expersion stringByAppendingString:rvalue];
+            }
 
-                break;
-            case MINUS:
-                self.lvaueStack =
-                    [StrCalcMethod deciMinus:self.lvaueStack withString:rvalue];
-                break;
+            self.expersion = [self.expersion stringByAppendingString:opNow.name]; //更新表达式label
 
-            case DIVIDE:
-                if ([rvalue doubleValue] == 0)
-                {
-                    self.lvaueStack = @"除数不能为零";
-                    break;
-                }
-                self.lvaueStack =
-                    [StrCalcMethod deciDivide:self.lvaueStack withString:rvalue];
-                break;
-            case MULTIPLY:
-                self.lvaueStack =
-                    [StrCalcMethod deciMultiply:self.lvaueStack withString:rvalue];
-                break;
-            default:
-                break;
+            self.isLastPushItemUnaryable = NO; //双目运算符不可被一元操作符运算
         }
+        else if (opNow.priority == opLast.priority) //相同优先级可以合并前两个操作值的计算结果,并存入堆栈
+        {
+            if (opLast.opType == LBRACE)
+            {
+                return;
+            }
+            if (opNow.opType == RBRACE)
+            {
+                if (self.LbraceCount >= 0)
+                {
+                    [self.opStackArr push:opNow];
+                    self.LbraceCount--;
+                }
+            }
+            else
+            {
+                [self.valueStackArr pop];                    //弹出右值
+                NSString *lvalue = [self.valueStackArr top]; //读取左值
+                [self.valueStackArr pop];                    //弹出左值
+                NSString *result = [StrCalcMethod calcWithOpType:lvalue withRStr:rvalue withOP:opLast.opType];
+                [self.valueStackArr push:result]; //更新值栈
+                [self.opStackArr pop];            //弹出上次操作符
+                [self.opStackArr push:opNow];     //更新操作符栈
+                //   [self runStack];
+                //  [self.opStackArr push:opNow];
+                if (opNow.opType != LBRACE && self.isLastPushItemUnaryable)
+                {
+                    self.expersion = [self.expersion stringByAppendingString:rvalue];
+                }
+            }
 
-        //    case SGN:
-        //        self.lvaueStack =
-        //        [StrCalcMethod deciMultiply:self.lvaueStack withString:@"-1"];
-        //        //self.expersion = self.lvaueStack ;
-        //        break;
-        //    case PERCENT:
-        //        self.lvaueStack =
-        //        [StrCalcMethod deciMultiply:self.lvaueStack withString:@"0.01"];
-        //        //self.expersion = self.lvaueStack ;
-        //        break;
+            if (opNow.opType == RBRACE)
+            {
+                if (self.LbraceCount >= 0)
+                {
+                    self.expersion = [self.expersion stringByAppendingString:opNow.name]; //更新表达式label
+                    self.isConsoleWriteToStackable = NO;
+                    self.isLastPushItemUnaryable = YES;
+                }
+            }
+            else
+            {
+                self.expersion = [self.expersion stringByAppendingString:opNow.name]; //更新表达式label
+                self.isLastPushItemUnaryable = NO;                                    //双目运算符不可被一元操作符运算
+            }
+        }
+        else //仅仅push到操作符栈,不计算
+        {
+            //如果push 的是 Lbrace 则将优先级调至最低
+            if (opNow.opType == LBRACE)
+            {
+                opNow.priority = InLBracePri;
+
+                self.LbraceCount++;
+            }
+
+            if (opNow.opType == RBRACE)
+            {
+                if (self.LbraceCount >= 0)
+                {
+                    [self.opStackArr push:opNow];
+                    self.LbraceCount--;
+                }
+            }
+
+            else
+            {
+                [self.opStackArr push:opNow]; //更新操作符栈
+            }
+
+            if (opNow.opType != LBRACE && self.isLastPushItemUnaryable)
+            {
+                self.expersion = [self.expersion stringByAppendingString:rvalue];
+            }
+
+            if (opNow.opType == RBRACE)
+            {
+                if (self.LbraceCount >=0)
+                {
+                    self.expersion = [self.expersion stringByAppendingString:opNow.name]; //更新表达式label
+                    self.isConsoleWriteToStackable = NO;
+                    self.isLastPushItemUnaryable = YES;
+                }
+            }
+            else
+            {
+                self.expersion = [self.expersion stringByAppendingString:opNow.name]; //更新表达式label
+                self.isLastPushItemUnaryable = NO;                                    //双目运算符不可被一元操作符运算
+            }
+        }
     }
-    
-    
-    //将当前操作符存入栈中，如果是一元操作符，则立刻更新左值，原操作符不变
-    switch (operater)
+    else
     {
-        case PLUS:
-            self.expersion = [self.expersion stringByAppendingString:@"+"];
-            self.isLastPushNum = NO;
-            self.opStack = PLUS;
-            self.console = self.lvaueStack;
-            break;
-        case MINUS:
-            self.expersion = [self.expersion stringByAppendingString:@"−"];
-            self.isLastPushNum = NO;
-            self.opStack = MINUS;
-            self.console = self.lvaueStack;
-            break;
-        case MULTIPLY:
-            self.expersion = [self.expersion stringByAppendingString:@"×"];
-            self.isLastPushNum = NO;
-            self.opStack = MULTIPLY;
-            self.console = self.lvaueStack;
-            break;
-        case DIVIDE:
-            self.expersion = [self.expersion stringByAppendingString:@"÷"];
-            self.isLastPushNum = NO;
-            self.opStack = DIVIDE;
-            self.console = self.lvaueStack;
-            break;
-        case EQUAL:
-            self.expersion = @"";
-            self.opStack = NUL;
-            self.isLastPushNum = NO;
-            self.opStack = EQUAL;
-            self.console = self.lvaueStack;
-            break;
-        case SGN:
-            rvalue =
-                    [StrCalcMethod deciMultiply:rvalue withString:@"-1"];
-            
-            //self.expersion =  rvalue;
-            self.isLastPushNum = YES;
-            self.console = rvalue;
-            break;
-        case PERCENT:
-            rvalue =
-                   [StrCalcMethod deciMultiply:rvalue withString:@"0.01"];
-             //self.expersion =  rvalue;
-            self.isLastPushNum = YES;
-            self.console = rvalue;
-            break;
+        //单目运算符 立刻更新值栈,操作栈不变
 
-        default:
-            break;
+        NSString *lvalue = [self.valueStackArr top]; //读取左值
+        [self.valueStackArr pop];
+
+        // 对于单目运算 RStr is not necessary
+        NSString *result = [StrCalcMethod calcWithOpType:lvalue withRStr:@"" withOP:opNow.opType];
+        [self.valueStackArr push:result]; //更新值栈
+
+        self.isLastPushItemUnaryable = YES; //单目运算符可被一元操作符运算
+        self.isConsoleWriteToStackable = NO;
     }
-    
 
-  //  NSLog(@"运算后栈中op: %@,lv%@,rv%@,exp%@", OpString(self.opStack), self.lvaueStack, rvalue, self.expersion);
+    if ([self.valueStackArr top] == nil)
+    {
+        self.console = @"0";
+    }
+    else
+        self.console = [self.valueStackArr top]; // 更新计算结果label
 }
 
 - (void)clear
@@ -228,22 +305,27 @@
     self.console = @"0";
     self.expersion = @"";
 
-    self.opStack = NUL;
-    self.lvaueStack = @"";
+    [self.opStackArr empty];
+    [self.opStackArr push:[[Operation alloc] initWithOPS:NUL]];
+
+    [self.valueStackArr empty];
 }
 
 - (void)memoryClear
 {
     self.memoryReg = @"0";
 }
-- (void)memoryWrite
+- (void)memoryAdd
 {
-    if ([self.console isEqualToString:@""])
+    self.memoryReg = [StrCalcMethod deciPlus:self.memoryReg withString:self.console];
+}
+
+- (void)memoryMinus
+{
+    if (![self.memoryReg isEqualToString:@""])
     {
-        self.memoryReg = @"0";
+        self.memoryReg = [StrCalcMethod deciMinus:self.memoryReg withString:self.console];
     }
-    else
-        self.memoryReg = self.console;
 }
 
 - (void)memoryRead

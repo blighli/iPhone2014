@@ -15,35 +15,39 @@
 
 
 
-- (IBAction)btn0OnTouch:(id)sender;
-- (IBAction)btn1OnTouch:(id)sender;
-- (IBAction)btn2OnTouch:(id)sender;
-- (IBAction)btn3OnTouch:(id)sender;
-- (IBAction)btn4OnTouch:(id)sender;
-- (IBAction)btn5OnTouch:(id)sender;
-- (IBAction)btn6OnTouch:(id)sender;
-- (IBAction)btn7OnTouch:(id)sender;
-- (IBAction)btn8OnTouch:(id)sender;
-- (IBAction)btn9OnTouch:(id)sender;
+- (IBAction)btn0:(id)sender;
+- (IBAction)btn1:(id)sender;
+- (IBAction)btn2:(id)sender;
+- (IBAction)btn3:(id)sender;
+- (IBAction)btn4:(id)sender;
+- (IBAction)btn5:(id)sender;
+- (IBAction)btn6:(id)sender;
+- (IBAction)btn7:(id)sender;
+- (IBAction)btn8:(id)sender;
+- (IBAction)btn9:(id)sender;
 
-- (IBAction)btnDotOnTouch:(id)sender;
+- (IBAction)btnDot:(id)sender;
 
-- (IBAction)btnEqualOnTouch:(id)sender;
-- (IBAction)btnPlusOnTouch:(id)sender;
-- (IBAction)btnMinusOnTouch:(id)sender;
-- (IBAction)btnMultiplyOnTouch:(id)sender;
-- (IBAction)btnDivideOnTouch:(id)sender;
+-(IBAction)btnLbrace:(id)sender;
+-(IBAction)btnRbrace:(id)sender;
 
-- (IBAction)btnSgnOnTouch:(id)sender;
-- (IBAction)btnPercentOnTouch:(id)sender;
+- (IBAction)btnEqual:(id)sender;
+- (IBAction)btnPlus:(id)sender;
+- (IBAction)btnMinus:(id)sender;
+- (IBAction)btnMultiply:(id)sender;
+- (IBAction)btnDivide:(id)sender;
+
+- (IBAction)btnSgn:(id)sender;
+- (IBAction)btnPercent:(id)sender;
 
 
-- (IBAction)btnClearOnTouch:(id)sender;
-- (IBAction)btnDeleteOnTouch:(id)sender;
+- (IBAction)btnClear:(id)sender;
+- (IBAction)btnDelete:(id)sender;
 
-- (IBAction)btnMemoryClearOnTouch:(id)sender;
-- (IBAction)btnMemoryWriteOnTouch:(id)sender;
-- (IBAction)btnMemoryReadOnTouch:(id)sender;
+- (IBAction)btnMemoryClear:(id)sender;
+- (IBAction)btnMemoryAdd:(id)sender;
+- (IBAction)btnMemoryMinus:(id)sender;
+- (IBAction)btnMemoryRead:(id)sender;
 
 
 

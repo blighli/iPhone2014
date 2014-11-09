@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C755AF611A0B904700E89F37 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = C755AF601A0B904700E89F37 /* Stack.m */; };
+		C755AF641A0BBD7F00E89F37 /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = C755AF631A0BBD7F00E89F37 /* Operation.m */; };
+		C755AF671A0BC23300E89F37 /* PriorityConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C755AF661A0BC23300E89F37 /* PriorityConstants.m */; };
 		C7E12DC01A08FC6C00832499 /* ResultStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E12DBF1A08FC6C00832499 /* ResultStack.m */; };
 		C7E12DC31A0A03F100832499 /* StrCalcMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E12DC21A0A03F100832499 /* StrCalcMethod.m */; };
 		C7F1503C1A079FE90062D051 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F1503B1A079FE90062D051 /* main.m */; };
@@ -29,6 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C755AF5F1A0B904700E89F37 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		C755AF601A0B904700E89F37 /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
+		C755AF621A0BBD7F00E89F37 /* Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operation.h; sourceTree = "<group>"; };
+		C755AF631A0BBD7F00E89F37 /* Operation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operation.m; sourceTree = "<group>"; };
+		C755AF651A0BC23300E89F37 /* PriorityConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriorityConstants.h; sourceTree = "<group>"; };
+		C755AF661A0BC23300E89F37 /* PriorityConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriorityConstants.m; sourceTree = "<group>"; };
 		C7E12DBE1A08FC6C00832499 /* ResultStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultStack.h; path = calc/ResultStack.h; sourceTree = "<group>"; };
 		C7E12DBF1A08FC6C00832499 /* ResultStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultStack.m; path = calc/ResultStack.m; sourceTree = "<group>"; };
 		C7E12DC11A0A03F100832499 /* StrCalcMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StrCalcMethod.h; path = calc/StrCalcMethod.h; sourceTree = "<group>"; };
@@ -96,8 +105,14 @@
 		C7E12DC71A0A043500832499 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				C755AF621A0BBD7F00E89F37 /* Operation.h */,
+				C755AF631A0BBD7F00E89F37 /* Operation.m */,
 				C7E12DC11A0A03F100832499 /* StrCalcMethod.h */,
 				C7E12DC21A0A03F100832499 /* StrCalcMethod.m */,
+				C755AF5F1A0B904700E89F37 /* Stack.h */,
+				C755AF601A0B904700E89F37 /* Stack.m */,
+				C755AF651A0BC23300E89F37 /* PriorityConstants.h */,
+				C755AF661A0BC23300E89F37 /* PriorityConstants.m */,
 			);
 			name = helper;
 			path = ..;
@@ -263,10 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C755AF611A0B904700E89F37 /* Stack.m in Sources */,
 				C7F150421A079FE90062D051 /* ViewController.m in Sources */,
 				C7E12DC31A0A03F100832499 /* StrCalcMethod.m in Sources */,
 				C7E12DC01A08FC6C00832499 /* ResultStack.m in Sources */,
 				C7F1503F1A079FE90062D051 /* AppDelegate.m in Sources */,
+				C755AF671A0BC23300E89F37 /* PriorityConstants.m in Sources */,
+				C755AF641A0BBD7F00E89F37 /* Operation.m in Sources */,
 				C7F1503C1A079FE90062D051 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
