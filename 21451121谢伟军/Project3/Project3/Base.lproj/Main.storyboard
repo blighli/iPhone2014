@@ -1,25 +1,123 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wph-if-2Hu">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="ifN-EC-0HZ">
+            <objects>
+                <navigationController id="Wph-if-2Hu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ykD-pf-4TJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Mga-Gv-xaP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bJb-dy-7Wd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2165" y="727"/>
+        </scene>
+        <!--待办事宜-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a task, tap insert" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VeZ-43-eMG">
+                                <rect key="frame" x="16" y="78" width="211" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uLu-NS-e0G">
+                                <rect key="frame" x="0.0" y="144" width="320" height="328"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="mlD-wA-s40"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="UcY-Fw-ROR"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whJ-O7-iLe">
+                                <rect key="frame" x="241" y="78" width="72" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="5RL-xq-b5H"/>
+                                </constraints>
+                                <state key="normal" title="添加">
+                                    <color key="titleColor" red="1" green="0.70470851253807543" blue="0.22831886848134642" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTask:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="J0j-Ay-HzQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="whJ-O7-iLe" firstAttribute="top" secondItem="VeZ-43-eMG" secondAttribute="top" id="7cU-Rp-9Kc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="whJ-O7-iLe" secondAttribute="trailing" constant="-12" id="7yD-F1-MAb"/>
+                            <constraint firstAttribute="trailing" secondItem="uLu-NS-e0G" secondAttribute="trailing" id="83H-L3-Zbs"/>
+                            <constraint firstItem="VeZ-43-eMG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Des-4e-aUA"/>
+                            <constraint firstItem="VeZ-43-eMG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="7" id="Qo9-rl-DoK"/>
+                            <constraint firstItem="uLu-NS-e0G" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="SYB-jY-5tv"/>
+                            <constraint firstItem="whJ-O7-iLe" firstAttribute="leading" secondItem="VeZ-43-eMG" secondAttribute="trailing" constant="17" id="XxA-WE-QLC"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="uLu-NS-e0G" secondAttribute="bottom" constant="8" symbolic="YES" id="cAy-x0-Gda"/>
+                            <constraint firstItem="uLu-NS-e0G" firstAttribute="top" secondItem="VeZ-43-eMG" secondAttribute="bottom" constant="18" id="pi0-ft-DhK"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="待办事宜" id="84B-Hh-s8x"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="insertButton" destination="whJ-O7-iLe" id="Qvo-y0-ASO"/>
+                        <outlet property="taskField" destination="VeZ-43-eMG" id="NI1-Nl-dT3"/>
+                        <outlet property="taskTable" destination="uLu-NS-e0G" id="4mF-fX-vOP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1543" y="727"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="869-re-7dj">
+            <objects>
+                <viewController id="5Ej-z7-N8g" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="x5L-Lw-EE6">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="usy-5b-GUM">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="w2P-Y8-KIo">
+                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="取消">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="7Fj-fi-R7O">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dSg-50-H6z">
+                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="添加">
+                                    <color key="titleColor" red="1" green="0.85686140334243155" blue="0.15419023547525146" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTask:" destination="5Ej-z7-N8g" eventType="touchUpInside" id="6dD-Si-nUR"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s46-Ur-WeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1159" y="667"/>
         </scene>
     </scenes>
 </document>

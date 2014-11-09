@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *taskTable;
 
+@property (strong, nonatomic) IBOutlet UITextField *taskField;
+//
+@property (strong, nonatomic) IBOutlet UIButton *insertButton;
+@property (nonatomic) NSMutableArray* tasks;
 
+- (IBAction)addTask:(UIButton *)sender;
+
+-(NSString *)docPath;
+-(void) readFile;
 @end
 
