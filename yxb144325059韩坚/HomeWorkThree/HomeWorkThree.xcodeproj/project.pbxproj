@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26ADB3241A0F168A00BEE72C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26ADB3231A0F168A00BEE72C /* LaunchScreen.xib */; };
 		26EA95171A0A3BBA0063A7F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EA95161A0A3BBA0063A7F3 /* main.m */; };
 		26EA951A1A0A3BBA0063A7F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EA95191A0A3BBA0063A7F3 /* AppDelegate.m */; };
-		26EA95251A0A3BBA0063A7F3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EA95231A0A3BBA0063A7F3 /* LaunchScreen.xib */; };
 		26EA95311A0A3BBA0063A7F3 /* HomeWorkThreeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EA95301A0A3BBA0063A7F3 /* HomeWorkThreeTests.m */; };
 /* End PBXBuildFile section */
 
@@ -24,12 +24,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26ADB3231A0F168A00BEE72C /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		26EA95111A0A3BBA0063A7F3 /* HomeWorkThree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeWorkThree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26EA95151A0A3BBA0063A7F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26EA95161A0A3BBA0063A7F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26EA95181A0A3BBA0063A7F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		26EA95191A0A3BBA0063A7F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		26EA95241A0A3BBA0063A7F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		26EA952A1A0A3BBA0063A7F3 /* HomeWorkThreeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeWorkThreeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26EA952F1A0A3BBA0063A7F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26EA95301A0A3BBA0063A7F3 /* HomeWorkThreeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeWorkThreeTests.m; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 			children = (
 				26EA95181A0A3BBA0063A7F3 /* AppDelegate.h */,
 				26EA95191A0A3BBA0063A7F3 /* AppDelegate.m */,
-				26EA95231A0A3BBA0063A7F3 /* LaunchScreen.xib */,
+				26ADB3231A0F168A00BEE72C /* LaunchScreen.xib */,
 				26EA95141A0A3BBA0063A7F3 /* Supporting Files */,
 			);
 			path = HomeWorkThree;
@@ -188,7 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26EA95251A0A3BBA0063A7F3 /* LaunchScreen.xib in Resources */,
+				26ADB3241A0F168A00BEE72C /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,17 +228,6 @@
 			targetProxy = 26EA952B1A0A3BBA0063A7F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		26EA95231A0A3BBA0063A7F3 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				26EA95241A0A3BBA0063A7F3 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		26EA95321A0A3BBA0063A7F3 /* Debug */ = {
@@ -320,6 +309,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HomeWorkThree/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -330,6 +320,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HomeWorkThree/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

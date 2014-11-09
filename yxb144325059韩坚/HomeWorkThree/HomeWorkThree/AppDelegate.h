@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+
 NSString *docPath(void);
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UITableViewDataSource>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {
     UITableView *taskTable;
     UITextField *taskField;
