@@ -101,7 +101,7 @@
         //删除tableView中对应数据的单元
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationAutomatic];
-        
+        [self.tasks writeToFile:[self docPath] atomically:YES];
     }
 }
 
