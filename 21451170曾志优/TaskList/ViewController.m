@@ -22,6 +22,7 @@
 
 -(NSArray *)plist
 {
+    
     if (_plist == nil) {
         _plist = [NSArray array];
         
@@ -38,6 +39,15 @@
 }
 -(void)taskListUI
 {
+    // NSArray *plist = [NSArray arrayWithContentsOfFile:docPath()];
+    
+    _plist = [NSArray arrayWithContentsOfFile:docPath()];
+    
+    if (_plist!=nil) {
+        _tasks = [_plist mutableCopy];
+    } else {
+        _tasks = [[NSMutableArray alloc] init];
+    }
     
     if (_plist!=nil) {
         _tasks = [_plist mutableCopy];
@@ -99,6 +109,8 @@
 NSString *docPath()
 {
     NSArray *pathList = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES);
+  //  NSLog(@"----%@",[pathList objectAtIndex:0]);
+  //  NSLog(@"----%@",[[pathList objectAtIndex:0] stringByAppendingPathComponent:@"data.txt"]);
     return [[pathList objectAtIndex:0] stringByAppendingPathComponent:@"data.txt"];
 }
 
@@ -125,6 +137,7 @@ NSString *docPath()
     // Remove the row from data model
     
     [_tasks removeObjectAtIndex:indexPath.row];
+      [_tasks writeToFile:docPath() atomically:YES];
     [_taskTable reloadData]; //表格视图重新载入数据
     
 }
@@ -142,8 +155,6 @@ NSString *docPath()
     
 }
 
-
-
 - (void)addTask:(id)sender {
     NSString *text = [_taskField text]; //从输入框获取新的任务
     if ([text isEqualToString:@""]) {
@@ -153,6 +164,7 @@ NSString *docPath()
     [_taskTable reloadData]; //表格视图重新载入数据
     [_taskField setText:@""]; //清空输入框
     [_taskField resignFirstResponder]; //关闭软键盘
+    [_tasks writeToFile:docPath() atomically:YES];
 }
 
 -(void)updateTask:(id)sender{
@@ -172,6 +184,11 @@ NSString *docPath()
     [_taskField resignFirstResponder]; //关闭软键盘
     [_updateButton setHidden:YES];
     [_insertButton setHidden:NO];
+    [_tasks writeToFile:docPath() atomically:YES];
 }
 
+-(void) viewDidDisappear:(BOOL)animated
+{
+   [_tasks writeToFile:docPath() atomically:YES];
+}
 @end
