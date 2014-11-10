@@ -133,7 +133,9 @@
 
 
 - (IBAction)insertNumber:(id)sender {
-    if ([_displaying length] < 9 || (_isMinus && [_displaying length] < 10)) {
+    if ([_displaying length] < 9 || (_isMinus && [_displaying length] < 10)||
+        (!_pointTag && [_displaying length] < 10)
+        || (!_pointTag&&_isMinus && [_displaying length] < 11)) {
         NSUInteger digit = [sender tag];
         [self printDigit:digit];
     }
@@ -335,7 +337,7 @@
 }
 - (NSString *)finalResult
 {
-    NSString * finalResult;
+    NSMutableString * finalResult;
     Stack *stack = [[Stack alloc] init];
     for(NSString *test in _postfixExpression)
     {
@@ -352,15 +354,46 @@
             [stack push:result];
         }
     }
-    finalResult = [stack pop];
+    finalResult = [NSMutableString stringWithFormat:@"%@",[stack pop]];
+    [self formatResult:finalResult];
     return  finalResult;
 }
 
+- (NSMutableString *)formatResult:(NSMutableString *)finalResult
+{
+    NSRange range = [finalResult rangeOfString:@"."];
+//    NSMutableString *result;
+    if(range.location == NSNotFound)
+    {
+        [finalResult appendString:@"."];
+         range = [finalResult rangeOfString:@"."];
+    }
+    if (range.location > 8 ||
+        (range.location > 7 &&[finalResult length] > 9)||
+    ( [finalResult rangeOfString:@"-"].location != NSNotFound && [finalResult length] > 10 )
+        ||     ( [finalResult rangeOfString:@"-"].location == NSNotFound && [finalResult length] > 9 ))
+    {
+        [finalResult deleteCharactersInRange:range];
+        if ([finalResult rangeOfString:@"-"].location == NSNotFound) {
+            [finalResult insertString:@"." atIndex:1];
+            NSString *s = [finalResult substringWithRange:NSMakeRange(0, 8)];
+            [finalResult setString:s];
+            [finalResult appendString:@"e"];
+            [finalResult appendFormat:@"%lu",range.location - 1];
+            
+        }
+    }else{
+        [finalResult deleteCharactersInRange:range];
+    }
+    NSLog(@"finalResult = %@",finalResult);
+    return finalResult;
+}
 - (NSString *)match:(NSString *)first andSec:(NSString *)second andSymbol:(NSString *)symbol
 {
     NSMutableString *answer;
     double x = [first doubleValue];
     double y = [second doubleValue];
+    NSLog(@"x = %.1f y = %.1f",x,y);
     double matchResult = 0;
     const char * tag = [symbol UTF8String];
     switch (tag[0]) {
