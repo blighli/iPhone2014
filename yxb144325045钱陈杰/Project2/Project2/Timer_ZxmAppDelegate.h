@@ -2,7 +2,7 @@
 //  Timer_ZxmAppDelegate.h
 //  Project2
 //
-//  Created by ZhaoXM on 14-11-9.
+//  Created by qianchj on 14-11-9.
 //  Copyright (c) 2014年 qianchj. All rights reserved.
 //
 
