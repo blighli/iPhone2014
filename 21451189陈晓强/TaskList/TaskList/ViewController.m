@@ -71,6 +71,7 @@
     [_taskList removeObjectAtIndex:indexPath.row];
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:
      UITableViewRowAnimationAutomatic];
+    [_taskList writeToFile:[self docPath] atomically:YES];
 }
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
