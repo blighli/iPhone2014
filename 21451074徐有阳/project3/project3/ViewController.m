@@ -45,7 +45,7 @@
         } else {
             // 保存修改
             [self.tasks setObject:self.titleInput.text atIndexedSubscript:editRow];
-            self.button.titleLabel.text = @"添加";
+            [self.button setTitle:@"添加" forState:UIControlStateNormal];
             self.titleInput.text = @"";
         }
         [self writeToFile];
@@ -61,7 +61,7 @@
 
 // 点击单元格，进行编辑
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.button.titleLabel.text = @"保存";
+    [self.button setTitle:@"保存" forState:UIControlStateNormal];
     editRow = indexPath.row;
     self.titleInput.text = self.tasks[indexPath.row];
 }
