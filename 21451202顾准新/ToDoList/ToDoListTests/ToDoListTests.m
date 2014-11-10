@@ -1,19 +1,19 @@
 //
-//  CalculatorTests.m
-//  CalculatorTests
+//  ToDoListTests.m
+//  ToDoListTests
 //
-//  Created by 顾准新 on 14-11-3.
+//  Created by 顾准新 on 14-11-10.
 //  Copyright (c) 2014年 顾准新. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface CalculatorTests : XCTestCase
+@interface ToDoListTests : XCTestCase
 
 @end
 
-@implementation CalculatorTests
+@implementation ToDoListTests
 
 - (void)setUp {
     [super setUp];
