@@ -37,6 +37,11 @@
             self.currentInputNumber=[[NSString alloc]initWithString:[sender currentTitle]];
     }else
     {
+        //只允许出现一个小数点
+        if([sender.currentTitle isEqualToString:@"."] && [self.currentInputNumber containsString:@"."])
+        {
+            return;
+        }
         self.currentInputNumber=[self.currentInputNumber stringByAppendingString:[sender currentTitle]];
     }
     

@@ -60,7 +60,7 @@
     }else
     {
         
-        //判断是否遇到右括号，如果遇到又括号，直接出栈到最近的左括号为止
+        //判断是否遇到右括号，如果遇到右括号，直接出栈到最近的左括号为止
         if([withOperatorSymbol isEqualToString:@")"])
         {
             while(![[operatorStack lastObject]isEqualToString:@"("] && [operatorStack lastObject]!=nil)
