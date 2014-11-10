@@ -81,7 +81,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     cell.textLabel.text = self.tasks[indexPath.row];
-    NSLog(@"123");
     return cell;
 }
 

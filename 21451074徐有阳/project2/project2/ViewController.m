@@ -9,10 +9,12 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-@property (strong, nonatomic) NSMutableArray *numberStack; // 数字栈
-@property (strong, nonatomic) NSMutableArray *operatorStack; // 操作符栈
+@property (strong, nonatomic) NSMutableArray *numberStack; // 求值时需要用到的数字栈
+@property (strong, nonatomic) NSMutableArray *stack; // 中转后时需要用到的栈
+@property (strong, nonatomic) NSDictionary *levelDictionary; // 优先级字典
 @property (weak, nonatomic) IBOutlet UILabel *screenLabel; // 屏幕
 @property (strong, nonatomic) NSMutableString *inputExpression; // 输入表达式
+
 @property double memory; // 寄存器
 @end
 
@@ -21,16 +23,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 初始化
+    _stack = [[NSMutableArray alloc]init];
     _numberStack = [[NSMutableArray alloc]init];
-    _operatorStack = [[NSMutableArray alloc]init];
     _inputExpression = [[NSMutableString alloc]initWithString:@""];
     _memory = 0.0;
     _screenLabel.text = @"0";
+    _levelDictionary = @{
+                         @"(" : @"0",
+                         @"+" : @"1",
+                         @"-" : @"1",
+                         @"*" : @"2",
+                         @"/" : @"2",
+                         @"%" : @"2"
+                         };
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 // 数字和运算符点击事件
@@ -43,6 +52,9 @@
     else if ([op isEqualToString:@"."] && [[_inputExpression substringWithRange:NSMakeRange(_inputExpression.length - 1, 1)] isEqualToString:@"."]){
         // 小数点后不能加小数点
     }
+    else if ([op isEqualToString:@"0"] && _inputExpression.length==1 && [[_inputExpression substringWithRange:NSMakeRange(_inputExpression.length - 1, 1)] isEqualToString:@"0"]) {
+        // 第一个0的后面不能跟0
+    }
     else {
         [_inputExpression appendString:op];
     }
@@ -51,7 +63,7 @@
 
 // 等号点击事件
 - (IBAction)resultClick:(id)sender {
-    double result = [self evaluate:[self separateString:_inputExpression]];
+    double result = [self evaluate:[self inToPost:[self separateString:_inputExpression]]];
     self.screenLabel.text = [NSString stringWithFormat:@"%g", result];
     _inputExpression = [NSMutableString stringWithFormat:@"%g", result];
 }
@@ -63,13 +75,13 @@
         self.memory = 0.0;
     }
     if ([op isEqualToString:@"M+"]) {
-        double result = [self evaluate:[self separateString:_inputExpression]];
+        double result = [self evaluate:[self inToPost:[self separateString:_inputExpression]]];
         self.screenLabel.text = [NSString stringWithFormat:@"%g", result];
         _inputExpression = [NSMutableString stringWithFormat:@"%g", result];
         self.memory += result;
     }
     if ([op isEqualToString:@"M-"]) {
-        double result = [self evaluate:[self separateString:_inputExpression]];
+        double result = [self evaluate:[self inToPost:[self separateString:_inputExpression]]];
         self.screenLabel.text = [NSString stringWithFormat:@"%g", result];
         _inputExpression = [NSMutableString stringWithFormat:@"%g", result];
         self.memory -= result;
@@ -87,13 +99,13 @@
 }
 
 // 数字进栈
--(void)pushNumber:(NSNumber *)number
+- (void)pushNumber:(NSNumber *)number
 {
     [_numberStack addObject: number];
 }
 
 // 数字出栈
--(double)popNumber
+- (double)popNumber
 {
     NSNumber *number = [_numberStack lastObject];
     if (_numberStack) {
@@ -102,20 +114,24 @@
     return [number doubleValue];
 }
 
-// 运算符进栈
--(void)pushOperator:(NSString *)operator
+// 进栈
+- (void)push:(NSString *)obj
 {
-    [_operatorStack addObject:operator];
+    [_stack addObject:obj];
 }
 
-// 运算符出栈
--(NSString *)popOperator
+// 出栈
+- (void)pop
 {
-    NSString *operator = [_operatorStack lastObject];
-    if (_operatorStack) {
-        [_operatorStack removeLastObject];
+    if (_stack) {
+        [_stack removeLastObject];
     }
-    return operator;
+}
+
+// 栈顶元素
+- (NSString *)top
+{
+    return [_stack lastObject];
 }
 
 // 将字符串转为的数字或操作符数组
@@ -145,38 +161,77 @@
     return expression;
 }
 
-// 利用栈求表达式的值
--(double)evaluate:(NSMutableArray *)expression
+// 利用后缀表达式求值
+-(double)evaluate:(NSMutableArray *)postString
 {
-    while ([expression count] > 0) {
-        NSString *s = [expression firstObject];
-        if (([s stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@")1234567890."]].length)) {
-            NSLog(@"%@", s);
-            [self pushOperator:s];
-        }
-        else if ([s isEqualToString:@")"])
+    for (int i = 0; i < [postString count]; ++i) {
+        if ([postString[i] isEqualToString:@"+"])
         {
-            while ([_operatorStack count]) {
-                NSString *operator = [self popOperator];
-                if ([operator isEqualToString:@"("]) break;
-                double result = [self popNumber];
-                if ([operator isEqualToString:@"+"])
-                    result = [self popNumber] + result;
-                else if ([operator isEqualToString:@"-"])
-                    result = [self popNumber] - result;
-                else if ([operator isEqualToString:@"*"])
-                    result = [self popNumber] * result;
-                else if ([operator isEqualToString:@"/"])
-                    result = [self popNumber] / result;
-                else if ([operator isEqualToString:@"%"])
-                        result = (int)[self popNumber] % (int)result;
-                [self pushNumber:[NSNumber numberWithDouble:(double)result]];
+            double b = [self popNumber];
+            double a = [self popNumber];
+            [self pushNumber: [NSNumber numberWithDouble:(a + b)]];
+        }
+        else if ([postString[i] isEqualToString:@"-"])
+        {
+            double b = [self popNumber];
+            double a = [self popNumber];
+            [self pushNumber:[NSNumber numberWithDouble:(a - b)]];
+        }
+        else if ([postString[i] isEqualToString:@"*"])
+        {
+            double b = [self popNumber];
+            double a = [self popNumber];
+            [self pushNumber:[NSNumber numberWithDouble:(a * b)]];
+        }
+        else if ([postString[i] isEqualToString:@"/"])
+        {
+            double b = [self popNumber];
+            double a = [self popNumber];
+            [self pushNumber:[NSNumber numberWithDouble:(a / b)]];
+        }
+        else if ([postString[i] isEqualToString:@"%"])
+        {
+            double b = [self popNumber];
+            double a = [self popNumber];
+            [self pushNumber:[NSNumber numberWithDouble:(double)((int)a%(int)b)]];
+        }
+        else
+            [self pushNumber:[NSNumber numberWithDouble:[postString[i] doubleValue]]];
+    }
+    return [self popNumber];
+}
+
+// 中缀表达式转后缀表达式
+- (NSMutableArray *)inToPost: (NSMutableArray *)inString {
+    NSMutableArray *postString = [[NSMutableArray alloc]init];
+    for (int i = 0; i < [inString count]; ++i) {
+        NSString *s = inString[i];
+        if ([s isEqualToString:@"("]) [self push:s];
+        else if ([_levelDictionary[s] isEqualToString:@"1"]){
+            while ([self.stack count] && _levelDictionary[s] <= _levelDictionary[[self top]]) {
+                [postString addObject:[self top]];
+                [self pop];
+            }
+            [self push:s];
+        }
+        else if ([_levelDictionary[s] isEqualToString:@"2"])  [self push:s];
+        else if ([s isEqualToString:@")"]) {
+            while ([self.stack count]) {
+                if ([[self top] isEqualToString:@"("]) {
+                    [self pop];
+                    break;
+                }
+                [postString addObject:[self top]];
+                [self pop];
             }
         }
         else
-            [self pushNumber:[NSNumber numberWithDouble:[s doubleValue]]];
-        [expression removeObjectAtIndex:0];
+            [postString addObject:s];
     }
-    return [self popNumber];
+    while ([self.stack count]) {
+        [postString addObject:[self top]];
+        [self pop];
+    }
+    return postString;
 }
 @end
