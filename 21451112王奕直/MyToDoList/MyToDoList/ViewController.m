@@ -23,15 +23,32 @@
     [super viewDidLoad];
     tableData = [[NSMutableArray alloc]init];
     [self setExtraCellLineHidden:self.tableViewData];
+    NSArray * plist=[NSArray arrayWithContentsOfFile:docPath()];
+    if (plist) {
+        tableData = [plist mutableCopy];
+        [tableViewData reloadData];
+    }else{
+        tableData = [[NSMutableArray alloc] init];
+    }
     // Do any additional setup after loading the view, typically from a nib.
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    if ([tableData writeToFile:docPath() atomically:YES]) {
+        NSLog(@"okkkkk!!");
+    }
     [tableViewData reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+   
     // Dispose of any resources that can be recreated.
+}
+
+NSString *docPath()
+{
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    return  [path stringByAppendingPathComponent:@"data.plist"];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -41,10 +58,16 @@
         [tableData insertObject:textFieldData.text atIndex:0];
         textFieldData.text = @"";
         [tableViewData reloadData];
+        if ([tableData writeToFile:docPath() atomically:YES]) {
+            NSLog(@"okkkkk!!");
+        }
+
     }
+    
     [textField resignFirstResponder];
     return YES;
 }
+
 
 - (IBAction)EditBtn:(id)sender{
     UIBarButtonItem * btnItem = (UIBarButtonItem *) sender;
@@ -83,7 +106,7 @@
 // This method is called once we complete editing
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     NSLog(@"Text field ended editing");
-   barBtnItem.title = @"编辑";
+    barBtnItem.title = @"编辑";
     
 }
 
