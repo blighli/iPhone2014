@@ -44,8 +44,7 @@ BOOL firstNum = false;
 
 - (void)updateCurrentNum:(NSString*)newNum {
     if (firstNum) {
-        [self.numberArray push:self.currentNum];
-        _currentNum = nil;
+        [self storeCurrentNum];
         firstNum = false;
     }
     edited = true;
