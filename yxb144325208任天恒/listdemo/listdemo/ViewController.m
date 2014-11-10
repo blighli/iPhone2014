@@ -72,8 +72,8 @@
     UILabel *label = (UILabel *)[cell viewWithTag:1001];
     if(item.checked){
         //cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        //label.text = @"√";
-        label.text = @"";
+        label.text = @"√"; //选择了就标记
+        //label.text = @"";
     }else{
         //cell.accessoryType = UITableViewCellAccessoryNone;
         label.text = @"";

@@ -35,7 +35,7 @@
 - (IBAction)ZFchange:(id)sender;//正负号转换
 - (IBAction)Del:(id)sender; //del
 
-
+//声明：“ ( ”,“ ) "两种运算方法还未实现
 - (void) display;
 
 - (void) switchOP:(char) opt;
