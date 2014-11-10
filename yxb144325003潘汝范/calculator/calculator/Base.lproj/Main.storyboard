@@ -17,21 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW8-ub-Fv1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW8-ub-Fv1">
                                 <rect key="frame" x="16" y="20" width="568" height="58"/>
-                                <color key="backgroundColor" red="0.1411764771" green="0.62352943419999995" blue="0.9450981021" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="OL7-J9-YPY"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="0">
-                                        <attributes>
-                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="40" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kz7-XY-bM4">
@@ -298,7 +290,7 @@
                                     <action selector="buttonTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aj1-ni-nhr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGh-e8-hMJ">
+                            <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGh-e8-hMJ">
                                 <rect key="frame" x="465" y="366" width="119" height="61"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="±">
@@ -306,7 +298,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="d40-CH-21R"/>
+                                    <action selector="buttonTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZVG-Z5-YIf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pz-0d-QDO">
@@ -435,6 +427,7 @@
                     </view>
                     <connections>
                         <outlet property="delBtn" destination="Wjh-sO-qko" id="qL7-oW-bP4"/>
+                        <outlet property="resultLabel" destination="bW8-ub-Fv1" id="4Bw-ZJ-G1G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

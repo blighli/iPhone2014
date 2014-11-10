@@ -12,6 +12,7 @@
 
 @interface ViewController ()
 @property int NumNow;
+@property int modNum;
 @end
 
 @implementation ViewController
@@ -20,6 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.state = NO;
+    self.ishas = NO;
+    self.ismod = NO;
     self.resultLabel.text = @"0";
 }
 
@@ -74,8 +77,7 @@
         case 10:
             [self.expression appendString:@"."];
             break;
-        case 11://AC
-            NSLog(@"sd %lu",self.expression.length);
+        case 11:
             [self.expression setString:@""];
             break;
         case 12:
@@ -90,7 +92,7 @@
         case 15:
             [self.expression appendString:@"+"];
             break;
-        case 16://<
+        case 16:
              [self.expression deleteCharactersInRange:NSMakeRange(self.expression.length-1, 1)];
             break;
         case 17:
@@ -99,19 +101,49 @@
         case 18:
             [self.expression appendString:@")"];
             break;
-        case 19://mod
-            break;
         case 20:
-            if (self.state) {
-                
+            if (self.state && self.ishas) {
+                [self.expression replaceCharactersInRange:NSMakeRange(self.expression.length-1, 1) withString:@"-"];
+                self.state = NO;
+            }else if (!self.state && self.ishas){
+                [self.expression replaceCharactersInRange:NSMakeRange(self.expression.length-1, 1) withString:@"+"];
+                self.state = YES;
+            }else if (self.state && !self.ishas){
+                [self.expression appendString:@"-"];
+                self.state = NO;
+                self.ishas = YES;
+            }else if(!self.state && !self.ishas){
+                [self.expression appendString:@"+"];
+                NSLog(@"test");
+                self.state = YES;
+                self.ishas = YES;
+            }
+            break;
+        case 19:
+            self.ismod = YES;
+            InfixToPostfix *itp = [[InfixToPostfix alloc] init];
+            NSString * result = [itp parseInfix:self.expression];
+            if (result != nil)
+            {
+                PostfixCalculator *postfix = [[PostfixCalculator  alloc] init];
+                NSDecimalNumber * result2 = [postfix compute:result];
+                if (result2 == nil)
+                {
+                    NSLog(@"表达式有误");
+                    [self.resultLabel setText:@"error"];
+                }else
+                {
+                    self.lastReuslt = [NSString stringWithFormat:@"%@", result2];
+                    self.expression = nil;
+                    self.modNum = [result2 intValue];
+                }
             }else{
                 
             }
             break;
-        default:
-            break;
             
     }
+    self.resultLabel.text = self.expression;
     NSLog(@"expree is %@",self.expression);
 }
 
@@ -136,7 +168,6 @@
             [userDefaults setInteger:(self.NumNow-[userDefaults integerForKey:@"m"]) forKey:@"m"];
             [userDefaults synchronize];
             self.expression = [self.resultLabel.text mutableCopy];
-
             break;
         case 4:
             if ([userDefaults objectForKey:@"m"] !=nil ) {
@@ -146,7 +177,6 @@
                 self.resultLabel.text = @"0";
                 self.expression = nil;
             }
-
             break;
         default:
             break;
@@ -155,26 +185,33 @@
 }
 
 - (IBAction)GetResult:(id)sender {
-    InfixToPostfix *itp = [[InfixToPostfix alloc] init];
-    NSString * result = [itp parseInfix:self.expression];
-    NSLog(@"result is %@",result);
-    if (result == nil) {
-        NSLog(@"表达式有误");
+    if (self.ismod) {
+        int t = ((int)self.modNum % ([self.expression intValue]));
+        self.lastReuslt = [NSString stringWithFormat:@"%d", t];
+        self.expression = [[NSString stringWithFormat:@"%d", t] mutableCopy];
+        [self.resultLabel setText:[NSString stringWithFormat:@"%d", t]];
+        self.ismod =NO;
     }else{
-        PostfixCalculator *postfix = [[PostfixCalculator  alloc] init];
-        NSDecimalNumber * result2 = [postfix compute:result];
-        if (result2 == nil) {
+        InfixToPostfix *itp = [[InfixToPostfix alloc] init];
+        NSString * result = [itp parseInfix:self.expression];
+        NSLog(@"result is %@",result);
+        if (result == nil) {
             NSLog(@"表达式有误");
         }else{
-            self.lastReuslt = [NSString stringWithFormat:@"%@", result2];
-            self.expression = [[NSString stringWithFormat:@"%@", result2] mutableCopy];
+            PostfixCalculator *postfix = [[PostfixCalculator  alloc] init];
+            NSDecimalNumber * result2 = [postfix compute:result];
+            if (result2 == nil) {
+                NSLog(@"表达式有误");
+                [self.resultLabel setText:@"error"];
+            }else{
+                self.lastReuslt = [NSString stringWithFormat:@"%@", result2];
+                self.expression = [[NSString stringWithFormat:@"%@", result2] mutableCopy];
+                [self.resultLabel setText:[NSString stringWithFormat:@"%@", result2]];
+            }
+            NSLog(@"计算结果是 %@",[NSString stringWithFormat:@"%@", result2]);
         }
-        NSLog(@"计算结果是 %@",[NSString stringWithFormat:@"%@", result2]);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.resultLabel setText:[NSString stringWithFormat:@"%@", result2]];
-            [self.resultLabel setNeedsDisplay];
-        });
-    }
 
+    }
+   
 }
 @end

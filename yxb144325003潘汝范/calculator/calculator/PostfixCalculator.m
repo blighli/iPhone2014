@@ -24,7 +24,6 @@
             NSDecimalNumber* secondOperand = (NSDecimalNumber*) [stack pop];
             NSDecimalNumber* firstOperand= (NSDecimalNumber*) [stack pop];
             if (! (firstOperand && secondOperand)){
-                NSLog(@"Not enough operands on stack for given operator");
                 return nil;
             }
             NSDecimalNumber * result =  [self computeOperator:token
@@ -44,8 +43,6 @@
     
     
     if ([stack size] != 1){
-        NSLog(@"Error : Invalid RPN expression. Stack contains %d elements after computing expression, only one should remain.",
-              [stack size]);
         return nil;
     } else {
         NSDecimalNumber * result = [stack pop];
@@ -54,18 +51,22 @@
 }
 
 - (NSDecimalNumber *) computeOperator:(NSString*) operator
-                     withFirstOperand:(NSDecimalNumber*) firstOperand withSecondOperand:(NSDecimalNumber*) secondOperand{
+                     withFirstOperand:(NSDecimalNumber*) firstOperand withSecondOperand:(NSDecimalNumber*) secondOperand
+{
     NSDecimalNumber * result;
     
-    if ([operator compare: @"+"] == 0) {
+    if ([operator compare: @"+"] == 0)
+    {
         result = [firstOperand decimalNumberByAdding: secondOperand];
-    }else if ([operator compare: @"*"] == 0) {
+    }else if ([operator compare: @"*"] == 0)
+    {
         result = [firstOperand decimalNumberByMultiplyingBy: secondOperand];
-    } else if ([operator compare: @"-"] == 0) {
+    } else if ([operator compare: @"-"] == 0)
+    {
         result = [firstOperand decimalNumberBySubtracting: secondOperand];
-    } else if ([operator compare: @"^"] == 0) {
-        result = [firstOperand decimalNumberByRaisingToPower: [secondOperand intValue]];
-    } else if ([operator compare: @"/"] == 0) {
+    }
+    else if ([operator compare: @"/"] == 0)
+    {
         if ([[NSDecimalNumber zero] compare: secondOperand] == NSOrderedSame){
             NSLog(@"Divide by zero !");
             return [NSDecimalNumber notANumber];

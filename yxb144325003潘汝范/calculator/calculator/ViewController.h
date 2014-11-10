@@ -12,9 +12,10 @@
 
 @property NSMutableString *expression;
 @property BOOL state;
+@property BOOL ishas;
+@property BOOL ismod;
 @property NSString *lastReuslt;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
-@property (weak, nonatomic) IBOutlet UIButton *clearAllBtn;
 @property (weak, nonatomic) IBOutlet UIButton *delBtn;
 
 - (IBAction)GetResult:(id)sender;
