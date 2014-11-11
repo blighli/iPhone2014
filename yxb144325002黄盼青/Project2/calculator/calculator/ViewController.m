@@ -77,6 +77,8 @@
         [self.calculator popAllOperatorStack];
         
         self.displayScreen.text=[[self.calculator calculateOutputResult] description];
+        //计算结果作为下一次输入值
+        self.currentInputNumber=self.displayScreen.text;
         
     }
     @catch (NSException *exception) {
