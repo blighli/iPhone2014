@@ -381,6 +381,12 @@
             [finalResult appendString:@"e"];
             [finalResult appendFormat:@"%lu",range.location - 1];
             
+        }else{
+            [finalResult insertString:@"." atIndex:2];
+            NSString *s = [finalResult substringWithRange:NSMakeRange(0, 9)];
+            [finalResult setString:s];
+            [finalResult appendString:@"e"];
+            [finalResult appendFormat:@"%lu",range.location - 1];
         }
     }else{
         [finalResult deleteCharactersInRange:range];
