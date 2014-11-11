@@ -18,11 +18,6 @@
     //NSLog(@"nstop is %d",top);
 }
 
--(void) numPush:(double *)s Num:(double)num Top:(int)top
-{
-    s[top] = num;
-    top++;
-}
 
 -(char) Pop:(char *)s Top:(int)top
 {
@@ -32,13 +27,6 @@
     return e;
 }
 
-//-(double) numPop:(double *)s Top:(int)top
-//{
-//    double e = s[top-1];
-//    s[top-1] = NULL;
-//    top--;
-//    return e;
-//}
 
 -(int)PriorityCompare:(char *)new Str2:(char *)old
 

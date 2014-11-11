@@ -108,6 +108,26 @@
                 }
                 else s[top-2]=[s[top-2] decimalNumberByDividingBy:s[top-1]];
             }
+            if (ns[i]=='m') {
+                if ([[NSString stringWithFormat:@"%@", s[top-1]] isEqualToString:@"0"]) {
+                    return @"error";
+                }
+                else{
+                    NSDecimalNumber *c = [s[top-2] decimalNumberByDividingBy:s[top-1]];
+                    NSString *t = [NSString stringWithFormat:@"%@", c];
+                    NSRange ra = [t rangeOfString:@"."];
+                    if(ra.location==NSNotFound)
+                    {
+                        s[top-2] = [NSDecimalNumber decimalNumberWithString:@"0"];
+                    }
+                    else {
+                        t = [t substringToIndex:ra.location];
+                        c = [NSDecimalNumber decimalNumberWithString:t];
+                        s[top-2] = [s[top-2] decimalNumberBySubtracting:[c decimalNumberByMultiplyingBy:s[top-1]]];
+                    }
+
+                }
+            }
             [s removeObjectAtIndex:top-1];
             top--;
             i++;

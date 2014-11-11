@@ -39,6 +39,7 @@
 - (IBAction)percent;
 - (IBAction)back;
 - (IBAction)ac;
+- (IBAction)mod;
 - (IBAction)mplus;
 - (IBAction)mminus;
 - (IBAction)mc;

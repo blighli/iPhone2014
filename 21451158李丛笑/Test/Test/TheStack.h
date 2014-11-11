@@ -13,8 +13,6 @@
 
 -(void) Push : (char *)s Ch : (char)ch Top:(int)top;
 -(char) Pop : (char *)s Top:(int)top;
--(void) numPush :(double *)s Num:(double)num Top:(int)top;
-//-(double) numPop : (double *)s Top:(int)top;
 -(int)PriorityCompare:(char *)new Str2:(char *)old;
 
 @end

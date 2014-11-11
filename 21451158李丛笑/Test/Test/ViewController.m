@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Calcu.h"
+#import "ActionofButton.h"
 @interface ViewController ()
 
 @end
@@ -17,12 +18,17 @@
 
 NSDecimalNumber *result;
 NSDecimalNumber *store;
+NSMutableString *ifresult;
 int left=0;
-
+ActionofButton *act;
+Calcu *cl;
 - (void)viewDidLoad {
     [super viewDidLoad];
     textstr = [NSMutableString stringWithCapacity:50];
     numstr = [NSMutableString stringWithCapacity:50];
+    ifresult = [NSMutableString stringWithCapacity:10];
+    act = [[ActionofButton alloc]init];
+    cl = [[Calcu alloc]init];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -32,207 +38,41 @@ int left=0;
 }
 
 - (IBAction)zero {
-    if ([textstr length] ==0 || [@")" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-      [numstr appendString:@"0"];
-      [textstr appendString:@"0"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-    }
-    
-}
-
-- (IBAction)dot {
-    if ([textstr length]!=0 && [@"0123456789" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location!=NSNotFound)
-    {
-    [numstr appendString:@"."];
-    [textstr appendString:@"."];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-}
+    textView.text = [act ActtoNum:@"0" Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)one {
-    if ([textstr length]==0||[@")" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-    [numstr appendString:@"1"];
-    [textstr appendString:@"1"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-}
+    textView.text = [act ActtoNum:@"1" Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)two {
-    if ([textstr length]==0||[@")" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-    [numstr appendString:@"2"];
-    [textstr appendString:@"2"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-}
+   textView.text = [act ActtoNum:@"2" Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)three {
-    if ([textstr length]==0||[@")" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-    [numstr appendString:@"3"];
-    [textstr appendString:@"3"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-    }
-}
+    textView.text = [act ActtoNum:@"3" Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)four {
-    if ([textstr length]==0||[@")" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-    [numstr appendString:@"4"];
-    [textstr appendString:@"4"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-}
+    textView.text = [act ActtoNum:@"4" Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)five {
-    if ([textstr length]==0||[@")" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-    [numstr appendString:@"5"];
-    [textstr appendString:@"5"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-    }
-}
+    textView.text = [act ActtoNum:@"5" Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)six {
-    if ([textstr length]==0||[@")" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-    [numstr appendString:@"6"];
-    [textstr appendString:@"6"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-}
+    textView.text = [act ActtoNum:@"6" Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)seven {
-    if ([textstr length]==0||[@")" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-    [numstr appendString:@"7"];
-    [textstr appendString:@"7"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-}
+    textView.text = [act ActtoNum:@"7" Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)eight {
-    if ([textstr length]==0||[@")" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-    [numstr appendString:@"8"];
-    [textstr appendString:@"8"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-}
+    textView.text = [act ActtoNum:@"8" Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)nine {
-    if ([textstr length]==0||[@")" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-    [numstr appendString:@"9"];
-    [textstr appendString:@"9"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
+    textView.text = [act ActtoNum:@"9" Text:textstr Num:numstr Is:ifresult];}
 
-    }
-}
-
-- (IBAction)plus {
-    if ([textstr length]!=0 && [@"+-*/(" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-        if([@"0123456789" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location!=NSNotFound)
-            [numstr appendString:@" "];
-    [numstr appendString:@"+"];
-    [textstr appendString:@"+"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-}
-
-- (IBAction)minus {
-    if ([textstr length]==0 || [@"+-*/" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-        if([textstr length]!=0 && [@"0123456789" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location!=NSNotFound)
-        [numstr appendString:@" -"];
-        else
-    [numstr appendString:@"0 -"];
-    [textstr appendString:@"－"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-
-}
-
-- (IBAction)multiple {
-    if ([textstr length]!=0 && [@"+-*/(" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-        if([@"0123456789" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location!=NSNotFound)
-        [numstr appendString:@" "];
-    [numstr appendString:@"*"];
-    [textstr appendString:@"×"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-
-}
-
-- (IBAction)divide {
-    if ([textstr length]!=0 && [@"+-*/(" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-        if([@"0123456789" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location!=NSNotFound)
-        [numstr appendString:@" "];
-    [numstr appendString:@"/"];
-    [textstr appendString:@"÷"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-    }
-
-}
+- (IBAction)dot {
+    textView.text = [act ActtoNum:@"." Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)left {
-    if([textstr length]==0 || [@"0123456789)" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location==NSNotFound)
-    {
-    [numstr appendString:@"("];
-    [textstr appendString:@"("];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
-
-        left++;
-    }
-
+    textView.text = [act ActtoNum:@"(" Text:textstr Num:numstr Is:ifresult];
+    left++;
 }
 
 - (IBAction)right {
@@ -247,31 +87,44 @@ int left=0;
             if ([textstr length]>13)
                 textView.text = [textstr substringFromIndex:[textstr length]-13];
             else textView.text = textstr;
-
+            
             left--;
         }
-    
+        
     }
 }
+
+
+
+- (IBAction)plus {
+    textView.text = [act ActtoSym:@"+" Text:textstr Num:numstr Is:ifresult];}
+
+- (IBAction)minus {
+    textView.text = [act ActtoSym:@"-" Text:textstr Num:numstr Is:ifresult];}
+
+- (IBAction)multiple {
+    textView.text = [act ActtoSym:@"*" Text:textstr Num:numstr Is:ifresult];}
+
+- (IBAction)divide {
+   textView.text = [act ActtoSym:@"/" Text:textstr Num:numstr Is:ifresult];}
 
 - (IBAction)percent {
-    if ([textstr length]!=0 && [@"0123456789)" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location!=NSNotFound) {
-        if ([@"0123456789" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location!=NSNotFound)
-            [numstr appendString:@" "];
-        [numstr appendString:@"/100 "];
-        [textstr appendString:@"%"];
-        if ([textstr length]>13)
-            textView.text = [textstr substringFromIndex:[textstr length]-13];
-        else textView.text = textstr;
+    textView.text = [act ActtoSym:@"%" Text:textstr Num:numstr Is:ifresult];}
 
-    }
+- (IBAction)mod {
+    textView.text = [act ActtoSym:@"m" Text:textstr Num:numstr Is:ifresult];
 }
+
+
 
 - (IBAction)back {
     if ([textstr length]!=0) {
-        if([textstr length]>1 && [@"+-*/)" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location!=NSNotFound && [@"0123456789" rangeOfString:[textstr substringWithRange:NSMakeRange([textstr length]-2, 1)]].location!=NSNotFound)
+        if([textstr length]>1 && [@"+-*/)%m" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location!=NSNotFound && [@"0123456789" rangeOfString:[textstr substringWithRange:NSMakeRange([textstr length]-2, 1)]].location!=NSNotFound)
         {
-            [numstr deleteCharactersInRange:NSMakeRange([numstr length]-2,2)];
+            if ([@"%" rangeOfString:[textstr substringFromIndex:[textstr length]-1]].location!=NSNotFound) {
+                [numstr deleteCharactersInRange:NSMakeRange([numstr length]-6,6)];
+            }
+            else [numstr deleteCharactersInRange:NSMakeRange([numstr length]-2,2)];
         }
         else
             [numstr deleteCharactersInRange:NSMakeRange([numstr length]-1,1)];
@@ -293,6 +146,7 @@ int left=0;
 }
 
 - (IBAction)mplus {
+    if ([ifresult isEqualToString:@"y"]) {
     if (store==nil) {
         store = [NSDecimalNumber decimalNumberWithString:@"0"];
     }
@@ -301,18 +155,21 @@ int left=0;
     [textstr setString:@""];
     [numstr setString:@""];
     textView.text = textstr;
-
+    }
 }
 
 - (IBAction)mminus {
+    if ([ifresult isEqualToString:@"y"]) {
     if (store==nil) {
         store = [NSDecimalNumber decimalNumberWithString:@"0"];
     }
-    store = [store decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:result]];
+    store = [store decimalNumberBySubtracting:result                                                                                                                                                                                                                                                                                                                                                      ];
     result = store;
     [textstr setString:@""];
     [numstr setString:@""];
     textView.text = textstr;
+        
+    }
 
 }
 
@@ -321,12 +178,16 @@ int left=0;
 }
 
 - (IBAction)mr {
+    if(store==nil){
+        store = [NSDecimalNumber decimalNumberWithString:@"0"];
+    }
     [textstr setString:@""];
     [textstr appendString:[NSString stringWithFormat:@"%@", store]];
     textView.text = textstr;
 
     [numstr setString:@""];
     [numstr appendString:[NSString stringWithFormat:@"%@", store]];
+    [ifresult setString:@"y"];
 }
 
 - (IBAction)equles {
@@ -340,7 +201,6 @@ int left=0;
          [textstr appendString:@")"];
          left--;
      }
-        Calcu *cl = [[Calcu alloc]init];
      NSString *res = [cl getResult:[cl getPostfix:numstr]];
      if ([res isEqualToString:@"error"]) {
          [textstr setString:@"error"];
@@ -359,6 +219,7 @@ int left=0;
              [numstr appendString:@"0 "];
          }
      [numstr appendString:textstr];
+     [ifresult setString:@"y"];
      }
      
  }
