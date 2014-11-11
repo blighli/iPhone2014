@@ -36,7 +36,7 @@
     
     [self monthOfYearArray];
     printf("                             %lu                        \n\n",_year);
-    printf("        一月                  二月                  三月        ");
+    printf("          一月                  二月                  三月        ");
     printf("\n");
     printf("日 一 二 三 四 五 六  日 一 二 三 四 五 六  日 一 二 三 四 五 六");
     printf("\n");
