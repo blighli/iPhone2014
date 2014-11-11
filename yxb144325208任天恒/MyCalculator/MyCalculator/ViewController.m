@@ -30,10 +30,10 @@ bool num2Tag = false;
 bool exceptionZero = false;
 bool equelPreTag = false;
 bool mAddTag = false;
-char preOp,laterOp;
 bool equelTag = false;
 double num2EquelTemp = 0;
-int level = -1;
+char preOp,laterOp;
+
 
 
 - (void) viewDidLoad {
@@ -123,43 +123,6 @@ int level = -1;
     
 }
 
-- (NSString *) deletePointZreo:(NSString *) str{
-    NSString * strFinal;
-    for (int i = [str length] - 1; i>=0; i--) {
-        char c = [str characterAtIndex:i];
-        if(c == '0'){
-            continue;
-        }else if(c == '.'){
-            strFinal = [str substringToIndex:i ];
-            break;
-        }else{
-            strFinal = [str substringToIndex:i + 1];
-            break;
-        }
-    }
-    return strFinal;
-}
-
-- (NSString *) deletePreZreo:(NSString *) str{
-    NSString *strFinal;
-    for (int i = 0; i<[str length]; i++) {
-        char c = [str characterAtIndex:i];
-        if(c == '0'){
-            if (i == [str length] - 1) {
-                strFinal = [str substringFromIndex:i];
-                break;
-            }
-            continue;
-        }else if(c == '.'){
-            strFinal = [str substringFromIndex:i - 1 ];
-            break;
-        }else{
-            strFinal = [str substringFromIndex:i];
-            break;
-        }
-    }
-    return strFinal;
-}
 
 - (IBAction)dotOp:(id)sender {
     if([lableString rangeOfString:@"."].location == NSNotFound) {
@@ -262,6 +225,7 @@ int level = -1;
         if (num1Tag) {
             if (equelTag) {
                 Number1 = [lableString doubleValue];
+                NSLog(@"第一个数字是%f",Number1);
             }else if(!num2Tag){
                 Number2 = [lableString doubleValue];
             }
@@ -320,6 +284,45 @@ int level = -1;
     [self display];
 }
 
+
+- (NSString *) deletePointZreo:(NSString *) str{
+    NSString * strFinal;
+    for (int i = [str length] - 1; i>=0; i--) {
+        char c = [str characterAtIndex:i];
+        if(c == '0'){
+            continue;
+        }else if(c == '.'){
+            strFinal = [str substringToIndex:i ];
+            break;
+        }else{
+            strFinal = [str substringToIndex:i + 1];
+            break;
+        }
+    }
+    return strFinal;
+}
+
+
+- (NSString *) deletePreZreo:(NSString *) str{
+    NSString *strFinal;
+    for (int i = 0; i<[str length]; i++) {
+        char c = [str characterAtIndex:i];
+        if(c == '0'){
+            if (i == [str length] - 1) {
+                strFinal = [str substringFromIndex:i];
+                break;
+            }
+            continue;
+        }else if(c == '.'){
+            strFinal = [str substringFromIndex:i - 1 ];
+            break;
+        }else{
+            strFinal = [str substringFromIndex:i];
+            break;
+        }
+    }
+    return strFinal;
+}
 
 
 

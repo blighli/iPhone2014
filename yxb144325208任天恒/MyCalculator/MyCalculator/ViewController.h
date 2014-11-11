@@ -38,7 +38,7 @@
 //声明：“ ( ”,“ ) "两种运算方法还未实现
 - (void) display;
 
-- (void) switchOP:(char) opt;
+- (void) switchOP:(char) opt; ///算法选择
 
 
 - (NSString *) deletePointZreo:(NSString *) str;

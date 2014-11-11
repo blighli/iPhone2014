@@ -24,9 +24,12 @@
 @interface ItemViewController : UITableViewController<UITextFieldDelegate>
 
 @property(nonatomic,weak) id <ItemViewControllerDelegate> delegate;
+
 - (IBAction)Done:(id)sender;
 
+
 - (IBAction)Cancel:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UITextField *textfield;
 
 @property(nonatomic,strong) ListItem *itemToEdit;
