@@ -11,8 +11,6 @@
 @interface AppDelegate ()
 {
     BOOL clickTable;
-    int row;
-    //NSIndexPath * myIndexPath;
     CGRect bounds;
 }
 
@@ -48,14 +46,18 @@ NSString *docPath()
         if (clickTable == YES) // 修改
         {
             clickTable = NO;
-            [tasks replaceObjectAtIndex:row withObject: text]; //将新的任务添加到模型
-            [taskTable reloadData]; //表格视图重新载入数据
+            [tasks replaceObjectAtIndex:taskField.tag withObject: text]; //将新的任务添加到模型
+            NSIndexPath *indexpath = [NSIndexPath indexPathForRow:taskField.tag inSection:0];
+            NSArray *path = @[indexpath];
+            [taskTable reloadRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationAutomatic];
             
         }
         else //增加
         {
             [tasks addObject: text]; //将新的任务添加到模型
-            [taskTable reloadData]; //表格视图重新载入数据
+            NSIndexPath *indexpath = [NSIndexPath indexPathForRow:tasks.count-1 inSection:0];
+            NSArray *path = @[indexpath];
+            [taskTable insertRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationAutomatic];
         }
         //[self reloadcellbackground:myIndexPath];
     }
@@ -68,7 +70,7 @@ NSString *docPath()
 {
     [UIView beginAnimations:nil context: nil];
     //[UIView setAnimationDuration: 1.0];
-    [UIView setAnimationCurve: UIViewAnimationCurveLinear];
+    //[UIView setAnimationCurve: UIViewAnimationCurveLinear];
     
     CGRect fieldFrame2 = CGRectMake(10, 40, bounds.size.width-80, 31);
     taskField.frame = fieldFrame2;
@@ -82,7 +84,7 @@ NSString *docPath()
 {
     [UIView beginAnimations:nil context: nil];
     //[UIView setAnimationDuration: 1.0];
-    [UIView setAnimationCurve: UIViewAnimationCurveLinear];
+    //[UIView setAnimationCurve: UIViewAnimationCurveLinear];
     
     CGRect fieldFrame3 = CGRectMake(10, 40, bounds.size.width-20, 31);
     taskField.frame = fieldFrame3;
@@ -114,34 +116,6 @@ NSString *docPath()
     return cell ;
 }
 
-////table背景颜色
-//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    myIndexPath = indexPath;
-//    if (indexPath.row%2!=0) {
-//        cell.backgroundColor=[UIColor colorWithRed:244/255.0 green:200/255.0 blue:255/255.0 alpha:0.2];
-//    }
-//}
-//
-//
-//-(void)reloadcellbackground:(NSIndexPath *)indexPath
-//{
-//    for (NSInteger i = indexPath.row; i<=(NSInteger) [tasks count]; i++)
-//    {
-//        UITableViewCell *cell = [taskTable  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:indexPath.section]];
-//        if (cell)
-//        {
-//            if (i%2!=0)
-//            {
-//                cell.backgroundColor=[UIColor colorWithRed:244/255.0 green:200/255.0 blue:255/255.0 alpha:0.2];
-//            }
-//            else
-//            {
-//                cell.backgroundColor=[UIColor whiteColor];
-//            }
-//        }
-//    }
-//}
-
 //按下table
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -149,7 +123,7 @@ NSString *docPath()
     [tableView deselectRowAtIndexPath:indexPath animated:YES];//选中后的反显颜色即刻消失
     taskField.text = [tasks objectAtIndex: indexPath.row];
     [taskField becomeFirstResponder];
-    row = (int)indexPath.row;
+    taskField.tag = indexPath.row;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -190,7 +164,7 @@ NSString *docPath()
         [tasks addObject:@"修改：点cell，输入，点return"];
         [tasks addObject:@"删除：向左滑动cell，点删除"];
         [tasks addObject:@"增加：输入，点return"];
-        [tasks addObject:@"适配iPhone6和6plus"];
+        [tasks addObject:@"适配iphone6和6plus"];
     }
     
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
