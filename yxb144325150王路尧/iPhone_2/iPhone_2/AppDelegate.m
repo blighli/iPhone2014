@@ -96,7 +96,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     } else {
         tasks = [[NSMutableArray alloc] init];
     }
-    //主窗口
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
     UIWindow *theWindow = [[UIWindow alloc] initWithFrame: windowFrame];
     [self setWindow: theWindow];
@@ -104,18 +103,15 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     CGRect tableFrame = CGRectMake(0, 80, 320, 380);
     CGRect fieldFrame = CGRectMake(20, 40, 200, 31);
     CGRect buttonFrame = CGRectMake(228, 40, 72, 31);
-    //表格
     taskTable = [[UITableView alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
     [taskTable setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     [taskTable setDataSource:self];
     [taskTable setDelegate:self];
     taskTable.allowsSelection = YES;
-    //文本框
     taskField = [[UITextField alloc] initWithFrame:fieldFrame];
     [taskField setBorderStyle:UITextBorderStyleRoundedRect];
     [taskField setPlaceholder:@"Type a task, tap Insert"];
     taskField.delegate =self;
-    //相关按钮
     insertButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [insertButton setFrame:buttonFrame];
     [insertButton setTitle:@"Insert" forState:UIControlStateNormal];

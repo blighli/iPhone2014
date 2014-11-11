@@ -77,8 +77,6 @@
                 NSRange range;
                 range.location=oldPositon;
                 range.length=position-oldPositon-1;
-                //NSNumber *num;
-                //num=[NSNumber numberWithFloat:[[Arithmetic substringWithRange:range] floatValue]];
                 [arry addObject:[Arithmetic substringWithRange:range]];
                 [arry addObject:[copyArithmetic substringToIndex:1]];
                 
@@ -89,7 +87,7 @@
             if ([point isEqualToString:@")"])
             {
                 if ([positionleft count]==0) {
-                    arry[0]=@"wrong input";
+                    arry[0]=@"输入错误";
                     return;
                 }
                 positionright=[arry count]-1;
@@ -101,25 +99,15 @@
                 [arry removeObjectAtIndex:left+1];
                 [positionleft removeObjectAtIndex:[positionleft count]-1];
                 
-                /*
-                 NSLog(@"***********");
-                 
-                 for (NSInteger i=0; i<[arry count]; i++) {
-                 NSLog(@"index %d has %@",i,arry[i]);
-                 }
-                 */
-                
             }
             else if([point isEqualToString:@"("])
             {
                 [positionleft addObject:[NSNumber numberWithInteger:[arry count]-1]];
             }
         }
-        //copyArithmetc砍头
         [copyArithmetic deleteCharactersInRange:head];
     }
-    
-    //如果最后一个不是符号，继续截取
+
     if(oldPositon<[Arithmetic length])
     {
         [arry addObject:[Arithmetic substringFromIndex:oldPositon]];
@@ -127,7 +115,7 @@
     
     if([positionleft count]>0)
     {
-        arry[0]=@"You should never do this again!";
+        arry[0]=@"无法完成";
         return;
     }
     [self caculationFromBegin:0 ToEnd:[arry count]];
@@ -135,11 +123,7 @@
 
 -(void) caculationFromBegin:(int) begin ToEnd:(int) end
 {
-    /*
-     for (NSInteger i=0; i<[arry count]; i++) {
-     NSLog(@"index %d has %@",i,arry[i]);
-     }
-     */
+
     @try{
         int operator=0;
         int position=begin;
@@ -232,14 +216,13 @@
     }
     @catch(NSException *ex)
     {
-        arry[0]=@"You shold never do this";
+        arry[0]=@"无法完成";
     }
 }
 
 -(NSString *) output
 {
     [self divisionWithOperator];
-    //   [self caculationFromBegin:2 ToEnd:[arry count]];
     self.result=arry[0];
     return result;
 }

@@ -33,14 +33,11 @@
     static float sum=0;
     
     NSString *title=[sender titleForState:UIControlStateNormal];
-    //C
     if ([title isEqualToString:@"C"])
         _show.text=@"";
-    //MR,M+,M-,MC
     else if ([title isEqualToString:@"MR"])
     {
         _show.text=[NSString stringWithFormat:(@"%f"),sum];
-        //显示过之后，当前的结果就变为寄存器的值
         countor.result=[NSString stringWithString:_show.text];
     }
     else if([title isEqualToString:@"MC"])
@@ -59,8 +56,6 @@
         
         sum-=[countor.result floatValue];
     }
-    //
-    //<--
     else if ([title isEqualToString:@"<--"]) {
         NSMutableString *Ath=[NSMutableString stringWithString:_show.text];
         @try
@@ -75,22 +70,12 @@
         
         _show.text=Ath;
     }
-    //=
     else if([title isEqualToString:@"="])
     {
-        /*
-         count=[[counter alloc]initWithString:_show.text];
-         _show.text=[count print];
-         */
-        
-        // countor.Arithmetic=[NSMutableString stringWithString:_show.text];
         countor=[[Test alloc]initWithString:_show.text];
         _show.text=[countor output];
         clear=YES;
-        // NSLog(@"%@",countor.result);
     }
-    //
-    // + - * / 1 2 3....
     else
     {
         if([title isEqualToString:@"-"]||
