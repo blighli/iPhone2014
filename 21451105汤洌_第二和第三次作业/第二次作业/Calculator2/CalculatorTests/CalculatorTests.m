@@ -2,7 +2,7 @@
 //  CalculatorTests.m
 //  CalculatorTests
 //
-//  Created by tanglie1993 on 14/11/11.
+//  Created by Chencheng on 14/11/4.
 //  Copyright (c) 2014年 com.jikexueyuan. All rights reserved.
 //
 
@@ -14,13 +14,6 @@
 @end
 
 @implementation CalculatorTests
-///////////////////////////
-
-
-
-
-
-
 
 - (void)setUp {
     [super setUp];
