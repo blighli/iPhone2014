@@ -1,19 +1,19 @@
 //
-//  calculaorTests.m
-//  calculaorTests
+//  calculatorTests.m
+//  calculatorTests
 //
-//  Created by icy on 14-11-9.
+//  Created by icy on 14-11-12.
 //  Copyright (c) 2014年 icy. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface calculaorTests : XCTestCase
+@interface calculatorTests : XCTestCase
 
 @end
 
-@implementation calculaorTests
+@implementation calculatorTests
 
 - (void)setUp {
     [super setUp];

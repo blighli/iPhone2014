@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  calculaor
+//  ToDoList
 //
-//  Created by icy on 14-11-9.
-//  Copyright (c) 2014年 icy. All rights reserved.
+//  Created by Olivier Truong on 11/10/13.
+//  Copyright (c) 2013 Olivier Truong. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,6 +12,4 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-
 @end
-
