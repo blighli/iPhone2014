@@ -1,4 +1,7 @@
-
+//
+//  CalculatorViewController.h
+//  Calculator
+//
 //  Created by GUO on 14-11-05.
 //  Copyright (c) 2014年 GUO
 //
@@ -7,11 +10,10 @@
 #import "CalculatorDetails.h"
 
 @interface CalculatorViewController (){
-    NSString *_tempStr;
-    CalculatorDetails *_calcultor;
-    
-    NSString *_lastAnswer;
-    NSString *_passString;
+    NSString *tmpString;
+    CalculatorDetails *calcultorDetail;
+    NSString *Ans;
+    NSString *passStr;
     int countFlat;
 }
 
@@ -28,10 +30,10 @@
     [super viewDidLoad];
     _resultText.text = @"";
 	_totalResultLabel.text = @"";
-    _lastAnswer = @"";
-    _calcultor = [[CalculatorDetails alloc]init];
-    _tempStr = [NSString string];
-    _passString = [NSString string];
+    Ans = @"";
+    calcultorDetail = [[CalculatorDetails alloc]init];
+    tmpString = [NSString string];
+    passStr = [NSString string];
 }
 
 #pragma - mark Button Actions
@@ -48,25 +50,24 @@
         case 7:
         case 8:
         case 9:
-        case kDot:
-        case kRightBracket:
-        case kLeftBracket:
-        case kDevide:
-        case kSub:
-        case kPlus:
-        case kMultiply:
-        case kPower:
-        case kSin:
-        case kCos:
-        case kLog:
+        case 12:
+        case 13:
+        case 14:
+        case 15:
+        case 17:
+        case 18:
+        case 19:
+        case 20:
+        case 21:
+        case 22:
+        case 24:
         {
-            //First Operation
             if (countFlat == 0) {
-                    _resultText.text = [_tempStr stringByAppendingString:sender.titleLabel.text];
+                    _resultText.text = [tmpString stringByAppendingString:sender.titleLabel.text];
             }
             
             else{
-                if (tag == kPower || tag == kRightBracket || tag == kLeftBracket ||tag == kDevide ||tag == kSub ||tag == kPlus || tag== kMultiply)
+                if (tag == 20 || tag == 17 || tag == 18 ||tag == 12 ||tag == 14 ||tag == 15 || tag== 13)
                 {
                     if (![_resultText.text isEqualToString:@"error"]) {
                             _resultText.text = [_resultText.text stringByAppendingString:sender.titleLabel.text];
@@ -75,35 +76,35 @@
                     }
                 }
                 else{
-                    _resultText.text = [_tempStr stringByAppendingString:sender.titleLabel.text];
+                    _resultText.text = [tmpString stringByAppendingString:sender.titleLabel.text];
                 }
             }
             
-            _tempStr = _resultText.text;
+            tmpString = _resultText.text;
             
         }
             break;
-        case kClear:
+        case 10:
             [self clearAll];
             break;
-        case kDel:
+        case 11:
             [self deleteBack];
             break;
-        case kEqual:
+        case 16:
         {
-            if (![_tempStr isEqualToString:@""]) {
-                _passString = [self replaceInputStrWithPassStr:_tempStr];
-                _totalResultLabel.text = [_tempStr stringByAppendingString:sender.titleLabel.text];
-                if ([_lastAnswer isEqualToString:@"error"]||countFlat == 0 ||[_lastAnswer isEqualToString:@""]) {
-                    _tempStr = [_calcultor calculatingWithString:_passString andAnswerString:@"0"];
+            if (![tmpString isEqualToString:@""]) {
+                passStr = [self replaceInputStrWithPassStr:tmpString];
+                _totalResultLabel.text = [tmpString stringByAppendingString:sender.titleLabel.text];
+                if ([Ans isEqualToString:@"error"]||countFlat == 0 ||[Ans isEqualToString:@""]) {
+                    tmpString = [calcultorDetail calculatingWithString:passStr andAnswerString:@"0"];
                 }else{
-                    _tempStr = [_calcultor calculatingWithString:_passString andAnswerString:_lastAnswer];
+                    tmpString = [calcultorDetail calculatingWithString:passStr andAnswerString:Ans];
                 }
                 
-                _resultText.text = _tempStr;
-                _lastAnswer = _tempStr;
+                _resultText.text = tmpString;
+                Ans = tmpString;
           
-                _tempStr = [NSString string];
+                tmpString = [NSString string];
                 countFlat = 1;
             }
             
@@ -139,10 +140,10 @@
 {
 	_resultText.text = @"";
 	_totalResultLabel.text = @"";
-    _tempStr = @"";
-    _passString = @"";
+    tmpString = @"";
+    passStr = @"";
     countFlat = 0;
-    _lastAnswer = @"";
+    Ans = @"";
 }
 
 - (void)deleteBack{
@@ -152,7 +153,7 @@
         }else{
             _resultText.text = [_resultText.text substringToIndex:_resultText.text.length -1];
         }
-        _tempStr = _resultText.text;
+        tmpString = _resultText.text;
     }else{
         return;
     }
@@ -163,9 +164,9 @@
 {
     [super didReceiveMemoryWarning];
     _resultText = nil;
-    _tempStr =nil;
+    tmpString =nil;
     _totalResultLabel = nil;
-    _calcultor = nil;
+    calcultorDetail = nil;
 }
 
 @end

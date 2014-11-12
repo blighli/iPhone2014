@@ -1,44 +1,43 @@
 //
-//  CalculatorDetail.m
-//  Mycalculator
+//   CalculatorDetails.m
+//   Calculator
 //
-//  Created by cstlab on 14/11/12.
-//  Copyright (c) 2014年 cstlab. All rights reserved.
+//  Created by GUO on 14-11-05.
+//  Copyright (c) 2014年 GUO
 //
 
-#import "CalculatorDetail.h"
+#import "CalculatorDetails.h"
 
+@interface CalculatorDetails ()
 
-@interface CalculatorDetail ()
-@property (nonatomic,strong)NSMutableArray        *dealedArray;     //存储经过处理的表达式
-@property (nonatomic,strong)NSDictionary          *opPriority;      //运算符优先级表
-@property (nonatomic,strong)NSMutableArray        *brakectHandledArray;
-@property BOOL brakectAfterSingle;
+    @property (nonatomic,strong)NSMutableArray        *dealedArray;
+    @property (nonatomic,strong)NSDictionary          *PriorityArray;
+    @property(nonatomic,strong)NSMutableArray        *brakectArray;
+    @property BOOL Singlebrakect;
 @end
 
-@implementation CalculatorDetail
+@implementation CalculatorDetails
 -(id)init
 
 {
     
     if (self =  [super  init]){
-        //优先级设置 规定0优先级最大，依次减小
-        _opPriority=@{@"(":@0, @"^":@1,@"x":@2,@"/":@2, @"+":@3, @"-":@3,@")":@4,  @"#": @5 };
+                                     //优先级设置 规定0优先级最大，依次减小
+        _PriorityArray=@{@"(":@0, @"^":@1,@"x":@2,@"/":@2, @"+":@3, @"-":@3,@")":@4,  @"#": @5 };
     }
-    _brakectAfterSingle = NO;
+    _Singlebrakect = NO;
     return  self;
 }
 
-
 -(NSString*)calculatingWithString:(NSString *)str andAnswerString:(NSString *)answerString
 {
-    
-    if (_brakectAfterSingle) {
-        _brakectHandledArray = [NSMutableArray arrayWithArray:_dealedArray];
+   
+    if (_Singlebrakect) {
+        _brakectArray = [NSMutableArray arrayWithArray:_dealedArray];
     }
-    
+
     [self handleInputString:str andAnswerString:answerString];
-    
+ 
     [_dealedArray    addObject:@"#"];
     [_dealedArray   insertObject:@"#"atIndex:0];
     
@@ -46,7 +45,7 @@
     
     NSString *finalResult = [NSString  string];
     for (int i= (int)count - 2; i>= 0;i--)
-    {
+    { 
         
         NSString *str1 = [_dealedArray  objectAtIndex:i];
         if ([str1    isEqualToString:@"#"]) {
@@ -73,7 +72,7 @@
                 if ([str2    isEqualToString:@")"])
                 {
                     NSRange range =NSMakeRange(i+1, j-i-1);
-                    
+                   
                     NSArray *subArray = [_dealedArray   subarrayWithRange:range];
                     NSMutableArray *arr = [NSMutableArray    arrayWithArray:subArray];
                     subResult = [self calculateNumbers:arr];
@@ -81,10 +80,10 @@
                         finalResult =@"error";
                         return  finalResult;
                     }
-                    
+            
                     range =NSMakeRange(i,j - i +1);
                     [_dealedArray    replaceObjectsInRange:range
-                                      withObjectsFromArray: [NSArray arrayWithObject:subResult]];
+                                    withObjectsFromArray: [NSArray arrayWithObject:subResult]];
                     count = [_dealedArray  count];
                     i = (int)count - 1 ;
                     break;
@@ -92,8 +91,10 @@
             }
         }
     }
-    return finalResult;
+    return finalResult;   
 }
+
+
 
 
 - (void)handleInputString:(NSString *)inputStr andAnswerString:(NSString *)answerString{
@@ -101,9 +102,9 @@
     _dealedArray =  [NSMutableArray array];
     int  i  =  0;
     UniChar c = [inputStr  characterAtIndex:0];
-    if (c =='-'|| c == '+'||c == '*'||c =='/'|| c== '^')
+    if (c =='-'|| c == '+'||c == 'x'||c =='/'|| c== '^')
     {
-        
+       
         if (length >1)
         {
             UniChar c1 = [inputStr  characterAtIndex:1];
@@ -121,11 +122,11 @@
         c = [inputStr   characterAtIndex:i];
         if ((c >='0'&&c <= '9') || c =='.')
         {
-            
+        
             [mString  appendFormat:@"%c",c];
             if (i == length -1) {
                 [_dealedArray addObject:mString];
-                // clean the string
+               // clean the string
                 mString = [NSMutableString   string];
             }
         }
@@ -142,7 +143,7 @@
                 {
                     UniChar xc = [inputStr   characterAtIndex:i-1];
                     if (xc >='0'&&xc <= '9') {  //"7（8+2）"这种省略乘号的写法，要将乘号补充完整
-                        [_dealedArray   addObject:@"*"];
+                        [_dealedArray   addObject:@"x"];
                         [_dealedArray   addObject:@"("];
                         i++;
                         continue;
@@ -169,7 +170,7 @@
                     if (xc >='0'&&xc <= '9') {
                         //the situation of *
                         [_dealedArray   addObject:@")"];
-                        [_dealedArray  addObject:@"*"];
+                        [_dealedArray  addObject:@"x"];
                         i++;
                         continue;
                     }
@@ -181,9 +182,9 @@
                 for (int j = i + 1; j < length ;j++ ) {
                     UniChar tempx = [inputStr characterAtIndex:j];
                     if ((tempx >='0'&&tempx <= '9') || tempx =='.') {
-                        tempStr = [tempStr stringByAppendingString:[NSString stringWithFormat:@"%c",tempx]];
+                       tempStr = [tempStr stringByAppendingString:[NSString stringWithFormat:@"%c",tempx]];
                     }else if (tempx == '('){
-                        _brakectAfterSingle = YES;
+                        _Singlebrakect = YES;
                         NSString *string = [inputStr substringFromIndex:j];
                         for (int k = j+1; k < length; k++) {
                             
@@ -196,16 +197,16 @@
                             }
                         }
                         tempStr = [self calculatingWithString:string andAnswerString:answerString];
-                        _dealedArray = [NSMutableArray arrayWithArray:_brakectHandledArray];
+                        _dealedArray = [NSMutableArray arrayWithArray:_brakectArray];
                         break;
                     }
                     else
                         break;
                 }
                 if (tempStr.length >0 &&![tempStr isEqualToString:@"error"]) {
-                    if (_brakectAfterSingle) {
+                    if (_Singlebrakect) {
                         i += single.length + 1;
-                        _brakectAfterSingle = NO;
+                        _Singlebrakect = NO;
                     }else{
                         i = i + (int)[tempStr length] + 1;
                     }
@@ -222,7 +223,7 @@
                         case 'l':
                             temp = log10(temp);
                             break;
-                        default:
+                       default:
                             break;
                     }
                     [_dealedArray addObject:[NSString stringWithFormat:@"%g",temp]];
@@ -253,7 +254,7 @@
         case '-':
             aresult = x1 - x2;
             break;
-        case '*':
+        case 'x':
             aresult = x1 * x2;
             break;
         case 'd':
@@ -272,7 +273,7 @@
             break;
     }
     if (isOK ==YES){
-        string = [NSString stringWithFormat:@"%g",aresult];
+            string = [NSString stringWithFormat:@"%g",aresult];
     }
     return string;
 }
@@ -285,17 +286,17 @@
     NSString *result = [NSString string];
     
     [numberArray addObject:@"#"];
-    
+
     while (1)
     {
         
         NSString *subStr1 = [numberArray    objectAtIndex:0];
         UniChar c = [subStr1   characterAtIndex:0];
-        
+     
         if ((subStr1.length > 1 && [subStr1 hasPrefix:@"-"])||(c >='0'&&c <= '9')) {
-            
+         
             [operandStackArray insertObject:subStr1 atIndex:0];
-            
+        
             [numberArray   removeObjectAtIndex:0];
         }
         else
@@ -303,14 +304,14 @@
             
             NSString *topStack2 = [stack2   objectAtIndex:0];
             if ([subStr1   isEqualToString:@"#"] && [topStack2   isEqualToString:@"#"]){
-                
+               
                 result = [operandStackArray  objectAtIndex:0];
                 break;
             }
             
-            NSInteger one = [[_opPriority objectForKey:subStr1]integerValue];
+            NSInteger one = [[_PriorityArray objectForKey:subStr1]integerValue];
             
-            NSInteger two = [[_opPriority objectForKey:topStack2]integerValue];
+            NSInteger two = [[_PriorityArray objectForKey:topStack2]integerValue];
             
             if (one < two) {
                 [stack2 insertObject:subStr1 atIndex:0];
@@ -334,10 +335,10 @@
                 double x2 = [strX doubleValue];
                 [operandStackArray removeObjectAtIndex:0];
                 [stack2 removeObjectAtIndex:0];
-                
+               
                 result = [self calculateNumbersWithOperator:topStack2 betweenDouble:x2 andDoule:x1];
                 if ([result   isEqualToString:@"error"]) {
-                    
+                   
                     break;
                 }
                 [operandStackArray insertObject:result atIndex:0];
@@ -347,6 +348,5 @@
     }
     return result;
 }
-
 
 @end

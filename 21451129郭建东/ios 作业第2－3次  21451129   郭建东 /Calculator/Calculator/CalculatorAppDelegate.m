@@ -2,7 +2,6 @@
 //  CalculatorAppDelegate.m
 //  Calculator
 //
-
 //  Created by GUO on 14-11-05.
 //  Copyright (c) 2014年 GUO
 //
@@ -15,15 +14,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-        }
-            UIStoryboard * storyboard = [ UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController *main = [storyboard instantiateInitialViewController];
-            self.window.rootViewController=main;
-        [self.window makeKeyAndVisible];
-
     return YES;
 }
 							
