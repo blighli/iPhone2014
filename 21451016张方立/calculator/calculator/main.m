@@ -1,8 +1,8 @@
 //
 //  main.m
-//  calculaor
+//  calculator
 //
-//  Created by icy on 14-11-9.
+//  Created by icy on 14-11-12.
 //  Copyright (c) 2014年 icy. All rights reserved.
 //
 

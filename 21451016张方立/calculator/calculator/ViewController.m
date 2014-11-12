@@ -1,17 +1,17 @@
 //
 //  ViewController.m
-//  calculaor
+//  calculator
 //
-//  Created by icy on 14-11-9.
+//  Created by icy on 14-11-12.
 //  Copyright (c) 2014年 icy. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "CaculatorBrain.h"
+#import "Calculator.h"
 @interface ViewController ()
 
 @property BOOL isUseInEnteringANumber;
-@property (nonatomic)CaculatorBrain *brain;
+@property (nonatomic) Calculator *caculator;
 @property BOOL isContinue;
 @property BOOL secondEqual;
 @property BOOL firstEqual;
@@ -30,12 +30,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (CaculatorBrain *)brain
+- (Calculator *)caculator
 {
-    if (!_brain) {
-        _brain = [CaculatorBrain new];
+    if (!_caculator) {
+        _caculator = [Calculator new];
     }
-    return _brain;
+    return _caculator;
 }
 - (IBAction)digitPressed:(UIButton *)sender
 {
@@ -53,48 +53,40 @@
     self.firstEqual = YES;
     _secondEqual = NO;
     if(_isContinue) [self equalR];
-    [self.brain pushOperation:sender.currentTitle];
+    [self.caculator pushOperation:sender.currentTitle];
     
-    [self numberInBrain];
+    [self numberInMemory];
     _isContinue = YES;
 }
 
 - (IBAction)zeroPressed {
     self.display.text = @"0";
-    [self.brain zero];
+    [self.caculator zero];
     _isContinue = NO;
     _isUseInEnteringANumber = NO;
     
-    [self.brain pushNumberInStack:0.0 andBool:NO];
+    [self.caculator pushNumberInStack:0.0 andBool:NO];
     self.secondEqual = NO;
     self.firstEqual = NO;
     
     
 }
 
-- (void)numberInBrain
+- (void)numberInMemory
 {
     _isUseInEnteringANumber = NO;
     
     
-    [self.brain pushNumberInStack:[self.display.text doubleValue] andBool:self.secondEqual];
+    [self.caculator pushNumberInStack:[self.display.text doubleValue] andBool:self.secondEqual];
 }
 - (IBAction)equalR {
     if (self.firstEqual) {
         
         
         _isContinue = NO;
-        [self numberInBrain];
-        double resultNumber = [self.brain result:_secondEqual];
+        [self numberInMemory];
+        double resultNumber = [self.caculator result:_secondEqual];
         NSMutableString *resultStr = [NSMutableString stringWithFormat:@"%lg",resultNumber];
-        //    NSMutableString *resultStr = [NSMutableString stringWithFormat:@"%lf",resultNumber];
-        //
-        //    while ([resultStr hasSuffix:@"0"]) {
-        //        [resultStr deleteCharactersInRange:NSMakeRange([resultStr length]-1, 1)];
-        //    }
-        //    while ([resultStr hasSuffix:@"."]) {
-        //        [resultStr deleteCharactersInRange:NSMakeRange([resultStr length]-1, 1)];
-        //    }
         
         if(resultNumber>1000000000){
             
@@ -136,6 +128,7 @@
     
     
 }
+
 
 
 @end
