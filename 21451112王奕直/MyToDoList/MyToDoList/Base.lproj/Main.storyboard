@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9DS-1k-oh7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xio-SZ-Yow"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="添加一个任务 ..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81Q-d4-5sT">
+                                <rect key="frame" x="16" y="81" width="288" height="30"/>
+                                <color key="backgroundColor" white="0.59896689967105265" alpha="0.34000000000000002" colorSpace="calibratedWhite"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="E98-w4-Kdv"/>
+                                </connections>
+                            </textField>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="za6-Ka-PvA">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="My To Do List" id="XEi-8Y-QRe">
+                                        <barButtonItem key="rightBarButtonItem" title="编辑" id="pKM-X3-D54">
+                                            <connections>
+                                                <action selector="EditBtn:" destination="vXZ-lx-hvc" id="XkP-eL-aQj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nio-Ni-8ja">
+                                <rect key="frame" x="16" y="124" width="288" height="434"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="44X-Gb-IU2"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="ZJ9-aj-TNq"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="za6-Ka-PvA" firstAttribute="top" secondItem="9DS-1k-oh7" secondAttribute="bottom" id="3ob-Rd-AUH"/>
+                            <constraint firstItem="81Q-d4-5sT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="4wA-AR-Ja0"/>
+                            <constraint firstItem="81Q-d4-5sT" firstAttribute="top" secondItem="za6-Ka-PvA" secondAttribute="bottom" constant="17" id="8lV-Uj-a54"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="za6-Ka-PvA" secondAttribute="trailing" constant="-16" id="9pH-NN-ndB"/>
+                            <constraint firstItem="nio-Ni-8ja" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="FIa-BU-i3N"/>
+                            <constraint firstItem="nio-Ni-8ja" firstAttribute="top" secondItem="81Q-d4-5sT" secondAttribute="bottom" constant="13" id="I8x-kQ-EFH"/>
+                            <constraint firstItem="nio-Ni-8ja" firstAttribute="top" secondItem="81Q-d4-5sT" secondAttribute="bottom" constant="13" id="MKk-BT-AVP"/>
+                            <constraint firstItem="za6-Ka-PvA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Tl9-eY-VU6"/>
+                            <constraint firstItem="81Q-d4-5sT" firstAttribute="top" secondItem="za6-Ka-PvA" secondAttribute="bottom" constant="17" id="kc7-St-oj1"/>
+                            <constraint firstItem="81Q-d4-5sT" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="q1g-Ed-rJi"/>
+                            <constraint firstItem="nio-Ni-8ja" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="tRK-Hh-TdV"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="nio-Ni-8ja" secondAttribute="bottom" constant="10" id="uS1-pL-fzC"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="barBtnItem" destination="pKM-X3-D54" id="FnQ-t1-NVd"/>
+                        <outlet property="tableViewData" destination="nio-Ni-8ja" id="T8X-ZW-C0u"/>
+                        <outlet property="textFieldData" destination="81Q-d4-5sT" id="3hr-gN-VhI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-186" y="359"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="D9k-Zk-Bou">
+            <objects>
+                <viewController storyboardIdentifier="detailview" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e6O-aU-nXy" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4cP-ex-Gse"/>
+                        <viewControllerLayoutGuide type="bottom" id="bql-sl-iDK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="DetailView" id="ZVK-mc-ofV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4RT-ys-1sE">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <items>
+                                    <navigationItem id="R7v-1X-enY">
+                                        <barButtonItem key="leftBarButtonItem" title="取消" id="kK8-ni-9qY">
+                                            <connections>
+                                                <action selector="btnCanle:" destination="e6O-aU-nXy" id="a2f-Jt-hPa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="完成" id="y7w-kq-Tdd">
+                                            <connections>
+                                                <action selector="btnDone:" destination="e6O-aU-nXy" id="TYS-Dl-MoZ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="white" text="s" translatesAutoresizingMaskIntoConstraints="NO" id="jC2-jn-EQC">
+                                <rect key="frame" x="16" y="70" width="288" height="197"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="btnItemDone" destination="y7w-kq-Tdd" id="aBM-jd-76v"/>
+                        <outlet property="textview" destination="jC2-jn-EQC" id="zNO-PF-OQ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n4X-Pl-hs4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="182" y="359"/>
+        </scene>
+    </scenes>
+</document>

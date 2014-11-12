@@ -25,14 +25,14 @@ int main(int argc, const char * argv[]) {
             NSInteger year=[comps year];
             if (!(strcmp(argv[1],ch))) {
                 monthset=atoi(argv[2]);
-                if (monthset<=0||monthset>12) {
+                if (!(monthset>=0&& monthset<=12) ) {
                     printf("Error!!!请输入合法的月份\n");
                     return 1;
                 }
                 yearset=year;
             }else{
                 monthset=atoi(argv[1]);
-                if (monthset<=0||monthset>12) {
+                if (!(monthset>=0&& monthset<=12)) {
                     printf("Error!!!请输入合法的月份\n");
                     return 1;
                 }
