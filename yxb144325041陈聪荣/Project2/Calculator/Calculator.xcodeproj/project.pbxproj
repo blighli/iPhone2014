@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0633C2AA1A08B01F00140176 /* 御坂妹.png in Resources */ = {isa = PBXBuildFile; fileRef = 0633C2A91A08B01F00140176 /* 御坂妹.png */; };
 		069E6EC31A085CFC002E59FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E6EC21A085CFC002E59FE /* main.m */; };
 		069E6EC61A085CFC002E59FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E6EC51A085CFC002E59FE /* AppDelegate.m */; };
 		069E6EC91A085CFC002E59FE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E6EC81A085CFC002E59FE /* ViewController.m */; };
@@ -15,6 +14,7 @@
 		069E6ECE1A085CFC002E59FE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069E6ECD1A085CFC002E59FE /* Images.xcassets */; };
 		069E6ED11A085CFC002E59FE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069E6ECF1A085CFC002E59FE /* LaunchScreen.xib */; };
 		069E6EDD1A085CFC002E59FE /* CalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E6EDC1A085CFC002E59FE /* CalculatorTests.m */; };
+		06BFF3781A13391500097CCE /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BFF3771A13391500097CCE /* Calculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +28,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0633C2A91A08B01F00140176 /* 御坂妹.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "御坂妹.png"; sourceTree = "<group>"; };
 		069E6EBD1A085CFC002E59FE /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		069E6EC11A085CFC002E59FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		069E6EC21A085CFC002E59FE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -42,6 +41,8 @@
 		069E6ED61A085CFC002E59FE /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		069E6EDB1A085CFC002E59FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		069E6EDC1A085CFC002E59FE /* CalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorTests.m; sourceTree = "<group>"; };
+		06BFF3761A13391500097CCE /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
+		06BFF3771A13391500097CCE /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +92,8 @@
 				069E6ECD1A085CFC002E59FE /* Images.xcassets */,
 				069E6ECF1A085CFC002E59FE /* LaunchScreen.xib */,
 				069E6EC01A085CFC002E59FE /* Supporting Files */,
+				06BFF3761A13391500097CCE /* Calculator.h */,
+				06BFF3771A13391500097CCE /* Calculator.m */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -98,7 +101,6 @@
 		069E6EC01A085CFC002E59FE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0633C2A91A08B01F00140176 /* 御坂妹.png */,
 				069E6EC11A085CFC002E59FE /* Info.plist */,
 				069E6EC21A085CFC002E59FE /* main.m */,
 			);
@@ -171,6 +173,7 @@
 				TargetAttributes = {
 					069E6EBC1A085CFC002E59FE = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 6ADJ2TL5DB;
 					};
 					069E6ED51A085CFC002E59FE = {
 						CreatedOnToolsVersion = 6.1;
@@ -204,7 +207,6 @@
 			files = (
 				069E6ECC1A085CFC002E59FE /* Main.storyboard in Resources */,
 				069E6ED11A085CFC002E59FE /* LaunchScreen.xib in Resources */,
-				0633C2AA1A08B01F00140176 /* 御坂妹.png in Resources */,
 				069E6ECE1A085CFC002E59FE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				069E6EC91A085CFC002E59FE /* ViewController.m in Sources */,
+				06BFF3781A13391500097CCE /* Calculator.m in Sources */,
 				069E6EC61A085CFC002E59FE /* AppDelegate.m in Sources */,
 				069E6EC31A085CFC002E59FE /* main.m in Sources */,
 			);
@@ -347,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -357,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

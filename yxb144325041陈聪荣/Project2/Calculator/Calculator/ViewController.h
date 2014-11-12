@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Calculator.h"
 
 @interface ViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *textfield;
-- (IBAction)mcClick:(id)sender;
-- (IBAction)mPlusClick:(id)sender;
-- (IBAction)mSubClick:(id)sender;
-- (IBAction)mrClick:(id)sender;
-- (IBAction)delClick:(id)sender;
-- (IBAction)acClick:(id)sender;
-- (IBAction)sevenClick:(id)sender;
+
+@property (nonatomic , strong) Calculator *calculator;
+@property (weak, nonatomic) IBOutlet UITextField *resultText;
+- (IBAction)singleStepOperation:(id)sender;
+- (IBAction)multiStepOperation:(id)sender;
+- (IBAction)calculation:(id)sender;
 
 @end
 
