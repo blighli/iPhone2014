@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AddToDoItemViewController.h
 //  Project3
 //
 //  Created by jingcheng407 on 14-11-14.
@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ToDoItem.h"
 
-@interface ViewController : UIViewController
+@interface AddToDoItemViewController : UIViewController
 
+@property ToDoItem *toDoItem;
 
 @end
-
