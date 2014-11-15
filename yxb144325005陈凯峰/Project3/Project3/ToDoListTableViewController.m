@@ -24,6 +24,7 @@
     }
 }
 - (void)loadInitialData {
+    //[sqlite3DB ];
   /*  ToDoItem *item1 = [[ToDoItem alloc] init];
     item1.itemName = @"Buy milk";
     [self.toDoItems addObject:item1];
