@@ -1,0 +1,503 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC0383921A17345B0047C77C /* NoteEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0383911A17345B0047C77C /* NoteEntity.m */; };
+		EC0383951A1736BD0047C77C /* NoteDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0383941A1736BD0047C77C /* NoteDAO.m */; };
+		EC0383981A17392C0047C77C /* SQLiteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0383971A17392C0047C77C /* SQLiteHelper.m */; };
+		EC03839B1A17689C0047C77C /* NewNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC03839A1A17689C0047C77C /* NewNoteViewController.m */; };
+		EC03839E1A176E2D0047C77C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC03839D1A176E2D0047C77C /* MainViewController.m */; };
+		EC0383A01A17784C0047C77C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC03839F1A17784C0047C77C /* libsqlite3.dylib */; };
+		EC0383A31A1871860047C77C /* NoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0383A21A1871860047C77C /* NoteDetailViewController.m */; };
+		EC0383A61A18795D0047C77C /* NoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0383A51A18795D0047C77C /* NoteTableViewCell.m */; };
+		EC0383A81A189F7B0047C77C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0383A71A189F7B0047C77C /* MobileCoreServices.framework */; };
+		EC0383AB1A18C4D30047C77C /* PicNoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0383AA1A18C4D30047C77C /* PicNoteDetailViewController.m */; };
+		EC282FF41A1A564D00F4FE9C /* DrawNoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC282FF31A1A564D00F4FE9C /* DrawNoteDetailViewController.m */; };
+		EC457F0C1A19D47700913847 /* NewDrawNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC457F0B1A19D47700913847 /* NewDrawNoteViewController.m */; };
+		EC457F0F1A19D78900913847 /* DrawBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC457F0E1A19D78900913847 /* DrawBoardView.m */; };
+		EC4FF8DA1A17240E00049173 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FF8D91A17240E00049173 /* main.m */; };
+		EC4FF8DD1A17240E00049173 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FF8DC1A17240E00049173 /* AppDelegate.m */; };
+		EC4FF8E01A17240E00049173 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FF8DF1A17240E00049173 /* ViewController.m */; };
+		EC4FF8E31A17240E00049173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC4FF8E11A17240E00049173 /* Main.storyboard */; };
+		EC4FF8E51A17240E00049173 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4FF8E41A17240E00049173 /* Images.xcassets */; };
+		EC4FF8E81A17240E00049173 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FF8E61A17240E00049173 /* LaunchScreen.xib */; };
+		EC4FF8F41A17240E00049173 /* NoteBookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FF8F31A17240E00049173 /* NoteBookTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC4FF8EE1A17240E00049173 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC4FF8CC1A17240E00049173 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC4FF8D31A17240E00049173;
+			remoteInfo = NoteBook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EC0383901A17345B0047C77C /* NoteEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEntity.h; sourceTree = "<group>"; };
+		EC0383911A17345B0047C77C /* NoteEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteEntity.m; sourceTree = "<group>"; };
+		EC0383931A1736BD0047C77C /* NoteDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDAO.h; sourceTree = "<group>"; };
+		EC0383941A1736BD0047C77C /* NoteDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDAO.m; sourceTree = "<group>"; };
+		EC0383961A17392C0047C77C /* SQLiteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteHelper.h; sourceTree = "<group>"; };
+		EC0383971A17392C0047C77C /* SQLiteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteHelper.m; sourceTree = "<group>"; };
+		EC0383991A17689C0047C77C /* NewNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNoteViewController.h; sourceTree = "<group>"; };
+		EC03839A1A17689C0047C77C /* NewNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNoteViewController.m; sourceTree = "<group>"; };
+		EC03839C1A176E2D0047C77C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		EC03839D1A176E2D0047C77C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		EC03839F1A17784C0047C77C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		EC0383A11A1871860047C77C /* NoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDetailViewController.h; sourceTree = "<group>"; };
+		EC0383A21A1871860047C77C /* NoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDetailViewController.m; sourceTree = "<group>"; };
+		EC0383A41A18795D0047C77C /* NoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableViewCell.h; sourceTree = "<group>"; };
+		EC0383A51A18795D0047C77C /* NoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewCell.m; sourceTree = "<group>"; };
+		EC0383A71A189F7B0047C77C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		EC0383A91A18C4D30047C77C /* PicNoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicNoteDetailViewController.h; sourceTree = "<group>"; };
+		EC0383AA1A18C4D30047C77C /* PicNoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicNoteDetailViewController.m; sourceTree = "<group>"; };
+		EC282FF21A1A564D00F4FE9C /* DrawNoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawNoteDetailViewController.h; sourceTree = "<group>"; };
+		EC282FF31A1A564D00F4FE9C /* DrawNoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawNoteDetailViewController.m; sourceTree = "<group>"; };
+		EC457F0A1A19D47700913847 /* NewDrawNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDrawNoteViewController.h; sourceTree = "<group>"; };
+		EC457F0B1A19D47700913847 /* NewDrawNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDrawNoteViewController.m; sourceTree = "<group>"; };
+		EC457F0D1A19D78900913847 /* DrawBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawBoardView.h; sourceTree = "<group>"; };
+		EC457F0E1A19D78900913847 /* DrawBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawBoardView.m; sourceTree = "<group>"; };
+		EC4FF8D41A17240E00049173 /* NoteBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC4FF8D81A17240E00049173 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC4FF8D91A17240E00049173 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EC4FF8DB1A17240E00049173 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EC4FF8DC1A17240E00049173 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EC4FF8DE1A17240E00049173 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EC4FF8DF1A17240E00049173 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EC4FF8E21A17240E00049173 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EC4FF8E41A17240E00049173 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EC4FF8E71A17240E00049173 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EC4FF8ED1A17240E00049173 /* NoteBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC4FF8F21A17240E00049173 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC4FF8F31A17240E00049173 /* NoteBookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteBookTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC4FF8D11A17240E00049173 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0383A81A189F7B0047C77C /* MobileCoreServices.framework in Frameworks */,
+				EC0383A01A17784C0047C77C /* libsqlite3.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC4FF8EA1A17240E00049173 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC4FF8CB1A17240E00049173 = {
+			isa = PBXGroup;
+			children = (
+				EC0383A71A189F7B0047C77C /* MobileCoreServices.framework */,
+				EC03839F1A17784C0047C77C /* libsqlite3.dylib */,
+				EC4FF8D61A17240E00049173 /* NoteBook */,
+				EC4FF8F01A17240E00049173 /* NoteBookTests */,
+				EC4FF8D51A17240E00049173 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC4FF8D51A17240E00049173 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC4FF8D41A17240E00049173 /* NoteBook.app */,
+				EC4FF8ED1A17240E00049173 /* NoteBookTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC4FF8D61A17240E00049173 /* NoteBook */ = {
+			isa = PBXGroup;
+			children = (
+				EC4FF8DB1A17240E00049173 /* AppDelegate.h */,
+				EC4FF8DC1A17240E00049173 /* AppDelegate.m */,
+				EC4FF8DE1A17240E00049173 /* ViewController.h */,
+				EC4FF8DF1A17240E00049173 /* ViewController.m */,
+				EC4FF8E11A17240E00049173 /* Main.storyboard */,
+				EC4FF8E41A17240E00049173 /* Images.xcassets */,
+				EC4FF8E61A17240E00049173 /* LaunchScreen.xib */,
+				EC4FF8D71A17240E00049173 /* Supporting Files */,
+				EC0383901A17345B0047C77C /* NoteEntity.h */,
+				EC0383911A17345B0047C77C /* NoteEntity.m */,
+				EC0383931A1736BD0047C77C /* NoteDAO.h */,
+				EC0383941A1736BD0047C77C /* NoteDAO.m */,
+				EC0383961A17392C0047C77C /* SQLiteHelper.h */,
+				EC0383971A17392C0047C77C /* SQLiteHelper.m */,
+				EC0383991A17689C0047C77C /* NewNoteViewController.h */,
+				EC03839A1A17689C0047C77C /* NewNoteViewController.m */,
+				EC03839C1A176E2D0047C77C /* MainViewController.h */,
+				EC03839D1A176E2D0047C77C /* MainViewController.m */,
+				EC0383A11A1871860047C77C /* NoteDetailViewController.h */,
+				EC0383A21A1871860047C77C /* NoteDetailViewController.m */,
+				EC0383A41A18795D0047C77C /* NoteTableViewCell.h */,
+				EC0383A51A18795D0047C77C /* NoteTableViewCell.m */,
+				EC0383A91A18C4D30047C77C /* PicNoteDetailViewController.h */,
+				EC0383AA1A18C4D30047C77C /* PicNoteDetailViewController.m */,
+				EC457F0A1A19D47700913847 /* NewDrawNoteViewController.h */,
+				EC457F0B1A19D47700913847 /* NewDrawNoteViewController.m */,
+				EC457F0D1A19D78900913847 /* DrawBoardView.h */,
+				EC457F0E1A19D78900913847 /* DrawBoardView.m */,
+				EC282FF21A1A564D00F4FE9C /* DrawNoteDetailViewController.h */,
+				EC282FF31A1A564D00F4FE9C /* DrawNoteDetailViewController.m */,
+			);
+			path = NoteBook;
+			sourceTree = "<group>";
+		};
+		EC4FF8D71A17240E00049173 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC4FF8D81A17240E00049173 /* Info.plist */,
+				EC4FF8D91A17240E00049173 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC4FF8F01A17240E00049173 /* NoteBookTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC4FF8F31A17240E00049173 /* NoteBookTests.m */,
+				EC4FF8F11A17240E00049173 /* Supporting Files */,
+			);
+			path = NoteBookTests;
+			sourceTree = "<group>";
+		};
+		EC4FF8F11A17240E00049173 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC4FF8F21A17240E00049173 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC4FF8D31A17240E00049173 /* NoteBook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC4FF8F71A17240E00049173 /* Build configuration list for PBXNativeTarget "NoteBook" */;
+			buildPhases = (
+				EC4FF8D01A17240E00049173 /* Sources */,
+				EC4FF8D11A17240E00049173 /* Frameworks */,
+				EC4FF8D21A17240E00049173 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NoteBook;
+			productName = NoteBook;
+			productReference = EC4FF8D41A17240E00049173 /* NoteBook.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC4FF8EC1A17240E00049173 /* NoteBookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC4FF8FA1A17240E00049173 /* Build configuration list for PBXNativeTarget "NoteBookTests" */;
+			buildPhases = (
+				EC4FF8E91A17240E00049173 /* Sources */,
+				EC4FF8EA1A17240E00049173 /* Frameworks */,
+				EC4FF8EB1A17240E00049173 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC4FF8EF1A17240E00049173 /* PBXTargetDependency */,
+			);
+			name = NoteBookTests;
+			productName = NoteBookTests;
+			productReference = EC4FF8ED1A17240E00049173 /* NoteBookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC4FF8CC1A17240E00049173 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = lzh;
+				TargetAttributes = {
+					EC4FF8D31A17240E00049173 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					EC4FF8EC1A17240E00049173 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = EC4FF8D31A17240E00049173;
+					};
+				};
+			};
+			buildConfigurationList = EC4FF8CF1A17240E00049173 /* Build configuration list for PBXProject "NoteBook" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC4FF8CB1A17240E00049173;
+			productRefGroup = EC4FF8D51A17240E00049173 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC4FF8D31A17240E00049173 /* NoteBook */,
+				EC4FF8EC1A17240E00049173 /* NoteBookTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC4FF8D21A17240E00049173 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC4FF8E31A17240E00049173 /* Main.storyboard in Resources */,
+				EC4FF8E81A17240E00049173 /* LaunchScreen.xib in Resources */,
+				EC4FF8E51A17240E00049173 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC4FF8EB1A17240E00049173 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC4FF8D01A17240E00049173 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0383951A1736BD0047C77C /* NoteDAO.m in Sources */,
+				EC282FF41A1A564D00F4FE9C /* DrawNoteDetailViewController.m in Sources */,
+				EC0383981A17392C0047C77C /* SQLiteHelper.m in Sources */,
+				EC4FF8E01A17240E00049173 /* ViewController.m in Sources */,
+				EC03839E1A176E2D0047C77C /* MainViewController.m in Sources */,
+				EC03839B1A17689C0047C77C /* NewNoteViewController.m in Sources */,
+				EC457F0F1A19D78900913847 /* DrawBoardView.m in Sources */,
+				EC457F0C1A19D47700913847 /* NewDrawNoteViewController.m in Sources */,
+				EC0383A31A1871860047C77C /* NoteDetailViewController.m in Sources */,
+				EC4FF8DD1A17240E00049173 /* AppDelegate.m in Sources */,
+				EC0383921A17345B0047C77C /* NoteEntity.m in Sources */,
+				EC4FF8DA1A17240E00049173 /* main.m in Sources */,
+				EC0383AB1A18C4D30047C77C /* PicNoteDetailViewController.m in Sources */,
+				EC0383A61A18795D0047C77C /* NoteTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC4FF8E91A17240E00049173 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC4FF8F41A17240E00049173 /* NoteBookTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC4FF8EF1A17240E00049173 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC4FF8D31A17240E00049173 /* NoteBook */;
+			targetProxy = EC4FF8EE1A17240E00049173 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EC4FF8E11A17240E00049173 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC4FF8E21A17240E00049173 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EC4FF8E61A17240E00049173 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC4FF8E71A17240E00049173 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EC4FF8F51A17240E00049173 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EC4FF8F61A17240E00049173 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC4FF8F81A17240E00049173 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NoteBook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EC4FF8F91A17240E00049173 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NoteBook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EC4FF8FB1A17240E00049173 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NoteBookTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NoteBook.app/NoteBook";
+			};
+			name = Debug;
+		};
+		EC4FF8FC1A17240E00049173 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NoteBookTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NoteBook.app/NoteBook";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC4FF8CF1A17240E00049173 /* Build configuration list for PBXProject "NoteBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC4FF8F51A17240E00049173 /* Debug */,
+				EC4FF8F61A17240E00049173 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC4FF8F71A17240E00049173 /* Build configuration list for PBXNativeTarget "NoteBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC4FF8F81A17240E00049173 /* Debug */,
+				EC4FF8F91A17240E00049173 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC4FF8FA1A17240E00049173 /* Build configuration list for PBXNativeTarget "NoteBookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC4FF8FB1A17240E00049173 /* Debug */,
+				EC4FF8FC1A17240E00049173 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC4FF8CC1A17240E00049173 /* Project object */;
+}
