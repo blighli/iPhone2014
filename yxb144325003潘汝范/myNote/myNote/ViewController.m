@@ -19,9 +19,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSURL *indexFileURL = [bundle URLForResource:@"index" withExtension:@"html"];
-    [self.webview loadRequest:[NSURLRequest requestWithURL:indexFileURL]];
+    self.isEdit = NO;
+    if (self.note!=nil) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *Directory = [documentsDirectory stringByAppendingPathComponent:@"notesData"];
+        NSString *path = [Directory stringByAppendingPathComponent:self.note.fileName];
+        NSLog(@"path is %@",path);
+        NSString *str=[[NSString alloc] initWithContentsOfFile:path];
+        NSLog(@"%@",str);
+        [self.webview loadHTMLString:str baseURL:nil];
+
+        self.isEdit = YES;
+    }else{
+        self.isEdit = NO;
+        NSBundle *bundle = [NSBundle mainBundle];
+        NSURL *indexFileURL = [bundle URLForResource:@"index" withExtension:@"html"];
+        [self.webview loadRequest:[NSURLRequest requestWithURL:indexFileURL]];
+    }
+   
     self.webview.keyboardDisplayRequiresUserAction = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
@@ -191,26 +207,34 @@
     NSString *Path = [Directory stringByAppendingPathComponent:fileName];
     [fileManager createDirectoryAtPath:Directory withIntermediateDirectories:YES attributes:nil error:nil];    
     NSString *html = [self.webview stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('html')[0].innerHTML"];
-    [fileManager createFileAtPath:Path contents:[html  dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
-    NSLog(@"%@",html);
-    if(self.managedObjectContext != nil){
-        Notes *note = (Notes *)[NSEntityDescription insertNewObjectForEntityForName:@"Notes" inManagedObjectContext:self.managedObjectContext];
-        [note setFileName:fileName];
-        NSManagedObjectID *moID = [note objectID];
-        NSString *identifier=[moID.URIRepresentation absoluteString];
-        [note setId:identifier];
-        NSError *error;
-        //托管对象准备好后，调用托管对象上下文的save方法将数据写入数据库
-        BOOL isSaveSuccess = [self.managedObjectContext save:&error];
-        if (!isSaveSuccess) {
-            //NSLog(@"Error: %@,%@",error,[error userInfo]);
-        }else {
-            //NSLog(@"Save successful!");
-        }
+    if (self.isEdit) {
+        NSString *Path2 = [Directory stringByAppendingPathComponent:self.note.fileName];
+        [fileManager createFileAtPath:Path2 contents:[html  dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
     }else{
-        NSLog(@"空指针");
-    }
+        [fileManager createFileAtPath:Path contents:[html  dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+//        NSLog(@"%@",html);
+        if(self.managedObjectContext != nil){
+            Notes *note = (Notes *)[NSEntityDescription insertNewObjectForEntityForName:@"Notes" inManagedObjectContext:self.managedObjectContext];
+            [note setFileName:fileName];
+            NSManagedObjectID *moID = [note objectID];
+            NSString *identifier=[moID.URIRepresentation absoluteString];
+            [note setId:identifier];
+            NSError *error;
+            //托管对象准备好后，调用托管对象上下文的save方法将数据写入数据库
+            BOOL isSaveSuccess = [self.managedObjectContext save:&error];
+            if (!isSaveSuccess) {
+                //NSLog(@"Error: %@,%@",error,[error userInfo]);
+            }else {
+                //NSLog(@"Save successful!");
+            }
+        }else{
+            NSLog(@"空指针");
+        }
 
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveChange" object:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
+   
 }
 - (void) camera{
     NSLog(@"camera is click");

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "AppDelegate.h"
+#import "Notes.h"
 @interface ViewController : UIViewController<UIGestureRecognizerDelegate,UIImagePickerControllerDelegate>
 - (void)keyboardWillShow:(NSNotification *)note;
 - (void)buildCustomToolbar;
@@ -26,5 +27,7 @@
 @property (retain, nonatomic) IBOutlet UIToolbar* toolBar;
 @property (strong,nonatomic) AppDelegate *myDelegate;
 @property NSManagedObjectContext *managedObjectContext;
+@property BOOL isEdit;
+@property Notes *note;
 @end
 

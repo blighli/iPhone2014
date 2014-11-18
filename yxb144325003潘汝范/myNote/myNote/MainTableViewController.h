@@ -12,6 +12,7 @@
 @interface MainTableViewController : UITableViewController<UIWebViewDelegate>
 @property (strong,nonatomic) AppDelegate *myDelegate;
 @property NSManagedObjectContext *managedObjectContext;
+
 + (NSMutableArray *) getResult:(NSManagedObjectContext *)managedObjectContext;
 +(void) deleteCell:(Notes *)note :(NSManagedObjectContext *)managedObjectContext;
 @end

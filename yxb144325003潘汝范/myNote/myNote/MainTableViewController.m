@@ -7,7 +7,7 @@
 //
 
 #import "MainTableViewController.h"
-
+#import "ViewController.h"
 @interface MainTableViewController ()
 
 @end
@@ -26,6 +26,8 @@
                                             selector:@selector(refrash)
                                                 name:@"saveChange"//消息名
                                               object:nil];
+
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,6 +122,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *array = [NSMutableArray arrayWithArray:[MainTableViewController getResult:self.managedObjectContext]];
+    Notes *note = [array objectAtIndex:indexPath.row];
+    NSLog(@"cell item %@",note.id);
+    ViewController *Controller = [[self storyboard]instantiateViewControllerWithIdentifier:@"additem"];
+    Controller.note = note;
+    [[self navigationController] pushViewController:Controller animated:YES];
+    
+}
 + (NSMutableArray *) getResult:(NSManagedObjectContext *)managedObjectContext
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -159,5 +172,8 @@
 {
     [self.tableView reloadData];
 }
-
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue
+{
+    
+}
 @end

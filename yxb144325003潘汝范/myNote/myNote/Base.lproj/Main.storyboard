@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="additem" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -24,7 +24,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ll4-jG-8Bm">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bYo-yE-ShY"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bYo-yE-ShY">
+                            <connections>
+                                <segue destination="gH7-DE-8wl" kind="unwind" unwindAction="unwindToList:" id="5Tp-mX-HDE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="JXL-17-qs8">
                             <connections>
                                 <action selector="SaveNote:" destination="vXZ-lx-hvc" id="G9z-AR-gyN"/>
@@ -37,8 +41,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <exit id="gH7-DE-8wl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2391" y="1041"/>
+            <point key="canvasLocation" x="1579" y="1017"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="17F-XK-jXf">
