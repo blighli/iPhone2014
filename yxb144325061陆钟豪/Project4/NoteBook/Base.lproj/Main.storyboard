@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="关于" id="bj9-mM-SWj"/>
+                    <tabBarItem key="tabBarItem" title="关于" image="about" id="bj9-mM-SWj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAr-wl-QxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -218,7 +218,7 @@
                             <constraint firstItem="Qaz-3M-9Mc" firstAttribute="leading" secondItem="LkY-bs-9GJ" secondAttribute="leading" id="qbe-hR-2Xx"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="全部笔记" id="vz2-ed-Lmq" userLabel="全部笔记"/>
+                    <tabBarItem key="tabBarItem" title="全部笔记" image="note" id="vz2-ed-Lmq" userLabel="全部笔记"/>
                     <navigationItem key="navigationItem" title="全部笔记" id="kis-Tt-Pzz"/>
                     <connections>
                         <outlet property="noteTableView" destination="Bp9-d3-XRE" id="xbC-Zt-dzg"/>
@@ -348,4 +348,8 @@
             <point key="canvasLocation" x="-376" y="504"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="about" width="25" height="25"/>
+        <image name="note" width="25" height="25"/>
+    </resources>
 </document>
