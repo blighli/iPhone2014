@@ -6,7 +6,6 @@
 //  Copyright (c) 2014年 lzh. All rights reserved.
 //
 
-#import <MobileCoreServices/MobileCoreServices.h>
 #import "MainViewController.h"
 #import "NoteEntity.h"
 #import "NoteDAO.h"
@@ -101,48 +100,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     UIViewController *destination = segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"noteDetailSegue"] || [segue.identifier isEqualToString:@"picNoteDetailSegue"] || [segue.identifier isEqualToString:@"drawNoteDetailSegue"])
         [destination setValue:sender forKeyPath:@"noteEntity"];
-}
-
-
-
-- (IBAction)takePhoto:(id)sender {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:picker.sourceType];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-    }
-    
-    [self presentViewController:picker animated:YES completion:^{NSLog(@"hello");}];
-}
-
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    if ([[info objectForKey:UIImagePickerControllerMediaType] isEqualToString:(NSString*)kUTTypeImage]) {
-        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-        NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        NSLog(@"doc path is %@", docPath);
-        NSString *imagePath = [docPath stringByAppendingPathComponent:@"image"];
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        [fileManager createDirectoryAtPath:imagePath withIntermediateDirectories:YES attributes:nil error:nil];
-        NSDateFormatter *dateFormatter = [NSDateFormatter new];
-        [dateFormatter setDateFormat:@"yyyy_MM_dd_HH_mm_ss_SSSS"];
-        NSDate* nowDate = [[NSDate alloc] init];
-        NSString *imageFilePath = [imagePath stringByAppendingFormat:@"/%@.%@", [dateFormatter stringFromDate:nowDate], @"jpg"];
-        
-        NSData *imageData = UIImageJPEGRepresentation(image, 1);
-        if([imageData writeToFile:imageFilePath atomically:YES]) {
-            NSLog(@"image write to file success, file is %@", imageFilePath);
-            NoteEntity *note = [[NoteEntity alloc] initWithType:PicNote andContent:imageFilePath];
-            [_noteDAO insertNote:note];
-        }
-        else {
-            NSLog(@"image wiret to file failed, file is %@", imageFilePath);
-        }
-    }
-    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
