@@ -39,4 +39,26 @@
 - (IBAction)closeView:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)saveNote:(id)sender {
+    
+    if(_noteTextView.text.length>0)
+    {
+        ViewController *mainView=_delegate;
+        NoteData *note=[NoteData MR_createEntity];
+        note.type=@"笔记";
+        note.date=[NSDate date];
+        note.contents=_noteTextView.text;
+        [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+        [mainView.noteData insertObject:note atIndex:0];
+        [mainView.tableView reloadData];
+    }
+    else
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"笔记内容不能为空!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
 @end

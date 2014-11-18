@@ -14,6 +14,8 @@
 		881D3C811A1A3E9D00F7ACA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 881D3C801A1A3E9D00F7ACA7 /* Images.xcassets */; };
 		881D3C841A1A3E9D00F7ACA7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881D3C821A1A3E9D00F7ACA7 /* LaunchScreen.xib */; };
 		881D3C901A1A3E9D00F7ACA7 /* AnyNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 881D3C8F1A1A3E9D00F7ACA7 /* AnyNoteTests.m */; };
+		883D89A41A1B78D0003EB0D4 /* EditNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883D89A31A1B78D0003EB0D4 /* EditNoteViewController.m */; };
+		883D89A71A1B7ED7003EB0D4 /* NoteImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883D89A61A1B7ED7003EB0D4 /* NoteImageViewController.m */; };
 		88A11DC81A1AD81400AB68F8 /* NoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A11DC71A1AD81400AB68F8 /* NoteTableViewCell.m */; };
 		88A11DCE1A1AE1E600AB68F8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88A11DCC1A1AE1E600AB68F8 /* Model.xcdatamodeld */; };
 		88A11DD11A1AE22900AB68F8 /* NoteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A11DD01A1AE22900AB68F8 /* NoteData.m */; };
@@ -49,6 +51,10 @@
 		881D3C891A1A3E9D00F7ACA7 /* AnyNoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyNoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		881D3C8E1A1A3E9D00F7ACA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		881D3C8F1A1A3E9D00F7ACA7 /* AnyNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnyNoteTests.m; sourceTree = "<group>"; };
+		883D89A21A1B78D0003EB0D4 /* EditNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteViewController.h; sourceTree = "<group>"; };
+		883D89A31A1B78D0003EB0D4 /* EditNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteViewController.m; sourceTree = "<group>"; };
+		883D89A51A1B7ED7003EB0D4 /* NoteImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteImageViewController.h; sourceTree = "<group>"; };
+		883D89A61A1B7ED7003EB0D4 /* NoteImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteImageViewController.m; sourceTree = "<group>"; };
 		88A11DC61A1AD81400AB68F8 /* NoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableViewCell.h; sourceTree = "<group>"; };
 		88A11DC71A1AD81400AB68F8 /* NoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewCell.m; sourceTree = "<group>"; };
 		88A11DCD1A1AE1E600AB68F8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -146,6 +152,10 @@
 				88CAB16C1A1B02BC00529E91 /* PaintViewController.m */,
 				88CAB1701A1B311100529E91 /* NewNoteViewController.h */,
 				88CAB1711A1B311100529E91 /* NewNoteViewController.m */,
+				883D89A21A1B78D0003EB0D4 /* EditNoteViewController.h */,
+				883D89A31A1B78D0003EB0D4 /* EditNoteViewController.m */,
+				883D89A51A1B7ED7003EB0D4 /* NoteImageViewController.h */,
+				883D89A61A1B7ED7003EB0D4 /* NoteImageViewController.m */,
 			);
 			path = AnyNote;
 			sourceTree = "<group>";
@@ -311,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				883D89A41A1B78D0003EB0D4 /* EditNoteViewController.m in Sources */,
 				88CAB16D1A1B02BC00529E91 /* PaintViewController.m in Sources */,
 				88CAB1691A1AFBE900529E91 /* PainterLineModel.m in Sources */,
 				88A11DC81A1AD81400AB68F8 /* NoteTableViewCell.m in Sources */,
@@ -318,6 +329,7 @@
 				881D3C791A1A3E9D00F7ACA7 /* AppDelegate.m in Sources */,
 				881D3C761A1A3E9D00F7ACA7 /* main.m in Sources */,
 				88A11DD11A1AE22900AB68F8 /* NoteData.m in Sources */,
+				883D89A71A1B7ED7003EB0D4 /* NoteImageViewController.m in Sources */,
 				88CAB1721A1B311100529E91 /* NewNoteViewController.m in Sources */,
 				88A11DCE1A1AE1E600AB68F8 /* Model.xcdatamodeld in Sources */,
 				88CAB16A1A1AFBE900529E91 /* PaintView.m in Sources */,

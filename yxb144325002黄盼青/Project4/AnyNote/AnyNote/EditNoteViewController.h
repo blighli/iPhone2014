@@ -1,5 +1,5 @@
 //
-//  NewNoteViewController.h
+//  EditNoteViewController.h
 //  AnyNote
 //
 //  Created by 黄盼青 on 14/11/18.
@@ -12,10 +12,12 @@
 #import "PaintView.h"
 #import "ViewController.h"
 
-@interface NewNoteViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UITextView *noteTextView;
+@interface EditNoteViewController : UIViewController
+
+@property (strong,nonatomic) NSIndexPath *currentNote;
 @property (weak,nonatomic) id delegate;
 
+@property (strong, nonatomic) IBOutlet UITextView *textView;
+- (IBAction)saveEditNote:(id)sender;
 - (IBAction)closeView:(id)sender;
-- (IBAction)saveNote:(id)sender;
 @end

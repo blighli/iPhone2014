@@ -106,7 +106,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
     if([segue.identifier isEqualToString:@"editTask"])
-    {
+    {
         [destination setValue:sender forKey:@"taskIndex"];
     }
     [destination setValue:self forKey:@"delegate"];

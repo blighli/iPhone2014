@@ -23,7 +23,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="qp1-fU-Sht"/>
                                     <barButtonItem title="笔记" id="E4f-0e-C86">
                                         <connections>
-                                            <segue destination="F9Y-xE-0B8" kind="presentation" modalPresentationStyle="formSheet" id="Pir-j0-iaV"/>
+                                            <segue destination="F9Y-xE-0B8" kind="presentation" identifier="createNote" modalPresentationStyle="formSheet" id="Pir-j0-iaV"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jFg-Xt-m7c"/>
@@ -41,13 +41,13 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="RWn-wg-o6g"/>
                                     <barButtonItem title="画板" id="IMq-kU-TYj">
                                         <connections>
-                                            <segue destination="yTw-xK-43O" kind="presentation" modalTransitionStyle="flipHorizontal" id="AJr-rn-xQ3"/>
+                                            <segue destination="yTw-xK-43O" kind="presentation" identifier="paintView" modalTransitionStyle="flipHorizontal" id="AJr-rn-xQ3"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="mda-ji-lMq"/>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6VL-mx-q8D">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6VL-mx-q8D">
                                 <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -89,8 +89,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="xRA-MQ-Y4y" id="5tt-Tc-quX"/>
-                                    <outlet property="delegate" destination="xRA-MQ-Y4y" id="Zor-aQ-Tdf"/>
+                                    <outlet property="dataSource" destination="xRA-MQ-Y4y" id="JB7-wy-gLM"/>
+                                    <outlet property="delegate" destination="xRA-MQ-Y4y" id="S4s-PZ-eLb"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -108,6 +108,8 @@
                     <navigationItem key="navigationItem" title="AnyNote" id="aWW-hf-VZh"/>
                     <connections>
                         <outlet property="tableView" destination="6VL-mx-q8D" id="8YY-Zq-Dtx"/>
+                        <segue destination="gM8-Ai-ckb" kind="presentation" identifier="editNote" modalPresentationStyle="formSheet" id="9ME-cc-TdB"/>
+                        <segue destination="CYG-Kd-ImR" kind="presentation" identifier="imageView" modalPresentationStyle="formSheet" id="T5f-RC-hhB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3L-a8-cOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,7 +145,8 @@
                                             </connections>
                                         </stepper>
                                     </barButtonItem>
-                                    <barButtonItem title="清屏" id="bWP-Vw-uY3">
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="x1x-cg-hQ7"/>
+                                    <barButtonItem systemItem="trash" id="bWP-Vw-uY3">
                                         <connections>
                                             <action selector="clearPaintView:" destination="oSa-HT-QlM" id="eQ4-KE-Cyn"/>
                                         </connections>
@@ -187,7 +190,11 @@
                                 <action selector="viewExit:" destination="oSa-HT-QlM" id="9UF-Ab-mYj"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="mjt-IH-jVM"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="mjt-IH-jVM">
+                            <connections>
+                                <action selector="savePaint:" destination="oSa-HT-QlM" id="7KB-Dd-2Q0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="lineWidthLabel" destination="b8s-UG-fGg" id="lkD-HB-JyP"/>
@@ -197,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUO-P7-dW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3588" y="31"/>
+            <point key="canvasLocation" x="4192" y="-227"/>
         </scene>
         <!--创建新笔记-->
         <scene sceneID="6ZO-hz-CHe">
@@ -214,7 +221,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLN-Zn-Q0D">
                                 <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -233,12 +239,105 @@
                                 <action selector="closeView:" destination="PMS-29-CvM" id="Z64-Co-KUh"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="tF2-Oi-3ed"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="tF2-Oi-3ed">
+                            <connections>
+                                <action selector="saveNote:" destination="PMS-29-CvM" id="GFF-Yr-pZN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="noteTextView" destination="oLN-Zn-Q0D" id="Ftz-gp-GLp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yif-o4-HAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3484" y="751"/>
+            <point key="canvasLocation" x="3320" y="475"/>
+        </scene>
+        <!--图片查看-->
+        <scene sceneID="4Dl-JG-lfp">
+            <objects>
+                <viewController id="4bN-zG-xeE" customClass="NoteImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LkA-aF-IXJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="sEW-hQ-wl6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0i9-gu-6So">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8rW-DV-fDT">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="8rW-DV-fDT" secondAttribute="bottom" id="5Lc-T2-O0X"/>
+                            <constraint firstItem="8rW-DV-fDT" firstAttribute="leading" secondItem="0i9-gu-6So" secondAttribute="leading" id="6TK-oD-ARo"/>
+                            <constraint firstAttribute="trailing" secondItem="8rW-DV-fDT" secondAttribute="trailing" id="XKn-JG-ZW3"/>
+                            <constraint firstItem="8rW-DV-fDT" firstAttribute="top" secondItem="LkA-aF-IXJ" secondAttribute="bottom" id="yF8-i0-IS2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="图片查看" id="g50-4u-rd4">
+                        <barButtonItem key="leftBarButtonItem" title="关闭" id="vgm-3C-IH6">
+                            <connections>
+                                <action selector="closeView:" destination="4bN-zG-xeE" id="IdR-gA-d2m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="image" destination="8rW-DV-fDT" id="yYu-BP-NDY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lvt-JX-LMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3109" y="1159"/>
+        </scene>
+        <!--修改笔记-->
+        <scene sceneID="Uor-n3-jnl">
+            <objects>
+                <viewController id="raz-hV-jic" customClass="EditNoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EXH-WC-kBb"/>
+                        <viewControllerLayoutGuide type="bottom" id="zBb-it-OAL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NZR-lc-Nka">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9Q-M0-f4F">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x9Q-M0-f4F" firstAttribute="top" secondItem="EXH-WC-kBb" secondAttribute="bottom" id="EHH-2a-lWF"/>
+                            <constraint firstItem="x9Q-M0-f4F" firstAttribute="leading" secondItem="NZR-lc-Nka" secondAttribute="leading" id="YCN-94-Ifc"/>
+                            <constraint firstAttribute="bottom" secondItem="x9Q-M0-f4F" secondAttribute="bottom" id="Ylu-GI-cyN"/>
+                            <constraint firstAttribute="trailing" secondItem="x9Q-M0-f4F" secondAttribute="trailing" id="gMN-81-vbE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="修改笔记" id="MOa-Zx-7R2">
+                        <barButtonItem key="leftBarButtonItem" title="退出" id="624-uJ-qxO">
+                            <connections>
+                                <action selector="closeView:" destination="raz-hV-jic" id="gkJ-27-hSI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="修改" id="6ny-dE-44B">
+                            <connections>
+                                <action selector="saveEditNote:" destination="raz-hV-jic" id="xA1-gU-1u0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="x9Q-M0-f4F" id="ACd-r6-dER"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ufy-YI-T7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2752" y="-642"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nyu-jX-qVu">
@@ -282,10 +381,10 @@
         <scene sceneID="BO4-yE-Ttm">
             <objects>
                 <tableViewController id="dmF-Vq-3Bt" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="T7Z-Xn-6c6">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="T7Z-Xn-6c6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97729245580808077" green="0.97729245580808077" blue="0.97729245580808077" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="版本信息" footerTitle=" " id="cIV-jy-WNl">
                                 <cells>
@@ -294,8 +393,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H0K-RO-TPQ" id="PdI-2U-r9A">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anybook V1.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwE-OJ-m2p">
-                                                    <rect key="frame" x="20" y="11" width="107" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anynote V1.0 for IOS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwE-OJ-m2p">
+                                                    <rect key="frame" x="19" y="5" width="126.5" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -347,7 +446,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfx-ci-but" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1887" y="1003"/>
+            <point key="canvasLocation" x="1087" y="1779"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="T5P-Da-Ujp">
@@ -365,7 +464,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0U-5w-rBw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2776" y="31"/>
+            <point key="canvasLocation" x="3380" y="-192"/>
         </scene>
         <!--关于-->
         <scene sceneID="EaQ-AN-33A">
@@ -402,7 +501,43 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVk-ry-XPH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2672" y="751"/>
+            <point key="canvasLocation" x="2628" y="711"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3HF-Ae-WGD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gM8-Ai-ckb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9VL-QG-GZa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="raz-hV-jic" kind="relationship" relationship="rootViewController" id="Nsa-Md-afg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3w6-OO-aWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2016" y="-478"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sm2-Rq-HLu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CYG-Kd-ImR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1A4-ch-j9B">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4bN-zG-xeE" kind="relationship" relationship="rootViewController" id="G1j-q5-uxq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kdb-uD-p2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2004" y="1186"/>
         </scene>
     </scenes>
     <resources>
