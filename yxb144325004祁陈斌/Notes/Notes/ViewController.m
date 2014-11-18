@@ -47,7 +47,7 @@
                              dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil) {
         cell = [[UITableViewCell alloc]
-                initWithStyle:UITableViewCellStyleDefault
+                initWithStyle:UITableViewCellStyleValue1
                 reuseIdentifier:CellIdentifier];
     }
     Note* note = self.notes[indexPath.row];
@@ -64,7 +64,8 @@
     } else {
         type = @"未定义";
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"[%@][%@]",type,[dateFormatter stringFromDate: note.time]];
+    cell.textLabel.text = type;
+    cell.detailTextLabel.text = [dateFormatter stringFromDate: note.time];
     return cell;
 }
 

@@ -10,8 +10,6 @@
 #import "PaintPath.h"
 
 @interface DrawView()
-@property (assign,nonatomic) CGFloat width;
-@property (strong,nonatomic) UIColor *color;
 @property (assign,nonatomic) CGMutablePathRef path;
 @property (strong,nonatomic) NSMutableArray *pathArray;
 @end

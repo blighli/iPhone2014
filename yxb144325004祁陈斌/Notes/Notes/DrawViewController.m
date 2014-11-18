@@ -10,6 +10,7 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "ViewController.h"
 #import "Note.h"
+#import "InfColorPickerController.h"
 
 @interface DrawViewController ()
 
@@ -21,6 +22,7 @@ Note* note = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _drawView.color = self.color = [UIColor blackColor];
     ViewController *nodesListView = (ViewController *)self.delegate;
     if (self.noteIndex) {
         note = [nodesListView.notes objectAtIndex:[self.noteIndex integerValue]];
@@ -60,4 +62,21 @@ Note* note = nil;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (IBAction)pickFontColor:(UIBarButtonItem *)sender {
+    InfColorPickerController* picker = [ InfColorPickerController colorPickerViewController ];
+    picker.title = @"颜色";
+    picker.sourceColor = self.color;
+    picker.delegate = self;
+    
+    [ picker presentModallyOverViewController: self ];
+}
+
+- (void) colorPickerControllerDidFinish: (InfColorPickerController*) picker{
+    _drawView.color = self.color = picker.resultColor;
+    [ self dismissModalViewControllerAnimated: YES ];
+}
+
+- (IBAction)fontSizeChange:(UISlider *)sender {
+    _drawView.width = sender.value;
+}
 @end

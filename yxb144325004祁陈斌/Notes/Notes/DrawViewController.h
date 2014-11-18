@@ -13,4 +13,6 @@
 @property (weak, nonatomic) NSNumber* noteIndex;
 @property (weak, nonatomic) id delegate;
 @property (weak, nonatomic) IBOutlet DrawView *drawView;
+@property (strong,nonatomic) UIColor *color;
+
 @end

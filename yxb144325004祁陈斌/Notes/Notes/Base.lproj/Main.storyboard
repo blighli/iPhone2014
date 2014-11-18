@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aPS-tf-PdU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aPS-tf-PdU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -36,16 +36,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RjF-vL-9SZ" customClass="DrawView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3b-ND-a8y">
+                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="2sg-ko-cFK">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="5" maxValue="20" id="ife-5X-kvU">
+                                            <rect key="frame" x="14" y="3" width="204" height="39"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="fontSizeChange:" destination="dx4-uw-R5p" eventType="valueChanged" id="vA2-QV-dJc"/>
+                                            </connections>
+                                        </slider>
+                                    </barButtonItem>
+                                    <barButtonItem width="1" style="plain" systemItem="flexibleSpace" id="Hqb-Ib-CsH"/>
+                                    <barButtonItem title="颜色" id="63P-qU-jVp">
+                                        <connections>
+                                            <action selector="pickFontColor:" destination="dx4-uw-R5p" id="LWa-yx-t2Q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RjF-vL-9SZ" firstAttribute="bottom" secondItem="OYT-iJ-t2j" secondAttribute="top" id="Ckt-fI-aZr"/>
+                            <constraint firstAttribute="trailing" secondItem="l3b-ND-a8y" secondAttribute="trailing" id="27s-T5-02M"/>
+                            <constraint firstItem="l3b-ND-a8y" firstAttribute="top" secondItem="RjF-vL-9SZ" secondAttribute="bottom" id="E87-ct-PxX"/>
+                            <constraint firstItem="RjF-vL-9SZ" firstAttribute="top" secondItem="4Y6-5w-T5R" secondAttribute="bottom" id="Hw0-ek-Cgf"/>
+                            <constraint firstItem="l3b-ND-a8y" firstAttribute="bottom" secondItem="OYT-iJ-t2j" secondAttribute="top" id="f2s-WS-P1g"/>
                             <constraint firstItem="RjF-vL-9SZ" firstAttribute="leading" secondItem="Gxh-xI-2IA" secondAttribute="leading" id="jOC-b1-AA8"/>
-                            <constraint firstItem="RjF-vL-9SZ" firstAttribute="top" secondItem="4Y6-5w-T5R" secondAttribute="bottom" id="lSr-UF-srY"/>
                             <constraint firstAttribute="trailing" secondItem="RjF-vL-9SZ" secondAttribute="trailing" id="mFb-L7-Hmh"/>
+                            <constraint firstItem="l3b-ND-a8y" firstAttribute="leading" secondItem="Gxh-xI-2IA" secondAttribute="leading" id="mGw-cL-emV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="手绘" id="hVn-Sb-Yv8">
@@ -61,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ulh-cB-H1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2270" y="432"/>
+            <point key="canvasLocation" x="2270" y="427"/>
         </scene>
         <!--照片-->
         <scene sceneID="bV6-be-QfC">
@@ -75,7 +98,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gqL-DQ-gMG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gqL-DQ-gMG">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </imageView>
                         </subviews>
