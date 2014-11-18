@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AnynoteLogo" translatesAutoresizingMaskIntoConstraints="NO" id="KVZ-KN-ruW">
+                    <rect key="frame" x="195" y="195" width="90" height="90"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anynote" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTy-ig-2eg">
+                    <rect key="frame" x="199" y="297" width="83" height="27.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.80163325146751141" green="1" blue="0.81247430098684215" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="KVZ-KN-ruW" secondAttribute="centerX" id="8gx-K7-1ys"/>
+                <constraint firstAttribute="centerY" secondItem="KVZ-KN-ruW" secondAttribute="centerY" id="e79-vv-EEv"/>
+                <constraint firstItem="zTy-ig-2eg" firstAttribute="top" secondItem="KVZ-KN-ruW" secondAttribute="bottom" constant="12" id="kB4-3A-ihg"/>
+                <constraint firstAttribute="centerX" secondItem="zTy-ig-2eg" secondAttribute="centerX" id="w5y-2l-S5A"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="769" y="672.75"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AnynoteLogo" width="90" height="90"/>
+    </resources>
+</document>
