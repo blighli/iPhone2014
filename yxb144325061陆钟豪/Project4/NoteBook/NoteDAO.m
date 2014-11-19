@@ -105,7 +105,7 @@
 }
 
 -(NoteEntity*) loadNoteByOffset:(NSInteger) offset {
-    char *sql = "select id, type, content from tb_note order by id limit 1 offset ?";
+    char *sql = "select id, type, content from tb_note order by id desc limit 1 offset ?";
     sqlite3_stmt *statement;
     if(sqlite3_prepare_v2([SQLiteHelper getDBHandle], sql, -1, &statement, NULL)!=SQLITE_OK) {
         NSLog(@"query sql prepare failed");

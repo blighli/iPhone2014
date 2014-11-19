@@ -61,7 +61,7 @@
         cell.textLabel.text = @"[图片]";
     }
     else if(note.type == DrawNote) {
-        cell.textLabel.text = @"[文字]";
+        cell.textLabel.text = @"[涂鸦]";
     }
     else {
         cell.textLabel.text = note.content;

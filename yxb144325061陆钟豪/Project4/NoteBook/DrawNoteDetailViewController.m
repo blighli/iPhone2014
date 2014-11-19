@@ -29,5 +29,6 @@
 
 - (IBAction)modifyDrawNote:(id)sender {
     [self.drawBoardView writeToFile:self.noteEntity.content];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end
