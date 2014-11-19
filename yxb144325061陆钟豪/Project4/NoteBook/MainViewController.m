@@ -60,6 +60,9 @@
     else if(note.type == PicNote) {
         cell.textLabel.text = @"[图片]";
     }
+    else if(note.type == DrawNote) {
+        cell.textLabel.text = @"[文字]";
+    }
     else {
         cell.textLabel.text = note.content;
     }
