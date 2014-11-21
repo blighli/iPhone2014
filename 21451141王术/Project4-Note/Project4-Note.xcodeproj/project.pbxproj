@@ -15,6 +15,11 @@
 		54810E391A1DDBE3008B7345 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54810E381A1DDBE3008B7345 /* Images.xcassets */; };
 		54810E3C1A1DDBE3008B7345 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54810E3A1A1DDBE3008B7345 /* LaunchScreen.xib */; };
 		54810E481A1DDBE3008B7345 /* Project4_NoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54810E471A1DDBE3008B7345 /* Project4_NoteTests.m */; };
+		54810E531A1DE01C008B7345 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54810E521A1DE01C008B7345 /* AboutController.m */; };
+		54810E561A1E1F25008B7345 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54810E551A1E1F25008B7345 /* CanvasView.m */; };
+		54810E5A1A1E1F84008B7345 /* CanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54810E591A1E1F84008B7345 /* CanvasViewController.m */; };
+		54810E5D1A1E2133008B7345 /* PaintPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 54810E5C1A1E2133008B7345 /* PaintPath.m */; };
+		54D7E08F1A1EFD1C0079F02B /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D7E08E1A1EFD1C0079F02B /* Data.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +47,16 @@
 		54810E411A1DDBE3008B7345 /* Project4-NoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project4-NoteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54810E461A1DDBE3008B7345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54810E471A1DDBE3008B7345 /* Project4_NoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Project4_NoteTests.m; sourceTree = "<group>"; };
+		54810E511A1DE01C008B7345 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
+		54810E521A1DE01C008B7345 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
+		54810E541A1E1F25008B7345 /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
+		54810E551A1E1F25008B7345 /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
+		54810E581A1E1F84008B7345 /* CanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasViewController.h; sourceTree = "<group>"; };
+		54810E591A1E1F84008B7345 /* CanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasViewController.m; sourceTree = "<group>"; };
+		54810E5B1A1E2133008B7345 /* PaintPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaintPath.h; path = ../PaintPath.h; sourceTree = "<group>"; };
+		54810E5C1A1E2133008B7345 /* PaintPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaintPath.m; path = ../PaintPath.m; sourceTree = "<group>"; };
+		54D7E08D1A1EFD1C0079F02B /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		54D7E08E1A1EFD1C0079F02B /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +98,8 @@
 		54810E271A1DDBE3008B7345 /* Project4-Note */ = {
 			isa = PBXGroup;
 			children = (
+				54810E5B1A1E2133008B7345 /* PaintPath.h */,
+				54810E5C1A1E2133008B7345 /* PaintPath.m */,
 				54810E2C1A1DDBE3008B7345 /* AppDelegate.h */,
 				54810E2D1A1DDBE3008B7345 /* AppDelegate.m */,
 				54810E321A1DDBE3008B7345 /* ViewController.h */,
@@ -91,7 +108,15 @@
 				54810E381A1DDBE3008B7345 /* Images.xcassets */,
 				54810E3A1A1DDBE3008B7345 /* LaunchScreen.xib */,
 				54810E2F1A1DDBE3008B7345 /* Project4_Note.xcdatamodeld */,
+				54D7E08D1A1EFD1C0079F02B /* Data.h */,
+				54D7E08E1A1EFD1C0079F02B /* Data.m */,
 				54810E281A1DDBE3008B7345 /* Supporting Files */,
+				54810E511A1DE01C008B7345 /* AboutController.h */,
+				54810E521A1DE01C008B7345 /* AboutController.m */,
+				54810E541A1E1F25008B7345 /* CanvasView.h */,
+				54810E551A1E1F25008B7345 /* CanvasView.m */,
+				54810E581A1E1F84008B7345 /* CanvasViewController.h */,
+				54810E591A1E1F84008B7345 /* CanvasViewController.m */,
 			);
 			path = "Project4-Note";
 			sourceTree = "<group>";
@@ -224,8 +249,13 @@
 			files = (
 				54810E2E1A1DDBE3008B7345 /* AppDelegate.m in Sources */,
 				54810E311A1DDBE3008B7345 /* Project4_Note.xcdatamodeld in Sources */,
+				54810E561A1E1F25008B7345 /* CanvasView.m in Sources */,
+				54810E5A1A1E1F84008B7345 /* CanvasViewController.m in Sources */,
 				54810E341A1DDBE3008B7345 /* ViewController.m in Sources */,
+				54810E531A1DE01C008B7345 /* AboutController.m in Sources */,
 				54810E2B1A1DDBE3008B7345 /* main.m in Sources */,
+				54810E5D1A1E2133008B7345 /* PaintPath.m in Sources */,
+				54D7E08F1A1EFD1C0079F02B /* Data.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +448,7 @@
 				54810E4D1A1DDBE3008B7345 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		54810E4E1A1DDBE3008B7345 /* Build configuration list for PBXNativeTarget "Project4-NoteTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +457,7 @@
 				54810E501A1DDBE3008B7345 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
