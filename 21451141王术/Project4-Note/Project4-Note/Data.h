@@ -16,4 +16,7 @@
 @property (nonatomic, retain) NSString * attribute;
 @property (nonatomic, retain) NSDate * time;
 
++ (NSString*) TEXT_TYPE;
++ (NSString*) IMAGE_TYPE;
++ (NSString*) DRAW_TYPE;
 @end

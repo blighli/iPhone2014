@@ -7,9 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import "TextViewController.h"
 
 @interface AppDelegate ()
-
+@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @end
 
 @implementation AppDelegate
@@ -17,6 +21,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    UITabBarController *tabbarcontroller = (UITabBarController *)navigationController.topViewController;
+    NSLog(@"--%@",tabbarcontroller.viewControllers);
+    ViewController *viewcontroller=(ViewController*)tabbarcontroller.viewControllers[0];
+    viewcontroller.managedObjectContext = self.managedObjectContext;
     return YES;
 }
 

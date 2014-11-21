@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate>
+#import <CoreLocation/CoreLocation.h>
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray* mynotes;
-
+@property (nonatomic) NSMutableArray* mynotes;
+@property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @end
 
