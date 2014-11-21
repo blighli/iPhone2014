@@ -84,15 +84,34 @@
     [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
+//选择列表单元
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Data* note = [self.mynotes objectAtIndex:[indexPath row]];
+    if ([note.type isEqualToString:Data.TEXT_TYPE]) {
+        [self performSegueWithIdentifier:@"textSegue2" sender:[NSNumber numberWithInteger:indexPath.row]];
+    } else if ([note.type isEqualToString:Data.IMAGE_TYPE]) {
+        [self performSegueWithIdentifier:@"imageSegue" sender:[NSNumber numberWithInteger:indexPath.row]];
+    } else if ([note.type isEqualToString:Data.DRAW_TYPE]) {
+        [self performSegueWithIdentifier:@"imageSegue" sender:[NSNumber numberWithInteger:indexPath.row]];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"错误" message:@"类型不支持" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil, nil] show];
+    }
+    
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     UIViewController *destination = segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"textSegue"]) {
-       // [destination setValue:sender forKeyPath:@"noteIndex"];
+        //[destination setValue:nil forKeyPath:@"noteIndex"];
         [destination setValue:self.managedObjectContext forKey:@"managedObjectContext"];
+    } else if ([segue.identifier isEqualToString:@"textSegue2"]) {
+        [destination setValue:sender forKeyPath:@"noteIndex"];
+        [destination setValue:self.managedObjectContext forKey:@"managedObjectContext"];
+
     } else if ([segue.identifier isEqualToString:@"imageSegue"]) {
         //[destination setValue:sender forKeyPath:@"noteIndex"];
-    } else {
+    }else {
         //[destination setValue:nil forKeyPath:@"noteIndex"];
     }
     [destination setValue:self forKeyPath:@"delegate"];

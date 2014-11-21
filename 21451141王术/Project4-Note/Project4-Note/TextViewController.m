@@ -32,15 +32,15 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)save:(UIBarButtonItem *)sender {
-//    Data* note;
+    Data* note;
     ViewController *notesListView = (ViewController *)self.delegate;
-//    if (self.noteIndex != nil) {
-//        note = [notesListView.mynotes objectAtIndex:[self.noteIndex integerValue]];
-//    } else {
+    if (self.noteIndex != nil) {
+        note = [notesListView.mynotes objectAtIndex:[self.noteIndex integerValue]];
+    } else {
         //创建一个新的Data类型note
-        Data *note= (Data *)[NSEntityDescription insertNewObjectForEntityForName:@"Data" inManagedObjectContext:self.managedObjectContext];
+       note= (Data *)[NSEntityDescription insertNewObjectForEntityForName:@"Data" inManagedObjectContext:self.managedObjectContext];
         [notesListView.mynotes insertObject:note atIndex:0];
-//    }
+    }
     note.type = Data.TEXT_TYPE;
     note.time = [NSDate new];
     note.attribute = self.textView.text;
