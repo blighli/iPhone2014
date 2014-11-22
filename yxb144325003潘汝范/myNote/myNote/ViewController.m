@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "Notes.h"
+#import "drawViewController.h"
 
 @interface ViewController (){
     CGPoint point;
@@ -48,6 +49,11 @@
     self.navigationitem.title = @"新建笔记";
     self.myDelegate = [[UIApplication sharedApplication] delegate];
     self.managedObjectContext = [ self.myDelegate managedObjectContext];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(addSketch:)
+                                                name:@"addSketch"
+                                              object:nil];
 }
 - (void)viewDidDisappear:(BOOL)animated{
     if(self.v&&self.toolBar){
@@ -127,7 +133,7 @@
     [items addObject:Italic];
     UIBarButtonItem *Underline =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"underline.png"]style:UIBarButtonItemStylePlain target:self action:@selector(underline)];
     [items addObject:Underline];
-    UIBarButtonItem *Image =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"image.png"]style:UIBarButtonItemStylePlain target:self action:@selector(selectPhoto)];
+    UIBarButtonItem *Image =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"image.png"]style:UIBarButtonItemStylePlain target:self action:@selector(selectAlert)];
      [items addObject:Image];
     UIBarButtonItem *Camera =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"camera.png"]style:UIBarButtonItemStylePlain target:self action:@selector(camera)];
    
@@ -235,6 +241,11 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"saveChange" object:self];
     [self dismissViewControllerAnimated:YES completion:nil];
    
+}
+- (void) selectAlert{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择" message:nil delegate:self
+                                          cancelButtonTitle:@"cancel" otherButtonTitles:@"涂鸦",@"图库" ,nil];
+    [alert show];
 }
 - (void) camera{
     NSLog(@"camera is click");
@@ -346,5 +357,37 @@
 #pragma mark 检测是否支持从图库选择图片
 - (BOOL) canUserPickPhotosFromPhotoLibrary{
     return [self cameraSupportsMedia:( NSString *)kUTTypeImage sourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+#pragma mark alert callback
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    switch (buttonIndex) {
+        case 1:
+            [self sketching];
+            break;
+        case 2:
+            [self selectPhoto];
+            break;
+        case 3:
+            break;
+               default:
+            break;
+    }
+}
+- (void) sketching{
+    drawViewController *Controller = [[self storyboard]instantiateViewControllerWithIdentifier:@"sketch"];
+    [[self navigationController] pushViewController:Controller animated:YES];
+}
+
+- (void) addSketch:(NSNotification*)notification{
+    if ([notification.name isEqualToString:@"addSketch"]){
+         NSDictionary* userInfo = notification.userInfo;
+        NSString *imagePath = userInfo[@"path"];
+        [self.webview stringByEvaluatingJavaScriptFromString:@"placeCaretAtEnd(document.getElementById('content'))"];
+        NSLog(@"调用图片 路径是 %@",imagePath);
+        [self.webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.execCommand('insertImage', false, '%@')", imagePath]];
+    }
+
+    
 }
 @end

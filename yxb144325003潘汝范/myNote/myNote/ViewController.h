@@ -10,7 +10,7 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "AppDelegate.h"
 #import "Notes.h"
-@interface ViewController : UIViewController<UIGestureRecognizerDelegate,UIImagePickerControllerDelegate>
+@interface ViewController : UIViewController<UIGestureRecognizerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate>
 - (void)keyboardWillShow:(NSNotification *)note;
 - (void)buildCustomToolbar;
 - (void)bold;
@@ -19,6 +19,7 @@
 - (void)undo;
 - (void)redo;
 - (void)getHTML;
+- (void) selectAlert;
 - (IBAction)SaveNote:(id)sender;
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 @property (strong, nonatomic) UIWindow *window;
