@@ -68,9 +68,9 @@
     if ([note.type isEqualToString:Data.TEXT_TYPE]) {
         type = @"文本";
     } else if ([note.type isEqualToString:Data.IMAGE_TYPE]) {
-        type = @"照片";
+        type = @"拍摄照片";
     } else if ([note.type isEqualToString:Data.DRAW_TYPE]) {
-        type = @"手绘";
+        type = @"手写草稿";
     } else {
         type = @"未定义";
     }
@@ -99,23 +99,47 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
 }
+//传递数值
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     UIViewController *destination = segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"textSegue"]) {
-        //[destination setValue:nil forKeyPath:@"noteIndex"];
-        [destination setValue:self.managedObjectContext forKey:@"managedObjectContext"];
+        
     } else if ([segue.identifier isEqualToString:@"textSegue2"]) {
         [destination setValue:sender forKeyPath:@"noteIndex"];
-        [destination setValue:self.managedObjectContext forKey:@"managedObjectContext"];
-
+        
     } else if ([segue.identifier isEqualToString:@"imageSegue"]) {
-        //[destination setValue:sender forKeyPath:@"noteIndex"];
+     [destination setValue:sender forKeyPath:@"noteIndex"];
     }else {
-        //[destination setValue:nil forKeyPath:@"noteIndex"];
+        [destination setValue:nil forKeyPath:@"noteIndex"];
     }
+    [destination setValue:self.managedObjectContext forKey:@"managedObjectContext"];
     [destination setValue:self forKeyPath:@"delegate"];
 }
+//添加删除
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSManagedObject *eventToDelete = (self.mynotes)[indexPath.row];
+        //从上下文中删除
+        [self.managedObjectContext deleteObject:eventToDelete];
+        [self.mynotes removeObjectAtIndex:[indexPath row]];
+
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除？";
+}
+
 #pragma mark - Location manager
 
 /**
@@ -132,6 +156,52 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [_locationManager setDelegate:self];
     
     return _locationManager;
+}
+- (IBAction)photo:(UIButton *)sender {
+    UIImagePickerController *picker = [UIImagePickerController new];
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:picker.sourceType];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        [self presentViewController:picker animated:YES completion:nil];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"错误" message:@"不支持拍照" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil, nil] show];
+    }
+
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSString* imageDirPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString: @"/images"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager createDirectoryAtPath:imageDirPath withIntermediateDirectories:YES attributes:nil error:nil];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"yyyyMMddHHmmss"];
+    
+    NSDate* nowDate = [NSDate new];
+    NSString *imageFilePath = [imageDirPath stringByAppendingFormat:@"/%@.%@", [dateFormatter stringFromDate: nowDate], @"jpg"];
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    //插入成功
+    if ([imageData writeToFile:imageFilePath atomically:YES] ) {
+        //声明新的Data变量
+        Data* note= (Data *)[NSEntityDescription insertNewObjectForEntityForName:@"Data" inManagedObjectContext:self.managedObjectContext];
+        note.time = nowDate;
+        note.attribute = imageFilePath;
+        note.type = Data.IMAGE_TYPE;
+        //数据储存
+        NSError *error = nil;
+        if (![note.managedObjectContext save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        [self.mynotes insertObject:note atIndex:0];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"错误" message:@"图片保存失败" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil, nil] show];
+    }
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 

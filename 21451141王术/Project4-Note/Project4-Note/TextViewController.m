@@ -21,6 +21,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     // Do any additional setup after loading the view.
     ViewController *nodesListView = (ViewController *)self.delegate;
+    //用这个方法也可以
+    //_managedObjectContext=nodesListView.managedObjectContext;
     if (self.noteIndex != nil) {
        Data * note = [nodesListView.mynotes objectAtIndex:[self.noteIndex integerValue]];
         self.textView.text = note.attribute;
@@ -50,7 +52,7 @@
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        //abort();
+        abort();
     }
     [self.navigationController popViewControllerAnimated:YES];
 

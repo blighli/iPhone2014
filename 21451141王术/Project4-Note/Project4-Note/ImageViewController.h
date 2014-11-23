@@ -1,18 +1,16 @@
 //
-//  CanvasViewController.h
+//  ImageViewController.h
 //  Project4-Note
 //
-//  Created by  ws on 11/20/14.
+//  Created by  ws on 11/23/14.
 //  Copyright (c) 2014 ws. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "CanvasView.h"
 
-@interface CanvasViewController : UIViewController
+@interface ImageViewController : UIViewController
 @property (weak, nonatomic) NSNumber* noteIndex;
 @property (weak, nonatomic) id delegate;
-@property (strong,nonatomic) UIColor *color;
-@property (weak, nonatomic) IBOutlet CanvasView *drawView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @end
