@@ -1,0 +1,526 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC6A52D11A1759B50033AF61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6A52D01A1759B50033AF61 /* main.m */; };
+		CC6A52D41A1759B50033AF61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6A52D31A1759B50033AF61 /* AppDelegate.m */; };
+		CC6A52D71A1759B50033AF61 /* MyNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC6A52D51A1759B50033AF61 /* MyNote.xcdatamodeld */; };
+		CC6A52DF1A1759B50033AF61 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC6A52DE1A1759B50033AF61 /* Images.xcassets */; };
+		CC6A52E21A1759B50033AF61 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC6A52E01A1759B50033AF61 /* LaunchScreen.xib */; };
+		CC6A52EE1A1759B50033AF61 /* MyNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6A52ED1A1759B50033AF61 /* MyNoteTests.m */; };
+		CC73FC311A21DA7700042BEF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC73FC301A21DA7700042BEF /* MainViewController.m */; };
+		CC73FC341A21DB7A00042BEF /* NewNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC73FC331A21DB7A00042BEF /* NewNoteViewController.m */; };
+		CC73FC371A21DC0300042BEF /* ReadNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC73FC361A21DC0300042BEF /* ReadNoteViewController.m */; };
+		CC73FC3D1A22404B00042BEF /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = CC73FC3C1A22404B00042BEF /* Note.m */; };
+		CC73FC401A22486200042BEF /* PicNoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC73FC3F1A22486200042BEF /* PicNoteDetailViewController.m */; };
+		CC73FC431A22487500042BEF /* TakePicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC73FC421A22487500042BEF /* TakePicViewController.m */; };
+		CC73FC451A224A4500042BEF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC73FC441A224A4500042BEF /* MobileCoreServices.framework */; };
+		CC73FC481A224D5000042BEF /* NewDoodleNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC73FC471A224D5000042BEF /* NewDoodleNoteViewController.m */; };
+		CCE0208C1A21AE2B00E49BEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCE0208B1A21AE2B00E49BEA /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC6A52E81A1759B50033AF61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC6A52C31A1759B50033AF61 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC6A52CA1A1759B50033AF61;
+			remoteInfo = MyNote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CC6A52CB1A1759B50033AF61 /* MyNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC6A52CF1A1759B50033AF61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC6A52D01A1759B50033AF61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CC6A52D21A1759B50033AF61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CC6A52D31A1759B50033AF61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CC6A52D61A1759B50033AF61 /* MyNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyNote.xcdatamodel; sourceTree = "<group>"; };
+		CC6A52DE1A1759B50033AF61 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CC6A52E11A1759B50033AF61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		CC6A52E71A1759B50033AF61 /* MyNoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyNoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC6A52EC1A1759B50033AF61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC6A52ED1A1759B50033AF61 /* MyNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyNoteTests.m; sourceTree = "<group>"; };
+		CC73FC2F1A21DA7700042BEF /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		CC73FC301A21DA7700042BEF /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		CC73FC321A21DB7A00042BEF /* NewNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNoteViewController.h; sourceTree = "<group>"; };
+		CC73FC331A21DB7A00042BEF /* NewNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNoteViewController.m; sourceTree = "<group>"; };
+		CC73FC351A21DC0300042BEF /* ReadNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadNoteViewController.h; sourceTree = "<group>"; };
+		CC73FC361A21DC0300042BEF /* ReadNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadNoteViewController.m; sourceTree = "<group>"; };
+		CC73FC3B1A22404B00042BEF /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		CC73FC3C1A22404B00042BEF /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		CC73FC3E1A22486200042BEF /* PicNoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicNoteDetailViewController.h; sourceTree = "<group>"; };
+		CC73FC3F1A22486200042BEF /* PicNoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicNoteDetailViewController.m; sourceTree = "<group>"; };
+		CC73FC411A22487500042BEF /* TakePicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePicViewController.h; sourceTree = "<group>"; };
+		CC73FC421A22487500042BEF /* TakePicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePicViewController.m; sourceTree = "<group>"; };
+		CC73FC441A224A4500042BEF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CC73FC461A224D5000042BEF /* NewDoodleNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDoodleNoteViewController.h; sourceTree = "<group>"; };
+		CC73FC471A224D5000042BEF /* NewDoodleNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDoodleNoteViewController.m; sourceTree = "<group>"; };
+		CCE0208B1A21AE2B00E49BEA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC6A52C81A1759B50033AF61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC73FC451A224A4500042BEF /* MobileCoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC6A52E41A1759B50033AF61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC6A52C21A1759B50033AF61 = {
+			isa = PBXGroup;
+			children = (
+				CC73FC441A224A4500042BEF /* MobileCoreServices.framework */,
+				CC6A52CD1A1759B50033AF61 /* MyNote */,
+				CC6A52EA1A1759B50033AF61 /* MyNoteTests */,
+				CC6A52CC1A1759B50033AF61 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CC6A52CC1A1759B50033AF61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC6A52CB1A1759B50033AF61 /* MyNote.app */,
+				CC6A52E71A1759B50033AF61 /* MyNoteTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC6A52CD1A1759B50033AF61 /* MyNote */ = {
+			isa = PBXGroup;
+			children = (
+				CC73FC2E1A21DA1500042BEF /* CocoaData */,
+				CCC241A41A21D2BE00FC79C2 /* MainVC */,
+				CCC241A31A21D2A700FC79C2 /* PicNoteVc */,
+				CCC241A21A21D29C00FC79C2 /* NoteVC */,
+				CCC241A11A21D28E00FC79C2 /* DoodleNoteVC */,
+				CCE0208D1A21AE3C00E49BEA /* UI */,
+				CC6A52CE1A1759B50033AF61 /* Supporting Files */,
+			);
+			path = MyNote;
+			sourceTree = "<group>";
+		};
+		CC6A52CE1A1759B50033AF61 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CC6A52D31A1759B50033AF61 /* AppDelegate.m */,
+				CC6A52D21A1759B50033AF61 /* AppDelegate.h */,
+				CC6A52CF1A1759B50033AF61 /* Info.plist */,
+				CC6A52D01A1759B50033AF61 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CC6A52EA1A1759B50033AF61 /* MyNoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				CC6A52ED1A1759B50033AF61 /* MyNoteTests.m */,
+				CC6A52EB1A1759B50033AF61 /* Supporting Files */,
+			);
+			path = MyNoteTests;
+			sourceTree = "<group>";
+		};
+		CC6A52EB1A1759B50033AF61 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CC6A52EC1A1759B50033AF61 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CC73FC2E1A21DA1500042BEF /* CocoaData */ = {
+			isa = PBXGroup;
+			children = (
+				CC73FC3B1A22404B00042BEF /* Note.h */,
+				CC73FC3C1A22404B00042BEF /* Note.m */,
+				CC6A52D51A1759B50033AF61 /* MyNote.xcdatamodeld */,
+			);
+			name = CocoaData;
+			sourceTree = "<group>";
+		};
+		CCC241A11A21D28E00FC79C2 /* DoodleNoteVC */ = {
+			isa = PBXGroup;
+			children = (
+				CC73FC461A224D5000042BEF /* NewDoodleNoteViewController.h */,
+				CC73FC471A224D5000042BEF /* NewDoodleNoteViewController.m */,
+			);
+			name = DoodleNoteVC;
+			sourceTree = "<group>";
+		};
+		CCC241A21A21D29C00FC79C2 /* NoteVC */ = {
+			isa = PBXGroup;
+			children = (
+				CC73FC321A21DB7A00042BEF /* NewNoteViewController.h */,
+				CC73FC331A21DB7A00042BEF /* NewNoteViewController.m */,
+				CC73FC351A21DC0300042BEF /* ReadNoteViewController.h */,
+				CC73FC361A21DC0300042BEF /* ReadNoteViewController.m */,
+			);
+			name = NoteVC;
+			sourceTree = "<group>";
+		};
+		CCC241A31A21D2A700FC79C2 /* PicNoteVc */ = {
+			isa = PBXGroup;
+			children = (
+				CC73FC3E1A22486200042BEF /* PicNoteDetailViewController.h */,
+				CC73FC3F1A22486200042BEF /* PicNoteDetailViewController.m */,
+				CC73FC411A22487500042BEF /* TakePicViewController.h */,
+				CC73FC421A22487500042BEF /* TakePicViewController.m */,
+			);
+			name = PicNoteVc;
+			sourceTree = "<group>";
+		};
+		CCC241A41A21D2BE00FC79C2 /* MainVC */ = {
+			isa = PBXGroup;
+			children = (
+				CC73FC2F1A21DA7700042BEF /* MainViewController.h */,
+				CC73FC301A21DA7700042BEF /* MainViewController.m */,
+			);
+			name = MainVC;
+			sourceTree = "<group>";
+		};
+		CCE0208D1A21AE3C00E49BEA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CC6A52DE1A1759B50033AF61 /* Images.xcassets */,
+				CC6A52E01A1759B50033AF61 /* LaunchScreen.xib */,
+				CCE0208B1A21AE2B00E49BEA /* Main.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC6A52CA1A1759B50033AF61 /* MyNote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC6A52F11A1759B50033AF61 /* Build configuration list for PBXNativeTarget "MyNote" */;
+			buildPhases = (
+				CC6A52C71A1759B50033AF61 /* Sources */,
+				CC6A52C81A1759B50033AF61 /* Frameworks */,
+				CC6A52C91A1759B50033AF61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyNote;
+			productName = MyNote;
+			productReference = CC6A52CB1A1759B50033AF61 /* MyNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC6A52E61A1759B50033AF61 /* MyNoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC6A52F41A1759B50033AF61 /* Build configuration list for PBXNativeTarget "MyNoteTests" */;
+			buildPhases = (
+				CC6A52E31A1759B50033AF61 /* Sources */,
+				CC6A52E41A1759B50033AF61 /* Frameworks */,
+				CC6A52E51A1759B50033AF61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC6A52E91A1759B50033AF61 /* PBXTargetDependency */,
+			);
+			name = MyNoteTests;
+			productName = MyNoteTests;
+			productReference = CC6A52E71A1759B50033AF61 /* MyNoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC6A52C31A1759B50033AF61 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Cocoa;
+				TargetAttributes = {
+					CC6A52CA1A1759B50033AF61 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					CC6A52E61A1759B50033AF61 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = CC6A52CA1A1759B50033AF61;
+					};
+				};
+			};
+			buildConfigurationList = CC6A52C61A1759B50033AF61 /* Build configuration list for PBXProject "MyNote" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC6A52C21A1759B50033AF61;
+			productRefGroup = CC6A52CC1A1759B50033AF61 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC6A52CA1A1759B50033AF61 /* MyNote */,
+				CC6A52E61A1759B50033AF61 /* MyNoteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC6A52C91A1759B50033AF61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCE0208C1A21AE2B00E49BEA /* Main.storyboard in Resources */,
+				CC6A52E21A1759B50033AF61 /* LaunchScreen.xib in Resources */,
+				CC6A52DF1A1759B50033AF61 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC6A52E51A1759B50033AF61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC6A52C71A1759B50033AF61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC6A52D71A1759B50033AF61 /* MyNote.xcdatamodeld in Sources */,
+				CC6A52D41A1759B50033AF61 /* AppDelegate.m in Sources */,
+				CC73FC371A21DC0300042BEF /* ReadNoteViewController.m in Sources */,
+				CC73FC311A21DA7700042BEF /* MainViewController.m in Sources */,
+				CC73FC401A22486200042BEF /* PicNoteDetailViewController.m in Sources */,
+				CC73FC431A22487500042BEF /* TakePicViewController.m in Sources */,
+				CC73FC341A21DB7A00042BEF /* NewNoteViewController.m in Sources */,
+				CC73FC3D1A22404B00042BEF /* Note.m in Sources */,
+				CC73FC481A224D5000042BEF /* NewDoodleNoteViewController.m in Sources */,
+				CC6A52D11A1759B50033AF61 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC6A52E31A1759B50033AF61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC6A52EE1A1759B50033AF61 /* MyNoteTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC6A52E91A1759B50033AF61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC6A52CA1A1759B50033AF61 /* MyNote */;
+			targetProxy = CC6A52E81A1759B50033AF61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CC6A52E01A1759B50033AF61 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC6A52E11A1759B50033AF61 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CC6A52EF1A1759B50033AF61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CC6A52F01A1759B50033AF61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CC6A52F21A1759B50033AF61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MyNote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CC6A52F31A1759B50033AF61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MyNote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CC6A52F51A1759B50033AF61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyNoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyNote.app/MyNote";
+			};
+			name = Debug;
+		};
+		CC6A52F61A1759B50033AF61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyNoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyNote.app/MyNote";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC6A52C61A1759B50033AF61 /* Build configuration list for PBXProject "MyNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC6A52EF1A1759B50033AF61 /* Debug */,
+				CC6A52F01A1759B50033AF61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC6A52F11A1759B50033AF61 /* Build configuration list for PBXNativeTarget "MyNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC6A52F21A1759B50033AF61 /* Debug */,
+				CC6A52F31A1759B50033AF61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC6A52F41A1759B50033AF61 /* Build configuration list for PBXNativeTarget "MyNoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC6A52F51A1759B50033AF61 /* Debug */,
+				CC6A52F61A1759B50033AF61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CC6A52D51A1759B50033AF61 /* MyNote.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CC6A52D61A1759B50033AF61 /* MyNote.xcdatamodel */,
+			);
+			currentVersion = CC6A52D61A1759B50033AF61 /* MyNote.xcdatamodel */;
+			path = MyNote.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CC6A52C31A1759B50033AF61 /* Project object */;
+}
