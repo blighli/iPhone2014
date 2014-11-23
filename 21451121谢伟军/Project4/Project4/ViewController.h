@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "databaseOperation.h"
 @interface ViewController : UIViewController
-
+@property databaseOperation* myDatabase;
 
 @end
 

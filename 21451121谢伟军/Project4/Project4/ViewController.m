@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.myDatabase = [[databaseOperation alloc] init];
+    [self.myDatabase openDatabse];
+    [self.myDatabase creatTable];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
