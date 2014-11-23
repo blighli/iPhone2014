@@ -19,8 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if (self.text != nil) {
-        self.textView.text = self.text;
+    if (self.currentNote != nil) {
+        self.textView.text = self.currentNote.content;
         self.isEditing = YES;
     } else {
         self.isEditing = NO;
@@ -36,7 +36,7 @@
 - (IBAction)saveTextNote:(id)sender {
     NSLog(@"Saving Text Note...");
     if (self.isEditing) {
-        self.mainView.currentNote.content = self.textView.text;
+        self.currentNote.content = self.textView.text;
     } else {
         Note *note = [Note MR_createEntity];
         note.date = [NSDate date];

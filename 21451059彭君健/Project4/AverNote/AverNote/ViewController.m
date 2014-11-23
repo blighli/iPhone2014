@@ -11,7 +11,7 @@
 #import "TextNoteViewController.h"
 #import "ImageViewController.h"
 @interface ViewController ()
-
+@property (nonatomic) Note* currentNote;
 @end
 
 @implementation ViewController
@@ -113,7 +113,7 @@
     
     if([segue.identifier isEqualToString:@"textNote"]) {
         TextNoteViewController *textNote = (TextNoteViewController*) dest;
-        textNote.text = self.currentNote.content;
+        textNote.currentNote = self.currentNote;
     } else if([segue.identifier isEqualToString:@"viewImage"]) {
         ImageViewController *imageView = (ImageViewController*) dest;
         imageView.image = [UIImage imageWithContentsOfFile:self.currentNote.content];

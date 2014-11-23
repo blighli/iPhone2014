@@ -12,7 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *noteTable;
 @property (nonatomic) NSMutableArray *notes;
-@property (nonatomic) Note* currentNote;
 
 @end
 

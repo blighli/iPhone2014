@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class ViewController;
-
+@class Note;
 @interface TextNoteViewController : UIViewController
 @property (nonatomic) ViewController *mainView;
-@property (nonatomic) NSString *text;
+@property (nonatomic) Note *currentNote;
 @end
