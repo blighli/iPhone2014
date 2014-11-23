@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainTableViewController : UITableViewController
+@interface MainTableViewController : UITableViewController<UIImagePickerControllerDelegate>
+- (IBAction)newPhotoButton:(id)sender;
 @property (strong, nonatomic) IBOutlet UITableView *MainTableView;
 @property (strong,nonatomic) NSMutableArray* TableViewListArray;
+@property (weak, nonatomic) MainTableViewController* param;
+@property (weak, nonatomic) NSNumber* num;
+
 @end

@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainTableViewController.h"
 
 @interface DrawPictureViewController : UIViewController
 - (IBAction)SaveButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *SaveButton;
+@property (weak, nonatomic) IBOutlet UIImageView *ImageView;
 
+@property (weak, nonatomic) MainTableViewController* param;
+@property (weak, nonatomic) NSNumber* num;
 @end

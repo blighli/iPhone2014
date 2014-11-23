@@ -136,10 +136,65 @@
  //In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UIViewController* view = segue.destinationViewController;
-    if ([segue.identifier isEqualToString:@"myShowTextView"]) {
+    if ([segue.identifier isEqualToString:@"myShowTextView"]) {//展示文本
         [view setValue:sender forKey:@"num"];
-    }
         [view setValue:self forKey:@"param"];
+    }else if([segue.identifier isEqualToString:@"myNewTextView"]){//新建文本
+        [view setValue:self forKey:@"param"];
+    }else if([segue.identifier isEqualToString:@"myDrawPicView"]){//新建绘图
+        [view setValue:self forKey:@"param"];
+    }else if([segue.identifier isEqualToString:@"myShowPicView"]){//展示绘图
+        [view setValue:sender forKey:@"num"];
+        [view setValue:self forKey:@"param"];
+    }
+
+}
+
+
+- (IBAction)newPhotoButton:(id)sender {
+    UIImagePickerController *picker = [UIImagePickerController new];
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:picker.sourceType];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        [self presentViewController:picker animated:YES completion:nil];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"错误" message:@"设备不支持拍照" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil, nil] show];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSString* imageDirPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString: @"/images"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager createDirectoryAtPath:imageDirPath withIntermediateDirectories:YES attributes:nil error:nil];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"yyyyMMddHHmmss"];
+    NSString *imageFilePath = [imageDirPath stringByAppendingFormat:@"/%@.%@", [dateFormatter stringFromDate: [NSDate new]], @"jpg"];
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    if ([imageData writeToFile:imageFilePath atomically:YES] ) {
+        AppDelegate* myAppDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate] ;//获取委托
+        MyNote *myNote = [NSEntityDescription insertNewObjectForEntityForName:@"MyNote" inManagedObjectContext:[myAppDelegate managedObjectContext]];
+        myNote.text = imageFilePath;
+        NSDateFormatter* nsdateformat=[[NSDateFormatter alloc] init];
+        [nsdateformat setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+        myNote.time = [nsdateformat stringFromDate: [NSDate new]];
+        myNote.type=@"pic";
+        NSError *error = nil;
+        BOOL isSave =   [[myAppDelegate managedObjectContext] save:&error];
+        if (!isSave) {
+            NSLog(@"error:%@,%@",error,[error userInfo]);
+        }
+        else{
+            NSLog(@"保存成功");
+            [_param.TableViewListArray addObject:myNote];
+            [picker dismissViewControllerAnimated:YES completion:nil];
+        }
+    }else{
+        //保存失败
+        NSLog(@"保存失败");
+    }
 }
 
 
