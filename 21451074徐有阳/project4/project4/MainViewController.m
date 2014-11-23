@@ -7,16 +7,18 @@
 //
 
 #import "MainViewController.h"
+#import "DB.h"
+#import "Note.h"
 
 @interface MainViewController ()<UIActionSheetDelegate>
-
+@property (nonatomic, strong) NSMutableArray *notes;
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.notes = [Note getAllNotes];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -36,13 +38,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.notes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"note" forIndexPath:indexPath];
-    cell.textLabel.text = @"1";
-    
+    cell.textLabel.text = ((Note *)[self.notes objectAtIndex:indexPath.row]).title;
     return cell;
 }
 
