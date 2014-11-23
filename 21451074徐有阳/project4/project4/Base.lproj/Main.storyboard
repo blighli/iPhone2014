@@ -38,7 +38,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="qwr-Xe-T4z" kind="modal" identifier="addText" id="Nq4-TT-af7"/>
-                        <segue destination="aid-ix-pUw" kind="push" identifier="draw" id="vZn-MH-8ei"/>
+                        <segue destination="aid-ix-pUw" kind="modal" identifier="draw" id="vZn-MH-8ei"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XlP-qi-kfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -48,7 +48,7 @@
         <!--绘图-->
         <scene sceneID="q6b-KJ-n9Q">
             <objects>
-                <viewController id="aid-ix-pUw" sceneMemberID="viewController">
+                <viewController id="aid-ix-pUw" customClass="DrawViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iaF-Nb-pkm"/>
                         <viewControllerLayoutGuide type="bottom" id="LzJ-55-yrX"/>
@@ -56,6 +56,21 @@
                     <view key="view" contentMode="scaleToFill" id="WEU-nh-Xgn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3EH-HN-9ip">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="2rS-1g-bwp">
+                                        <barButtonItem key="leftBarButtonItem" title="取消" id="wy6-Rb-tCQ">
+                                            <connections>
+                                                <action selector="cancel:" destination="aid-ix-pUw" id="sSx-5h-Z3T"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="Kyf-Tq-1Cd"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="绘图" id="ZOW-TH-8SO">
