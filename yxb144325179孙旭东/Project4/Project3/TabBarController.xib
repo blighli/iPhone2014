@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppDelegate">
+            <connections>
+                <outlet property="rootController" destination="V9k-pi-JwW" id="klQ-pQ-Kf5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tabBarController id="V9k-pi-JwW">
+            <nil key="simulatedBottomBarMetrics"/>
+            <tabBar key="tabBar" contentMode="scaleToFill" id="Qls-Xv-h2f">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </tabBar>
+            <viewControllers>
+                <viewController nibName="TextViewController" id="xVW-ek-gOM" customClass="TextViewController">
+                    <tabBarItem key="tabBarItem" title="Text" id="BfH-Cf-aam"/>
+                </viewController>
+                <viewController nibName="PhotoViewController" automaticallyAdjustsScrollViewInsets="NO" id="6EQ-1I-7kK" customClass="PhotoViewController">
+                    <tabBarItem key="tabBarItem" title="Photo" id="KLk-lF-Cas"/>
+                    <toolbarItems/>
+                </viewController>
+                <viewController nibName="PaintViewController" id="Cnm-89-9hI" customClass="PaintViewController">
+                    <tabBarItem key="tabBarItem" title="Paint" id="ZBQ-Gq-Lk9"/>
+                </viewController>
+            </viewControllers>
+            <point key="canvasLocation" x="299" y="420"/>
+        </tabBarController>
+    </objects>
+</document>
