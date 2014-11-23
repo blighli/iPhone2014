@@ -15,5 +15,8 @@
 @property (nonatomic, strong)NSString *imagePath;
 @property (nonatomic, strong)NSString *type;
 + (NSMutableArray *)getAllNotes;
-+ (BOOL)addNoteWithTitle:(NSString *)title Content:(NSString *)content ImagePath:(NSString *)imagePath Type:(NSString *)type;
++ (void)addNoteWithTitle:(NSString *)title Content:(NSString *)content ImagePath:(NSString *)imagePath Type:(NSString *)type;
+
+- (void)add;
+- (void)update;
 @end

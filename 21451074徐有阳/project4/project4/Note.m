@@ -29,16 +29,16 @@
     return notes;
 }
 
-+ (BOOL)addNoteWithTitle:(NSString *)title Content:(NSString *)content ImagePath:(NSString *)imagePath Type:(NSString *)type {
+- (void)add {
     // noteId为主键，时间戳
     NSString *noteId = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
-    NSString *query = [NSString stringWithFormat:@"INSERT INTO NOTES  VALUES ('%@', '%@', '%@', '%@', '%@')", noteId, title, content, imagePath, type];
+    NSString *query = [NSString stringWithFormat:@"INSERT INTO NOTES  VALUES ('%@', '%@', '%@', '%@', '%@')", noteId, self.title, self.content, self.imagePath, self.type];
     [DB executeQuery:query];
-    return NO;
 }
 
-+ (BOOL)updateNoteWithId:(NSString *)noteId Title:(NSString *)title Content:(NSString *)content ImagePaht:(NSString *)imagePath Type:(NSString *)type {
-    return NO;
+- (void)update {
+    NSString *query = [NSString stringWithFormat:@"UPDATE NOTES SET title='%@', content='%@', imagePath='%@' WHERE id='%@'", self.title, self.content, self.imagePath, self.noteId];
+    [DB executeQuery:query];
 }
 
 @end

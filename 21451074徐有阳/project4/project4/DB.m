@@ -63,6 +63,7 @@ sqlite3 *database;
     if (sqlite3_exec(database, [query UTF8String], NULL, NULL, &err) != SQLITE_OK) {
         sqlite3_close(database);
         NSLog(@"数据库操作数据失败!");
+        NSLog(@"%s", err);
     }
 }
 

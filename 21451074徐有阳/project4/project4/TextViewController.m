@@ -34,11 +34,23 @@
 - (IBAction)add:(id)sender {
     if (self.note == nil) {
         // 添加新的note
-        [Note addNoteWithTitle:self.noteContent.text Content:self.noteContent.text ImagePath:@"123" Type:@"text"];
+        Note *newNote = [[Note alloc]init];
+        newNote.title = self.noteTitle.text;
+        newNote.content = self.noteContent.text;
+        newNote.imagePath = @"123";
+        newNote.type = @"text";
+        [newNote add];
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         // 更新note
-        
+        Note *newNote = [[Note alloc]init];
+        newNote.noteId = self.note.noteId;
+        newNote.title = self.noteTitle.text;
+        newNote.content = self.noteContent.text;
+        newNote.imagePath = @"123";
+        newNote.type = @"text";
+        [newNote update];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
