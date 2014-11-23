@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "TextViewController.h"
 #import "DB.h"
 #import "Note.h"
 
@@ -18,17 +19,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     self.notes = [Note getAllNotes];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -81,15 +79,24 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"addText"]) {
+        NSLog(@"add");
+        TextViewController *textVC = [segue destinationViewController];
+        textVC.note = nil;
+    }
+    if ([segue.identifier isEqualToString:@"editText"]) {
+        NSLog(@"edit");
+        NSInteger index = [self.tableView indexPathForCell:(UITableViewCell *)sender].row;
+        TextViewController *textVC = [segue destinationViewController];
+        textVC.note = [self.notes objectAtIndex:index];
+    }
 }
-*/
+
 - (IBAction)addNote:(id)sender {
     UIActionSheet *addNoetActionSheet = [[UIActionSheet alloc]initWithTitle:@"" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"文字", @"照片", @"绘图", nil];
     [addNoetActionSheet showInView:self.view];
@@ -99,7 +106,7 @@
     switch (buttonIndex) {
         case 0:
             NSLog(@"文字");
-            [self performSegueWithIdentifier:@"text" sender:self];
+            [self performSegueWithIdentifier:@"addText" sender:self];
             break;
         case 1:
             NSLog(@"照片");
@@ -111,5 +118,4 @@
             break;
     }
 }
-
 @end

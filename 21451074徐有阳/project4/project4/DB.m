@@ -43,7 +43,7 @@ sqlite3 *database;
     }
 }
 
-+ (sqlite3_stmt *)exectueQuery:(NSString *)query{
++ (sqlite3_stmt *)executeSelectQuery:(NSString *)query {
     if ([self openDataBase]) {
         // 打开数据库成功
         sqlite3_stmt *statement;
@@ -54,6 +54,16 @@ sqlite3 *database;
         return statement;
     }
     return nil;
+}
+
++ (void)executeQuery:(NSString *)query
+{
+    NSLog(@"%@", query);
+    char *err;
+    if (sqlite3_exec(database, [query UTF8String], NULL, NULL, &err) != SQLITE_OK) {
+        sqlite3_close(database);
+        NSLog(@"数据库操作数据失败!");
+    }
 }
 
 @end

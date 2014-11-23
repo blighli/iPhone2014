@@ -11,5 +11,6 @@
 
 @interface DB : NSObject
 + (BOOL)openDataBase;
-+ (sqlite3_stmt *)exectueQuery:(NSString *)query;
++ (sqlite3_stmt *)executeSelectQuery:(NSString *)query;
++ (void)executeQuery:(NSString *)query;
 @end

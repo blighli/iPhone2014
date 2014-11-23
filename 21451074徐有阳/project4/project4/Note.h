@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface Note : NSObject
+@property (nonatomic, strong)NSString *noteId;
 @property (nonatomic, strong)NSString *title;
 @property (nonatomic, strong)NSString *content;
 @property (nonatomic, strong)NSString *imagePath;
 @property (nonatomic, strong)NSString *type;
 + (NSMutableArray *)getAllNotes;
++ (BOOL)addNoteWithTitle:(NSString *)title Content:(NSString *)content ImagePath:(NSString *)imagePath Type:(NSString *)type;
 @end
