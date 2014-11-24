@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Note.h"
+#import "PictureView.h"
 @interface PictureViewController : UIViewController
+@property (strong, nonatomic) IBOutlet PictureView *picture;
 @property Note *note;
 -(instancetype)initWithNote:(Note *)note;
+- (IBAction)savePicture:(UIBarButtonItem *)sender;
 @end

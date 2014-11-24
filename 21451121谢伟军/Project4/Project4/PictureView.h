@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface PictureView : UIView
+@property CGPoint firstTouchLocation;
+@property CGPoint lastTouchLocation;
+@property UIColor *currentColor;
+@property NSMutableArray *pointArray;
+@property NSMutableArray *lineArray;
+//@property UIImage *drawPicture;
 
+-(void)addLine;
+-(BOOL)writeToFile:(NSString*)filePath;
 @end

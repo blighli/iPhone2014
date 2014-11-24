@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PictureViewController">
             <connections>
+                <outlet property="picture" destination="79l-mq-Hjt" id="2oo-dY-Rxx"/>
                 <outlet property="view" destination="iN0-l3-epB" id="KBM-zz-v09"/>
             </connections>
         </placeholder>
@@ -14,9 +15,29 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79l-mq-Hjt" customClass="PictureView">
+                    <rect key="frame" x="0.0" y="110" width="320" height="319"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbp-YG-nWZ">
+                    <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                    <items>
+                        <barButtonItem title="ClearPicture" id="h24-mT-Yzm"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Sna-tL-INv"/>
+                        <barButtonItem title="SavePicture" id="xfv-1r-kFm">
+                            <connections>
+                                <action selector="savePicture:" destination="-1" id="4G4-Cs-Kd9"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="334" y="294"/>
+            <point key="canvasLocation" x="233" y="206"/>
         </view>
     </objects>
 </document>
