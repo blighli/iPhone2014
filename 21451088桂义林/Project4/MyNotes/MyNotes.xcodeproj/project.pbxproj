@@ -13,6 +13,7 @@
 		E1347DCC1A21CBF300B9CC3B /* AddDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1347DCB1A21CBF300B9CC3B /* AddDrawViewController.m */; };
 		E1347DCF1A21CD9400B9CC3B /* DoodleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1347DCE1A21CD9400B9CC3B /* DoodleView.m */; };
 		E16C6BAB1A21FD2E0085FA97 /* EditDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16C6BAA1A21FD2E0085FA97 /* EditDrawViewController.m */; };
+		E187CBFA1A2326EF009B1056 /* EditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E187CBF91A2326EF009B1056 /* EditPhotoViewController.m */; };
 		E18BC1D11A20398F005B7C3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E18BC1D01A20398F005B7C3C /* main.m */; };
 		E18BC1D41A20398F005B7C3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E18BC1D31A20398F005B7C3C /* AppDelegate.m */; };
 		E18BC1D71A20398F005B7C3C /* TextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18BC1D61A20398F005B7C3C /* TextTableViewController.m */; };
@@ -54,6 +55,8 @@
 		E1347DCE1A21CD9400B9CC3B /* DoodleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoodleView.m; sourceTree = "<group>"; };
 		E16C6BA91A21FD2E0085FA97 /* EditDrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditDrawViewController.h; sourceTree = "<group>"; };
 		E16C6BAA1A21FD2E0085FA97 /* EditDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditDrawViewController.m; sourceTree = "<group>"; };
+		E187CBF81A2326EF009B1056 /* EditPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPhotoViewController.h; sourceTree = "<group>"; };
+		E187CBF91A2326EF009B1056 /* EditPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPhotoViewController.m; sourceTree = "<group>"; };
 		E18BC1CB1A20398F005B7C3C /* MyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18BC1CF1A20398F005B7C3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18BC1D01A20398F005B7C3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				E16C6BAA1A21FD2E0085FA97 /* EditDrawViewController.m */,
 				E18BC1FD1A20437C005B7C3C /* PhotoTableViewController.h */,
 				E18BC1FE1A20437C005B7C3C /* PhotoTableViewController.m */,
+				E187CBF81A2326EF009B1056 /* EditPhotoViewController.h */,
+				E187CBF91A2326EF009B1056 /* EditPhotoViewController.m */,
 				E18BC1D81A20398F005B7C3C /* Main.storyboard */,
 				E18BC1DB1A20398F005B7C3C /* Images.xcassets */,
 				E18BC1DD1A20398F005B7C3C /* LaunchScreen.xib */,
@@ -341,6 +346,7 @@
 				E1347DC31A21B56400B9CC3B /* Model.xcdatamodeld in Sources */,
 				E1347DCF1A21CD9400B9CC3B /* DoodleView.m in Sources */,
 				E18BC1FC1A204284005B7C3C /* DrawTableViewController.m in Sources */,
+				E187CBFA1A2326EF009B1056 /* EditPhotoViewController.m in Sources */,
 				E18BC1D11A20398F005B7C3C /* main.m in Sources */,
 				E18BC2021A2047EF005B7C3C /* AddTextNoteViewController.m in Sources */,
 				E1347DCC1A21CBF300B9CC3B /* AddDrawViewController.m in Sources */,
@@ -468,6 +474,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyNotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -479,6 +486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyNotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

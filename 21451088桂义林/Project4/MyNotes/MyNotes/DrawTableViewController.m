@@ -101,9 +101,11 @@
         Note *note = [drawNotes objectAtIndex:indexPath.row];
         
         // 删除对应的图片文件
+        NSString* imageDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *imageFilePath = [imageDirPath stringByAppendingString:note.message];
         NSFileManager *fileMgr = [NSFileManager defaultManager];
         NSError *err;
-        [fileMgr removeItemAtPath:note.message error:&err];
+        [fileMgr removeItemAtPath:imageFilePath error:&err];
         
         [note MR_deleteEntity];  // 从数据库中删除记录
         [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotoTableViewController : UIViewController
+@interface PhotoTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate>
+{
+    UITableView *photoTableView;
+    NSMutableArray* photoNotes;
+}
 
 @end

@@ -1,25 +1,23 @@
 //
-//  EditDrawViewController.m
+//  AddPhotoViewController.m
 //  MyNotes
 //
-//  Created by YilinGui on 14-11-23.
+//  Created by YilinGui on 14-11-24.
 //  Copyright (c) 2014年 Yilin Gui. All rights reserved.
 //
 
-#import "EditDrawViewController.h"
-#import "DoodleView.h"
-#import "DrawTableViewController.h"
+#import "EditPhotoViewController.h"
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "Note.h"
-@interface EditDrawViewController ()
+
+@interface EditPhotoViewController ()
+@property UIImageView *imageView;
 @property UITextField *textField;
 @property UILabel *titleLabel;
-@property DoodleView *doodleView;
 @property (nonatomic, strong) Note *note;
-
 @end
 
-@implementation EditDrawViewController
+@implementation EditPhotoViewController
 
 - (void)passNote:(Note *)note {
     self.note = note;
@@ -30,21 +28,19 @@
     // Do any additional setup after loading the view.
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 64, 40, 40)];
     self.textField = [[UITextField alloc] initWithFrame:CGRectMake(50, 64, self.view.frame.size.width - 60, 40)];
+    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(36, 104, 240, 320)];
+    //self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
-    self.doodleView = [[DoodleView alloc] initWithFrame:CGRectMake(10, 104, self.view.frame.size.width - 20, 480)];
-    //self.doodleView.backgroundColor = [UIColor colorWithRed:0.84 green:0.93 blue:0.95 alpha:1.0];
-    // 使用图片做背景色
-    NSString* imageDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *imageFilePath = [imageDirPath stringByAppendingString:self.note.message];
-    UIColor *bgColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:imageFilePath]];
-    [self.doodleView setBackgroundColor:bgColor];
-    
-    [self.view addSubview:self.doodleView];
     [self.view addSubview:self.titleLabel];
     [self.view addSubview:self.textField];
+    [self.view addSubview:self.imageView];
     
     [self.titleLabel setText:@"Title: "];
     [self.textField setText:self.note.title];
+    NSString* imageDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *imageFilePath = [imageDirPath stringByAppendingString:self.note.message];
+    UIImage *image = [UIImage imageWithContentsOfFile:imageFilePath];
+    self.imageView.image = image;
     //[self.textField becomeFirstResponder];
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelClicked)];
@@ -56,21 +52,14 @@
 
 // 响应保存按钮
 - (void)saveClicked {
-    NSString* imageDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     Note *note = self.note;
-    note.title = self.textField.text;
-    note.date = [NSDate date];
-    NSString *imageFilePath = [imageDirPath stringByAppendingString:note.message];
-    [self.doodleView saveToPNGFile:imageFilePath];  // 先计算绝对路径再读取
-    //NSLog(@"%@", imageFilePath);  // 打印图片路径
-    note.type = @"draw";
+    note.title = self.textField.text;  // 只修改标题
     [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 // 响应取消按钮
 - (void)cancelClicked {
-    //NSLog(@"Don't save this notes!");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
