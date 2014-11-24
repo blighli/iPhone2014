@@ -29,7 +29,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="ZCO-vB-bj6">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="mbI-qg-dSq"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="mbI-qg-dSq">
+                            <connections>
+                                <action selector="editNote:" destination="LOt-hL-e2t" id="Jx3-Hi-ch2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Qfv-Ma-4VJ">
                             <connections>
                                 <action selector="addNote:" destination="LOt-hL-e2t" id="t3k-aI-HS2"/>
@@ -66,7 +70,6 @@
                                                 <action selector="cancel:" destination="aid-ix-pUw" id="sSx-5h-Z3T"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="Kyf-Tq-1Cd"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -140,32 +143,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4X-dF-JiL">
+                                <rect key="frame" x="6" y="115" width="90" height="90"/>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HIr-dc-TSM">
-                                <rect key="frame" x="88" y="115" width="271" height="344"/>
+                                <rect key="frame" x="104" y="115" width="250" height="300"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohT-79-34T">
-                                <rect key="frame" x="13" y="149" width="70" height="70"/>
-                                <state key="normal" title="添加照片">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="noteContent" destination="HIr-dc-TSM" id="Ubq-bf-PFY"/>
-                        <outlet property="noteImagePath" destination="ohT-79-34T" id="CiG-Vf-qzZ"/>
+                        <outlet property="noteImage" destination="F4X-dF-JiL" id="uoH-nI-zKf"/>
                         <outlet property="noteTitle" destination="raO-9Q-JM6" id="KUQ-wD-kfJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4it-b6-0ma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.5" y="368.5"/>
+            <point key="canvasLocation" x="977.5" y="329.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YTC-fk-lCx">

@@ -41,4 +41,9 @@
     [DB executeQuery:query];
 }
 
+- (void)drop {
+    NSString *query = [NSString stringWithFormat:@"DELETE FROM NOTES WHERE id = '%@'", self.noteId];
+    [DB executeQuery:query];
+}
+
 @end

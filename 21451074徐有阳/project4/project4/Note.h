@@ -19,4 +19,5 @@
 
 - (void)add;
 - (void)update;
+- (void)drop;
 @end

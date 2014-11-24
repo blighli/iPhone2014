@@ -10,9 +10,10 @@
 #import "DrawView.h"
 #import "ImageUtils.h"
 #import "Note.h"
+#import "TextViewController.h"
 
 @interface DrawViewController ()
-@property (strong,nonatomic)  DrawView *drawView;
+@property (strong, nonatomic) DrawView *drawView;
 @end
 
 @implementation DrawViewController
@@ -73,11 +74,18 @@
     }
     else{
         //成功
-        NSString *imageName = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
+        NSString *imageName = [NSString stringWithFormat:@"%d.png", (int)[[NSDate date] timeIntervalSince1970]];
         NSString *imagePath = [ImageUtils saveImage:image WithName:imageName];
-        [self dismissViewControllerAnimated:YES completion:^{
-            // 跳转到添加页面
-        }];
+        NSLog(@"imagePath : %@", imagePath);
+        Note *newNote = [[Note alloc]init];
+        newNote.title = @"绘图";
+        newNote.content = @"";
+        newNote.type = @"draw";
+        newNote.imagePath = imagePath;
+        [newNote add];
+//        [self performSegueWithIdentifier:@"addNote" sender:self];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -86,8 +94,12 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqual:@"addNote"]) {
+        Note *newNote = [[Note alloc]init];
+        newNote.imagePath = self.imagePath;
+        TextViewController *textVC = [segue destinationViewController];
+        textVC.note = newNote;
+    }
 }
 */
 

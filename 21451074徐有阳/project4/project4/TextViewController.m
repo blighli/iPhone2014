@@ -11,7 +11,8 @@
 @interface TextViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *noteTitle;
 @property (weak, nonatomic) IBOutlet UITextView *noteContent;
-@property (weak, nonatomic) IBOutlet UIButton *noteImagePath;
+@property (strong, nonatomic) IBOutlet UIImageView *noteImage;
+
 @end
 
 @implementation TextViewController
@@ -22,6 +23,9 @@
         // 修改
         self.noteTitle.text = self.note.title;
         self.noteContent.text = self.note.content;
+        if (self.note.imagePath) {
+            self.noteImage.image = [UIImage imageWithContentsOfFile:self.note.imagePath];
+        }
     }
 }
 
@@ -47,7 +51,7 @@
         newNote.noteId = self.note.noteId;
         newNote.title = self.noteTitle.text;
         newNote.content = self.noteContent.text;
-        newNote.imagePath = @"123";
+        newNote.imagePath = self.note.imagePath;
         newNote.type = @"text";
         [newNote update];
         [self dismissViewControllerAnimated:YES completion:nil];
