@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FMDB.h>
+#import "Note.h"
+#import "ContentViewController.h"
+#import "PhotoViewController.h"
+#import "PictureViewController.h"
+@interface TabBarViewController : UITabBarController <UITabBarControllerDelegate>
+@property ContentViewController *contentVC;
+@property PhotoViewController *photoVC;
+@property PictureViewController *pictureVC;
+@property BOOL isInsert;
+@property Note *note;
+@property FMDatabase *db;
 
-@interface TabBarViewController : UITabBarController
-
+@property NSString *test;
+- (IBAction)saveNote:(UIBarButtonItem *)sender;
 @end

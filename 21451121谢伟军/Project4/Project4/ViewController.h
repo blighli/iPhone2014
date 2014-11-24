@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "databaseOperation.h"
-@interface ViewController : UIViewController
-@property databaseOperation* myDatabase;
+#import <FMDB.h>
+#import "Note.h"
+@interface ViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
+@property FMDatabase* db;
+
 
 @end
 

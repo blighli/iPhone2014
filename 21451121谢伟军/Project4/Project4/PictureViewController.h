@@ -1,5 +1,5 @@
 //
-//  ContentViewController.h
+//  PictureViewController.h
 //  Project4
 //
 //  Created by xvxvxxx on 14/11/23.
@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Note.h"
-@interface ContentViewController : UIViewController
+@interface PictureViewController : UIViewController
 @property Note *note;
-@property (strong, nonatomic) IBOutlet UITextField *notetitle;
-@property (strong, nonatomic) IBOutlet UITextView *content;
-
 -(instancetype)initWithNote:(Note *)note;
 @end

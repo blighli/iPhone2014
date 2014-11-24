@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "Note.h"
+@interface PhotoViewController : UIViewController <UIImagePickerControllerDelegate>
 
-@interface PhotoViewController : UIViewController
+@property Note *note;
+@property NSURL *photoURL;
+@property (strong, nonatomic) IBOutlet UIImageView *photo;
+@property UIImage *image;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *shootPhotoButton;
+@property NSString *lastChosenMediaType;
+
+
+-(instancetype)initWithNote:(Note *)note;
+- (IBAction)shootPhoto:(UIBarButtonItem *)sender;
+- (IBAction)selectPhoto:(UIBarButtonItem *)sender;
+-(void)updateDisplay;
 
 @end
