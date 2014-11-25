@@ -19,8 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //初始化自定义的tableViewCell
     UINib *tableViewCell = [UINib nibWithNibName:@"TableViewCell" bundle:nil];
     [self.tableView registerNib:tableViewCell forCellReuseIdentifier:tableViewCellIdetifier];
+    //得到数据库路径
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documents = [paths objectAtIndex:0];
     NSString *database_path = [documents stringByAppendingString:@"/myDatabase.sqlite"];
@@ -34,14 +37,12 @@
     NSLog(@"database open successful--ViewController");
     NSString *sql_creat = @"create table if not exists notes (id integer primary key autoincrement, notetitle text, content text, photo text, picture text, datetime text)";
     [self.db executeUpdate:sql_creat];
+    [self.db close];
     [self initTableviewData];
-    //        NSLog(@"1");
     }
-
-
 -(void)viewWillAppear:(BOOL)animated{
-    [self.tableView reloadData];
     [self initTableviewData];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,7 +54,9 @@
     [noteList removeAllObjects];
     noteList = [NSMutableArray array];
     NSString *sql_list = @"select * from notes order by datetime desc";
+    [self.db open];
     FMResultSet *resultSet = [self.db executeQuery:sql_list];
+    [self.db close];
     while ([resultSet next]) {
         Note *note = [[Note alloc]init];
         note.ID = [resultSet intForColumnIndex:0];
@@ -105,7 +108,9 @@
 
         Note *note = [noteList objectAtIndex:indexPath.row];
         NSString *sql = @"delete from notes where id = ?";
-        [self.db executeUpdate:sql , [NSString stringWithFormat:@"%d",note.ID]];
+        [self.db open];
+        [self.db executeUpdate:sql , [NSString stringWithFormat:@"%ld",(long)note.ID]];
+        [self.db close];
         [self initTableviewData];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
     }
