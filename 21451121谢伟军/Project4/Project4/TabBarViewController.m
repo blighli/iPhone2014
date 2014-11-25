@@ -61,7 +61,7 @@
 - (IBAction)saveNote:(UIBarButtonItem *)sender {
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"yy.MM.dd.HH:mm"];
+    [dateFormatter setDateFormat:@"yy/MM/dd HH:mm"];
     NSDate* nowDate = [[NSDate alloc] init];
     NSString *datetime = [dateFormatter stringFromDate:nowDate];
 //    NSLog(@"%@",datetime);

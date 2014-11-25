@@ -19,8 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    //UINib *tableViewCell = [UINib nibWithNibName:@"TableViewCell" bundle:nil];
-    
+    UINib *tableViewCell = [UINib nibWithNibName:@"TableViewCell" bundle:nil];
+    [self.tableView registerNib:tableViewCell forCellReuseIdentifier:tableViewCellIdetifier];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documents = [paths objectAtIndex:0];
     NSString *database_path = [documents stringByAppendingString:@"/myDatabase.sqlite"];
@@ -73,14 +73,12 @@
     return [noteList count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableViewCellIdetifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:tableViewCellIdetifier];
-    }
+    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableViewCellIdetifier];
+
     Note *note = [noteList objectAtIndex:indexPath.row];
-    cell.textLabel.text = note.notetitle;
+    cell.noteTitle.text = note.notetitle;
 //    cell.detailTextLabel.text = note.datetime;
-    cell.detailTextLabel.text = @"1";
+    cell.datetime.text = note.datetime;
     return cell;
 }
 
@@ -89,8 +87,8 @@
         [segue.destinationViewController setValue:nil forKey:@"note"];
     }
     else if([segue.identifier isEqualToString:@"detail"]){
-        NSIndexPath *indexpath = [self.tableView indexPathForCell:sender];
-        Note *note = [noteList objectAtIndex:indexpath.row];
+//        NSIndexPath *indexpath = [self.tableView indexPathForCell:sender];
+        Note *note = [noteList objectAtIndex:[(NSIndexPath *)sender row]];
         [segue.destinationViewController setValue:note forKey:@"note"];
 //        [segue.destinationViewController setValue:@"test" forKey:@"test"];
     }
@@ -98,7 +96,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    Note *note = [noteList objectAtIndex:indexPath.row];
-//    [self performSegueWithIdentifier:@"detail" sender:note];
+    [self performSegueWithIdentifier:@"detail" sender:indexPath];
 }
 @end
