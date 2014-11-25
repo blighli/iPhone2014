@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WO4-fF-aEy">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Photo View Controller-->
+        <scene sceneID="xSu-gw-6EI">
+            <objects>
+                <viewController id="9e0-dd-OTT" customClass="PhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TOw-UX-zyM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y7K-aP-9fH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VZb-gz-VbM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Loq-Kc-7pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="996" y="123"/>
+        </scene>
+        <!--查看照片-->
+        <scene sceneID="hV7-68-dV6">
+            <objects>
+                <viewController id="ecf-21-T3I" customClass="ImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EOX-QT-dJ5"/>
+                        <viewControllerLayoutGuide type="bottom" id="m8P-rI-5S7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HQC-85-8Iw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mab-pb-zoG">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mab-pb-zoG" firstAttribute="top" secondItem="EOX-QT-dJ5" secondAttribute="bottom" id="DMf-UT-N70"/>
+                            <constraint firstItem="mab-pb-zoG" firstAttribute="leading" secondItem="HQC-85-8Iw" secondAttribute="leading" id="R4s-Xv-nCq"/>
+                            <constraint firstItem="mab-pb-zoG" firstAttribute="bottom" secondItem="m8P-rI-5S7" secondAttribute="top" id="hKJ-2i-MOz"/>
+                            <constraint firstAttribute="trailing" secondItem="mab-pb-zoG" secondAttribute="trailing" id="zFY-iH-m1b"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="查看照片" id="S25-9s-j2K"/>
+                    <connections>
+                        <outlet property="imageView" destination="mab-pb-zoG" id="fN2-hY-hTg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="msv-Vd-YUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="123"/>
+        </scene>
+        <!--文字-->
+        <scene sceneID="h0Z-Cc-0IR">
+            <objects>
+                <viewController id="sOO-e8-3Qw" customClass="TextViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YVn-eQ-g3j"/>
+                        <viewControllerLayoutGuide type="bottom" id="aho-al-3KU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xKi-VA-jCy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hop-EB-BTH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hop-EB-BTH" firstAttribute="leading" secondItem="xKi-VA-jCy" secondAttribute="leading" id="4er-Kd-3Yc"/>
+                            <constraint firstAttribute="trailing" secondItem="hop-EB-BTH" secondAttribute="trailing" id="JGK-KE-OOi"/>
+                            <constraint firstItem="hop-EB-BTH" firstAttribute="bottom" secondItem="aho-al-3KU" secondAttribute="top" id="SYG-f3-ddA"/>
+                            <constraint firstItem="hop-EB-BTH" firstAttribute="top" secondItem="xKi-VA-jCy" secondAttribute="top" id="Won-YN-tEU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="文字" id="wFP-ji-ycS">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="AxN-ot-DFU">
+                            <connections>
+                                <action selector="saveText:" destination="sOO-e8-3Qw" id="oBS-HO-2gz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="hop-EB-BTH" id="hob-Kf-wY3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I7e-yo-ofY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="996" y="754"/>
+        </scene>
+        <!--涂鸦-->
+        <scene sceneID="RJY-Fs-SAK">
+            <objects>
+                <viewController id="tgS-Zi-Gri" customClass="DrawViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yab-kF-sia"/>
+                        <viewControllerLayoutGuide type="bottom" id="bge-rk-sZj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dUN-8O-RMo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="涂鸦" id="H0Q-gX-ygg">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="5Pw-Yy-67b">
+                            <connections>
+                                <action selector="saveDraw:" destination="tgS-Zi-Gri" id="JOM-Eg-ZTU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fjp-OY-Pow" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1360" y="755"/>
+        </scene>
+        <!--全部笔记-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lh-kt-DH5">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wmC-uw-e0d"/>
+                                    <barButtonItem title="编辑" id="PK1-Sg-84h">
+                                        <connections>
+                                            <action selector="editButton:" destination="vXZ-lx-hvc" id="RhM-wm-tNB"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDC-hN-yO5">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="照片" id="mu4-RK-B7i">
+                                        <connections>
+                                            <segue destination="9e0-dd-OTT" kind="modal" id="V4e-w2-a9u"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qkM-NN-ull"/>
+                                    <barButtonItem title="文字" id="HyO-XF-15N">
+                                        <connections>
+                                            <segue destination="sOO-e8-3Qw" kind="push" identifier="text" id="vUD-Ad-IOY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="QEw-1y-9BQ"/>
+                                    <barButtonItem title="涂鸦" id="ibT-CU-ovN">
+                                        <connections>
+                                            <segue destination="tgS-Zi-Gri" kind="push" id="yVx-fJ-0gg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="61k-pQ-Ykt">
+                                <rect key="frame" x="0.0" y="108" width="320" height="416"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SDC-hN-yO5" firstAttribute="top" secondItem="61k-pQ-Ykt" secondAttribute="bottom" id="59e-XH-0j8"/>
+                            <constraint firstItem="SDC-hN-yO5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="7H1-kZ-y7w"/>
+                            <constraint firstItem="SDC-hN-yO5" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="G4j-Vj-0tk"/>
+                            <constraint firstAttribute="trailing" secondItem="SDC-hN-yO5" secondAttribute="trailing" id="Qlu-3X-nxi"/>
+                            <constraint firstItem="61k-pQ-Ykt" firstAttribute="top" secondItem="4lh-kt-DH5" secondAttribute="bottom" id="Z31-ZQ-DQw"/>
+                            <constraint firstItem="61k-pQ-Ykt" firstAttribute="leading" secondItem="4lh-kt-DH5" secondAttribute="leading" id="cYW-VV-ZkO"/>
+                            <constraint firstItem="4lh-kt-DH5" firstAttribute="trailing" secondItem="61k-pQ-Ykt" secondAttribute="trailing" id="pQG-6n-hkv"/>
+                            <constraint firstItem="61k-pQ-Ykt" firstAttribute="trailing" secondItem="SDC-hN-yO5" secondAttribute="trailing" id="qrn-H7-bm7"/>
+                            <constraint firstItem="SDC-hN-yO5" firstAttribute="leading" secondItem="61k-pQ-Ykt" secondAttribute="leading" id="xLW-ov-7cy"/>
+                            <constraint firstItem="4lh-kt-DH5" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="z4I-TF-nux"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="全部笔记" id="xW3-1R-36n"/>
+                    <connections>
+                        <outlet property="tableView" destination="61k-pQ-Ykt" id="gPG-ut-Jld"/>
+                        <segue destination="ecf-21-T3I" kind="push" identifier="image" id="d4Q-VX-k57"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="541" y="754"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zsh-EV-NL5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WO4-fF-aEy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZqH-dA-4lk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="lZv-VX-Jhb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hUG-J7-PaW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="90.133333333333326" y="754.49333333333334"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
