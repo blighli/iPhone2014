@@ -10,6 +10,7 @@
 
 @interface ViewController (){
     NSMutableArray *noteList;
+    AppDelegate *appDelegate;
 }
 
 @end
@@ -21,22 +22,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     UINib *tableViewCell = [UINib nibWithNibName:@"TableViewCell" bundle:nil];
     [self.tableView registerNib:tableViewCell forCellReuseIdentifier:tableViewCellIdetifier];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documents = [paths objectAtIndex:0];
-    NSString *database_path = [documents stringByAppendingString:@"/myDatabase.sqlite"];
-    NSLog(@"%@",database_path);
-    self.db = [FMDatabase databaseWithPath:database_path];
-    if (![self.db open]) {
-        [self.db close];
-        NSLog(@"database open failed--ViewController");
-        return;
-    }
-    NSLog(@"database open successful--ViewController");
-    NSString *sql_creat = @"create table if not exists notes (id integer primary key autoincrement, notetitle text, content text, photo text, picture text, datetime text)";
-    [self.db executeUpdate:sql_creat];
+    //
+     appDelegate = [[UIApplication sharedApplication]delegate];
     [self initTableviewData];
-    //        NSLog(@"1");
-    }
+}
 
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -53,7 +42,7 @@
     [noteList removeAllObjects];
     noteList = [NSMutableArray array];
     NSString *sql_list = @"select * from notes order by datetime desc";
-    FMResultSet *resultSet = [self.db executeQuery:sql_list];
+    FMResultSet *resultSet = [appDelegate.db executeQuery:sql_list];
     while ([resultSet next]) {
         Note *note = [[Note alloc]init];
         note.ID = [resultSet intForColumnIndex:0];
@@ -63,8 +52,7 @@
         note.picture = [resultSet stringForColumnIndex:4];
         note.datetime = [resultSet stringForColumnIndex:5];
         [noteList addObject:(Note*)note];
-
-}
+    }
 }
 
 
@@ -77,7 +65,6 @@
 
     Note *note = [noteList objectAtIndex:indexPath.row];
     cell.noteTitle.text = note.notetitle;
-//    cell.detailTextLabel.text = note.datetime;
     cell.datetime.text = note.datetime;
     return cell;
 }
@@ -87,12 +74,9 @@
         [segue.destinationViewController setValue:nil forKey:@"note"];
     }
     else if([segue.identifier isEqualToString:@"detail"]){
-//        NSIndexPath *indexpath = [self.tableView indexPathForCell:sender];
         Note *note = [noteList objectAtIndex:[(NSIndexPath *)sender row]];
         [segue.destinationViewController setValue:note forKey:@"note"];
-//        [segue.destinationViewController setValue:@"test" forKey:@"test"];
     }
-    [segue.destinationViewController setValue:self.db forKey:@"db"];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -105,7 +89,7 @@
 
         Note *note = [noteList objectAtIndex:indexPath.row];
         NSString *sql = @"delete from notes where id = ?";
-        [self.db executeUpdate:sql , [NSString stringWithFormat:@"%d",note.ID]];
+        [appDelegate.db executeUpdate:sql , [NSString stringWithFormat:@"%d",note.ID]];
         [self initTableviewData];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
     }

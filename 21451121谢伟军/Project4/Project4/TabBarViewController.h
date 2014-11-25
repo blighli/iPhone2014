@@ -12,6 +12,8 @@
 #import "ContentViewController.h"
 #import "PhotoViewController.h"
 #import "PictureViewController.h"
+#import "AppDelegate.h"
+
 @interface TabBarViewController : UITabBarController <UITabBarControllerDelegate>
 @property ContentViewController *contentVC;
 @property PhotoViewController *photoVC;

@@ -7,8 +7,9 @@
 //
 
 #import "TabBarViewController.h"
-
-@interface TabBarViewController ()
+@interface TabBarViewController (){
+    AppDelegate *appDelegate;
+}
 
 @end
 
@@ -16,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    appDelegate = [[UIApplication sharedApplication]delegate];
     // Do any additional setup after loading the view.
     NSLog(@"viewdidload--TabBarViewController");
     NSLog(@"%@",self.test);
@@ -77,21 +79,18 @@
     self.note.photo = self.photoVC.note.photo;
     self.note.picture = self.pictureVC.note.picture;
     self.note.datetime = datetime;
-    //            NSString *sql = @"insert into notes (notetitle , content , photo , picture , datetime ) values (? , ? , ? , ? , ?)";
-    //            [self.db executeQuery:sql , self.note.notetitle , self.note.content , self.note.photo , self.note.picture , self.note.datetime];
+
     if (self.isCreate) {
         NSLog(@"init a note");
         NSString *sql = @"insert into notes (notetitle , content , photo , picture , datetime) values (? , ? , ? , ? , ?)";
-        [self.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo,self.note.picture , self.note.datetime];
+        [appDelegate.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo,self.note.picture , self.note.datetime];
     }
     //修改
     else{
         self.note.ID = self.contentVC.note.ID;
         NSLog(@"update a note");
         NSString *sql = @"update notes set notetitle = ? ,content = ? , photo =? , picture = ? , datetime = ? where id = ?";
-        [self.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo,self.note.picture , self.note.datetime , [NSString stringWithFormat:@"%d",self.note.ID]];
-//        NSString *sql = @"update notes set notetitle = 10086 where id = ?";
-//        [self.db executeUpdate:sql , [NSString stringWithFormat:@"%d",self.note.ID]];
+        [appDelegate.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo,self.note.picture , self.note.datetime , [NSString stringWithFormat:@"%d",self.note.ID]];
     }
     [self.navigationController popViewControllerAnimated:YES];
 

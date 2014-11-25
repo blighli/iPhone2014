@@ -17,6 +17,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //打开数据库
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documents = [paths objectAtIndex:0];
+    NSString *database_path = [documents stringByAppendingString:@"/myDatabase.sqlite"];
+    NSLog(@"%@",database_path);
+    self.db = [FMDatabase databaseWithPath:database_path];
+    if (![self.db open]) {
+        [self.db close];
+        NSLog(@"database open failed--ViewController");
+    }
+    NSLog(@"database open successful--ViewController");
+    NSString *sql_creat = @"create table if not exists notes (id integer primary key autoincrement, notetitle text, content text, photo text, picture text, datetime text)";
+    [self.db executeUpdate:sql_creat];
     return YES;
 }
 
@@ -40,6 +53,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self.db close];
 }
 
 @end
