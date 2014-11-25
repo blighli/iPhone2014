@@ -15,7 +15,7 @@
         self.ID = note.ID;
         self.notetitle = [NSString stringWithString:note.notetitle];
         self.content = [NSString stringWithString:note.content];
-        self.photo = [NSString stringWithString:note.photo];
+        self.photo = [NSString stringWithFormat:note.photo];
         self.picture = [NSString stringWithString:note.picture];
         self.datetime = [NSString stringWithString:note.datetime];
     }

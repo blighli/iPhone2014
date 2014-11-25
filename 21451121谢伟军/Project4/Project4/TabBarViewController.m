@@ -77,21 +77,22 @@
     self.note.photo = self.photoVC.note.photo;
     self.note.picture = self.pictureVC.note.picture;
     self.note.datetime = datetime;
-    [self.db open];
+    //            NSString *sql = @"insert into notes (notetitle , content , photo , picture , datetime ) values (? , ? , ? , ? , ?)";
+    //            [self.db executeQuery:sql , self.note.notetitle , self.note.content , self.note.photo , self.note.picture , self.note.datetime];
     if (self.isCreate) {
         NSLog(@"init a note");
         NSString *sql = @"insert into notes (notetitle , content , photo , picture , datetime) values (? , ? , ? , ? , ?)";
         [self.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo,self.note.picture , self.note.datetime];
-        
     }
     //修改
     else{
         self.note.ID = self.contentVC.note.ID;
         NSLog(@"update a note");
         NSString *sql = @"update notes set notetitle = ? ,content = ? , photo =? , picture = ? , datetime = ? where id = ?";
-        [self.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo,self.note.picture , self.note.datetime , [NSString stringWithFormat:@"%ld",(long)self.note.ID]];
+        [self.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo,self.note.picture , self.note.datetime , [NSString stringWithFormat:@"%d",self.note.ID]];
+//        NSString *sql = @"update notes set notetitle = 10086 where id = ?";
+//        [self.db executeUpdate:sql , [NSString stringWithFormat:@"%d",self.note.ID]];
     }
-    [self.db close];
     [self.navigationController popViewControllerAnimated:YES];
 
     
