@@ -54,7 +54,7 @@
 		F95A51A61A21F92B0037D2F9 /* PictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureViewController.m; sourceTree = "<group>"; };
 		F95A51A81A21FEF60037D2F9 /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
 		F965534B1A23181A0050FC8D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F99FCB9D1A1E1E27000E6678 /* Project4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project4.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F99FCB9D1A1E1E27000E6678 /* XX笔记本.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XX笔记本.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99FCBA11A1E1E27000E6678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F99FCBA21A1E1E27000E6678 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F99FCBA41A1E1E27000E6678 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		F99FCBAB1A1E1E27000E6678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F99FCBAD1A1E1E27000E6678 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F99FCBB01A1E1E27000E6678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F99FCBB61A1E1E27000E6678 /* Project4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F99FCBB61A1E1E27000E6678 /* XX笔记本Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XX笔记本Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99FCBBB1A1E1E27000E6678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F99FCBBC1A1E1E27000E6678 /* Project4Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Project4Tests.m; sourceTree = "<group>"; };
 		F99FCBC61A1E207A000E6678 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -133,8 +133,8 @@
 		F99FCB9E1A1E1E27000E6678 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F99FCB9D1A1E1E27000E6678 /* Project4.app */,
-				F99FCBB61A1E1E27000E6678 /* Project4Tests.xctest */,
+				F99FCB9D1A1E1E27000E6678 /* XX笔记本.app */,
+				F99FCBB61A1E1E27000E6678 /* XX笔记本Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,7 +148,6 @@
 				F99FCBA01A1E1E27000E6678 /* Supporting Files */,
 				F9EE6B0D1A2439E400731A51 /* TableViewCell.h */,
 				F9EE6B0E1A2439E400731A51 /* TableViewCell.m */,
-				F9EE6B0F1A2439E400731A51 /* TableViewCell.xib */,
 			);
 			path = Project4;
 			sourceTree = "<group>";
@@ -218,6 +217,7 @@
 				F95A51A81A21FEF60037D2F9 /* ContentViewController.xib */,
 				F94146871A22046700415D58 /* PhotoViewController.xib */,
 				F94146891A22047100415D58 /* PictureViewController.xib */,
+				F9EE6B0F1A2439E400731A51 /* TableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -225,9 +225,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F99FCB9C1A1E1E27000E6678 /* Project4 */ = {
+		F99FCB9C1A1E1E27000E6678 /* XX笔记本 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F99FCBC01A1E1E27000E6678 /* Build configuration list for PBXNativeTarget "Project4" */;
+			buildConfigurationList = F99FCBC01A1E1E27000E6678 /* Build configuration list for PBXNativeTarget "XX笔记本" */;
 			buildPhases = (
 				42EFF2B346C33467D0C7E4EF /* Check Pods Manifest.lock */,
 				F99FCB991A1E1E27000E6678 /* Sources */,
@@ -239,14 +239,14 @@
 			);
 			dependencies = (
 			);
-			name = Project4;
+			name = "XX笔记本";
 			productName = Project4;
-			productReference = F99FCB9D1A1E1E27000E6678 /* Project4.app */;
+			productReference = F99FCB9D1A1E1E27000E6678 /* XX笔记本.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F99FCBB51A1E1E27000E6678 /* Project4Tests */ = {
+		F99FCBB51A1E1E27000E6678 /* XX笔记本Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F99FCBC31A1E1E27000E6678 /* Build configuration list for PBXNativeTarget "Project4Tests" */;
+			buildConfigurationList = F99FCBC31A1E1E27000E6678 /* Build configuration list for PBXNativeTarget "XX笔记本Tests" */;
 			buildPhases = (
 				F99FCBB21A1E1E27000E6678 /* Sources */,
 				F99FCBB31A1E1E27000E6678 /* Frameworks */,
@@ -257,9 +257,9 @@
 			dependencies = (
 				F99FCBB81A1E1E27000E6678 /* PBXTargetDependency */,
 			);
-			name = Project4Tests;
+			name = "XX笔记本Tests";
 			productName = Project4Tests;
-			productReference = F99FCBB61A1E1E27000E6678 /* Project4Tests.xctest */;
+			productReference = F99FCBB61A1E1E27000E6678 /* XX笔记本Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -280,7 +280,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F99FCB981A1E1E27000E6678 /* Build configuration list for PBXProject "Project4" */;
+			buildConfigurationList = F99FCB981A1E1E27000E6678 /* Build configuration list for PBXProject "XX笔记本" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -293,8 +293,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F99FCB9C1A1E1E27000E6678 /* Project4 */,
-				F99FCBB51A1E1E27000E6678 /* Project4Tests */,
+				F99FCB9C1A1E1E27000E6678 /* XX笔记本 */,
+				F99FCBB51A1E1E27000E6678 /* XX笔记本Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -387,7 +387,7 @@
 /* Begin PBXTargetDependency section */
 		F99FCBB81A1E1E27000E6678 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F99FCB9C1A1E1E27000E6678 /* Project4 */;
+			target = F99FCB9C1A1E1E27000E6678 /* XX笔记本 */;
 			targetProxy = F99FCBB71A1E1E27000E6678 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -493,10 +493,11 @@
 			baseConfigurationReference = AA3F55BE11F34272EB0617C0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Project4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "XX笔记本";
 			};
 			name = Debug;
 		};
@@ -505,10 +506,11 @@
 			baseConfigurationReference = E2CF845C0D0D76A442FE0175 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Project4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "XX笔记本";
 			};
 			name = Release;
 		};
@@ -526,7 +528,7 @@
 				);
 				INFOPLIST_FILE = Project4Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "XX笔记本Tests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project4.app/Project4";
 			};
 			name = Debug;
@@ -541,7 +543,7 @@
 				);
 				INFOPLIST_FILE = Project4Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "XX笔记本Tests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project4.app/Project4";
 			};
 			name = Release;
@@ -549,7 +551,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F99FCB981A1E1E27000E6678 /* Build configuration list for PBXProject "Project4" */ = {
+		F99FCB981A1E1E27000E6678 /* Build configuration list for PBXProject "XX笔记本" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F99FCBBE1A1E1E27000E6678 /* Debug */,
@@ -558,7 +560,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F99FCBC01A1E1E27000E6678 /* Build configuration list for PBXNativeTarget "Project4" */ = {
+		F99FCBC01A1E1E27000E6678 /* Build configuration list for PBXNativeTarget "XX笔记本" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F99FCBC11A1E1E27000E6678 /* Debug */,
@@ -567,7 +569,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F99FCBC31A1E1E27000E6678 /* Build configuration list for PBXNativeTarget "Project4Tests" */ = {
+		F99FCBC31A1E1E27000E6678 /* Build configuration list for PBXNativeTarget "XX笔记本Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F99FCBC41A1E1E27000E6678 /* Debug */,

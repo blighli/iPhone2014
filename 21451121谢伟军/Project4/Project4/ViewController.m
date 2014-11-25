@@ -52,7 +52,7 @@
 -(void)initTableviewData{
     [noteList removeAllObjects];
     noteList = [NSMutableArray array];
-    NSString *sql_list = @"select * from notes order by id desc";
+    NSString *sql_list = @"select * from notes order by datetime desc";
     FMResultSet *resultSet = [self.db executeQuery:sql_list];
     while ([resultSet next]) {
         Note *note = [[Note alloc]init];
@@ -97,5 +97,22 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self performSegueWithIdentifier:@"detail" sender:indexPath];
+}
+
+#pragma mark - 左滑删除
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+
+        Note *note = [noteList objectAtIndex:indexPath.row];
+        NSString *sql = @"delete from notes where id = ?";
+        [self.db executeUpdate:sql , [NSString stringWithFormat:@"%d",note.ID]];
+        [self initTableviewData];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
 }
 @end
