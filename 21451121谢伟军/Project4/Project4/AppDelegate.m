@@ -25,9 +25,9 @@
     self.db = [FMDatabase databaseWithPath:database_path];
     if (![self.db open]) {
         [self.db close];
-        NSLog(@"database open failed--ViewController");
+        NSLog(@"database open failed");
     }
-    NSLog(@"database open successful--ViewController");
+    NSLog(@"database open successful");
     NSString *sql_creat = @"create table if not exists notes (id integer primary key autoincrement, notetitle text, content text, photo text, picture text, datetime text)";
     [self.db executeUpdate:sql_creat];
     return YES;

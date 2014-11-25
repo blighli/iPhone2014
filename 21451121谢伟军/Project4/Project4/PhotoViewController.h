@@ -17,8 +17,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *photo;
 @property UIImage *image;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *shootPhotoButton;
-@property NSString *lastChosenMediaType;
-
 
 -(instancetype)initWithNote:(Note *)note;
 - (IBAction)shootPhoto:(UIBarButtonItem *)sender;

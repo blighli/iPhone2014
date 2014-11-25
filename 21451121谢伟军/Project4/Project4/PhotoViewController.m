@@ -73,14 +73,9 @@
 
 - (void)pickMediaFromSource:(UIImagePickerControllerSourceType)sourceType
 {
-    NSArray *mediaTypes = [UIImagePickerController
-                           availableMediaTypesForSourceType:sourceType];
     if ([UIImagePickerController
-         isSourceTypeAvailable:sourceType] && [mediaTypes count] > 0) {
-        NSArray *mediaTypes = [UIImagePickerController
-                               availableMediaTypesForSourceType:sourceType];
+         isSourceTypeAvailable:sourceType]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.mediaTypes = mediaTypes;
         picker.delegate = self;
         picker.allowsEditing = YES;
         picker.sourceType = sourceType;
@@ -121,7 +116,6 @@
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-//    self.lastChosenMediaType = info[UIImagePickerControllerMediaType];
     if ([info[UIImagePickerControllerMediaType] isEqual:(NSString *)kUTTypeImage]) {
         UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
         self.image = [self shrinkImage:chosenImage
