@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    //UINib *tableViewCell = [UINib nibWithNibName:@"TableViewCell" bundle:nil];
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documents = [paths objectAtIndex:0];
     NSString *database_path = [documents stringByAppendingString:@"/myDatabase.sqlite"];
@@ -66,16 +68,8 @@
 }
 
 
-#pragma datasource& delegate
+#pragma mark - datasource& delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    NSInteger total = 0;
-//    NSString *sql = @"select count(*) from notes";
-//    FMResultSet *resultSet = [self.db executeQuery:sql];
-//    if ([resultSet next]) {
-//        total = [resultSet intForColumnIndex:0];
-//    }
-//    
-//    NSLog(@"numberOfRowsInSection:%ld--ViewController",(long)total);
     return [noteList count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -85,7 +79,8 @@
     }
     Note *note = [noteList objectAtIndex:indexPath.row];
     cell.textLabel.text = note.notetitle;
-    cell.detailTextLabel.text = note.datetime;
+//    cell.detailTextLabel.text = note.datetime;
+    cell.detailTextLabel.text = @"1";
     return cell;
 }
 

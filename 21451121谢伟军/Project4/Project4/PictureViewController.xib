@@ -23,7 +23,11 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbp-YG-nWZ">
                     <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                     <items>
-                        <barButtonItem title="ClearPicture" id="h24-mT-Yzm"/>
+                        <barButtonItem title="ClearPicture" id="h24-mT-Yzm">
+                            <connections>
+                                <action selector="clearPicture:" destination="-1" id="ehG-nK-we2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Sna-tL-INv"/>
                         <barButtonItem title="SavePicture" id="xfv-1r-kFm">
                             <connections>

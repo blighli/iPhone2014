@@ -16,7 +16,7 @@
 @property ContentViewController *contentVC;
 @property PhotoViewController *photoVC;
 @property PictureViewController *pictureVC;
-@property BOOL isInsert;
+@property BOOL isCreate;
 @property Note *note;
 @property FMDatabase *db;
 

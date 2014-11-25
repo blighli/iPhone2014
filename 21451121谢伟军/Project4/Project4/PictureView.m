@@ -95,4 +95,9 @@
     return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
 }
 
+-(void)readFromFile:(NSString*) filePath {
+    self.lineArray = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    [self setNeedsDisplay];
+}
+
 @end

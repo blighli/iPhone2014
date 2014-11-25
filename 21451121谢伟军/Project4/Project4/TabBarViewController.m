@@ -31,13 +31,13 @@
     
     
     if (self.note == nil) {
-        self.isInsert = YES;
+        self.isCreate = YES;
         self.contentVC = [self.contentVC init];
         self.photoVC = [self.photoVC init];
         self.pictureVC = [self.pictureVC init];
     }
     else{
-        self.isInsert = NO;
+        self.isCreate = NO;
         self.contentVC = [self.contentVC initWithNote:self.note];
         self.photoVC = [self.photoVC initWithNote:self.note];
         self.pictureVC = [self.pictureVC initWithNote:self.note];
@@ -59,29 +59,43 @@
 
 
 - (IBAction)saveNote:(UIBarButtonItem *)sender {
-    if ([self.contentVC.notetitle.text isEqualToString:@""] && [self.contentVC.content.text isEqualToString:@""] ) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    else{
-        self.note = [[Note alloc]init];
-        self.note.notetitle = self.contentVC.notetitle.text;
-        self.note.content = self.contentVC.content.text;
-        self.note.photo = self.photoVC.note.photo;
-        NSLog(@"%@",self.note.notetitle);
-        
-        if (self.isInsert) {
-//            NSString *sql = @"insert into notes (notetitle , content , photo , picture , datetime ) values (? , ? , ? , ? , ?)";
-//            [self.db executeQuery:sql , self.note.notetitle , self.note.content , self.note.photo , self.note.picture , self.note.datetime];
-            
-            NSLog(@"self.note not nil");
-            NSString *sql = @"insert into notes (notetitle , content , photo) values (? , ? , ?)";
-            [self.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo];
-            
-
-            
-        }
-    }
     
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yy.MM.dd.HH:mm"];
+    NSDate* nowDate = [[NSDate alloc] init];
+    NSString *datetime = [dateFormatter stringFromDate:nowDate];
+//    NSLog(@"%@",datetime);
+    if ([self.contentVC.notetitle.text isEqualToString:@""] && [self.contentVC.content.text isEqualToString:@""] ) {
+        //            [self.navigationController popViewControllerAnimated:YES];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"注意" message:@"请输入文本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    self.note = [[Note alloc]init];
+    self.note.notetitle = self.contentVC.notetitle.text;
+    self.note.content = self.contentVC.content.text;
+    self.note.photo = self.photoVC.note.photo;
+    self.note.picture = self.pictureVC.note.picture;
+    self.note.datetime = datetime;
+    //            NSString *sql = @"insert into notes (notetitle , content , photo , picture , datetime ) values (? , ? , ? , ? , ?)";
+    //            [self.db executeQuery:sql , self.note.notetitle , self.note.content , self.note.photo , self.note.picture , self.note.datetime];
+    if (self.isCreate) {
+        NSLog(@"init a note");
+        NSString *sql = @"insert into notes (notetitle , content , photo , picture , datetime) values (? , ? , ? , ? , ?)";
+        [self.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo,self.note.picture , self.note.datetime];
+    }
+    //修改
+    else{
+        self.note.ID = self.contentVC.note.ID;
+        NSLog(@"update a note");
+        NSString *sql = @"update notes set notetitle = ? ,content = ? , photo =? , picture = ? , datetime = ? where id = ?";
+        [self.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo,self.note.picture , self.note.datetime , [NSString stringWithFormat:@"%d",self.note.ID]];
+//        NSString *sql = @"update notes set notetitle = 10086 where id = ?";
+//        [self.db executeUpdate:sql , [NSString stringWithFormat:@"%d",self.note.ID]];
+    }
     [self.navigationController popViewControllerAnimated:YES];
+
+    
+    
 }
 @end

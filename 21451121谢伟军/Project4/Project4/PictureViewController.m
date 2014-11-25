@@ -17,6 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (self.note == nil) {
+        self.note = [[Note alloc]init];
+    }
+    else{
+        [self.picture readFromFile:self.note.picture];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,22 +39,29 @@
 }
 
 - (IBAction)savePicture:(UIBarButtonItem *)sender {
-    NSString *drawPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"picture"];
+    NSString *picturePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"picture"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager createDirectoryAtPath:drawPath withIntermediateDirectories:YES attributes:nil error:nil];
+    [fileManager createDirectoryAtPath:picturePath withIntermediateDirectories:YES attributes:nil error:nil];
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"yyyy_MM_dd_HH_mm_ss"];
     NSDate* nowDate = [[NSDate alloc] init];
-    NSString *drawFilePath = [drawPath stringByAppendingFormat:@"/%@.%@", [dateFormatter stringFromDate:nowDate], @"picture"];
+    NSString *drawFilePath = [picturePath stringByAppendingFormat:@"/%@.%@", [dateFormatter stringFromDate:nowDate], @"picture"];
     if([self.picture writeToFile:drawFilePath]) {
 //        NoteEntity* note = [[NoteEntity alloc] initWithType:DrawNote andContent:drawFilePath];
 //        [_noteDAO insertNote:note];
-        NSLog(@"draw note write to file success, file path is %@", drawFilePath);
+        NSLog(@"picture write to file success, file path is %@", drawFilePath);
+        self.note.picture = drawFilePath;
     }
     else {
-        NSLog(@"draw note write to file failed, file path is %@", drawFilePath);
+        NSLog(@"picture write to file failed, file path is %@", drawFilePath);
     }
-    self.note.picture = drawFilePath;
+    
+}
+
+- (IBAction)clearPicture:(UIBarButtonItem *)sender {
+    [self.picture.lineArray removeAllObjects];
+    [self.picture.pointArray removeAllObjects];
+    [self.picture setNeedsDisplay];
 }
 /*
 #pragma mark - Navigation

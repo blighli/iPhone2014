@@ -14,4 +14,6 @@
 @property Note *note;
 -(instancetype)initWithNote:(Note *)note;
 - (IBAction)savePicture:(UIBarButtonItem *)sender;
+- (IBAction)clearPicture:(UIBarButtonItem *)sender;
+
 @end

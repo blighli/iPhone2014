@@ -18,4 +18,5 @@
 
 -(void)addLine;
 -(BOOL)writeToFile:(NSString*)filePath;
+-(void)readFromFile:(NSString*) filePath;
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FMDB.h>
 #import "Note.h"
+#import "TableViewCell.h"
 @interface ViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
 @property FMDatabase* db;
 
