@@ -1,6 +1,11 @@
+//
+//  RegexKitLite.m
+//  http://regexkit.sourceforge.net/
+//  Licensed under the terms of the BSD License, as specified below.
+//
 
-
-/* Copyright (c) 2008-2014, TOM
+/*
+ Copyright (c) 2008-2010, John Engelhart
  
  All rights reserved.
  
@@ -1000,7 +1005,7 @@ static RKLCachedRegex *rkl_getCachedRegexSetToString(NSString *regexString, RKLR
     RKLCDelayedAssert(cachedRegex->setToString != NULL, exception, exitNow);
     cachedRegex->setToUniChar         = CFStringGetCharactersPtr(cachedRegex->setToString);
     cachedRegex->setToNeedsConversion = (cachedRegex->setToUniChar == NULL) ? 1U : 0U;
-    cachedRegex->setToIsImmutable     = (rkl_CFStringIsMutable(cachedRegex->setToString) == /* DISABLES CODE */ (YES)) ? 0U : 1U; // If RKL_FAST_MUTABLE_CHECK is not defined then setToIsImmutable will always be set to '0', or in other words mutable..
+    cachedRegex->setToIsImmutable     = (rkl_CFStringIsMutable(cachedRegex->setToString) == YES) ? 0U : 1U; // If RKL_FAST_MUTABLE_CHECK is not defined then setToIsImmutable will always be set to '0', or in other words mutable..
     cachedRegex->setToHash            = CFHash((CFTypeRef)cachedRegex->setToString);
     cachedRegex->setToRange           = NSNotFoundRange;
     cachedRegex->setToLength          = matchLength;

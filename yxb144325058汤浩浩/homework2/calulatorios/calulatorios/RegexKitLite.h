@@ -1,7 +1,11 @@
-
+//
+//  RegexKitLite.h
+//  http://regexkit.sourceforge.net/
+//  Licensed under the terms of the BSD License, as specified below.
+//
 
 /*
- Copyright (c) 2008-2014, TOM
+ Copyright (c) 2008-2010, John Engelhart
  
  All rights reserved.
  

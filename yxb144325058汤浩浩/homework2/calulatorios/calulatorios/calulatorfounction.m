@@ -3,7 +3,7 @@
 //  calulator
 //
 //  Created by C.C.R on 14/11/3.
-//  Copyright (c) 2014年 TOM. All rights reserved.
+//  Copyright (c) TOM . All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

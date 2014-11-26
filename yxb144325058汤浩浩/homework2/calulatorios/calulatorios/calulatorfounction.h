@@ -12,7 +12,7 @@
 
 #endif
 
-@interface  calulator: NSObject{
+@interface calulator : NSObject{
 }
 
 @property double prenumber;
