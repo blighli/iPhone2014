@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Note" representedClassName="Note" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastModifyTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="note_id" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="paintContainer" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Paint" inverseName="paintOwner" inverseEntity="Paint" syncable="YES"/>
+        <relationship name="photoContainer" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photo" inverseName="photoOwner" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="recordContainer" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Record" inverseName="recordOwner" inverseEntity="Record" syncable="YES"/>
+    </entity>
+    <entity name="Paint" representedClassName="Paint" syncable="YES">
+        <attribute name="paint_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="paintName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paintUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="paintOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="paintContainer" inverseEntity="Note" syncable="YES"/>
+    </entity>
+    <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="photo_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="photoName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photoOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="photoContainer" inverseEntity="Note" syncable="YES"/>
+    </entity>
+    <entity name="Record" representedClassName="Record" syncable="YES">
+        <attribute name="record_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recordOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="recordContainer" inverseEntity="Note" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Note" positionX="-443" positionY="-217" width="128" height="148"/>
+        <element name="Paint" positionX="-243" positionY="-36" width="128" height="105"/>
+        <element name="Photo" positionX="-92" positionY="-171" width="128" height="103"/>
+        <element name="Record" positionX="-434" positionY="123" width="128" height="103"/>
+    </elements>
+</model>
