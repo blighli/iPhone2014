@@ -121,23 +121,23 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         self.image = [self shrinkImage:chosenImage
                                 toSize:self.photo.bounds.size];
         //存储图片文件
-        NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        NSLog(@"doc path is %@", docPath);
-        NSString *photoPath = [docPath stringByAppendingPathComponent:@"photo"];
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        [fileManager createDirectoryAtPath:photoPath withIntermediateDirectories:YES attributes:nil error:nil];
-        NSDateFormatter *dateFormatter = [NSDateFormatter new];
-        [dateFormatter setDateFormat:@"yyyy_MM_dd_HH_mm_ss"];
-        NSDate* nowDate = [[NSDate alloc] init];
-        NSString *photoFilePath = [photoPath stringByAppendingFormat:@"/%@.%@", [dateFormatter stringFromDate:nowDate], @"jpg"];
-        
-        NSData *imageData = UIImageJPEGRepresentation(self.image, 1);
-        if([imageData writeToFile:photoFilePath atomically:YES]) {
-            NSLog(@"photo write success, file is %@", photoFilePath);
+        if (self.note.photo == nil) {
+            NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+            NSString *photoPath = [docPath stringByAppendingPathComponent:@"photo"];
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            [fileManager createDirectoryAtPath:photoPath withIntermediateDirectories:YES attributes:nil error:nil];
+            NSDateFormatter *dateFormatter = [NSDateFormatter new];
+            [dateFormatter setDateFormat:@"yy_MM_dd_HH_mm_ss"];
+            NSDate* nowDate = [[NSDate alloc] init];
+            NSString *photoFilePath = [photoPath stringByAppendingFormat:@"/%@.%@", [dateFormatter stringFromDate:nowDate], @"jpg"];
             self.note.photo = photoFilePath;
         }
+        NSData *imageData = UIImageJPEGRepresentation(self.image, 1);
+        if([imageData writeToFile:self.note.photo atomically:YES]) {
+            NSLog(@"photo write success, file is %@", self.note.photo);
+        }
         else {
-            NSLog(@"photo wiret failed, file is %@", photoFilePath);
+            NSLog(@"photo wiret failed, file is %@", self.note.photo);
         }
     }
     [picker dismissViewControllerAnimated:YES completion:NULL];

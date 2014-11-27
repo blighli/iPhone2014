@@ -91,7 +91,7 @@
 }
 
 -(BOOL)writeToFile:(NSString*)filePath {
-    NSLog(@"archiveRootObject return %d", [NSKeyedArchiver archiveRootObject:self.lineArray toFile:filePath]);
+    [NSKeyedArchiver archiveRootObject:self.lineArray toFile:filePath];
     return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
 }
 

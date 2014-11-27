@@ -66,26 +66,25 @@
     [dateFormatter setDateFormat:@"yy/MM/dd HH:mm"];
     NSDate* nowDate = [[NSDate alloc] init];
     NSString *datetime = [dateFormatter stringFromDate:nowDate];
-//    NSLog(@"%@",datetime);
     if ([self.contentVC.notetitle.text isEqualToString:@""] && [self.contentVC.content.text isEqualToString:@""] ) {
-        //            [self.navigationController popViewControllerAnimated:YES];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"注意" message:@"请输入文本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
         return;
     }
+    
     self.note = [[Note alloc]init];
     self.note.notetitle = self.contentVC.notetitle.text;
     self.note.content = self.contentVC.content.text;
     self.note.photo = self.photoVC.note.photo;
     self.note.picture = self.pictureVC.note.picture;
     self.note.datetime = datetime;
-
+    //创建笔记
     if (self.isCreate) {
         NSLog(@"init a note");
         NSString *sql = @"insert into notes (notetitle , content , photo , picture , datetime) values (? , ? , ? , ? , ?)";
         [appDelegate.db executeUpdate:sql , self.note.notetitle ,self.note.content ,self.note.photo,self.note.picture , self.note.datetime];
     }
-    //修改
+    //修改笔记
     else{
         self.note.ID = self.contentVC.note.ID;
         NSLog(@"update a note");

@@ -89,6 +89,23 @@
 
         Note *note = [noteList objectAtIndex:indexPath.row];
         NSString *sql = @"delete from notes where id = ?";
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSError *error = nil;
+        if (note.photo !=nil) {
+            [fileManager removeItemAtPath:note.photo error:&error];
+            if (error) {
+                NSLog(@"delete photo failerd:%@",[error localizedDescription]);
+                error = nil;
+            }
+        }
+        if (note.picture !=nil) {
+            [fileManager removeItemAtPath:note.picture error:&error];
+            if (error) {
+                NSLog(@"delete picture failed:%@",[error localizedDescription]);
+                error = nil;
+            }
+        }
         [appDelegate.db executeUpdate:sql , [NSString stringWithFormat:@"%d",note.ID]];
         [self initTableviewData];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];

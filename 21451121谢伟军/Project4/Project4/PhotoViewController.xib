@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LX4-5u-chl">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX4-5u-chl">
                     <rect key="frame" x="0.0" y="386" width="320" height="44"/>
                     <color key="backgroundColor" red="0.61624756091478283" green="0.77418595647025812" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <items>
@@ -36,12 +36,21 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="MJ3-kU-grq"/>
                     </items>
                 </toolbar>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Fq-Bh-QJE">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Fq-Bh-QJE">
                     <rect key="frame" x="0.0" y="65" width="320" height="321"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="1Fq-Bh-QJE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3fR-ah-dpO"/>
+                <constraint firstItem="LX4-5u-chl" firstAttribute="leading" secondItem="1Fq-Bh-QJE" secondAttribute="leading" id="8Mo-82-ojE"/>
+                <constraint firstItem="LX4-5u-chl" firstAttribute="top" secondItem="1Fq-Bh-QJE" secondAttribute="bottom" id="Kon-U9-Yh4"/>
+                <constraint firstAttribute="bottom" secondItem="LX4-5u-chl" secondAttribute="bottom" constant="50" id="Mcv-LL-bVZ"/>
+                <constraint firstItem="1Fq-Bh-QJE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="Ox3-zh-2EZ"/>
+                <constraint firstAttribute="trailing" secondItem="LX4-5u-chl" secondAttribute="trailing" id="T8S-fU-EZe"/>
+                <constraint firstItem="LX4-5u-chl" firstAttribute="trailing" secondItem="1Fq-Bh-QJE" secondAttribute="trailing" id="ZIf-W0-r58"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

@@ -39,23 +39,22 @@
 }
 
 - (IBAction)savePicture:(UIBarButtonItem *)sender {
-    NSString *picturePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"picture"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager createDirectoryAtPath:picturePath withIntermediateDirectories:YES attributes:nil error:nil];
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"yyyy_MM_dd_HH_mm_ss"];
-    NSDate* nowDate = [[NSDate alloc] init];
-    NSString *drawFilePath = [picturePath stringByAppendingFormat:@"/%@.%@", [dateFormatter stringFromDate:nowDate], @"picture"];
-    if([self.picture writeToFile:drawFilePath]) {
-//        NoteEntity* note = [[NoteEntity alloc] initWithType:DrawNote andContent:drawFilePath];
-//        [_noteDAO insertNote:note];
-        NSLog(@"picture write to file success, file path is %@", drawFilePath);
+    if (self.note.picture == nil) {
+        NSString *picturePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"picture"];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        [fileManager createDirectoryAtPath:picturePath withIntermediateDirectories:YES attributes:nil error:nil];
+        NSDateFormatter *dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"yy_MM_dd_HH_mm_ss"];
+        NSDate* nowDate = [[NSDate alloc] init];
+        NSString *drawFilePath = [picturePath stringByAppendingFormat:@"/%@.%@", [dateFormatter stringFromDate:nowDate], @"picture"];
         self.note.picture = drawFilePath;
     }
-    else {
-        NSLog(@"picture write to file failed, file path is %@", drawFilePath);
+    if([self.picture writeToFile:self.note.picture]) {
+        NSLog(@"picture write success,path:%@", self.note.picture);
     }
-    
+    else {
+        NSLog(@"picture write failed,path:%@", self.note.picture);
+    }
 }
 
 - (IBAction)clearPicture:(UIBarButtonItem *)sender {
