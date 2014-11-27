@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJa-wo-cdC">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJa-wo-cdC">
                                 <rect key="frame" x="37" y="451" width="40" height="33"/>
                                 <state key="normal" title="颜色">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -26,7 +26,7 @@
                                     <action selector="colorChange:" destination="bWM-8F-BmX" eventType="touchUpInside" id="yAX-Vf-11S"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYO-LX-WUU">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYO-LX-WUU">
                                 <rect key="frame" x="133" y="451" width="40" height="33"/>
                                 <state key="normal" title="宽度">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,7 +36,7 @@
                                     <action selector="widthToSet:" destination="bWM-8F-BmX" eventType="touchUpInside" id="eZy-Is-jRS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1X-z0-DXF">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1X-z0-DXF">
                                 <rect key="frame" x="85" y="451" width="40" height="33"/>
                                 <state key="normal" title="橡皮">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -45,7 +45,7 @@
                                     <action selector="eraser:" destination="bWM-8F-BmX" eventType="touchUpInside" id="i40-TZ-6NH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53i-iL-tbx">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53i-iL-tbx">
                                 <rect key="frame" x="229" y="451" width="40" height="33"/>
                                 <state key="normal" title="保存">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,7 +54,7 @@
                                     <action selector="savePicture:" destination="bWM-8F-BmX" eventType="touchUpInside" id="yXr-qN-6Qc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-oO-VOP">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-oO-VOP">
                                 <rect key="frame" x="181" y="451" width="40" height="33"/>
                                 <state key="normal" title="清屏">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -63,7 +63,7 @@
                                     <action selector="clearScreen:" destination="bWM-8F-BmX" eventType="touchUpInside" id="pcZ-B0-M0C"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JqS-I3-jbQ">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JqS-I3-jbQ">
                                 <rect key="frame" x="30" y="398" width="280" height="29"/>
                                 <segments>
                                     <segment title="红"/>
@@ -77,11 +77,20 @@
                                     <action selector="colorToSet:" destination="bWM-8F-BmX" eventType="valueChanged" id="06z-XF-Fuo"/>
                                 </connections>
                             </segmentedControl>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="5oR-ai-8r4">
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="5oR-ai-8r4">
                                 <rect key="frame" x="30" y="415" width="279" height="29"/>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="D0K-uk-RMH" firstAttribute="top" secondItem="Ycy-oO-VOP" secondAttribute="bottom" constant="84" id="0Rc-6f-rCQ"/>
+                            <constraint firstItem="D0K-uk-RMH" firstAttribute="top" secondItem="H1X-z0-DXF" secondAttribute="bottom" constant="84" id="6Zc-L7-CZD"/>
+                            <constraint firstItem="D0K-uk-RMH" firstAttribute="top" secondItem="LYO-LX-WUU" secondAttribute="bottom" constant="84" id="EsO-5W-tlt"/>
+                            <constraint firstItem="D0K-uk-RMH" firstAttribute="top" secondItem="JqS-I3-jbQ" secondAttribute="bottom" constant="142" id="M8G-GM-ZYj"/>
+                            <constraint firstItem="D0K-uk-RMH" firstAttribute="top" secondItem="5oR-ai-8r4" secondAttribute="bottom" constant="125" id="fj5-Cn-JIb"/>
+                            <constraint firstItem="D0K-uk-RMH" firstAttribute="top" secondItem="TJa-wo-cdC" secondAttribute="bottom" constant="84" id="vGf-xU-oHA"/>
+                            <constraint firstItem="D0K-uk-RMH" firstAttribute="top" secondItem="53i-iL-tbx" secondAttribute="bottom" constant="84" id="zzX-FW-fcd"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="画画" id="w2Z-zw-pzc">
                         <barButtonItem key="rightBarButtonItem" title="我的画册" id="IvX-bY-BQb">
