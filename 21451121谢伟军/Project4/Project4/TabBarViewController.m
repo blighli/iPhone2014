@@ -74,6 +74,9 @@
     
     self.note = [[Note alloc]init];
     self.note.notetitle = self.contentVC.notetitle.text;
+    if ([self.note.notetitle isEqualToString:@""]) {
+        self.note.notetitle = @"未命名";
+    }
     self.note.content = self.contentVC.content.text;
     self.note.photo = self.photoVC.note.photo;
     self.note.picture = self.pictureVC.note.picture;
