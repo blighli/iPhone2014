@@ -19,8 +19,9 @@
     #define TITLE     @"title"
     #define DATA      @"data"
     #define TABLENAME @"MYNOTE"
-    #define TEXT 1
-    #define PIC 2
+    #define TEXT     1
+    #define PIC      2
+    #define PAINTING 3
     NSString* databasePath;
     sqlite3 *db;
     
@@ -28,13 +29,19 @@
 
 @property NSString* databasePath;
 @property sqlite3 *db;
--(NSArray*) getTitles;
+-(NSArray*) getTitles:(int) type;
 -(NSDictionary*) getOneNote:(int) noteid;
 -(bool) insertNote:(NSString*)title withType:(int) type
         withTime:(NSString*) time withText:(NSString*) data;
+-(void) savePic:(NSString*)title withType:(int) type
+          withTime:(NSString*) time withData:(NSData*) data;
+
 -(bool) updateNote:(NSNumber*)noteid withTitle:(NSString*)title withType:(int) type
           withTime:(NSString*) time withText:(NSString*) data;
+-(void) updatePainting:(NSNumber*)noteid withTitle:(NSString*)title withType:(int) type
+              withTime:(NSString*) time withDate:(NSData*) data;
 -(void) deleteNote:(int)noteid;
 -(void) closeDB;
++(NoteDB*) sharedNoteDB;
 @end
 #endif

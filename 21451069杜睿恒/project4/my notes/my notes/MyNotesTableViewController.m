@@ -18,12 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    noteDB = [[NoteDB alloc] init];
+    noteDB = [NoteDB sharedNoteDB];
     titleAndIdList = [[NSArray alloc] init];
     [self getTitleFromDB];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(reloadTableView:)
-                                          name:@"NOTIFICATION_RELOAD"
+                                          name:@"NOTIFICATION_NOTETABLE_RELOAD"
                                           object:nil];
 }
 -(void) reloadTableView:(NSNotification *)notification{
@@ -38,16 +38,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *segueid = [segue identifier];
-    if([segueid isEqualToString:@"newNote"]){
+    if([segueid isEqualToString:@"newNoteSegue"]){
         NoteViewController *noteView = segue.destinationViewController;
         [noteView initNewNote];
-        noteView.noteDB = self.noteDB;
         noteView.editable = true;
     }
     else{
         NoteViewController *noteView = segue.destinationViewController;
         [noteView initViewNote];
-        noteView.noteDB = self.noteDB;
         int row = [self.tableView indexPathForSelectedRow].row;
         NSNumber *noteid = [titleAndIdList objectAtIndex:row][@"id"];
         NSDictionary *note = [noteDB getOneNote:[noteid intValue]];
@@ -95,6 +93,6 @@
 
 -(void) getTitleFromDB
 {
-    titleAndIdList = [noteDB getTitles];
+    titleAndIdList = [noteDB getTitles:TEXT];
 }
 @end

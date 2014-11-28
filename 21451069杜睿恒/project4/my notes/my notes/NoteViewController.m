@@ -23,6 +23,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     isModify = false;
+    self.noteDB = [NoteDB sharedNoteDB];
+    UIBarButtonItem *btBack = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+    self.navigationItem.leftBarButtonItem = btBack;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,18 +40,12 @@
 
 -(void)initNewNote{
     UIBarButtonItem *btSave = [[UIBarButtonItem alloc] initWithTitle:@"save" style:UIBarButtonItemStylePlain target:self action:@selector(saveNote:)];
-    UIBarButtonItem *btBack = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
-    self.navigationItem.leftBarButtonItem = btBack;
     self.navigationItem.rightBarButtonItem = btSave;
-    //[self showToolBar];
 }
 
 -(void)initViewNote{
     UIBarButtonItem *btEdit = [[UIBarButtonItem alloc] initWithTitle:@"edit" style:UIBarButtonItemStylePlain target:self action:@selector(editNote:)];
-    UIBarButtonItem *btBack = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
     self.navigationItem.rightBarButtonItem = btEdit;
-    self.navigationItem.leftBarButtonItem = btBack;
-    
 }
 -(void)saveNote:(id)sender{
     NSString* text = textView.text;
@@ -66,13 +63,13 @@
     }
     if(!isModify && ![text isEqualToString:@""]){
         [noteDB insertNote:title withType:1 withTime:dateStr withText:text];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_RELOAD"
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_NOTETABLE_RELOAD"
                                                             object:nil];
         [self.navigationController popViewControllerAnimated:true];
     }
     else if(isModify && ![text isEqualToString:tvText]){
-        [noteDB updateNote:noteid withTitle:title withType:1 withTime:dateStr withText:text];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_RELOAD"
+        [noteDB updateNote:noteid withTitle:title withType:TEXT withTime:dateStr withText:text];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_NOTETABLE_RELOAD"
                                                             object:nil];
         [self.navigationController popViewControllerAnimated:true];
     }
@@ -123,15 +120,8 @@
             break;
     }
 }
--(void)pic:(id)sender{
-    
-}
 
 
--(void)showToolBar{
-    self.navigationController.toolbarHidden=NO;
-    UIBarButtonItem *btInsert = [[UIBarButtonItem alloc] initWithTitle:@"pic" style:UIBarButtonItemStylePlain target:self action:@selector(pic:)];
-    self.toolbarItems = @[btInsert];
-}
+
 
 @end
