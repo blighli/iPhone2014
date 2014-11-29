@@ -14,6 +14,11 @@
 		92BA72151A27FF7600C52C05 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BA72141A27FF7600C52C05 /* Images.xcassets */; };
 		92BA72181A27FF7600C52C05 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BA72161A27FF7600C52C05 /* LaunchScreen.xib */; };
 		92BA72241A27FF7600C52C05 /* EverNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72231A27FF7600C52C05 /* EverNoteTests.m */; };
+		92BA722F1A2952C600C52C05 /* NoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA722E1A2952C600C52C05 /* NoteTableViewController.m */; };
+		92BA72321A2954BD00C52C05 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72311A2954BD00C52C05 /* DrawView.m */; };
+		92BA72351A29559F00C52C05 /* NoteTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72341A29559F00C52C05 /* NoteTabBarViewController.m */; };
+		92BA72391A29677D00C52C05 /* MySqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72381A29677D00C52C05 /* MySqlite.m */; };
+		92BA723B1A29685500C52C05 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BA723A1A29685500C52C05 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,15 @@
 		92BA721D1A27FF7600C52C05 /* EverNoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverNoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BA72221A27FF7600C52C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92BA72231A27FF7600C52C05 /* EverNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverNoteTests.m; sourceTree = "<group>"; };
+		92BA722D1A2952C600C52C05 /* NoteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableViewController.h; sourceTree = "<group>"; };
+		92BA722E1A2952C600C52C05 /* NoteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewController.m; sourceTree = "<group>"; };
+		92BA72301A2954BD00C52C05 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
+		92BA72311A2954BD00C52C05 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
+		92BA72331A29559F00C52C05 /* NoteTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTabBarViewController.h; sourceTree = "<group>"; };
+		92BA72341A29559F00C52C05 /* NoteTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTabBarViewController.m; sourceTree = "<group>"; };
+		92BA72371A29677D00C52C05 /* MySqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySqlite.h; sourceTree = "<group>"; };
+		92BA72381A29677D00C52C05 /* MySqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySqlite.m; sourceTree = "<group>"; };
+		92BA723A1A29685500C52C05 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92BA723B1A29685500C52C05 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +81,7 @@
 				92BA72061A27FF7600C52C05 /* EverNote */,
 				92BA72201A27FF7600C52C05 /* EverNoteTests */,
 				92BA72051A27FF7600C52C05 /* Products */,
+				92BA723D1A29691000C52C05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +97,7 @@
 		92BA72061A27FF7600C52C05 /* EverNote */ = {
 			isa = PBXGroup;
 			children = (
+				92BA72361A29675B00C52C05 /* SqliteHandle */,
 				92BA720B1A27FF7600C52C05 /* AppDelegate.h */,
 				92BA720C1A27FF7600C52C05 /* AppDelegate.m */,
 				92BA720E1A27FF7600C52C05 /* ViewController.h */,
@@ -89,6 +106,12 @@
 				92BA72141A27FF7600C52C05 /* Images.xcassets */,
 				92BA72161A27FF7600C52C05 /* LaunchScreen.xib */,
 				92BA72071A27FF7600C52C05 /* Supporting Files */,
+				92BA722D1A2952C600C52C05 /* NoteTableViewController.h */,
+				92BA722E1A2952C600C52C05 /* NoteTableViewController.m */,
+				92BA72301A2954BD00C52C05 /* DrawView.h */,
+				92BA72311A2954BD00C52C05 /* DrawView.m */,
+				92BA72331A29559F00C52C05 /* NoteTabBarViewController.h */,
+				92BA72341A29559F00C52C05 /* NoteTabBarViewController.m */,
 			);
 			path = EverNote;
 			sourceTree = "<group>";
@@ -117,6 +140,23 @@
 				92BA72221A27FF7600C52C05 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		92BA72361A29675B00C52C05 /* SqliteHandle */ = {
+			isa = PBXGroup;
+			children = (
+				92BA72371A29677D00C52C05 /* MySqlite.h */,
+				92BA72381A29677D00C52C05 /* MySqlite.m */,
+			);
+			name = SqliteHandle;
+			sourceTree = "<group>";
+		};
+		92BA723D1A29691000C52C05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				92BA723A1A29685500C52C05 /* libsqlite3.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +259,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92BA72391A29677D00C52C05 /* MySqlite.m in Sources */,
+				92BA72351A29559F00C52C05 /* NoteTabBarViewController.m in Sources */,
 				92BA72101A27FF7600C52C05 /* ViewController.m in Sources */,
+				92BA722F1A2952C600C52C05 /* NoteTableViewController.m in Sources */,
 				92BA720D1A27FF7600C52C05 /* AppDelegate.m in Sources */,
 				92BA720A1A27FF7600C52C05 /* main.m in Sources */,
+				92BA72321A2954BD00C52C05 /* DrawView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +456,7 @@
 				92BA72291A27FF7600C52C05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92BA722A1A27FF7600C52C05 /* Build configuration list for PBXNativeTarget "EverNoteTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +465,7 @@
 				92BA722C1A27FF7600C52C05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
