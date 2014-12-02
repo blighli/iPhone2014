@@ -7,8 +7,13 @@
 //
 
 #import "NoteTableViewController.h"
-
+#import <sqlite3.h>
+#import "MySqlite.h"
 @interface NoteTableViewController ()
+
+@property (nonatomic) sqlite3 *database;
+@property (strong, nonatomic) NSMutableArray *titleArray;
+@property (strong, nonatomic) IBOutlet UITableView *myTableView;
 
 @end
 
@@ -16,14 +21,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     backItem.title = @"Cancle";
     self.navigationItem.backBarButtonItem = backItem;
+    [NSArray array];
+//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    
+//    [_myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    MySqlite *sqliteHandle = [[MySqlite alloc] init];
+    [sqliteHandle openDatabase:&_database];
+    NSString *query = @"SELECT ROW,NOTE_TITLE,NOTE_DATA FROM NOTES ORDER BY ROW";
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(_database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        NSLog(@"coming first");
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            int row = sqlite3_column_int(statement, 0);
+            char *titleData = (char *)sqlite3_column_text(statement, 1);
+            int bytes = sqlite3_column_bytes(statement, 2);
+            NSString *title = [[NSString alloc]initWithUTF8String:titleData];
+            [_titleArray addObject:title];
+            NSLog(@"%@",title);
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,26 +61,26 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.titleArray count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    NSLog(@"mmmmm");
+    NSLog(@"s= %@",[_titleArray objectAtIndex:indexPath.row]);
+    cell.textLabel.text = _titleArray[indexPath.row];
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

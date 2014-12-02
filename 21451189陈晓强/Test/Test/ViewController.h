@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
+#import "DaiDodgeKeyboard.h"
+@interface ViewController : UIViewController<UITextViewDelegate>
 
 
 @end

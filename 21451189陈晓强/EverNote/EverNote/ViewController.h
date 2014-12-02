@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface ViewController : UIViewController<UITextViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (strong, nonatomic) IBOutlet UIView *myView;
 
 
 

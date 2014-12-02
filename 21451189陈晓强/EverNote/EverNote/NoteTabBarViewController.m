@@ -8,8 +8,13 @@
 
 #import "NoteTabBarViewController.h"
 #import "ViewController.h"
+#import "DrawViewController.h"
+#import "MySqlite.h"
+#import <sqlite3.h>
 @interface NoteTabBarViewController ()
-
+@property (strong, nonatomic) NSDictionary *noteDict;
+@property (strong, nonatomic) NSAttributedString *textAttributedString;
+@property (nonatomic) sqlite3 *database;
 @end
 
 @implementation NoteTabBarViewController
@@ -17,13 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _noteDict = @{NSDocumentTypeDocumentAttribute:NSRTFDTextDocumentType};
     self.navigationItem.leftItemsSupplementBackButton = NO;
     
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)Save:(id)sender {
@@ -31,15 +32,50 @@
     if ([viewController isKindOfClass:[ViewController class]]) {
         ViewController *myViewController = (ViewController *)viewController;
         UITextView *textView = myViewController.textView;
-        NSLog(@"%@",textView.text);
+        _textAttributedString = textView.attributedText;
+        UITextField *textField = myViewController.textField;
+        
+        NSString *title = textField.text;
+        NSData *data = [self convertAttributedStringToData];
+        
+        MySqlite *sqliteHandle = [[MySqlite alloc] init];
+        [sqliteHandle openDatabase:&_database];
+//        [sqliteHandle openDatabase:_database andPath:[self dataFilePath]];
+//        if (sqlite3_open([[self dataFilePath] UTF8String], &_database) != SQLITE_OK) {
+//            sqlite3_close(_database);
+//            NSAssert(0, @"Failed to open database");
+//        }
+        NSString *createTableSql = @"CREATE TABLE IF NOT EXISTS NOTES "
+        "(ROW INTEGER PRIMARY KEY AUTOINCREMENT, NOTE_TITLE TEXT UNIQUE, NOTE_DATA BLOB);";
+        [sqliteHandle createMySqliteTableDatabase:_database andSql:createTableSql];
+        NSString *update = @"INSERT OR REPLACE INTO NOTES (NOTE_TITLE, NOTE_DATA)" "VALUES (?,?);";
+        sqlite3_stmt *stmt;
+        [sqliteHandle insertOrUpdateMySqliteDatabase:_database andInsertSql:update
+                                        andStatement:stmt
+                                            andTitle:title andData:data];
         [self.navigationController popViewControllerAnimated:YES];
 
+    }
+    
+    if([viewController isKindOfClass:[DrawViewController class]])
+    {
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
 }
 
 
-#pragma ViewController data handle
+#pragma mark - ViewController data handle
+- (NSData *)convertAttributedStringToData
+{
+    NSError *error;
+    NSData *data = [_textAttributedString dataFromRange:NSMakeRange(0, [_textAttributedString length]) documentAttributes:_noteDict error:&error];
+    return data;
+}
+
+
+#pragma mark - database handle
 
 #pragma mark - Navigation
 

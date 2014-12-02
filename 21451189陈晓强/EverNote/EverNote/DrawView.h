@@ -10,4 +10,6 @@
 
 @interface DrawView : UIView
 
+@property (assign, nonatomic) CGFloat lineWitdh;
+
 @end
