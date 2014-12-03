@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Isq-0K-c4c">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="H83-mq-edL">
+            <objects>
+                <navigationController id="Isq-0K-c4c" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Nf-gD-S2I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cyb-jd-Y0r" kind="relationship" relationship="rootViewController" id="zd2-12-Dq2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aKi-ic-j38" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3851" y="-650"/>
+        </scene>
+        <!--照片文本-->
+        <scene sceneID="azo-2m-L0P">
+            <objects>
+                <viewController storyboardIdentifier="imageViewController" id="Obd-Cg-wCV" customClass="imageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sYa-3e-Qm3"/>
+                        <viewControllerLayoutGuide type="bottom" id="YxU-jC-Oo2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J2T-hK-8It">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dyz-RD-9jE">
+                                <rect key="frame" x="0.0" y="96" width="320" height="387"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACF-6t-zW2">
+                                <rect key="frame" x="134" y="485" width="52" height="32"/>
+                                <color key="backgroundColor" red="0.67116074349999999" green="0.87478298610000005" blue="0.82859769240000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="选择图片">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseImage:" destination="Obd-Cg-wCV" eventType="touchUpInside" id="dyu-cz-wLQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="标题：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gp3-j6-AvV">
+                                <rect key="frame" x="8" y="69" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gpN-Cr-WED">
+                                <rect key="frame" x="73" y="65" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="dismissKeyboard:" destination="Obd-Cg-wCV" eventType="editingDidEndOnExit" id="TeS-5Q-DOS"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ACF-6t-zW2" secondAttribute="centerX" id="6w9-o0-di1"/>
+                            <constraint firstItem="ACF-6t-zW2" firstAttribute="top" secondItem="J2T-hK-8It" secondAttribute="topMargin" constant="485" id="Tup-sg-MIh"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ACF-6t-zW2" secondAttribute="bottom" constant="51" id="V6X-BT-UlE"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="1" title="照片文本" id="Xd4-4h-TRp"/>
+                    <connections>
+                        <outlet property="imageView" destination="Dyz-RD-9jE" id="2p0-na-cUh"/>
+                        <outlet property="textField" destination="gpN-Cr-WED" id="Kb1-2z-WMG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YIG-PO-hWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2758" y="-7"/>
+        </scene>
+        <!--手绘图像-->
+        <scene sceneID="PsY-6r-uCc">
+            <objects>
+                <viewController storyboardIdentifier="HandDrawViewController" id="XUj-9y-CBI" customClass="HandDrawViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MmR-nG-F5e"/>
+                        <viewControllerLayoutGuide type="bottom" id="xnG-s6-yRX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OQA-Q1-1Cj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xs-qr-G3J">
+                                <rect key="frame" x="16" y="485" width="37" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickColorButton:" destination="XUj-9y-CBI" eventType="touchUpInside" id="Izg-ed-esC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4s-s5-byd">
+                                <rect key="frame" x="136" y="485" width="30" height="30"/>
+                                <state key="normal" title="画图">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="drawButton:" destination="XUj-9y-CBI" eventType="touchUpInside" id="WPf-Td-N5A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Doz-EX-LKG">
+                                <rect key="frame" x="204" y="485" width="30" height="30"/>
+                                <state key="normal" title="橡皮">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickEraserButton:" destination="XUj-9y-CBI" eventType="touchUpInside" id="saG-DN-oDJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hkd-z3-bpb">
+                                <rect key="frame" x="269" y="485" width="30" height="30"/>
+                                <state key="normal" title="清空">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearImageButton:" destination="XUj-9y-CBI" eventType="touchUpInside" id="TqO-ev-HgN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="标题：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbI-NE-Z3r">
+                                <rect key="frame" x="16" y="72" width="51" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="5GC-q9-UCQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dah-ET-aux">
+                                <rect key="frame" x="0.0" y="101" width="320" height="382"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="382" id="I1y-2d-Knl"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tWG-Jx-4ua" customClass="PIDrawerView">
+                                <rect key="frame" x="0.0" y="101" width="320" height="382"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Wa-e9-JSb">
+                                <rect key="frame" x="63" y="68" width="241" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="dismissKeyboard:" destination="XUj-9y-CBI" eventType="editingDidEndOnExit" id="AJm-MP-IQM"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="2" title="手绘图像" id="kgj-1F-Jdz"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="drawButton" destination="s4s-s5-byd" id="oJC-T4-NSV"/>
+                        <outlet property="drawerView" destination="tWG-Jx-4ua" id="nfB-br-ewQ"/>
+                        <outlet property="imageview" destination="Dah-ET-aux" id="JAe-15-UbI"/>
+                        <outlet property="pickColorButton" destination="9Xs-qr-G3J" id="LnZ-IJ-ZKj"/>
+                        <outlet property="pickEraserButton" destination="Doz-EX-LKG" id="KCP-Ei-bzw"/>
+                        <outlet property="textfield" destination="7Wa-e9-JSb" id="RYi-lj-f2v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PIa-ln-FqX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3175" y="401"/>
+        </scene>
+        <!--文字文本-->
+        <scene sceneID="Yoa-q9-Li9">
+            <objects>
+                <viewController storyboardIdentifier="TextViewController" id="ocb-1S-Qcp" customClass="TextViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rnl-Y9-8Ky"/>
+                        <viewControllerLayoutGuide type="bottom" id="oD8-RF-os6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yjq-d1-aTd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rnb-fx-Q9C">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="660"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="文字文本" id="Awi-Hi-QzB"/>
+                    <connections>
+                        <outlet property="textView" destination="Rnb-fx-Q9C" id="biH-qS-pAN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzr-xp-hUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2725" y="-655"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="QhO-9t-Ab3">
+            <objects>
+                <tableViewController storyboardIdentifier="ViewController" id="cyb-jd-Y0r" customClass="ViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="C7U-Mi-4fC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="cyb-jd-Y0r" id="5ez-tE-s90"/>
+                            <outlet property="delegate" destination="cyb-jd-Y0r" id="XDc-bc-YdP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="I5n-ga-vhH">
+                        <barButtonItem key="rightBarButtonItem" title="新建笔记" id="GaL-j8-CXt">
+                            <connections>
+                                <segue destination="HTE-7t-TG5" kind="show" id="r5B-ha-225"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IcD-I2-VQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3471" y="-655"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="lvE-Ma-M6b">
+            <objects>
+                <tabBarController id="HTE-7t-TG5" customClass="TabBarController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="VUx-yj-B0A">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="vrW-1Z-Jqg">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qvp-br-jyx">
+                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="存储">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButton:" destination="HTE-7t-TG5" eventType="touchUpInside" id="evI-JG-wTH"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="qMt-DM-YTj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ocb-1S-Qcp" kind="relationship" relationship="viewControllers" id="41D-Xh-Xqc"/>
+                        <segue destination="Obd-Cg-wCV" kind="relationship" relationship="viewControllers" id="Ekn-j4-SG4"/>
+                        <segue destination="XUj-9y-CBI" kind="relationship" relationship="viewControllers" id="PhV-My-MWj"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WwM-qF-1Kn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3116" y="-655"/>
+        </scene>
+    </scenes>
+</document>
