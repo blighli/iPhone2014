@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Habit" representedClassName="Habit" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="doTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nextDoTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="period" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="periodEndTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="postponeTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="times" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="HistoryAction" representedClassName="HistoryAction" syncable="YES">
+        <attribute name="actionTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="habitId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="HistoryPeriod" representedClassName="HistoryPeriod" syncable="YES">
+        <attribute name="doneTimes" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="habitId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="period" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="periodEndTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="times" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Habit" positionX="-54" positionY="-9" width="128" height="178"/>
+        <element name="HistoryPeriod" positionX="-36" positionY="81" width="128" height="118"/>
+        <element name="HistoryAction" positionX="-18" positionY="99" width="128" height="88"/>
+    </elements>
+</model>
