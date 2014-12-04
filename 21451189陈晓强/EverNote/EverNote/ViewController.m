@@ -10,12 +10,14 @@
 #import "IQKeyboardManager.h"
 #import "MySqlite.h"
 #import <sqlite3.h>
+#import <MobileCoreServices/MobileCoreServices.h>s
 @interface ViewController ()
 
 @property (strong, nonatomic) NSAttributedString *textAttributedString;
 @property (nonatomic) sqlite3 *database;
 @property (strong, nonatomic) NSDictionary *noteDict;
 @property (nonatomic) BOOL wasKeyboardManagerEnabled;
+@property (strong, nonatomic) NSMutableAttributedString *attributedString;
 @end
 
 @implementation ViewController
@@ -110,19 +112,59 @@
 
 - (void)takePhoto
 {
-   
+
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = YES;
+    imagePickerController.mediaTypes = @[(NSString *)kUTTypeImage];
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:imagePickerController animated:YES completion:NULL];
 }
 - (void) resignKeyboard
 {
-    NSLog(@"come in");
     [self.textView resignFirstResponder];
     [self.textField resignFirstResponder];
 
 }
-
-- (IBAction)backgroundTap:(id)sender{
+-(UIImage*)  OriginImage:(UIImage *)image   scaleToSize:(CGSize)size
+{
+    // 创建一个bitmap的context
+    // 并把它设置成为当前正在使用的context
+    UIGraphicsBeginImageContext(size);
+    
+    // 绘制改变大小的图片
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
+    // 从当前context中创建一个改变大小后的图片
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    
+    // 返回新的改变大小后的图片
+    return scaledImage;
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [self OriginImage:info[UIImagePickerControllerEditedImage] scaleToSize:CGSizeMake(30, 20)];
+//    UIImage *image = info[UIImagePickerControllerEditedImage];
+    if(!image) image = [self OriginImage:info[UIImagePickerControllerEditedImage] scaleToSize:CGSizeMake(30, 20)];
+    NSURL* url = [info objectForKey:UIImagePickerControllerMediaURL];
+    _attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:_textView.attributedText];
+    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] initWithData:nil ofType:nil];
+    textAttachment.image = image;
+    NSAttributedString* textAttachmentString = [NSAttributedString
+                                                    attributedStringWithAttachment:textAttachment ] ;
+    [_attributedString insertAttributedString:textAttachmentString atIndex:[_attributedString length]];
+    _textView.attributedText = _attributedString;
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 
 
 

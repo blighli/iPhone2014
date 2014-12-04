@@ -43,7 +43,7 @@
     [_dataDict removeAllObjects];
     MySqlite *sqliteHandle = [[MySqlite alloc] init];
     [sqliteHandle openDatabase:&_database];
-    NSString *query = @"SELECT ROW,NOTE_TITLE,NOTE_DATA FROM NOTES_PICTURE ORDER BY ROW";
+    NSString *query = @"SELECT ROW,NOTE_TITLE,NOTE_DATA FROM NOTES_PICTURE ORDER BY ROW DESC";
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(_database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
         while (sqlite3_step(statement) == SQLITE_ROW) {

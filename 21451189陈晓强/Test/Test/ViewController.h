@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DaiDodgeKeyboard.h"
+#import "SmoothLineView.h"
+
 @interface ViewController : UIViewController<UITextViewDelegate>
 
 

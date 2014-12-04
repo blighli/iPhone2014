@@ -99,7 +99,6 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     UIGraphicsBeginImageContext(drawBox.size);
 	[self.layer renderInContext:UIGraphicsGetCurrentContext()];
 	curImage = UIGraphicsGetImageFromCurrentImageContext();
-    [curImage retain];
 	UIGraphicsEndImageContext();
     
     [self setNeedsDisplayInRect:drawBox];
@@ -127,15 +126,9 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
 
     [super drawRect:rect];
     
-    [curImage release];
     
 }
 
-- (void)dealloc
-{
-    self.lineColor = nil;
-    [super dealloc];
-}
 
 @synthesize lineColor,lineWidth;
 @end
