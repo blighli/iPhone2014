@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 @interface ViewController : UIViewController<UITextViewDelegate,UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-
-
-
+@property (strong ,nonatomic) NSString *myTitle;
+@property (strong, nonatomic) NSAttributedString *myAttributedString;
 - (IBAction)backgroundTap:(id)sender;
 @end
 

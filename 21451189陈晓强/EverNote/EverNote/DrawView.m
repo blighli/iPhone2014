@@ -21,6 +21,9 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 
+
+
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -45,6 +48,7 @@
         CGContextSetLineWidth(context, _lineWitdh);
         CGContextSetLineCap(context, kCGLineCapRound);
         CGContextDrawPath(context, kCGPathStroke);
+        
     }
 }
 - (void)drawRect:(CGRect)rect {

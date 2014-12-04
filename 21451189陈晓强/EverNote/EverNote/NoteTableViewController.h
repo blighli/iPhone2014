@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NoteTableViewController : UITableViewController
- <UITableViewDataSource, UITableViewDelegate>
-
+<UIAlertViewDelegate>
 @end

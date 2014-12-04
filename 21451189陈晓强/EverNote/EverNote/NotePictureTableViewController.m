@@ -1,26 +1,26 @@
 //
-//  NoteTableViewController.m
+//  NotePictureTableViewController.m
 //  EverNote
 //
-//  Created by 陈晓强 on 14/11/29.
+//  Created by 陈晓强 on 14/12/3.
 //  Copyright (c) 2014年 陈晓强. All rights reserved.
 //
 
-#import "NoteTableViewController.h"
-#import "ViewController.h"
+#import "NotePictureTableViewController.h"
 #import <sqlite3.h>
 #import "MySqlite.h"
-@interface NoteTableViewController ()
+#import "DrawViewController.h"
 
+@interface NotePictureTableViewController ()
 @property (nonatomic) sqlite3 *database;
 @property (strong, nonatomic) NSMutableArray *titleArray;
 @property (strong, nonatomic) NSMutableDictionary *dataDict;
 @property (strong, nonatomic) NSDictionary *dict;
+@property (weak, nonatomic) UIView *viewOfSelf;
 
 @end
 
-
-@implementation NoteTableViewController
+@implementation NotePictureTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,7 +31,7 @@
     _titleArray = [NSMutableArray array];
     _dataDict = [NSMutableDictionary dictionary];
     _dict = @{NSDocumentTypeDocumentAttribute:NSRTFDTextDocumentType};
-
+    
     
     
     
@@ -43,19 +43,18 @@
     [_dataDict removeAllObjects];
     MySqlite *sqliteHandle = [[MySqlite alloc] init];
     [sqliteHandle openDatabase:&_database];
-    NSString *query = @"SELECT ROW,NOTE_TITLE,NOTE_DATA FROM NOTES ORDER BY ROW";
+    NSString *query = @"SELECT ROW,NOTE_TITLE,NOTE_DATA FROM NOTES_PICTURE ORDER BY ROW";
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(_database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
         while (sqlite3_step(statement) == SQLITE_ROW) {
-//            int row = sqlite3_column_int(statement, 0);
+            //            int row = sqlite3_column_int(statement, 0);
             char *titleData = (char *)sqlite3_column_text(statement, 1);
             int bytes = sqlite3_column_bytes(statement, 2);
             const void *rowData = (char *)sqlite3_column_blob(statement, 2);
             NSData *data = [NSData dataWithBytes:rowData length:bytes];
-            NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:data options:_dict documentAttributes:Nil error:Nil];
             NSString *title = [[NSString alloc]initWithUTF8String:titleData];
             [_titleArray addObject:title];
-            [_dataDict setValue:attributedString forKey:title];
+            [_dataDict setValue:data forKey:title];
         }
     }
 }
@@ -65,7 +64,7 @@
 {
     [self searchSql];
     [self.tableView reloadData];
-
+    
 }
 #pragma mark - Table view data source
 
@@ -79,18 +78,10 @@
     return [self.titleArray count];
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.textLabel.text = _titleArray[indexPath.row];
-    
-    return cell;
-}
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    static char *sql = "delete from notes  where NOTE_TITLE = ?";
+    static char *sql = "delete from NOTES_PICTURE  where NOTE_TITLE = ?";
     MySqlite *sqliteHandle = [[MySqlite alloc] init];
     [sqliteHandle openDatabase:&_database];
     sqlite3_stmt *statement;
@@ -100,9 +91,9 @@
         sqlite3_close(_database);
     }
     sqlite3_bind_text(statement, 1, [[_titleArray objectAtIndex:indexPath.row] UTF8String], -1, SQLITE_TRANSIENT);
-
+    
     success = sqlite3_step(statement);
-     sqlite3_finalize(statement);
+    sqlite3_finalize(statement);
     if (success == SQLITE_ERROR) {
         NSLog(@"Error: failed to delete the database with message.");
         //关闭数据库
@@ -114,11 +105,37 @@
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:
      UITableViewRowAnimationAutomatic];
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
+    cell.textLabel.text = _titleArray[indexPath.row];
+    
+    return cell;
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    NSLog(@"%lu",indexPath.row);
 }
 
-
+-(UIImage*)  OriginImage:(UIImage *)image   scaleToSize:(CGSize)size
+{
+    // 创建一个bitmap的context
+    // 并把它设置成为当前正在使用的context
+    UIGraphicsBeginImageContext(size);
+    
+    // 绘制改变大小的图片
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
+    // 从当前context中创建一个改变大小后的图片
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    
+    // 返回新的改变大小后的图片
+    return scaledImage;
+}
 
 #pragma mark - Navigation
 
@@ -128,11 +145,13 @@
     // Pass the selected object to the new view controller.
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
-    if ([segue.destinationViewController isKindOfClass:[ViewController class]]) {
-        ViewController *controller = (ViewController *)segue.destinationViewController;
-        controller.myAttributedString = [_dataDict objectForKey:cell.textLabel.text];
-        controller.myTitle = cell.textLabel.text;
+    if ([segue.destinationViewController isKindOfClass:[DrawViewController class]]) {
+        DrawViewController *myDrawViewController = (DrawViewController *) segue.destinationViewController;
+        NSData *pictureData = [_dataDict valueForKey:cell.textLabel.text];
+        NSLog(@"mmwitdh=%f mmheight%f",[UIImage imageWithData:pictureData].size.width,[UIImage imageWithData:pictureData].size.height);
+        myDrawViewController.myTitle = cell.textLabel.text;
+        myDrawViewController.image = [self OriginImage:[UIImage imageWithData:pictureData] scaleToSize:CGSizeMake(320, 568)];
+        
     }
 }
 

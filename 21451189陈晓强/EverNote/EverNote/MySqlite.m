@@ -26,7 +26,6 @@
         NSAssert(0, @"Failed to open database");
     }else
     {
-        NSLog(@"database");
     }
 }
 
@@ -42,13 +41,14 @@
 
 - (void)insertOrUpdateMySqliteDatabase:(sqlite3 *)database andInsertSql:(NSString *)sql
                           andStatement:(sqlite3_stmt *) stmt andTitle:(NSString *) title
-                               andData:(NSData *)data
+                               andData:(NSData *)data 
 {
     const void *rowData = [data bytes];
     char *errorMsg = NULL;
     if (sqlite3_prepare_v2(database, [sql UTF8String], -1, &stmt, nil) == SQLITE_OK) {
         sqlite3_bind_text(stmt, 1, [title UTF8String],(int)[title length], NULL);
         sqlite3_bind_blob(stmt, 2, rowData, (int)[data length], NULL);
+//        sqlite3_bind_text(stmt, 3, [identifier UTF8String],(int)[identifier length], NULL);
         NSLog(@"come in update");
     }
     if (sqlite3_step(stmt) != SQLITE_DONE) {
