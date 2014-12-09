@@ -1,0 +1,623 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F00C82941CCB86D046871E8 /* libPods-balabalaTV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FDBCB7E4337B8B7BC8DCD3 /* libPods-balabalaTV.a */; };
+		88610AE81A31E0AE001E4CD0 /* TVListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88610AE71A31E0AE001E4CD0 /* TVListTableViewCell.m */; };
+		886595F21A34ADAE0005951B /* BBPlayerControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886595F11A34ADAE0005951B /* BBPlayerControlViewController.m */; };
+		8886E21B1A31C63800F9E233 /* BBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8886E21A1A31C63800F9E233 /* BBFileManager.m */; };
+		88C5203D1A340FF600001A87 /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C5203C1A340FF600001A87 /* MobileVLCKit.framework */; };
+		88C520411A34104200001A87 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C520401A34104200001A87 /* QuartzCore.framework */; };
+		88C520431A34106600001A87 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C520421A34106600001A87 /* libstdc++.6.0.9.dylib */; };
+		88C520451A34106F00001A87 /* libiconv.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C520441A34106F00001A87 /* libiconv.2.4.0.dylib */; };
+		88C520471A34107700001A87 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C520461A34107700001A87 /* libbz2.1.0.dylib */; };
+		88C520491A34108300001A87 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C520481A34108300001A87 /* CoreText.framework */; };
+		88C5204B1A34109E00001A87 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C5204A1A34109E00001A87 /* Security.framework */; };
+		88C5204D1A3410AC00001A87 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C5204C1A3410AC00001A87 /* CFNetwork.framework */; };
+		88C5204F1A3410B400001A87 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C5204E1A3410B400001A87 /* OpenGLES.framework */; };
+		88C520511A3410BE00001A87 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C520501A3410BE00001A87 /* AudioToolbox.framework */; };
+		88C520531A3410CB00001A87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C520521A3410CB00001A87 /* CoreGraphics.framework */; };
+		88C520561A34113600001A87 /* BBPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C520551A34113600001A87 /* BBPlayerViewController.m */; };
+		88CE63881A30791F00C7503A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE63871A30791F00C7503A /* main.m */; };
+		88CE638B1A30791F00C7503A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE638A1A30791F00C7503A /* AppDelegate.m */; };
+		88CE63931A30791F00C7503A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88CE63921A30791F00C7503A /* Images.xcassets */; };
+		88CE63961A30791F00C7503A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE63941A30791F00C7503A /* LaunchScreen.xib */; };
+		88CE63A21A30791F00C7503A /* balabalaTVTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE63A11A30791F00C7503A /* balabalaTVTests.m */; };
+		88CE63AE1A3079CD00C7503A /* DataLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE63AD1A3079CD00C7503A /* DataLoadViewController.m */; };
+		88CE63B41A3086D000C7503A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE63B31A3086D000C7503A /* MainViewController.m */; };
+		88D1CE081A314024003768DF /* BBWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D1CE071A314024003768DF /* BBWebService.m */; };
+		88D1CE0C1A314610003768DF /* BBTVListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D1CE0B1A314610003768DF /* BBTVListModel.m */; };
+		88E020F91A36908200FDA0DC /* BBSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E020F81A36908200FDA0DC /* BBSetViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		88CE639C1A30791F00C7503A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88CE637A1A30791F00C7503A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88CE63811A30791F00C7503A;
+			remoteInfo = balabalaTV;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		563BC11BC8FA577E26062BAA /* Pods-balabalaTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-balabalaTV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-balabalaTV/Pods-balabalaTV.debug.xcconfig"; sourceTree = "<group>"; };
+		88610AE61A31E0AE001E4CD0 /* TVListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TVListTableViewCell.h; path = View/TVListTableViewCell.h; sourceTree = "<group>"; };
+		88610AE71A31E0AE001E4CD0 /* TVListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TVListTableViewCell.m; path = View/TVListTableViewCell.m; sourceTree = "<group>"; };
+		886595F01A34ADAE0005951B /* BBPlayerControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPlayerControlViewController.h; path = Controller/BBPlayerControlViewController.h; sourceTree = "<group>"; };
+		886595F11A34ADAE0005951B /* BBPlayerControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBPlayerControlViewController.m; path = Controller/BBPlayerControlViewController.m; sourceTree = "<group>"; };
+		8886E2191A31C63800F9E233 /* BBFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBFileManager.h; path = FileManager/BBFileManager.h; sourceTree = "<group>"; };
+		8886E21A1A31C63800F9E233 /* BBFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBFileManager.m; path = FileManager/BBFileManager.m; sourceTree = "<group>"; };
+		88C5203C1A340FF600001A87 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = balabalaTV/Framework/MobileVLCKit.framework; sourceTree = "<group>"; };
+		88C520401A34104200001A87 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		88C520421A34106600001A87 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		88C520441A34106F00001A87 /* libiconv.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.4.0.dylib; path = usr/lib/libiconv.2.4.0.dylib; sourceTree = SDKROOT; };
+		88C520461A34107700001A87 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
+		88C520481A34108300001A87 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		88C5204A1A34109E00001A87 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		88C5204C1A3410AC00001A87 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		88C5204E1A3410B400001A87 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		88C520501A3410BE00001A87 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		88C520521A3410CB00001A87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		88C520541A34113600001A87 /* BBPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBPlayerViewController.h; path = Controller/BBPlayerViewController.h; sourceTree = "<group>"; };
+		88C520551A34113600001A87 /* BBPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBPlayerViewController.m; path = Controller/BBPlayerViewController.m; sourceTree = "<group>"; };
+		88CE63821A30791F00C7503A /* balabalaTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = balabalaTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		88CE63861A30791F00C7503A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88CE63871A30791F00C7503A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		88CE63891A30791F00C7503A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		88CE638A1A30791F00C7503A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		88CE63921A30791F00C7503A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		88CE63951A30791F00C7503A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		88CE639B1A30791F00C7503A /* balabalaTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = balabalaTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		88CE63A01A30791F00C7503A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88CE63A11A30791F00C7503A /* balabalaTVTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = balabalaTVTests.m; sourceTree = "<group>"; };
+		88CE63AC1A3079CD00C7503A /* DataLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataLoadViewController.h; path = Controller/DataLoadViewController.h; sourceTree = "<group>"; };
+		88CE63AD1A3079CD00C7503A /* DataLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataLoadViewController.m; path = Controller/DataLoadViewController.m; sourceTree = "<group>"; };
+		88CE63B21A3086D000C7503A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Controller/MainViewController.h; sourceTree = "<group>"; };
+		88CE63B31A3086D000C7503A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Controller/MainViewController.m; sourceTree = "<group>"; };
+		88D1CE061A314024003768DF /* BBWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBWebService.h; path = Net/BBWebService.h; sourceTree = "<group>"; };
+		88D1CE071A314024003768DF /* BBWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBWebService.m; path = Net/BBWebService.m; sourceTree = "<group>"; };
+		88D1CE0A1A314610003768DF /* BBTVListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBTVListModel.h; path = Model/BBTVListModel.h; sourceTree = "<group>"; };
+		88D1CE0B1A314610003768DF /* BBTVListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBTVListModel.m; path = Model/BBTVListModel.m; sourceTree = "<group>"; };
+		88E020F71A36908200FDA0DC /* BBSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBSetViewController.h; path = Controller/BBSetViewController.h; sourceTree = "<group>"; };
+		88E020F81A36908200FDA0DC /* BBSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBSetViewController.m; path = Controller/BBSetViewController.m; sourceTree = "<group>"; };
+		B2FDBCB7E4337B8B7BC8DCD3 /* libPods-balabalaTV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-balabalaTV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0FDAF54E640EFEB68837553 /* Pods-balabalaTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-balabalaTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-balabalaTV/Pods-balabalaTV.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		88CE637F1A30791F00C7503A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88C520531A3410CB00001A87 /* CoreGraphics.framework in Frameworks */,
+				88C520511A3410BE00001A87 /* AudioToolbox.framework in Frameworks */,
+				88C5204F1A3410B400001A87 /* OpenGLES.framework in Frameworks */,
+				88C5204D1A3410AC00001A87 /* CFNetwork.framework in Frameworks */,
+				88C5204B1A34109E00001A87 /* Security.framework in Frameworks */,
+				88C520491A34108300001A87 /* CoreText.framework in Frameworks */,
+				88C520471A34107700001A87 /* libbz2.1.0.dylib in Frameworks */,
+				88C520451A34106F00001A87 /* libiconv.2.4.0.dylib in Frameworks */,
+				88C520431A34106600001A87 /* libstdc++.6.0.9.dylib in Frameworks */,
+				88C520411A34104200001A87 /* QuartzCore.framework in Frameworks */,
+				88C5203D1A340FF600001A87 /* MobileVLCKit.framework in Frameworks */,
+				4F00C82941CCB86D046871E8 /* libPods-balabalaTV.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88CE63981A30791F00C7503A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1FD86B73816CCEAFE852D40E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				563BC11BC8FA577E26062BAA /* Pods-balabalaTV.debug.xcconfig */,
+				D0FDAF54E640EFEB68837553 /* Pods-balabalaTV.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2D294F94ADE66B4ADDCE0CBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88C520521A3410CB00001A87 /* CoreGraphics.framework */,
+				88C520501A3410BE00001A87 /* AudioToolbox.framework */,
+				88C5204E1A3410B400001A87 /* OpenGLES.framework */,
+				88C5204C1A3410AC00001A87 /* CFNetwork.framework */,
+				88C5204A1A34109E00001A87 /* Security.framework */,
+				88C520481A34108300001A87 /* CoreText.framework */,
+				88C520461A34107700001A87 /* libbz2.1.0.dylib */,
+				88C520441A34106F00001A87 /* libiconv.2.4.0.dylib */,
+				88C520421A34106600001A87 /* libstdc++.6.0.9.dylib */,
+				88C520401A34104200001A87 /* QuartzCore.framework */,
+				88C5203C1A340FF600001A87 /* MobileVLCKit.framework */,
+				B2FDBCB7E4337B8B7BC8DCD3 /* libPods-balabalaTV.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88610AE51A31E052001E4CD0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				88610AE61A31E0AE001E4CD0 /* TVListTableViewCell.h */,
+				88610AE71A31E0AE001E4CD0 /* TVListTableViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8886E2181A31C60A00F9E233 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				8886E2191A31C63800F9E233 /* BBFileManager.h */,
+				8886E21A1A31C63800F9E233 /* BBFileManager.m */,
+			);
+			name = FileManager;
+			sourceTree = "<group>";
+		};
+		88CE63791A30791F00C7503A = {
+			isa = PBXGroup;
+			children = (
+				88CE63841A30791F00C7503A /* balabalaTV */,
+				88CE639E1A30791F00C7503A /* balabalaTVTests */,
+				88CE63831A30791F00C7503A /* Products */,
+				1FD86B73816CCEAFE852D40E /* Pods */,
+				2D294F94ADE66B4ADDCE0CBF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		88CE63831A30791F00C7503A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88CE63821A30791F00C7503A /* balabalaTV.app */,
+				88CE639B1A30791F00C7503A /* balabalaTVTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		88CE63841A30791F00C7503A /* balabalaTV */ = {
+			isa = PBXGroup;
+			children = (
+				88610AE51A31E052001E4CD0 /* View */,
+				8886E2181A31C60A00F9E233 /* FileManager */,
+				88D1CE091A3145D3003768DF /* Model */,
+				88D1CE051A313FDE003768DF /* Net */,
+				88CE63AB1A30798F00C7503A /* Controller */,
+				88CE63891A30791F00C7503A /* AppDelegate.h */,
+				88CE638A1A30791F00C7503A /* AppDelegate.m */,
+				88CE63921A30791F00C7503A /* Images.xcassets */,
+				88CE63941A30791F00C7503A /* LaunchScreen.xib */,
+				88CE63851A30791F00C7503A /* Supporting Files */,
+			);
+			path = balabalaTV;
+			sourceTree = "<group>";
+		};
+		88CE63851A30791F00C7503A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				88CE63861A30791F00C7503A /* Info.plist */,
+				88CE63871A30791F00C7503A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		88CE639E1A30791F00C7503A /* balabalaTVTests */ = {
+			isa = PBXGroup;
+			children = (
+				88CE63A11A30791F00C7503A /* balabalaTVTests.m */,
+				88CE639F1A30791F00C7503A /* Supporting Files */,
+			);
+			path = balabalaTVTests;
+			sourceTree = "<group>";
+		};
+		88CE639F1A30791F00C7503A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				88CE63A01A30791F00C7503A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		88CE63AB1A30798F00C7503A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				88CE63AC1A3079CD00C7503A /* DataLoadViewController.h */,
+				88CE63AD1A3079CD00C7503A /* DataLoadViewController.m */,
+				88CE63B21A3086D000C7503A /* MainViewController.h */,
+				88CE63B31A3086D000C7503A /* MainViewController.m */,
+				88C520541A34113600001A87 /* BBPlayerViewController.h */,
+				88C520551A34113600001A87 /* BBPlayerViewController.m */,
+				886595F01A34ADAE0005951B /* BBPlayerControlViewController.h */,
+				886595F11A34ADAE0005951B /* BBPlayerControlViewController.m */,
+				88E020F71A36908200FDA0DC /* BBSetViewController.h */,
+				88E020F81A36908200FDA0DC /* BBSetViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		88D1CE051A313FDE003768DF /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				88D1CE061A314024003768DF /* BBWebService.h */,
+				88D1CE071A314024003768DF /* BBWebService.m */,
+			);
+			name = Net;
+			sourceTree = "<group>";
+		};
+		88D1CE091A3145D3003768DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				88D1CE0A1A314610003768DF /* BBTVListModel.h */,
+				88D1CE0B1A314610003768DF /* BBTVListModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		88CE63811A30791F00C7503A /* balabalaTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88CE63A51A30791F00C7503A /* Build configuration list for PBXNativeTarget "balabalaTV" */;
+			buildPhases = (
+				9CEB6B803F35C557588CFE1B /* Check Pods Manifest.lock */,
+				88CE637E1A30791F00C7503A /* Sources */,
+				88CE637F1A30791F00C7503A /* Frameworks */,
+				88CE63801A30791F00C7503A /* Resources */,
+				79AC85A44AB789F4E99AF01E /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = balabalaTV;
+			productName = balabalaTV;
+			productReference = 88CE63821A30791F00C7503A /* balabalaTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+		88CE639A1A30791F00C7503A /* balabalaTVTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88CE63A81A30791F00C7503A /* Build configuration list for PBXNativeTarget "balabalaTVTests" */;
+			buildPhases = (
+				88CE63971A30791F00C7503A /* Sources */,
+				88CE63981A30791F00C7503A /* Frameworks */,
+				88CE63991A30791F00C7503A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88CE639D1A30791F00C7503A /* PBXTargetDependency */,
+			);
+			name = balabalaTVTests;
+			productName = balabalaTVTests;
+			productReference = 88CE639B1A30791F00C7503A /* balabalaTVTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		88CE637A1A30791F00C7503A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = docee;
+				TargetAttributes = {
+					88CE63811A30791F00C7503A = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 6ADJ2TL5DB;
+					};
+					88CE639A1A30791F00C7503A = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 88CE63811A30791F00C7503A;
+					};
+				};
+			};
+			buildConfigurationList = 88CE637D1A30791F00C7503A /* Build configuration list for PBXProject "balabalaTV" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 88CE63791A30791F00C7503A;
+			productRefGroup = 88CE63831A30791F00C7503A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				88CE63811A30791F00C7503A /* balabalaTV */,
+				88CE639A1A30791F00C7503A /* balabalaTVTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		88CE63801A30791F00C7503A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88CE63961A30791F00C7503A /* LaunchScreen.xib in Resources */,
+				88CE63931A30791F00C7503A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88CE63991A30791F00C7503A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79AC85A44AB789F4E99AF01E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-balabalaTV/Pods-balabalaTV-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CEB6B803F35C557588CFE1B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		88CE637E1A30791F00C7503A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88C520561A34113600001A87 /* BBPlayerViewController.m in Sources */,
+				88CE63AE1A3079CD00C7503A /* DataLoadViewController.m in Sources */,
+				88610AE81A31E0AE001E4CD0 /* TVListTableViewCell.m in Sources */,
+				8886E21B1A31C63800F9E233 /* BBFileManager.m in Sources */,
+				88CE638B1A30791F00C7503A /* AppDelegate.m in Sources */,
+				88CE63881A30791F00C7503A /* main.m in Sources */,
+				88D1CE0C1A314610003768DF /* BBTVListModel.m in Sources */,
+				88D1CE081A314024003768DF /* BBWebService.m in Sources */,
+				88CE63B41A3086D000C7503A /* MainViewController.m in Sources */,
+				886595F21A34ADAE0005951B /* BBPlayerControlViewController.m in Sources */,
+				88E020F91A36908200FDA0DC /* BBSetViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88CE63971A30791F00C7503A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88CE63A21A30791F00C7503A /* balabalaTVTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		88CE639D1A30791F00C7503A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88CE63811A30791F00C7503A /* balabalaTV */;
+			targetProxy = 88CE639C1A30791F00C7503A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		88CE63941A30791F00C7503A /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88CE63951A30791F00C7503A /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		88CE63A31A30791F00C7503A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		88CE63A41A30791F00C7503A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		88CE63A61A30791F00C7503A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 563BC11BC8FA577E26062BAA /* Pods-balabalaTV.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/balabalaTV/Framework",
+				);
+				INFOPLIST_FILE = balabalaTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		88CE63A71A30791F00C7503A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0FDAF54E640EFEB68837553 /* Pods-balabalaTV.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/balabalaTV/Framework",
+				);
+				INFOPLIST_FILE = balabalaTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		88CE63A91A30791F00C7503A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = balabalaTVTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/balabalaTV.app/balabalaTV";
+			};
+			name = Debug;
+		};
+		88CE63AA1A30791F00C7503A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = balabalaTVTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/balabalaTV.app/balabalaTV";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		88CE637D1A30791F00C7503A /* Build configuration list for PBXProject "balabalaTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88CE63A31A30791F00C7503A /* Debug */,
+				88CE63A41A30791F00C7503A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88CE63A51A30791F00C7503A /* Build configuration list for PBXNativeTarget "balabalaTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88CE63A61A30791F00C7503A /* Debug */,
+				88CE63A71A30791F00C7503A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88CE63A81A30791F00C7503A /* Build configuration list for PBXNativeTarget "balabalaTVTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88CE63A91A30791F00C7503A /* Debug */,
+				88CE63AA1A30791F00C7503A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 88CE637A1A30791F00C7503A /* Project object */;
+}
