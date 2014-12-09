@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="HFh-kP-o23">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="HFh-kP-o23">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -45,20 +45,22 @@
         <scene sceneID="LCz-3Q-2Uj">
             <objects>
                 <viewController id="MHA-X1-fty" userLabel="StringDetailController" customClass="DetailStringViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DYv-Yo-t9s"/>
+                        <viewControllerLayoutGuide type="bottom" id="JYo-Wy-MPH"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dha-Qz-IS1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yOD-29-YHx">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOD-29-YHx">
                                 <rect key="frame" x="16" y="77" width="288" height="258"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <navigationBar contentMode="scaleToFill" id="jbf-sg-F8R">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jbf-sg-F8R">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="文本信息" id="nE7-2b-V35">
                                         <barButtonItem key="leftBarButtonItem" title="返回" id="ROa-Jf-gR3">
@@ -76,6 +78,13 @@
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yOD-29-YHx" firstAttribute="top" secondItem="dha-Qz-IS1" secondAttribute="top" constant="77" id="6b5-Mv-fiz"/>
+                            <constraint firstAttribute="trailing" secondItem="jbf-sg-F8R" secondAttribute="trailing" id="V5L-tq-03Z"/>
+                            <constraint firstItem="jbf-sg-F8R" firstAttribute="leading" secondItem="dha-Qz-IS1" secondAttribute="leading" id="kT3-Hy-eSo"/>
+                            <constraint firstAttribute="trailing" secondItem="yOD-29-YHx" secondAttribute="trailing" constant="16" id="uDy-te-x9h"/>
+                            <constraint firstItem="yOD-29-YHx" firstAttribute="leading" secondItem="dha-Qz-IS1" secondAttribute="leading" constant="16" id="wH5-Gg-iUD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KTm-C7-9ZN"/>
                     <connections>
@@ -162,13 +171,16 @@
         <scene sceneID="G71-Co-Ff6">
             <objects>
                 <viewController id="EMe-0A-F0z" userLabel="AddDrawController" customClass="AddDrawViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7hg-kP-tSp"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZUe-i1-g1q"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zAf-vh-Q5a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" id="IU5-Mr-Jgo">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IU5-Mr-Jgo">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="绘图" id="C8r-OZ-j5l">
                                         <barButtonItem key="leftBarButtonItem" title="返回" id="07x-KA-O4R">
@@ -184,13 +196,20 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" id="I0R-gW-ETW" customClass="DrawView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0R-gW-ETW" customClass="DrawView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IU5-Mr-Jgo" firstAttribute="leading" secondItem="zAf-vh-Q5a" secondAttribute="leading" id="Cuy-FH-nju"/>
+                            <constraint firstItem="I0R-gW-ETW" firstAttribute="top" secondItem="zAf-vh-Q5a" secondAttribute="top" constant="64" id="FE1-Wa-xvx"/>
+                            <constraint firstAttribute="bottom" secondItem="I0R-gW-ETW" secondAttribute="bottom" id="Fvf-2Y-5Nb"/>
+                            <constraint firstAttribute="trailing" secondItem="IU5-Mr-Jgo" secondAttribute="trailing" id="Le7-hx-IVX"/>
+                            <constraint firstItem="I0R-gW-ETW" firstAttribute="leading" secondItem="zAf-vh-Q5a" secondAttribute="leading" id="Xgi-rU-NrC"/>
+                            <constraint firstAttribute="trailing" secondItem="I0R-gW-ETW" secondAttribute="trailing" id="f5h-EW-lrS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EWM-oF-B3r"/>
                     <connections>
@@ -205,20 +224,22 @@
         <scene sceneID="gS1-xz-Flp">
             <objects>
                 <viewController id="HC2-aH-hEe" userLabel="AddPicController" customClass="AddPicViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tow-nO-nu4"/>
+                        <viewControllerLayoutGuide type="bottom" id="0TV-Ed-ixb"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jDa-9V-8cK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="I3t-y6-ZJq">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I3t-y6-ZJq">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <navigationBar contentMode="scaleToFill" id="tGW-84-iKU">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGW-84-iKU">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="拍摄照片" id="qKJ-hf-F49">
                                         <barButtonItem key="leftBarButtonItem" title="返回" id="KLi-sx-5Ly">
@@ -324,13 +345,16 @@
         <scene sceneID="PZM-9h-Caa">
             <objects>
                 <viewController id="CWp-C3-eZP" userLabel="DetailDrawController" customClass="DetailDrawViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yDF-KN-l6z"/>
+                        <viewControllerLayoutGuide type="bottom" id="VZ7-6W-2jJ"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6yB-ct-G8J">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" id="TSZ-zi-ekS">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSZ-zi-ekS">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="查看绘图" id="sWU-1d-TxV">
                                         <barButtonItem key="leftBarButtonItem" title="返回" id="A8x-BS-z4U">
@@ -346,13 +370,20 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" id="1My-3i-uqS" customClass="DrawView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1My-3i-uqS" customClass="DrawView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1My-3i-uqS" firstAttribute="leading" secondItem="6yB-ct-G8J" secondAttribute="leading" id="0oG-ns-4S7"/>
+                            <constraint firstAttribute="bottom" secondItem="1My-3i-uqS" secondAttribute="bottom" id="2TM-MF-7Mk"/>
+                            <constraint firstAttribute="trailing" secondItem="TSZ-zi-ekS" secondAttribute="trailing" id="8Kk-Q4-xJs"/>
+                            <constraint firstItem="TSZ-zi-ekS" firstAttribute="leading" secondItem="6yB-ct-G8J" secondAttribute="leading" id="Mea-Q2-HpG"/>
+                            <constraint firstItem="1My-3i-uqS" firstAttribute="top" secondItem="6yB-ct-G8J" secondAttribute="top" constant="64" id="QsE-Nx-bSF"/>
+                            <constraint firstAttribute="trailing" secondItem="1My-3i-uqS" secondAttribute="trailing" id="zwj-Bh-t2r"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EaZ-TH-a79"/>
                     <connections>
@@ -367,20 +398,19 @@
         <scene sceneID="msH-mW-IVv">
             <objects>
                 <viewController id="h5a-Y9-r1Q" userLabel="DetailPicController" customClass="DetailPicViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eZJ-lR-glq"/>
+                        <viewControllerLayoutGuide type="bottom" id="nT6-H7-sOV"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kt8-HW-Z6Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="6BL-QL-LmZ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <navigationBar contentMode="scaleToFill" id="hNd-Hd-X76">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ycq-AW-Q99">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hNd-Hd-X76">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="查看照片" id="2b5-8T-7zY">
                                         <barButtonItem key="leftBarButtonItem" title="返回" id="sLe-e2-78v">
@@ -388,18 +418,20 @@
                                                 <action selector="returnOnclick:" destination="h5a-Y9-r1Q" id="tjQ-G0-oNa"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" id="Ci9-k2-WyE"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ycq-AW-Q99">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ycq-AW-Q99" firstAttribute="leading" secondItem="kt8-HW-Z6Q" secondAttribute="leading" id="CHb-0A-HuW"/>
+                            <constraint firstAttribute="bottom" secondItem="ycq-AW-Q99" secondAttribute="bottom" id="DZN-U1-O8p"/>
+                            <constraint firstAttribute="trailing" secondItem="hNd-Hd-X76" secondAttribute="trailing" id="Gzf-hT-slh"/>
+                            <constraint firstAttribute="trailing" secondItem="ycq-AW-Q99" secondAttribute="trailing" id="dcH-Do-p7a"/>
+                            <constraint firstItem="ycq-AW-Q99" firstAttribute="top" secondItem="kt8-HW-Z6Q" secondAttribute="top" constant="64" id="rSm-GB-zon"/>
+                            <constraint firstItem="hNd-Hd-X76" firstAttribute="leading" secondItem="kt8-HW-Z6Q" secondAttribute="leading" id="xgR-u7-tEd"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Rve-xS-VpC"/>
                     <connections>
                         <outlet property="imageView" destination="ycq-AW-Q99" id="YrD-PU-0Dl"/>
                     </connections>
