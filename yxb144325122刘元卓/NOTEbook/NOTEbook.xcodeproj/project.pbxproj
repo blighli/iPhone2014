@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FCA6E5681A2F313100FCF985 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6E5671A2F313100FCF985 /* main.m */; };
+		FCA6E56B1A2F313100FCF985 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6E56A1A2F313100FCF985 /* AppDelegate.m */; };
+		FCA6E5731A2F313100FCF985 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA6E5721A2F313100FCF985 /* Images.xcassets */; };
+		FCA6E5821A2F313100FCF985 /* NOTEbookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6E5811A2F313100FCF985 /* NOTEbookTests.m */; };
+		FCA6E58D1A2F326E00FCF985 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6E58C1A2F326E00FCF985 /* RootViewController.m */; };
+		FCA6E5901A2F32ED00FCF985 /* detailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6E58F1A2F32ED00FCF985 /* detailViewController.m */; };
+		FCA6E5931A2F336A00FCF985 /* PaintViewControlly.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6E5921A2F336A00FCF985 /* PaintViewControlly.m */; };
+		FCA6E5951A2F33C600FCF985 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA6E5941A2F33C600FCF985 /* Launch Screen.xib */; };
+		FCA6E5971A2F34ED00FCF985 /* 83035f3c86634559332a7b4d266c50a0.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA6E5961A2F34ED00FCF985 /* 83035f3c86634559332a7b4d266c50a0.png */; };
+		FCA6E5A01A2F36CE00FCF985 /* SqliteManage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6E59F1A2F36CE00FCF985 /* SqliteManage.m */; };
+		FCA6E5A31A2F373A00FCF985 /* Paint.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6E5A21A2F373A00FCF985 /* Paint.m */; };
+		FCA6E5A61A2F39C300FCF985 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA6E5A51A2F39C300FCF985 /* Main.storyboard */; };
+		FCA6E5A91A2F3CC100FCF985 /* C5.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6E5A81A2F3CC100FCF985 /* C5.m */; };
+		FCA6E5AB1A2F3CE800FCF985 /* C5.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA6E5AA1A2F3CE800FCF985 /* C5.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FCA6E57C1A2F313100FCF985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCA6E55A1A2F313100FCF985 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCA6E5611A2F313100FCF985;
+			remoteInfo = NOTEbook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FCA6E5621A2F313100FCF985 /* NOTEbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NOTEbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA6E5661A2F313100FCF985 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCA6E5671A2F313100FCF985 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FCA6E5691A2F313100FCF985 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FCA6E56A1A2F313100FCF985 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FCA6E5721A2F313100FCF985 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FCA6E57B1A2F313100FCF985 /* NOTEbookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NOTEbookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA6E5801A2F313100FCF985 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCA6E5811A2F313100FCF985 /* NOTEbookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NOTEbookTests.m; sourceTree = "<group>"; };
+		FCA6E58B1A2F323800FCF985 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		FCA6E58C1A2F326E00FCF985 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		FCA6E58E1A2F32D300FCF985 /* detailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = detailViewController.h; sourceTree = "<group>"; };
+		FCA6E58F1A2F32ED00FCF985 /* detailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailViewController.m; sourceTree = "<group>"; };
+		FCA6E5911A2F333A00FCF985 /* PaintViewControlly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaintViewControlly.h; sourceTree = "<group>"; };
+		FCA6E5921A2F336A00FCF985 /* PaintViewControlly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaintViewControlly.m; sourceTree = "<group>"; };
+		FCA6E5941A2F33C600FCF985 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		FCA6E5961A2F34ED00FCF985 /* 83035f3c86634559332a7b4d266c50a0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 83035f3c86634559332a7b4d266c50a0.png; path = ../../../83035f3c86634559332a7b4d266c50a0.png; sourceTree = "<group>"; };
+		FCA6E59E1A2F369600FCF985 /* SqliteManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SqliteManage.h; sourceTree = "<group>"; };
+		FCA6E59F1A2F36CE00FCF985 /* SqliteManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteManage.m; sourceTree = "<group>"; };
+		FCA6E5A11A2F371300FCF985 /* Paint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Paint.h; sourceTree = "<group>"; };
+		FCA6E5A21A2F373A00FCF985 /* Paint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paint.m; sourceTree = "<group>"; };
+		FCA6E5A41A2F378400FCF985 /* PassValueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
+		FCA6E5A51A2F39C300FCF985 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FCA6E5A71A2F3CB400FCF985 /* C5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = C5.h; sourceTree = "<group>"; };
+		FCA6E5A81A2F3CC100FCF985 /* C5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = C5.m; sourceTree = "<group>"; };
+		FCA6E5AA1A2F3CE800FCF985 /* C5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = C5.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FCA6E55F1A2F313100FCF985 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA6E5781A2F313100FCF985 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FCA6E5591A2F313100FCF985 = {
+			isa = PBXGroup;
+			children = (
+				FCA6E5981A2F352E00FCF985 /* New Group */,
+				FCA6E5641A2F313100FCF985 /* NOTEbook */,
+				FCA6E57E1A2F313100FCF985 /* NOTEbookTests */,
+				FCA6E5631A2F313100FCF985 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FCA6E5631A2F313100FCF985 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FCA6E5621A2F313100FCF985 /* NOTEbook.app */,
+				FCA6E57B1A2F313100FCF985 /* NOTEbookTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FCA6E5641A2F313100FCF985 /* NOTEbook */ = {
+			isa = PBXGroup;
+			children = (
+				FCA6E5A51A2F39C300FCF985 /* Main.storyboard */,
+				FCA6E59E1A2F369600FCF985 /* SqliteManage.h */,
+				FCA6E59F1A2F36CE00FCF985 /* SqliteManage.m */,
+				FCA6E5691A2F313100FCF985 /* AppDelegate.h */,
+				FCA6E56A1A2F313100FCF985 /* AppDelegate.m */,
+				FCA6E5A11A2F371300FCF985 /* Paint.h */,
+				FCA6E5A21A2F373A00FCF985 /* Paint.m */,
+				FCA6E5A41A2F378400FCF985 /* PassValueDelegate.h */,
+				FCA6E5911A2F333A00FCF985 /* PaintViewControlly.h */,
+				FCA6E5921A2F336A00FCF985 /* PaintViewControlly.m */,
+				FCA6E58E1A2F32D300FCF985 /* detailViewController.h */,
+				FCA6E58F1A2F32ED00FCF985 /* detailViewController.m */,
+				FCA6E58B1A2F323800FCF985 /* RootViewController.h */,
+				FCA6E58C1A2F326E00FCF985 /* RootViewController.m */,
+				FCA6E5721A2F313100FCF985 /* Images.xcassets */,
+				FCA6E5941A2F33C600FCF985 /* Launch Screen.xib */,
+				FCA6E5651A2F313100FCF985 /* Supporting Files */,
+			);
+			path = NOTEbook;
+			sourceTree = "<group>";
+		};
+		FCA6E5651A2F313100FCF985 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCA6E5961A2F34ED00FCF985 /* 83035f3c86634559332a7b4d266c50a0.png */,
+				FCA6E5661A2F313100FCF985 /* Info.plist */,
+				FCA6E5671A2F313100FCF985 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCA6E57E1A2F313100FCF985 /* NOTEbookTests */ = {
+			isa = PBXGroup;
+			children = (
+				FCA6E5811A2F313100FCF985 /* NOTEbookTests.m */,
+				FCA6E57F1A2F313100FCF985 /* Supporting Files */,
+			);
+			path = NOTEbookTests;
+			sourceTree = "<group>";
+		};
+		FCA6E57F1A2F313100FCF985 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCA6E5801A2F313100FCF985 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCA6E5981A2F352E00FCF985 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				FCA6E5A71A2F3CB400FCF985 /* C5.h */,
+				FCA6E5A81A2F3CC100FCF985 /* C5.m */,
+				FCA6E5AA1A2F3CE800FCF985 /* C5.xib */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FCA6E5611A2F313100FCF985 /* NOTEbook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCA6E5851A2F313100FCF985 /* Build configuration list for PBXNativeTarget "NOTEbook" */;
+			buildPhases = (
+				FCA6E55E1A2F313100FCF985 /* Sources */,
+				FCA6E55F1A2F313100FCF985 /* Frameworks */,
+				FCA6E5601A2F313100FCF985 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NOTEbook;
+			productName = NOTEbook;
+			productReference = FCA6E5621A2F313100FCF985 /* NOTEbook.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FCA6E57A1A2F313100FCF985 /* NOTEbookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCA6E5881A2F313100FCF985 /* Build configuration list for PBXNativeTarget "NOTEbookTests" */;
+			buildPhases = (
+				FCA6E5771A2F313100FCF985 /* Sources */,
+				FCA6E5781A2F313100FCF985 /* Frameworks */,
+				FCA6E5791A2F313100FCF985 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCA6E57D1A2F313100FCF985 /* PBXTargetDependency */,
+			);
+			name = NOTEbookTests;
+			productName = NOTEbookTests;
+			productReference = FCA6E57B1A2F313100FCF985 /* NOTEbookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FCA6E55A1A2F313100FCF985 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = SXD;
+				TargetAttributes = {
+					FCA6E5611A2F313100FCF985 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					FCA6E57A1A2F313100FCF985 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = FCA6E5611A2F313100FCF985;
+					};
+				};
+			};
+			buildConfigurationList = FCA6E55D1A2F313100FCF985 /* Build configuration list for PBXProject "NOTEbook" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FCA6E5591A2F313100FCF985;
+			productRefGroup = FCA6E5631A2F313100FCF985 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FCA6E5611A2F313100FCF985 /* NOTEbook */,
+				FCA6E57A1A2F313100FCF985 /* NOTEbookTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FCA6E5601A2F313100FCF985 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA6E5AB1A2F3CE800FCF985 /* C5.xib in Resources */,
+				FCA6E5951A2F33C600FCF985 /* Launch Screen.xib in Resources */,
+				FCA6E5A61A2F39C300FCF985 /* Main.storyboard in Resources */,
+				FCA6E5971A2F34ED00FCF985 /* 83035f3c86634559332a7b4d266c50a0.png in Resources */,
+				FCA6E5731A2F313100FCF985 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA6E5791A2F313100FCF985 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FCA6E55E1A2F313100FCF985 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA6E5A31A2F373A00FCF985 /* Paint.m in Sources */,
+				FCA6E56B1A2F313100FCF985 /* AppDelegate.m in Sources */,
+				FCA6E58D1A2F326E00FCF985 /* RootViewController.m in Sources */,
+				FCA6E5A01A2F36CE00FCF985 /* SqliteManage.m in Sources */,
+				FCA6E5681A2F313100FCF985 /* main.m in Sources */,
+				FCA6E5901A2F32ED00FCF985 /* detailViewController.m in Sources */,
+				FCA6E5931A2F336A00FCF985 /* PaintViewControlly.m in Sources */,
+				FCA6E5A91A2F3CC100FCF985 /* C5.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA6E5771A2F313100FCF985 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA6E5821A2F313100FCF985 /* NOTEbookTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FCA6E57D1A2F313100FCF985 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCA6E5611A2F313100FCF985 /* NOTEbook */;
+			targetProxy = FCA6E57C1A2F313100FCF985 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FCA6E5831A2F313100FCF985 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FCA6E5841A2F313100FCF985 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FCA6E5861A2F313100FCF985 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NOTEbook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FCA6E5871A2F313100FCF985 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NOTEbook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FCA6E5891A2F313100FCF985 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NOTEbookTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NOTEbook.app/NOTEbook";
+			};
+			name = Debug;
+		};
+		FCA6E58A1A2F313100FCF985 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NOTEbookTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NOTEbook.app/NOTEbook";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FCA6E55D1A2F313100FCF985 /* Build configuration list for PBXProject "NOTEbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA6E5831A2F313100FCF985 /* Debug */,
+				FCA6E5841A2F313100FCF985 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCA6E5851A2F313100FCF985 /* Build configuration list for PBXNativeTarget "NOTEbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA6E5861A2F313100FCF985 /* Debug */,
+				FCA6E5871A2F313100FCF985 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FCA6E5881A2F313100FCF985 /* Build configuration list for PBXNativeTarget "NOTEbookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA6E5891A2F313100FCF985 /* Debug */,
+				FCA6E58A1A2F313100FCF985 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FCA6E55A1A2F313100FCF985 /* Project object */;
+}
