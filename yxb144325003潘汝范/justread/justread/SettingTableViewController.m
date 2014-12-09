@@ -7,16 +7,16 @@
 //
 
 #import "SettingTableViewController.h"
-
+#import "Utils.h"
 @interface SettingTableViewController ()
-
+@property (nonatomic) Utils *util;
 @end
 
 @implementation SettingTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.util = [[Utils alloc] init];
      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([userDefaults boolForKey:@"night"]) {
         [self.nightSwitch setOn:YES];
@@ -119,7 +119,7 @@
     }
     [userDefaults synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refrash" object:self];
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"refrashFav" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refrashFav" object:self];
     [self switchMode];
 }
 
@@ -137,27 +137,9 @@
     
 }
 
-- (UIColor *) stringToColor:(NSString *)str
-{
-    if (!str || [str isEqualToString:@""]) {
-        return nil;
-    }
-    unsigned red,green,blue;
-    NSRange range;
-    range.length = 2;
-    range.location = 1;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&red];
-    range.location = 3;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&green];
-    range.location = 5;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&blue];
-    UIColor *color= [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1];
-    return color;
-}
-
 - (void) switchMode{
     if (self.nightSwitch.isOn) {
-        [self.view setBackgroundColor:[self  stringToColor:@"#343434"]];
+        [self.view setBackgroundColor:[self.util  stringToColor:@"#343434"]];
         self.cellOne.backgroundColor = [UIColor darkGrayColor];
         self.cellTwo.backgroundColor = [UIColor darkGrayColor];
         self.cellThree.backgroundColor = [UIColor darkGrayColor];

@@ -14,5 +14,4 @@
 
 
 - (void)fetchJson;
-- (BOOL) serachWith:(Stories *) stories;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "AboutUseViewController.h"
-
+#import "Utils.h"
 @interface AboutUseViewController ()
 
 @end
@@ -16,10 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    Utils *util = [[Utils alloc] init];
     // Do any additional setup after loading the view.
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if([userDefaults boolForKey:@"night"]){
-        self.view.backgroundColor = [self stringToColor:@"#343434"];
+        self.view.backgroundColor = [util stringToColor:@"#343434"];
         self.aboutLabel.textColor = [UIColor whiteColor];
     }else{
         self.view.backgroundColor = [UIColor whiteColor];
@@ -31,32 +32,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (UIColor *) stringToColor:(NSString *)str
-{
-    if (!str || [str isEqualToString:@""]) {
-        return nil;
-    }
-    unsigned red,green,blue;
-    NSRange range;
-    range.length = 2;
-    range.location = 1;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&red];
-    range.location = 3;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&green];
-    range.location = 5;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&blue];
-    UIColor *color= [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1];
-    return color;
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

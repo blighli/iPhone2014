@@ -17,25 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    UIView *nightModeView = [[UIView alloc] initWithFrame:self.window.frame];
-//    nightModeView.backgroundColor = [UIColor blackColor];
-//    nightModeView.alpha = 0.5;
-//    nightModeView.userInteractionEnabled = NO;
-//    [self.window addSubview:nightModeView];
-    // Override point for customization after application launch.
-//    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
-//    [NSURLCache setSharedURLCache:URLCache];
-//    
-//    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-//        CGRect screenBounds = [[UIScreen mainScreen] bounds];
-//        UIImageView *splashView = [[UIImageView alloc] initWithFrame:screenBounds];
-//       // splashView.image = [UIImage imageWithContentsOfFile:self.imagePath];
-//        [self.window addSubview:splashView];
-//        [self.window bringSubviewToFront:splashView];  //放到最顶层;
-//        [UIView transitionWithView:self.window duration:3.0f options:UIViewAnimationOptionTransitionNone animations:^(void){splashView.alpha=0.0f;} completion:^(BOOL finished){
-//            [splashView removeFromSuperview];
-//        }];
-
+    
     [WXApi registerApp:@"wx56e334c2d85d5b7b" withDescription:@"justread"];
     return YES;
 }

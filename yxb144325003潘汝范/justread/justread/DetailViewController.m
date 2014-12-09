@@ -10,23 +10,23 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AAActivityAction.h"
 #import "AAActivity.h"
-#import "WechatViewController.h"
 #import "UIView+Toast.h"
 #import "FavStories.h"
-
+#import "Utils.h"
 @interface DetailViewController ()
 @property (nonatomic) NSString *newsId;
 @property (nonatomic) NSString *shareUrl;
 @property (nonatomic) NSString *newsTitle;
 @property (nonatomic) UIBarButtonItem *addfavoritesBarButtonItem;
 @property NSManagedObjectContext *managedObjectContext;
+@property (nonatomic) Utils *util;
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.util = [[Utils alloc] init];
     self.managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     if (self.isFaved) {
         self.addfavoritesBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ufavorites"] style:UIBarButtonItemStylePlain  target:self action:@selector(addFavorites)];
@@ -43,7 +43,11 @@
         NSLog(@"full url is %@",fullUrl);
         NSURLSessionDataTask *task = [self getJsonFrom:fullUrl];
         [task resume];
-        [self serachWith:self.story];
+        if ([self.util serachWith:self.story and:self.managedObjectContext]) {
+            self.addfavoritesBarButtonItem.image = [UIImage imageNamed:@"ufavorites"];
+        }else{
+            self.addfavoritesBarButtonItem.image = [UIImage imageNamed:@"favorites"];
+        }
     }
    
 }
@@ -105,12 +109,11 @@
     UIImage *weiboImage = [UIImage imageNamed:@"weibo"];
     UIImage *pocketImage = [UIImage imageNamed:@"pocket"];
     NSMutableArray *array = [NSMutableArray array];
-    WechatViewController *wechatVC =[[WechatViewController alloc] init];
     AAActivity *wechatActivity = [[AAActivity alloc] initWithTitle:@"微信"
                                                        image:wechatImage
                                                  actionBlock:^(AAActivity *activity, NSArray *activityItems) {
                                                      NSLog(@"doing activity = %@, activityItems = %@", activity, activityItems);
-                                                     if([wechatVC shareToWechatwith:self.title with:self.title with:self.shareUrl with:NO]){
+                                                     if([self.util shareToWechatwith:self.title with:self.title with:self.shareUrl with:NO]){
                                                          
                                                      }else{
                                                          [self showAlertWith:@"请安装最新版本微信"];
@@ -123,7 +126,7 @@
                                                             image:momentsImage
                                                       actionBlock:^(AAActivity *activity, NSArray *activityItems) {
                                                           NSLog(@"doing activity = %@, activityItems = %@", activity, activityItems);
-                                                          if([wechatVC shareToWechatwith:self.title with:self.title with:self.shareUrl with:YES]){
+                                                          if([self.util shareToWechatwith:self.title with:self.title with:self.shareUrl with:YES]){
                                                               
                                                           }else{
                                                               [self showAlertWith:@"请安装最新版本微信"];
@@ -215,38 +218,15 @@
     return task;
 }
 - (void) showAlertWith:(NSString *)message{
-    if ([UIAlertController class])
-    {
-        
+    if ([UIAlertController class]){
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-        
         UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:ok];
-        
         [self presentViewController:alertController animated:YES completion:nil];
-        
-    }
-    else
-    {
-        
+    }else{
         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:nil message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];        
         [alert show];
-        
     }
 }
 
-- (void) serachWith:(Stories *) stories{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"FavStories"inManagedObjectContext:self.managedObjectContext]];
-    NSNumber *id = stories.id;
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id==%@", id]];
-    NSError* error = nil;
-    NSArray* results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if ([results count] > 0) {
-         self.addfavoritesBarButtonItem.image = [UIImage imageNamed:@"ufavorites"];
-    }else{
-         self.addfavoritesBarButtonItem.image = [UIImage imageNamed:@"favorites"];
-    }
-
-}
 @end

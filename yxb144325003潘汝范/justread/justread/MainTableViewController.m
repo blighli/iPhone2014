@@ -13,7 +13,7 @@
 #import "DetailViewController.h"
 #import "SettingTableViewController.h"
 #import "FavTableViewController.h"
-
+#import "Utils.h"
 @interface MainTableViewController ()
 
 @property (nonatomic) Stories *story;
@@ -22,32 +22,22 @@
 @property (nonatomic) NSString *date;
 @property (readwrite, nonatomic, strong) UIRefreshControl *refreshControl;
 @property NSManagedObjectContext *managedObjectContext;
+@property (nonatomic) Utils *util;
 @end
 
 @implementation MainTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.util =[[Utils alloc] init];
     self.managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(refrash)
                                                 name:@"refrash"//消息名
                                               object:nil];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if([userDefaults boolForKey:@"night"]){
-        //night mode
-        self.navigationController.navigationBar.barStyle =UIBarStyleBlack;
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.view.backgroundColor = [self stringToColor:@"#343434"];
-    }else{
-        self.navigationController.navigationBar.barStyle =UIBarStyleDefault;
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-        self.navigationController.navigationBar.tintColor =[self.navigationController.navigationBar tintColor];
-        self.view.backgroundColor = [UIColor whiteColor];
-    }
 
-    
+
+    [self setSkin];
     UIBarButtonItem *favoritesBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain  target:self action:@selector(tapFavorites)];
     favoritesBarButtonItem.style = UIBarButtonItemStylePlain;
     UIBarButtonItem *settingBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(tapSetting)];
@@ -115,7 +105,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if([userDefaults boolForKey:@"night"]){
         //night mode
-        cell.backgroundColor = [self stringToColor:@"#343434"];
+        cell.backgroundColor = [self.util stringToColor:@"#343434"];
         cell.textLabel.textColor = [UIColor whiteColor];
     }else{
         cell.backgroundColor = [UIColor whiteColor];
@@ -182,7 +172,7 @@
     Stories *story = [self.allStoryArrary objectAtIndex:indexPath.row];
     DetailViewController *Controller = [[self storyboard]instantiateViewControllerWithIdentifier:@"detail"];
     Controller.story = story;
-    Controller.isFaved =[self serachWith:story];
+    Controller.isFaved =[self.util serachWith:story and:self.managedObjectContext];
     [self.navigationController showViewController:Controller sender:nil];
 
 }
@@ -320,51 +310,22 @@
 -(void)refrash
 {
     [self.tableView reloadData];
-     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [self setSkin];
+}
+
+- (void) setSkin{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if([userDefaults boolForKey:@"night"]){
         //night mode
-        self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+        self.navigationController.navigationBar.barStyle =UIBarStyleBlack;
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.view.backgroundColor = [self stringToColor:@"#343434"];
+        self.view.backgroundColor = [self.util stringToColor:@"#343434"];
     }else{
-        self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+        self.navigationController.navigationBar.barStyle =UIBarStyleDefault;
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-        self.navigationController.navigationBar.tintColor = nil;
+        self.navigationController.navigationBar.tintColor =[self.navigationController.navigationBar tintColor];
         self.view.backgroundColor = [UIColor whiteColor];
     }
-}
-
-- (UIColor *) stringToColor:(NSString *)str
-{
-    if (!str || [str isEqualToString:@""]) {
-        return nil;
-    }
-    unsigned red,green,blue;
-    NSRange range;
-    range.length = 2;
-    range.location = 1;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&red];
-    range.location = 3;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&green];
-    range.location = 5;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&blue];
-    UIColor *color= [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1];
-    return color;
-}
-
-- (BOOL) serachWith:(Stories *) stories{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"FavStories"inManagedObjectContext:self.managedObjectContext]];
-    NSNumber *id = stories.id;
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id==%@", id]];
-    NSError* error = nil;
-    NSArray* results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if ([results count] > 0) {
-        return YES;
-    }else{
-        return NO;
-    }
-    
 }
 @end

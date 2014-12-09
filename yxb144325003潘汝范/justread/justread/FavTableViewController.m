@@ -11,38 +11,23 @@
 #import "FavStories.h"
 #import "AppDelegate.h"
 #import "DetailViewController.h"
-
+#import "Utils.h"
 @interface FavTableViewController ()
 @property NSManagedObjectContext *managedObjectContext;
+@property Utils *util;
 @end
 
 @implementation FavTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.util = [[Utils alloc] init];
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(refrashFav)
                                                 name:@"refrashFav"//消息名
                                               object:nil];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if([userDefaults boolForKey:@"night"]){
-        //night mode
-        self.navigationController.navigationBar.barStyle =UIBarStyleBlack;
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.view.backgroundColor = [self stringToColor:@"#343434"];
-    }else{
-        self.navigationController.navigationBar.barStyle =UIBarStyleDefault;
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-        self.navigationController.navigationBar.tintColor =[self.navigationController.navigationBar tintColor];
-        self.view.backgroundColor = [UIColor whiteColor];
-    }
+    [self setSKin];
 
 }
 
@@ -62,12 +47,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [[self getResult:self.managedObjectContext] count];
+    return [[self.util getResult:self.managedObjectContext] count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FavStories *story = [[self getResult:self.managedObjectContext] objectAtIndex:indexPath.row];//= [self.allStoryArrary objectAtIndex:indexPath.row];
+    FavStories *story = [[self.util getResult:self.managedObjectContext] objectAtIndex:indexPath.row];//= [self.allStoryArrary objectAtIndex:indexPath.row];
     //  [self.mainTableview registerClass: [ZhiTableViewCell class] forCellReuseIdentifier:@"zhihucell"];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"favcell" forIndexPath:indexPath];
     [cell.textLabel setText:story.title];
@@ -95,7 +80,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if([userDefaults boolForKey:@"night"]){
         //night mode
-        cell.backgroundColor = [self stringToColor:@"#343434"];
+        cell.backgroundColor = [self.util stringToColor:@"#343434"];
         cell.textLabel.textColor = [UIColor whiteColor];
     }else{
         cell.backgroundColor = [UIColor whiteColor];
@@ -159,7 +144,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    FavStories *story = [[self getResult:self.managedObjectContext] objectAtIndex:indexPath.row];
+    FavStories *story = [[self.util getResult:self.managedObjectContext] objectAtIndex:indexPath.row];
     DetailViewController *Controller = [[self storyboard]instantiateViewControllerWithIdentifier:@"detail"];
     Stories *tmp =[[Stories alloc] init];
     tmp.id = story.id;
@@ -174,69 +159,24 @@
     [self.navigationController showViewController:Controller sender:nil];
     
 }
--(void)favRefrash
-{
-    [self.favtableView reloadData];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if([userDefaults boolForKey:@"night"]){
-        //night mode
-        self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.view.backgroundColor = [self stringToColor:@"#343434"];
-    }else{
-        self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-        self.navigationController.navigationBar.tintColor = nil;
-        self.view.backgroundColor = [UIColor whiteColor];
-    }
-}
-
-- (UIColor *) stringToColor:(NSString *)str
-{
-    if (!str || [str isEqualToString:@""]) {
-        return nil;
-    }
-    unsigned red,green,blue;
-    NSRange range;
-    range.length = 2;
-    range.location = 1;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&red];
-    range.location = 3;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&green];
-    range.location = 5;
-    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&blue];
-    UIColor *color= [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1];
-    return color;
-}
-
-- (NSMutableArray *) getResult:(NSManagedObjectContext *)managedObjectContext
-{
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"FavStories"inManagedObjectContext:managedObjectContext];
-    //设置请求实体
-    [request setEntity:entity];
-    NSError *error = nil;
-    NSMutableArray *mutableFetchResult = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-    if (mutableFetchResult == nil) {
-        NSLog(@"Error: %@,%@",error,[error userInfo]);
-    }
-    return mutableFetchResult;
-}
 -(void)refrashFav
 {
-    [self.tableView reloadData];
+    [self.favtableView reloadData];
+    [self setSKin];
+}
+
+- (void) setSKin{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if([userDefaults boolForKey:@"night"]){
         //night mode
-        self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+        self.navigationController.navigationBar.barStyle =UIBarStyleBlack;
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.view.backgroundColor = [self stringToColor:@"#343434"];
+        self.view.backgroundColor = [self.util stringToColor:@"#343434"];
     }else{
-        self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+        self.navigationController.navigationBar.barStyle =UIBarStyleDefault;
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-        self.navigationController.navigationBar.tintColor = nil;
+        self.navigationController.navigationBar.tintColor =[self.navigationController.navigationBar tintColor];
         self.view.backgroundColor = [UIColor whiteColor];
     }
 }

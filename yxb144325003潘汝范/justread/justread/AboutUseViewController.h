@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AboutUseViewController : UIViewController
-- (UIColor *) stringToColor:(NSString *)str;
 @property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
 @end
