@@ -12,7 +12,6 @@
 
 @interface ViewController : UITableViewController <UITabBarControllerDelegate>
 
-@property (strong, nonatomic) UINavigationController* parentViewController;
 //保存数据列表
 @property (nonatomic,strong) NSMutableDictionary* dicData;
 @property (nonatomic,strong) NSMutableArray* listData;
