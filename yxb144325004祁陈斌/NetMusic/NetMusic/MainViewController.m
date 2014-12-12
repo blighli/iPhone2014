@@ -12,6 +12,7 @@
 #include "GlobalDefine.h"
 #import "QCBChannelModel.h"
 #import "QCBBaseRequest+ChannelRequest.h"
+#import "QCBBaseRequest+SongRequest.h"
 #import "PlayerViewController.h"
 
 @interface MainViewController ()
@@ -32,6 +33,7 @@
     [self configLeftSideMenu];  //配置左边栏
     [self configPlayView];
     [self loadChannelData];     //加载频道数据
+    [self loadSongData];        //初始化加载默认频道歌曲
     
 }
 
@@ -96,6 +98,17 @@
     [QCBBaseRequest channelList:GlobalDefine.channelUrl success:^(NSArray *channelList) {
         NSLog(@"频道数据加载成功");
         [self.channelViewController addChannels: channelList];
+    } fail:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+- (void) loadSongData {
+    [QCBBaseRequest songList:GlobalDefine.songUrl channelId:@"0" type:@"n" success:^(NSArray *songList) {
+        NSLog(@"初始化歌曲数据加载成功");
+        self.songTableViewController.channelId = @"0";
+        [self.songTableViewController addSongs: songList];
+        
     } fail:^(NSError *error) {
         NSLog(@"%@",error);
     }];
