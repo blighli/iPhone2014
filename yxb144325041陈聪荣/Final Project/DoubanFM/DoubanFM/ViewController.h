@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,AVAudioPlayerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *songImageView;
 @property (weak, nonatomic) IBOutlet UITableView *songTableView;
 @property (weak, nonatomic) IBOutlet UIProgressView *songProgressView;

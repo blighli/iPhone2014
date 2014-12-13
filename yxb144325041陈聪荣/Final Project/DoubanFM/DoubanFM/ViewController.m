@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HttpController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 #import "UIImage.h"
 
 @implementation ViewController {
@@ -31,6 +32,10 @@
     channelArray = [[NSMutableArray alloc]init];
     songArray = [[NSMutableArray alloc]init];
     httpController = [[HttpController alloc]init];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadSongView:)
@@ -85,7 +90,7 @@
                                            selector:@selector(songPlayRefresh)
                                            userInfo: nil
                                             repeats: true];
-    movieController = [[MPMoviePlayerController alloc]init];    
+    movieController = [[MPMoviePlayerController alloc]init];
     [movieController setContentURL:[NSURL URLWithString:[selectSong valueForKey:@"url"]]];
     [movieController play];
 }
@@ -147,6 +152,7 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [movieController stop];
     songIndex = indexPath.row;
     selectSong = [songArray objectAtIndex:songIndex];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"nextSong" object:nil userInfo:nil];
