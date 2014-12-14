@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import <MagicalRecord/CoreData+MagicalRecord.h>
+#import "HabitTableViewController.h"
+#import "AddHabitViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +21,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [MagicalRecord setupCoreDataStackWithStoreNamed: @"iHabitDB.sqlite"];
+   
+    _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
+    _window.backgroundColor = UIColor.whiteColor;
+    
+    
+    HabitTableViewController *habitTableViewController = [[HabitTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:habitTableViewController];
+    _window.rootViewController = navigationController;
+    
+    [_window makeKeyAndVisible];
+
     return YES;
 }
 
