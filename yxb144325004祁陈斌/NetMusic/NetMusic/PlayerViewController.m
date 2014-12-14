@@ -10,26 +10,30 @@
 #include "GlobalDefine.h"
 #import "QCBBaseRequest+SongRequest.h"
 #import "UIButtonMake.h"
-#import "FSAudioStream.h"
-#import "FSAudioController.h"
 #import "MainViewController.h"
 #import "MBProgressHUD.h"
+#import <MediaPlayer/MPNowPlayingInfoCenter.h>
+#import <MediaPlayer/MPMediaItem.h>
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MPMoviePlayerController.h>
 
 @interface PlayerViewController()
 @property(assign,nonatomic) NSInteger radius;
 @property(strong,nonatomic) UIImageView *imageView;
 @property(strong,nonatomic) UILabel *songTitle;
 @property(strong,nonatomic) UILabel *artistTitle;
+@property(retain,nonatomic) NSData *albumImageData;
 @property(strong,nonatomic) UIButton *toggleButton;
 @property(strong,nonatomic) UIButton *skipButton;
 @property(strong,nonatomic) UIView *progressBar;
 @property(assign,nonatomic) BOOL isPlaying;
 @property(assign,nonatomic) BOOL isPaused;//曾经被暂停
 @property(strong,nonatomic) NSString* status;
-@property(strong,nonatomic) FSAudioController *audioController;
 @property(strong,nonatomic) NSURL *songUrl;
 @property(strong,nonatomic) NSTimer *progressUpdateTimer;
-@property(assign,nonatomic) double percent;//播放进度
+@property(assign,nonatomic) double totalSongTimeSecond;//歌曲总时长
+@property(assign,nonatomic) double currentSongTimeSecond;//当前歌曲时长
+@property (nonatomic, retain) MPMoviePlayerController *audioPlayer;
 @end
 
 @implementation PlayerViewController
@@ -40,9 +44,31 @@
     _isPlaying = NO;
     _isShowed = NO;
     _isPaused = NO;
-    _percent = 0;
-    _audioController = [[FSAudioController alloc] init];
+    _currentSongTimeSecond = 0;
+    _totalSongTimeSecond = 0;
+    _audioPlayer = [[MPMoviePlayerController alloc] init];
+
+    [self configPlayer];
     [self configLayout];
+}
+
+- (void) configPlayer {
+    [[AVAudioSession sharedInstance] setDelegate: self];
+    NSError *err;
+    
+    // Initialize the AVAudioSession here.
+    if (![[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&err]) {
+        // Handle the error here.
+        NSLog(@"Audio Session error %@, %@", err, [err userInfo]);
+    }
+    else{
+        // Since there were no errors initializing the session, we'll allow begin receiving remote control events
+        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    }
+    [_audioPlayer setShouldAutoplay:NO];
+    [_audioPlayer setControlStyle: MPMovieControlStyleEmbedded];
+    _audioPlayer.view.hidden = YES;
+    [self.view addSubview:_audioPlayer.view];
 }
 
 - (void) configLayout {
@@ -107,8 +133,9 @@
     NSData *data = [[NSData alloc]initWithContentsOfURL:filePathUrl];
     
     self.songUrl = [[NSURL alloc]initWithString:song.url];
-    self.audioController.url = self.songUrl;
-    
+    _audioPlayer.contentURL = self.songUrl;
+    self.albumImageData = data;
+    [self changeCenterSongInfo];
     if (data) {
         self.imageView.image = [[UIImage alloc] initWithData:data];
     } else {
@@ -130,64 +157,73 @@
     }
 }
 
+- (void) changeCenterSongInfo {
+    
+    Class playingInfoCenter = NSClassFromString(@"MPNowPlayingInfoCenter");
+    
+    if (playingInfoCenter) {
+        NSMutableDictionary *songInfo = [[NSMutableDictionary alloc] init];
+        [songInfo setObject:self.song.title forKey:MPMediaItemPropertyTitle];
+        [songInfo setObject:self.song.artist forKey:MPMediaItemPropertyArtist];
+        [songInfo setObject:self.song.albumtitle forKey:MPMediaItemPropertyAlbumTitle];
+        [songInfo setObject:[[NSNumber alloc] initWithDouble:self.currentSongTimeSecond] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+        [songInfo setObject:[[NSNumber alloc] initWithDouble:self.totalSongTimeSecond]  forKey:MPMediaItemPropertyPlaybackDuration];
+//        if (self.albumImageData) {
+//            MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:[[UIImage alloc] initWithData:self.albumImageData]];
+//            [songInfo setObject:albumArt forKey:MPMediaItemPropertyArtwork];
+//        }
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:songInfo];
+        
+        
+    }
+
+}
+
 - (void) playerToggle {
     if (self.isPlaying) {
         self.isPlaying = NO;
         [self.toggleButton setBackgroundImage:[UIImage imageNamed:@"mStart"] forState:UIControlStateNormal];
         [self.toggleButton setBackgroundImage:[UIImage imageNamed:@"mStart_prs"] forState:UIControlStateHighlighted];
-        [self.audioController pause];
+        [self.audioPlayer pause];
         self.isPaused = YES;
     } else {
         self.isPlaying = YES;
         [self.toggleButton setBackgroundImage:[UIImage imageNamed:@"mStop"] forState:UIControlStateNormal];
         [self.toggleButton setBackgroundImage:[UIImage imageNamed:@"mStop_prs"] forState:UIControlStateHighlighted];
         if (self.isPaused) {
-            [self.audioController pause];
+            [self.audioPlayer prepareToPlay];
+            [self.audioPlayer play];
         } else {
-            if (self.progressUpdateTimer) {
-                [self.progressUpdateTimer invalidate];
-                self.progressUpdateTimer = nil;
-            }
+            [self.audioPlayer prepareToPlay];
+            [self.audioPlayer play];
             //实时修改进度条
             if (self.progressUpdateTimer) {
                 [self.progressUpdateTimer invalidate];
                 self.progressUpdateTimer = nil;
             }
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerFinish) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
             self.progressUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                                         target:self
                                                                       selector:@selector(updatePlayerProgress)
                                                                       userInfo:nil
                                                                        repeats:YES];
-            
-            [self.audioController play];
-            
-//            self.audioController.stream.onStateChange = ^(FSAudioStreamState state) {
-//                if (state == kFSAudioStreamEndOfFile) {
-//                    NSLog(@"test");
-//                }
-//            };
-            self.audioController.stream.onCompletion = ^(){
-                self.isPlaying = NO;
-                self.isPaused = NO;
-                [self.toggleButton setBackgroundImage:[UIImage imageNamed:@"mStart"] forState:UIControlStateNormal];
-                [self.toggleButton setBackgroundImage:[UIImage imageNamed:@"mStart_prs"] forState:UIControlStateHighlighted];
-                [self.audioController stop];
-                if (self.progressUpdateTimer) {
-                    [self.progressUpdateTimer invalidate];
-                    self.progressUpdateTimer = nil;
-                }
-                MainViewController* parentViewController = (MainViewController*) self.parentViewController;
-                QCBSongModel *nextSong = [parentViewController getNextSong];
-                if (nextSong) {
-                    [self stop];
-                    self.song = nextSong;
-                    [self play];
-                } else {
-                    self.audioController.url = self.songUrl;
-                }
-            };
         }
         
+    }
+}
+//歌曲结束
+- (void) playerFinish {
+    if (self.totalSongTimeSecond > 0 && self.totalSongTimeSecond - self.currentSongTimeSecond <= 2) {
+        NSLog(@"歌曲结束");
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+        MainViewController* parentViewController = (MainViewController*) self.parentViewController;
+        QCBSongModel *nextSong = [parentViewController getNextSong];
+        [self stop];
+        
+        if (nextSong) {
+            self.song = nextSong;
+            [self play];
+        }
     }
 }
 
@@ -211,6 +247,16 @@
     }
 }
 
+- (void) playBack {
+    MainViewController* parentViewController = (MainViewController*) self.parentViewController;
+    QCBSongModel *previousSong = [parentViewController getPreviousSong];
+    if (previousSong) {
+        [self stop];
+        self.song = previousSong;
+        [self play];
+    }
+}
+
 - (void) showPlayer {
     self.isShowed = YES;
     [UIView animateWithDuration:0.4f animations:^(void){
@@ -221,32 +267,76 @@
 - (void) stop {
     self.isPlaying = NO;
     self.isPaused = NO;
-    if (self.audioController.isPlaying) {
-        [self.audioController stop];
+    if (self.audioPlayer.playbackState == MPMoviePlaybackStatePlaying ||
+        self.audioPlayer.playbackState == MPMoviePlaybackStatePaused) {
+        [self.audioPlayer stop];
     }
 }
 
 - (void) play {
     self.progressBar.frame = CGRectMake(-GlobalDefine.ScreenWidth, GlobalDefine.FooterHight-3, GlobalDefine.ScreenWidth, 3);
+    NSDictionary *opts = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO]
+                                                     forKey:AVURLAssetPreferPreciseDurationAndTimingKey];
+    AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:self.songUrl options:opts];  // 初始化媒体文件
+    
+    self.totalSongTimeSecond = urlAsset.duration.value / urlAsset.duration.timescale; // 获取视频总时长,单位秒
+    NSLog(@"总时长:%.0lf秒",self.totalSongTimeSecond);
     [self playerToggle];
 }
 
 - (void) updatePlayerProgress {
-    FSStreamPosition cur = self.audioController.stream.currentTimePlayed;
-    FSStreamPosition end = self.audioController.stream.duration;
-
-    double newPercent = 0;
-    if ((end.minute*60 + end.second) > 0) {
-        newPercent = 1.0 * (cur.minute*60 + cur.second) / (end.minute*60 + end.second);
-    }
-    //修复AudioSession释放不完全bug
-    if (newPercent == _percent && newPercent != 0 && newPercent != 1) {
-        [self.audioController pause];
-        [self.audioController pause];
-    } else {
-        _percent = newPercent;
-    }
     
-    self.progressBar.frame = CGRectMake(-(GlobalDefine.ScreenWidth*(1-newPercent)), GlobalDefine.FooterHight-3, GlobalDefine.ScreenWidth, 3);
+    NSTimeInterval cur = self.audioPlayer.currentPlaybackTime;
+    double percent = 0;
+    if (self.totalSongTimeSecond != 0) {
+        percent = cur/self.totalSongTimeSecond;
+        self.currentSongTimeSecond = cur;
+        if (cur == self.totalSongTimeSecond) {
+            if (self.progressUpdateTimer) {
+                [self.progressUpdateTimer invalidate];
+                self.progressUpdateTimer = nil;
+            }
+            
+        }
+    }
+    self.progressBar.frame = CGRectMake(-(GlobalDefine.ScreenWidth*(1-percent)), GlobalDefine.FooterHight-3, GlobalDefine.ScreenWidth, 3);
+    [self changeCenterSongInfo];
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
+    [super viewDidDisappear:animated];
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent {
+    if ( receivedEvent.type == UIEventTypeRemoteControl ) {
+        switch (receivedEvent.subtype) {
+            case UIEventSubtypeRemoteControlPlay:
+            case UIEventSubtypeRemoteControlPause:
+            case UIEventSubtypeRemoteControlStop:
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                [self playerToggle];
+                break;
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                [self playBack];
+                break;
+            case UIEventSubtypeRemoteControlNextTrack:
+                [self playerSkip];
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
 @end

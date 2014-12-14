@@ -157,6 +157,15 @@
     return song;
 }
 
+- (QCBSongModel *)getPreviousSong {
+    NSUInteger index = self.songTableViewController.songIndex - 1;
+    QCBSongModel *song = [self.songTableViewController getSongByIndex:index];
+    if (song) {
+        [self.songTableViewController selectRowAtIndex:index];
+        self.songTableViewController.songIndex  = index;
+    }
+    return song;
+}
 /*
 #pragma mark - Navigation
 

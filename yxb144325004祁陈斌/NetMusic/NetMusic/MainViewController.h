@@ -51,5 +51,10 @@
  *  @return QCBSongModel
  */
 - (QCBSongModel*) getNextSong;
-
+/**
+ *  获得前一首歌
+ *
+ *  @return QCBSongModel
+ */
+- (QCBSongModel *)getPreviousSong;
 @end
