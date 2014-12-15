@@ -27,8 +27,7 @@
     _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
     _window.backgroundColor = UIColor.whiteColor;
     
-    HabitTableViewController *habitTableViewController = [[HabitTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HabitBaseViewController alloc] initWithViewController:habitTableViewController]];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[HabitTableViewController createHabitViewController]];
     _window.rootViewController = navigationController;
     navigationController.navigationBar.hidden = YES;
     

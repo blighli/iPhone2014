@@ -17,6 +17,7 @@
 -(instancetype)initWithViewController:(UIViewController *)viewController {
     self = [super init];
     _viewController = viewController;
+    [_viewController setValue:self forKey:@"habitBaseViewController"];
     return self;
 }
 
@@ -28,7 +29,6 @@
     [self.view addSubview:navigationBar];
     [self addChildViewController:_viewController];
     _viewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + 80, self.view.frame.size.width, self.view.frame.size.height - 80); // FIXME 60 is hard code
-    
     [self.view addSubview:_viewController.view];
 }
 

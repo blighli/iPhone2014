@@ -56,9 +56,16 @@
                             times: [NSNumber numberWithInteger:[_periodTimesPicker selectedRowInComponent:1] + 1]];
     [self.navigationController popViewControllerAnimated:YES];
 }
- 
+
+
++(HabitBaseViewController*) createHabitViewController {
+    return [[HabitBaseViewController alloc] initWithViewController:[[AddHabitViewController alloc] initWithNibName:@"AddHabitViewController" bundle:nil]];
+}
 
 @end
+
+
+
 
 @implementation PeriodTimesPickerViewController
 {
