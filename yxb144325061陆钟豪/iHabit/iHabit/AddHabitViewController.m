@@ -26,6 +26,23 @@
     _periodTimesPicker.dataSource = periodTimesPickerViewController;
     _periodTimesPicker.delegate = periodTimesPickerViewController;
     [self addChildViewController:periodTimesPickerViewController];
+    
+    self.navigationItem.hidesBackButton = YES;  //隐藏默认back按钮
+    UIBarButtonItem * transitionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(gotoMenu:)];
+    self.navigationItem.rightBarButtonItem = transitionButton;
+
+    
+}
+
+-(IBAction)gotoMenu:(id)sender {
+    CATransition *animation = [CATransition animation];
+    animation.delegate = self;
+    animation.duration = 0.7;
+    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    animation.type = @"cube";
+    animation.subtype = kCATransitionFromTop;
+    [[self.navigationController.view layer] addAnimation:animation forKey:@"animation"];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -25,7 +25,14 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if(self.tableView.contentOffset.y <= -150) {
-        [self.navigationController pushViewController:[[AddHabitViewController alloc] initWithNibName:@"AddHabitViewController" bundle:nil] animated:YES];
+        CATransition *animation = [CATransition animation];
+        animation.delegate = self;
+        animation.duration = 0.7;
+        animation.timingFunction = UIViewAnimationCurveEaseInOut;
+        animation.type = @"cube";
+        animation.subtype = kCATransitionFromBottom;
+        [[self.navigationController.view layer] addAnimation:animation forKey:@"animation"];
+        [self.navigationController pushViewController:[[AddHabitViewController alloc] initWithNibName:@"AddHabitViewController" bundle:nil] animated:NO];
     }
 }
 
