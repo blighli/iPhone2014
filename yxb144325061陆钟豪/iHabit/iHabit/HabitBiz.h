@@ -14,7 +14,7 @@
 
 -(NSInteger)done:(Habit*)habit;
 -(NSInteger)skip:(Habit*)habit;
--(Habit*)saveHabitWithTitle:(NSString*)title iconKey:(NSString*)iconKey period:(HabitPeriod)period times:(NSNumber*)times;
+-(Habit*)saveHabitWithTitle:(NSString*)title iconName:(NSString*)iconName period:(HabitPeriod)period times:(NSNumber*)times;
 
 +(HabitBiz*)getInstance;
 

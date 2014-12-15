@@ -20,7 +20,7 @@
    return self;
 }
 
--(Habit*)saveHabitWithTitle:(NSString*)title iconKey:(NSString*)iconKey period:(HabitPeriod)period times:(NSNumber*)times {
+-(Habit*)saveHabitWithTitle:(NSString*)title iconName:(NSString*)iconName period:(HabitPeriod)period times:(NSNumber*)times {
     NSDate *nowDate = [NSDate date];
     NSCalendar *cal = [NSCalendar currentCalendar]; //日历
 
@@ -28,7 +28,7 @@
     newHabit.title = title;
     newHabit.period = [NSNumber numberWithInteger:period];
     newHabit.times = times;
-    newHabit.iconKey = iconKey;
+    newHabit.iconName = iconName;
     newHabit.createTime = nowDate;
     
     // 计算periodEndTime

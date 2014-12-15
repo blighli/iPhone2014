@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <UIKit/UIKit.h>
 
 
 typedef NS_ENUM(NSInteger, HabitPeriod) {   // 习惯周期
@@ -17,12 +18,13 @@ typedef NS_ENUM(NSInteger, HabitPeriod) {   // 习惯周期
     HabitPeriodYear
 };
 
+
 @interface Habit : NSManagedObject
 
 // 标题
 @property (nonatomic, retain) NSString * title;
 // 图标Key
-@property (nonatomic, retain) NSString * iconKey;
+@property (nonatomic, retain) NSString * iconName;
 // 周期
 @property (nonatomic, retain) NSNumber * period;
 // 次数
@@ -38,5 +40,8 @@ typedef NS_ENUM(NSInteger, HabitPeriod) {   // 习惯周期
 @property (nonatomic, retain) NSNumber * surplusTimes;
 
 -(NSDate *)lastActionTime;
+-(UIColor*)color;
+
++(NSDictionary*) iconColorDict;
 
 @end

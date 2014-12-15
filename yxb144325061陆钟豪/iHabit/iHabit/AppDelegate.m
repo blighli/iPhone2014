@@ -10,6 +10,8 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "HabitTableViewController.h"
 #import "AddHabitViewController.h"
+#import "HabitBaseViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -25,10 +27,10 @@
     _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
     _window.backgroundColor = UIColor.whiteColor;
     
-    
     HabitTableViewController *habitTableViewController = [[HabitTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:habitTableViewController];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HabitBaseViewController alloc] initWithViewController:habitTableViewController]];
     _window.rootViewController = navigationController;
+    navigationController.navigationBar.hidden = YES;
     
     [_window makeKeyAndVisible];
 

@@ -18,17 +18,5 @@
     self.textLabel.backgroundColor = UIColor.clearColor;
 }
 
--(void)setHabit:(Habit *)habit {
-    
-    self.textLabel.text = habit.title;
-    self.imageView.image = [UIImage imageNamed:@"start"];
-    _habit = habit;
-}
-
--(Habit *)Habit {
-    return _habit;
-}
-
-
 
 @end

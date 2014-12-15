@@ -52,7 +52,7 @@
 
 - (IBAction)addHabit:(id)sender {
     [_habitBiz saveHabitWithTitle: self.habitTitleTextField.text
-                          iconKey: @"" period:[_periodTimesPicker selectedRowInComponent:0]
+                          iconName: @"start" period:[_periodTimesPicker selectedRowInComponent:0]
                             times: [NSNumber numberWithInteger:[_periodTimesPicker selectedRowInComponent:1] + 1]];
     [self.navigationController popViewControllerAnimated:YES];
 }

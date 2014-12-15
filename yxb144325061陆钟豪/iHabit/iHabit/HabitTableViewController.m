@@ -14,6 +14,7 @@
 #import "HabitBiz.h"
 #import "AddHabitViewController.h"
 #import <MagicalRecord/CoreData+MagicalRecord.h>
+#import "HabitBaseViewController.h"
 
 @interface HabitTableViewController ()
 
@@ -24,6 +25,19 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    if(self.tableView.contentOffset.y <= -150) {
+//        CATransition *animation = [CATransition animation];
+//        animation.delegate = self;
+//        animation.duration = 0.7;
+//        animation.timingFunction = UIViewAnimationCurveEaseInOut;
+//        animation.type = @"cube";
+//        animation.subtype = kCATransitionFromBottom;
+//        [[self.navigationController.view layer] addAnimation:animation forKey:@"animation"];
+//        [self.navigationController pushViewController:[[AddHabitViewController alloc] initWithNibName:@"AddHabitViewController" bundle:nil] animated:NO];
+//    }
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if(self.tableView.contentOffset.y <= -150) {
         CATransition *animation = [CATransition animation];
         animation.delegate = self;
@@ -32,7 +46,7 @@
         animation.type = @"cube";
         animation.subtype = kCATransitionFromBottom;
         [[self.navigationController.view layer] addAnimation:animation forKey:@"animation"];
-        [self.navigationController pushViewController:[[AddHabitViewController alloc] initWithNibName:@"AddHabitViewController" bundle:nil] animated:NO];
+        [self.navigationController pushViewController:[[HabitBaseViewController alloc] initWithViewController:[[AddHabitViewController alloc] initWithNibName:@"AddHabitViewController" bundle:nil]] animated:NO];
     }
 }
 
@@ -50,6 +64,7 @@
     //这个标志默认是YES，使用上面的150ms的timer，如果设置为NO，touch事件立即传递给subView，不会有150ms的等待。
     self.tableView.delaysContentTouches = NO;
     UIView* tableHeader = [[CellActionView alloc] initWithFrame:CGRectMake(0, -200, 320, 200)];
+    
     tableHeader.backgroundColor = UIColor.blueColor;
     
     self.tableView.delegate = self;
@@ -57,6 +72,7 @@
     _habitBiz = [HabitBiz getInstance];
     [self.tableView addSubview:tableHeader];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -27,7 +27,6 @@
     HabitTableViewCell *cell = (HabitTableViewCell*) super.view;
     
     TimeLineView *timeLine = [[TimeLineView alloc] initWithFrame:CGRectMake(67, 50, 242, 30)];
-    timeLine.color = UIColor.blueColor;
     timeLine.backgroundColor = UIColor.clearColor;
     [cell.contentView addSubview:timeLine];
     self.timeLineView = timeLine;
@@ -93,7 +92,17 @@
 //    }
     
     cell.textLabel.text = habit.title;
-    cell.imageView.image = [UIImage imageNamed:@"start"];
+    
+    // 设置图标
+    UIImage *iconImage = [UIImage imageNamed:habit.iconName];
+    CGSize iconSize = iconImage.size;
+    cell.imageView.maskView = [[UIImageView alloc] initWithImage:iconImage];
+    UIGraphicsBeginImageContext(iconSize);
+    CGContextRef contextRef = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(contextRef, habit.color.CGColor);
+    CGContextFillRect(contextRef, CGRectMake(0, 0, iconSize.width, iconSize.height));
+    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     
     // FIXME 整合到HabitBiz中
     NSDate *nowDate = [NSDate date];
@@ -125,7 +134,7 @@
         self.timeLineView.progressRatio = 1.0;  // do now
         self.timeLineView.tip = @"Do now!";
     }
-    
+    self.timeLineView.color = habit.color;
     [self.timeLineView setNeedsDisplay]; // FIXME 使用Observer？？
 }
 
@@ -153,6 +162,16 @@
                                         cellContentView.frame.origin.y,
                                         cellContentView.frame.size.width,
                                         cellContentView.frame.size.height);
+    
+    if(0 < offsetX && offsetX < self.offsetMaxX) {
+        float offsetRatio = offsetX / self.offsetMaxX;
+        cellContentView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.3 * offsetRatio];
+    }
+    else if(self.offsetMinX < offsetX && offsetX < 0) {
+        float offsetRatio = offsetX / self.offsetMinX;
+        cellContentView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.3 * offsetRatio];
+    }
+    
     NSInteger afterActionIndex;
     if(offsetX == self.offsetMinX)
         afterActionIndex = [[HabitBiz getInstance]skip:cell.habit];
@@ -199,17 +218,12 @@
                                             cellContentView.frame.origin.y,
                                             cellContentView.frame.size.width,
                                             cellContentView.frame.size.height);
+        cellContentView.backgroundColor = [UIColor clearColor];
     } completion:nil];
 }
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    UIView *cellContentView = ((UITableViewCell*)(self.view)).contentView;
-    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        cellContentView.frame = CGRectMake(0,
-                                            cellContentView.frame.origin.y,
-                                            cellContentView.frame.size.width,
-                                            cellContentView.frame.size.height);
-    } completion:nil];
+    [self touchesEnded:touches withEvent:event];
 }
 
 -(void)dealloc {

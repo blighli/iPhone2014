@@ -8,11 +8,10 @@
 
 #import "Habit.h"
 
-
 @implementation Habit
 
 @dynamic title;
-@dynamic iconKey;
+@dynamic iconName;
 @dynamic period;
 @dynamic times;
 @dynamic createTime;
@@ -27,5 +26,22 @@
                                                     self.doTime == nil ? 0 :[self.doTime timeIntervalSince1970]),
                                                     self.skipTime == nil ? 0 :[self.skipTime timeIntervalSince1970])];
 }
+
+-(UIColor*)color {
+    return Habit.iconColorDict[self.iconName];
+}
+
++(NSDictionary*) iconColorDict {
+    static NSDictionary* iconColorDict = nil;
+    if(iconColorDict == nil) {
+        iconColorDict = @{
+                          @"start" : UIColor.yellowColor
+                          
+                          };
+    }
+    return iconColorDict;
+}
+
+
 
 @end
