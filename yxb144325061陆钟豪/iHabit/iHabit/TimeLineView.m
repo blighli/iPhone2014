@@ -12,7 +12,7 @@
 
 -(void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    const CGFloat beginX = 0.0f, maxEndX = 174.0f;
+    const CGFloat beginX = 0.0f, maxEndX = 174.0f, minEndX = beginX + 20;
     CGFloat centerY = rect.origin.y + (rect.size.height / 2);
     const CGFloat lineWidth = 4.0f;
     CGContextSetLineWidth(context, lineWidth);
@@ -23,7 +23,7 @@
     CGFloat tipPostionX;
     if(self.progressRatio < 1.0)
     {
-        CGFloat currentEndX = beginX + (maxEndX - beginX) * self.progressRatio;
+        CGFloat currentEndX = minEndX + (maxEndX - minEndX) * self.progressRatio;
         CGContextMoveToPoint(context, beginX + lineWidth / 2, centerY);
         CGContextAddLineToPoint(context, currentEndX - lineWidth / 2, centerY);
         CGContextStrokePath(context);

@@ -74,7 +74,7 @@
     }
     NSInteger index = [indexPath row];
     Habit *habit = [_habitBiz.habitArray objectAtIndex:index];
-    cell.habit = habit;
+    cell.habit = habit;//刷新
     return cell;
 }
 

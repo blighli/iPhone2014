@@ -45,10 +45,19 @@
     cell.textLabel.font = [UIFont fontWithName:@"Raleway-Tracked" size:22];
     cell.contentView.backgroundColor = UIColor.whiteColor;
     
-    [cell addObserver:self forKeyPath:@"habit" options:0 context:nil];
+    [cell addObserver:self forKeyPath:@"habit" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     self.offsetMinX = -100;
     self.offsetMaxX = 100;
+    
+    [NSTimer scheduledTimerWithTimeInterval:1   // FIXME 1秒钟刷新一次是为了测试
+                                     target:[NSBlockOperation blockOperationWithBlock:^{
+        cell.habit = cell.habit;    //刷新
+    }]
+                                   selector:@selector(main)
+                                   userInfo:nil
+                                    repeats:YES
+     ];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -56,8 +65,21 @@
     Habit *habit = cell.habit;
     
     // observe self.view(cell view).habit
-    if([keyPath isEqualToString:@"habit"]){
-        // FIXME should I remove these observer??
+//    if([keyPath isEqualToString:@"habit"]){
+//        Habit *oldHabit = [change valueForKey:NSKeyValueChangeOldKey];
+//        if((NSNull *)oldHabit != [NSNull null]) { // NSNull坑死人啊！
+//            // FIXME should I remove these observer??
+//            [oldHabit removeObserver:self forKeyPath:@"title"];
+//            [oldHabit removeObserver:self forKeyPath:@"iconKey"];
+//            [oldHabit removeObserver:self forKeyPath:@"period"];
+//            [oldHabit removeObserver:self forKeyPath:@"times"];
+//            [oldHabit removeObserver:self forKeyPath:@"createTime"];
+//            [oldHabit removeObserver:self forKeyPath:@"nextDoTime"];
+//            [oldHabit removeObserver:self forKeyPath:@"nextPeriodBeginTime"];
+//            [oldHabit removeObserver:self forKeyPath:@"doTime"];
+//            [oldHabit removeObserver:self forKeyPath:@"skipTime"];
+//            [oldHabit removeObserver:self forKeyPath:@"surplusTimes"];
+//        }
 //        [habit addObserver:self forKeyPath:@"title" options:0 context:nil];
 //        [habit addObserver:self forKeyPath:@"iconKey" options:0 context:nil];
 //        [habit addObserver:self forKeyPath:@"period" options:0 context:nil];
@@ -68,20 +90,43 @@
 //        [habit addObserver:self forKeyPath:@"doTime" options:0 context:nil];
 //        [habit addObserver:self forKeyPath:@"skipTime" options:0 context:nil];
 //        [habit addObserver:self forKeyPath:@"surplusTimes" options:0 context:nil];
-        
-        cell.textLabel.text = habit.title;
-        cell.imageView.image = [UIImage imageNamed:@"start"];
-        
-        NSDate *nowDate = [NSDate date];
-        if([habit.nextDoTime timeIntervalSinceDate:nowDate] > 0) {
-            NSDate *lastActionTime = habit.lastActionTime;
-            self.timeLineView.progressRatio = [nowDate timeIntervalSinceDate:lastActionTime] / [habit.nextDoTime timeIntervalSinceDate:lastActionTime];
+//    }
+    
+    cell.textLabel.text = habit.title;
+    cell.imageView.image = [UIImage imageNamed:@"start"];
+    
+    // FIXME 整合到HabitBiz中
+    NSDate *nowDate = [NSDate date];
+    if([habit.nextDoTime timeIntervalSinceDate:nowDate] > 0) {
+        NSDate *lastActionTime = habit.lastActionTime;
+        self.timeLineView.progressRatio = fmax([nowDate timeIntervalSinceDate:lastActionTime] / [habit.nextDoTime timeIntervalSinceDate:lastActionTime], 0);
+        if(habit.doTime != nil) {
+            NSTimeInterval nowTimeIntervalSinceDoTime = [nowDate timeIntervalSinceDate:habit.doTime];
+            NSTimeInterval nextDoTimeIntervalSinceNow = [habit.nextDoTime timeIntervalSinceDate:nowDate];
+            if(nowTimeIntervalSinceDoTime < 60) {
+                self.timeLineView.tip = @"Just done!";
+            }
+            else if(nextDoTimeIntervalSinceNow < 60 * 5) {
+                self.timeLineView.tip = @"Do soon!";
+            }
+            else {
+                self.timeLineView.tip = [NSString stringWithFormat:@"%f", nowTimeIntervalSinceDoTime];
+            }
         }
-        else{
-            self.timeLineView.progressRatio = 1.0;
+        else {
+            self.timeLineView.tip = @"New!";
         }
-        
     }
+    else if([nowDate timeIntervalSinceDate:habit.nextPeriodBeginTime] > 0 && habit.surplusTimes > 0){
+        self.timeLineView.progressRatio = 1.1;  // late
+        self.timeLineView.tip = @"Late!";
+    }
+    else {
+        self.timeLineView.progressRatio = 1.0;  // do now
+        self.timeLineView.tip = @"Do now!";
+    }
+    
+    [self.timeLineView setNeedsDisplay]; // FIXME 使用Observer？？
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,6 +166,7 @@
     UITableView *tableView = ((UITableViewController*)self.parentViewController).tableView;
     _isTouchBegin = NO;
 
+    // done skip动画效果
     [UIView animateKeyframesWithDuration:.5 delay:0.0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
         [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
             

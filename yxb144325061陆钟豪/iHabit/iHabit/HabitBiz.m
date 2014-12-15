@@ -30,14 +30,17 @@
     newHabit.times = times;
     newHabit.iconKey = iconKey;
     newHabit.createTime = nowDate;
+    
     // 计算periodEndTime
-    newHabit.nextPeriodBeginTime = [HabitBiz calculateNextPeriodBeginTimeWithBeginTime:nowDate period:period];
-    // 计算nextDoTime
+    newHabit.nextPeriodBeginTime = [HabitBiz calculateNextPeriodBeginTimeWithTime:nowDate period:period];
+    
+    newHabit.surplusTimes = times;
+    
+    // 计算nextDoTime  FIXME 重复代码
     if(period == HabitPeriodDay) {
         NSTimeInterval interval = (NSTimeInterval)(24 * 60 * 60) / [newHabit.times integerValue];
         NSDate *dayBeginTime = [cal dateFromComponents:[cal components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:nowDate]];
         newHabit.nextDoTime = [cal dateByAddingUnit:NSCalendarUnitSecond value:interval / 2 toDate:dayBeginTime options:0];
-        newHabit.surplusTimes = times;
         while([newHabit.nextDoTime timeIntervalSinceDate:nowDate] < 0) {
             newHabit.surplusTimes = [NSNumber numberWithInteger:[newHabit.surplusTimes integerValue] - 1];
             newHabit.nextDoTime = [cal dateByAddingUnit:NSCalendarUnitSecond value:interval toDate:newHabit.nextDoTime options:0];
@@ -45,8 +48,7 @@
     }
     else {
         NSTimeInterval surplusTimeInterval = [newHabit.nextPeriodBeginTime timeIntervalSinceDate:nowDate];
-        newHabit.nextDoTime = [cal dateByAddingUnit:NSCalendarUnitSecond value:surplusTimeInterval / [newHabit.times integerValue] toDate:nowDate options:0];
-        newHabit.surplusTimes = times;
+        newHabit.nextDoTime = [cal dateByAddingUnit:NSCalendarUnitSecond value:surplusTimeInterval / [newHabit.surplusTimes integerValue] toDate:nowDate options:0];
     }
     newHabit.doTime = nil;
     newHabit.skipTime = nil;
@@ -56,7 +58,7 @@
     return newHabit;
 }
 
-+(NSDate*)calculateNextPeriodBeginTimeWithBeginTime:(NSDate*)beginTime period:(HabitPeriod)period{
++(NSDate*)calculateNextPeriodBeginTimeWithTime:(NSDate*)beginTime period:(HabitPeriod)period{
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSDateComponents *dateComps = [cal components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:beginTime];// 获取当前年月日date components，时间单元掩码:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay
     NSDate *dayBeginTime;
@@ -83,8 +85,28 @@
 
 -(NSInteger)done:(Habit*)habit {
     NSDate *nowDate = [NSDate date];
+    
+    // 转到下个周期 FIXME 重复代码
+    if([nowDate timeIntervalSinceDate:habit.nextPeriodBeginTime] > 0){
+        habit.nextPeriodBeginTime = [HabitBiz calculateNextPeriodBeginTimeWithTime:nowDate period:[habit.period integerValue]];
+        habit.surplusTimes = habit.times;
+    }
+    
     habit.doTime = nowDate;
-    habit.surplusTimes = [NSNumber numberWithInteger:[habit.surplusTimes integerValue] - 1];
+    habit.surplusTimes = [NSNumber numberWithInt:(int)fmax([habit.surplusTimes integerValue] - 1, 0)];  //FIXME 减一，最小减到0
+    NSCalendar *cal = [NSCalendar currentCalendar]; //日历
+    
+    // 计算nextDoTime  FIXME 重复代码
+    if([habit.surplusTimes integerValue] == 0){
+        NSDate *nextNextPeriodBeginTime = [HabitBiz calculateNextPeriodBeginTimeWithTime:habit.nextPeriodBeginTime period:[habit.period integerValue]];
+        NSTimeInterval periodTimeInterval = [nextNextPeriodBeginTime timeIntervalSinceDate:habit.nextPeriodBeginTime];
+        habit.nextDoTime = [cal dateByAddingUnit:NSCalendarUnitSecond value:periodTimeInterval / [habit.surplusTimes integerValue] toDate:habit.nextPeriodBeginTime options:0];
+    }
+    else {
+        NSTimeInterval surplusTimeInterval = [habit.nextPeriodBeginTime timeIntervalSinceDate:nowDate]; // TODO
+        habit.nextDoTime = [cal dateByAddingUnit:NSCalendarUnitSecond value:surplusTimeInterval / [habit.surplusTimes integerValue] toDate:habit.nextPeriodBeginTime options:0];
+
+    }
     _habitArray = [HabitBiz sortHabit:_habitArray];     // 排序
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait]; //持久化
     return [_habitArray indexOfObject:habit];
@@ -92,8 +114,28 @@
 
 -(NSInteger)skip:(Habit*)habit {
     NSDate *nowDate = [NSDate date];
+    
+    // 转到下个周期 FIXME 重复代码
+    if([nowDate timeIntervalSinceDate:habit.nextPeriodBeginTime] > 0) {
+        habit.nextPeriodBeginTime = [HabitBiz calculateNextPeriodBeginTimeWithTime:nowDate period:[habit.period integerValue]];
+        habit.surplusTimes = habit.times;
+    }
     habit.skipTime = nowDate;
-    habit.surplusTimes = [NSNumber numberWithInteger:[habit.surplusTimes integerValue] - 1];
+    // surplusTimes不变
+    NSCalendar *cal = [NSCalendar currentCalendar]; //日历
+    
+    // 计算nextDoTime  FIXME 重复代码
+    if([habit.surplusTimes integerValue] == 0){
+        NSDate *nextNextPeriodBeginTime = [HabitBiz calculateNextPeriodBeginTimeWithTime:habit.nextPeriodBeginTime period:[habit.period integerValue]];
+        NSTimeInterval periodTimeInterval = [nextNextPeriodBeginTime timeIntervalSinceDate:habit.nextPeriodBeginTime];
+        habit.nextDoTime = [cal dateByAddingUnit:NSCalendarUnitSecond value:periodTimeInterval / [habit.surplusTimes integerValue] toDate:habit.nextPeriodBeginTime options:0];
+    }
+    else {
+        NSTimeInterval surplusTimeInterval = [habit.nextPeriodBeginTime timeIntervalSinceDate:nowDate]; // TODO
+        habit.nextDoTime = [cal dateByAddingUnit:NSCalendarUnitSecond value:surplusTimeInterval / [habit.surplusTimes integerValue] toDate:habit.nextPeriodBeginTime options:0];
+        
+    }
+    
     _habitArray = [HabitBiz sortHabit:_habitArray];     // 排序
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait]; //持久化
     return [_habitArray indexOfObject:habit];
