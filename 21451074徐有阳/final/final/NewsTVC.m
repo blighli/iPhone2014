@@ -103,7 +103,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     PostDetailVC *postDetailViewControl = [segue destinationViewController];
     NSInteger index = [self.tableView indexPathForCell:(UITableViewCell *)sender].row;
-    postDetailViewControl.postUrl = [[[self.news objectForKey:@"posts"] objectAtIndex:index] valueForKey:@"link"];
+    postDetailViewControl.post = [[self.news objectForKey:@"posts"] objectAtIndex:index];
 }
 
 @end

@@ -66,7 +66,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wU2-pO-qnT">
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wU2-pO-qnT">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -92,12 +92,14 @@
                             <constraint firstAttribute="bottom" secondItem="wU2-pO-qnT" secondAttribute="bottom" id="Z3b-8J-Vvo"/>
                             <constraint firstAttribute="bottomMargin" secondItem="wU2-pO-qnT" secondAttribute="bottom" constant="-40" id="krO-Lq-zCf"/>
                             <constraint firstItem="wU2-pO-qnT" firstAttribute="bottom" secondItem="a1X-GW-bY3" secondAttribute="bottomMargin" constant="40" id="naj-wD-dRc"/>
+                            <constraint firstItem="Vyp-wn-6dV" firstAttribute="top" secondItem="wU2-pO-qnT" secondAttribute="bottom" constant="43" id="oiM-m9-GHE"/>
                             <constraint firstItem="wU2-pO-qnT" firstAttribute="bottom" secondItem="a1X-GW-bY3" secondAttribute="bottomMargin" constant="40" id="vBb-qk-zac"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="0qU-P0-6d8"/>
                                 <exclude reference="5f3-Xw-AdS"/>
+                                <exclude reference="FjY-CD-wPx"/>
                                 <exclude reference="G2c-Rx-EH2"/>
                                 <exclude reference="SNe-As-inB"/>
                                 <exclude reference="Z3b-8J-Vvo"/>
@@ -108,7 +110,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="7KC-Wj-MdI">
-                        <barButtonItem key="rightBarButtonItem" image="ShareIcon" id="SUY-SY-HBg"/>
+                        <barButtonItem key="rightBarButtonItem" image="ShareIcon" id="SUY-SY-HBg">
+                            <connections>
+                                <action selector="shareClick:" destination="R53-W1-zAW" id="dUq-Xx-hfs"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="webView" destination="wU2-pO-qnT" id="s8A-1L-zGC"/>
@@ -123,7 +129,7 @@
             <objects>
                 <tabBarController id="BpJ-Y0-4v1" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="736-Rg-N4O"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="Lvy-nL-gEv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -156,6 +162,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ShareIcon" width="24" height="24"/>
+        <image name="ShareIcon" width="32" height="32"/>
     </resources>
 </document>
