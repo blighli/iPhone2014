@@ -9,6 +9,8 @@
 #import "NewsTVC.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "PostDetailVC.h"
+#import "PostCell.h"
+#import "MJRefresh/MJRefresh.h"
 
 @interface NewsTVC ()
 @property (nonatomic, strong)NSMutableDictionary *news;
@@ -19,12 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject:[UIColor colorWithRed:(82.0/255.0) green:(80.0/255.0) blue:(80.0/255.0) alpha:1] forKey:NSForegroundColorAttributeName]];
-//    _label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
-//    _label.text = @"123";
-//    [self.navigationController.navigationBar addSubview:_label];
-//    NSLog(@"%@", self.navigationController.navigationBar.titleTextAttributes);
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"type": @"news"};
     [manager GET:@"http://crawler-cst.herokuapp.com/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -34,19 +30,10 @@
         NSLog(@"%@", error);
     }];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [_label removeFromSuperview];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-        [self.navigationController.navigationBar addSubview:_label];
+    // 添加下拉刷新控件
+    [self.tableView addHeaderWithCallback:^{
+        NSLog(@"刷新中");
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,13 +54,15 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell" forIndexPath:indexPath];
-    cell.textLabel.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"title"];
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell" forIndexPath:indexPath];
+    cell.postTitle.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"title"];
+    cell.publishTime.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"publish_time"];
+//    cell.postTitle.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"title"];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    return 70;
 }
 
 /*

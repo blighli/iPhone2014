@@ -29,28 +29,28 @@
     socialBar.socialUIDelegate = self;
     socialBar.frame = CGRectMake(0, size.height - 43, size.width, 43);
     [self.view addSubview:socialBar];
-    // 设置UIWebView
+    // 设置UIWebView(整个web页面)
     self.webView.scalesPageToFit = YES;
     NSURL *url = [NSURL URLWithString:[self.post valueForKey:@"link"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
+    
+    // 设置UIWebView(内容部分)
+//    float fontSize=42;
+//    //webView.scrollView.contentSize=CGSizeMake(320, 2000);
+//    NSString *htmlText=@"";
+//    NSString *jsString = [NSString stringWithFormat:@"<html> \n"
+//                          "<head> \n"
+//                          "<style type=\"text/css\"> \n"
+//                          "body {font-size: %f}"
+//                          // "img {width:960;}"
+//                          
+//                          "</style> \n"
+//                          "</head> \n"
+//                          "<body>%@</body> \n"
+//                          "</html>", fontSize,htmlText];
    
     [super viewDidLoad];
-     self.tabBarController.tabBar.hidden = YES;
-    self.view.backgroundColor = [UIColor whiteColor];
-
-}
-
-- (void)viewDidLayoutSubviews {
-     self.tabBarController.tabBar.hidden = YES;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    self.tabBarController.tabBar.hidden = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
