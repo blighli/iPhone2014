@@ -12,17 +12,23 @@
 
 @interface NewsTVC ()
 @property (nonatomic, strong)NSMutableDictionary *news;
+@property (nonatomic, strong)UILabel *label;
 @end
 
 @implementation NewsTVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject:[UIColor colorWithRed:(82.0/255.0) green:(80.0/255.0) blue:(80.0/255.0) alpha:1] forKey:NSForegroundColorAttributeName]];
+//    _label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+//    _label.text = @"123";
+//    [self.navigationController.navigationBar addSubview:_label];
+//    NSLog(@"%@", self.navigationController.navigationBar.titleTextAttributes);
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"type": @"news"};
     [manager GET:@"http://crawler-cst.herokuapp.com/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.news = responseObject;
-        NSLog(@"%@", responseObject);
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
@@ -33,6 +39,14 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [_label removeFromSuperview];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+        [self.navigationController.navigationBar addSubview:_label];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +69,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell" forIndexPath:indexPath];
     cell.textLabel.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"title"];
-    NSLog(@"%@", cell.textLabel.text);
     return cell;
 }
 

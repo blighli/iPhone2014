@@ -34,7 +34,23 @@
     NSURL *url = [NSURL URLWithString:[self.post valueForKey:@"link"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
+   
     [super viewDidLoad];
+     self.tabBarController.tabBar.hidden = YES;
+    self.view.backgroundColor = [UIColor whiteColor];
+
+}
+
+- (void)viewDidLayoutSubviews {
+     self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
