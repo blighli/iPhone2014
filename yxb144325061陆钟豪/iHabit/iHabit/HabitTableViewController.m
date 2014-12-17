@@ -73,6 +73,7 @@
     
     _habitBiz = [HabitBiz getInstance];
     [self.tableView addSubview:tableHeader];
+    
 }
 
 

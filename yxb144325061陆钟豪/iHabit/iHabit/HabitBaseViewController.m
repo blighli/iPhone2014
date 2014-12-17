@@ -22,14 +22,25 @@
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, -20, 320, 100)];
-    [navigationBar pushNavigationItem:_viewController.navigationItem animated:NO];
+    navigationBar.translucent = NO;
     _navigationBar = navigationBar;
-    [self.view addSubview:navigationBar];
     [self addChildViewController:_viewController];
-    _viewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + 80, self.view.frame.size.width, self.view.frame.size.height - 80); // FIXME 60 is hard code
     [self.view addSubview:_viewController.view];
+    [self.view addSubview:navigationBar];
+    [navigationBar pushNavigationItem:_viewController.navigationItem animated:NO];
+    
+    // 添加nav阴影
+    navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    navigationBar.layer.shadowOffset = CGSizeMake(0, 0);
+    navigationBar.layer.shadowOpacity = 0.5;
+    navigationBar.layer.shadowRadius = 5;
+    
+
+    _viewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + 80 - 20, self.view.frame.size.width, self.view.frame.size.height + 80 - 20); // FIXME (80 - 20) is hard code
+    
 }
 
 - (void)didReceiveMemoryWarning {

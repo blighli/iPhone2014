@@ -11,6 +11,7 @@
 #import "HabitTableViewController.h"
 #import "AddHabitViewController.h"
 #import "HabitBaseViewController.h"
+#import "HabitMainViewController.h"
 
 
 @interface AppDelegate ()
@@ -27,7 +28,7 @@
     _window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
     _window.backgroundColor = UIColor.whiteColor;
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[HabitTableViewController createHabitViewController]];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HabitMainViewController alloc] init]];
     _window.rootViewController = navigationController;
     navigationController.navigationBar.hidden = YES;
     
