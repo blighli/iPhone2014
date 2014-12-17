@@ -8,12 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Habit.h"
-#import "HabitBaseViewController.h"
 
 @interface HabitTableViewController : UITableViewController <UIScrollViewDelegate>
-
-+(HabitBaseViewController*) createHabitViewController;
-@property (weak, nonatomic) HabitBaseViewController* habitBaseViewController;
 
 @end
 

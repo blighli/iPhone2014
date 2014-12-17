@@ -14,7 +14,6 @@
 #import "HabitBiz.h"
 #import "AddHabitViewController.h"
 #import <MagicalRecord/CoreData+MagicalRecord.h>
-#import "HabitBaseViewController.h"
 
 @interface HabitTableViewController ()
 
@@ -22,19 +21,6 @@
 
 @implementation HabitTableViewController{
     HabitBiz* _habitBiz;
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    if(self.tableView.contentOffset.y <= -150) {
-//        CATransition *animation = [CATransition animation];
-//        animation.delegate = self;
-//        animation.duration = 0.7;
-//        animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//        animation.type = @"cube";
-//        animation.subtype = kCATransitionFromBottom;
-//        [[self.navigationController.view layer] addAnimation:animation forKey:@"animation"];
-//        [self.navigationController pushViewController:[[AddHabitViewController alloc] initWithNibName:@"AddHabitViewController" bundle:nil] animated:NO];
-//    }
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -45,10 +31,10 @@
         animation.timingFunction = UIViewAnimationCurveEaseInOut;
         animation.type = @"cube";
         animation.subtype = kCATransitionFromBottom;
-        UINavigationController *navigationController = self.habitBaseViewController.navigationController; // 要从habitBaseViewController中找到navigationController
+        UINavigationController *navigationController = self.navigationController;
         [[navigationController.view layer] addAnimation:animation forKey:@"animation"];
-        HabitBaseViewController* hbvc = [AddHabitViewController createHabitViewController];
-        [navigationController pushViewController:hbvc animated:NO];
+        UIViewController* addHabitViewController = [[AddHabitViewController alloc] initWithNibName:@"AddHabitViewController" bundle:nil];
+        [navigationController pushViewController:addHabitViewController animated:NO];
     }
 }
 
@@ -109,10 +95,6 @@
 {
     // 设置单元格高度
     return 80;
-}
-
-+(HabitBaseViewController*) createHabitViewController {
-    return [[HabitBaseViewController alloc] initWithViewController:[[HabitTableViewController alloc] initWithStyle:UITableViewStylePlain]];
 }
 
 @end

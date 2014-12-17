@@ -27,17 +27,17 @@
     titleLable.font = [UIFont fontWithName:@"Raleway-MediumTracked" size:40];
     titleLable.text = @"iHabit";
     
-    [navigationBarView addSubview:titleLable];
-    
-    
     // 添加nav阴影
     navigationBarView.layer.shadowColor = [UIColor blackColor].CGColor;
     navigationBarView.layer.shadowOffset = CGSizeMake(0, 0);
     navigationBarView.layer.shadowOpacity = 0.5;
     navigationBarView.layer.shadowRadius = 5;
     
-    habitTableViewController.view.frame = CGRectMake(0, 80, 320, 568 - 80);
+    habitTableViewController.view.frame = CGRectMake(0, 80 - 20, 320, 568 - (80 - 20));
 
+    [self addChildViewController:habitTableViewController];
+    
+    [navigationBarView addSubview:titleLable];
     [self.view addSubview:habitTableViewController.view];
     [self.view addSubview:navigationBarView];
     

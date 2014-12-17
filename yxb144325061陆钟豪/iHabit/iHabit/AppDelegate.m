@@ -10,7 +10,6 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "HabitTableViewController.h"
 #import "AddHabitViewController.h"
-#import "HabitBaseViewController.h"
 #import "HabitMainViewController.h"
 
 

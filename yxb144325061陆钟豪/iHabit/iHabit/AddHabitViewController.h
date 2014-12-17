@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HabitBaseViewController.h"
 
 @interface AddHabitViewController : UIViewController
 
@@ -15,9 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *periodTimesPicker;
 
 - (IBAction)addHabit:(id)sender;
-
-+(HabitBaseViewController*) createHabitViewController;
-@property (weak, nonatomic) HabitBaseViewController* habitBaseViewController;
 
 @end
 

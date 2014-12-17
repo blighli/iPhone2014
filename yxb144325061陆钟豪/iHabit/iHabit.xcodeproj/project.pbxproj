@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		4BBC0F4413DC9B9C8D5D144C /* libPods-iHabit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4999720AA74C0E5AD0D5903C /* libPods-iHabit.a */; };
 		96A42CF94F461F5F5B9D86EC /* libPods-iHabitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5D40FCFC579DA59F6D2237 /* libPods-iHabitTests.a */; };
+		CDE29E691A417BFF00DEE2AB /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE29E681A417BFF00DEE2AB /* LineView.m */; };
+		CDE29E6C1A41B24100DEE2AB /* GridPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE29E6B1A41B24100DEE2AB /* GridPickerViewController.m */; };
 		EC2466E71A412F6A0046CB2C /* HabitMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2466E61A412F6A0046CB2C /* HabitMainViewController.m */; };
-		EC4643021A3F1F860098B380 /* HabitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4643011A3F1F860098B380 /* HabitBaseViewController.m */; };
 		EC4C42E61A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42E41A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld */; };
 		EC4C42E71A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42E41A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld */; };
 		EC4C42EA1A2EE35700A82D8D /* HistoryPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42E91A2EE35700A82D8D /* HistoryPeriod.m */; };
@@ -53,11 +54,13 @@
 		5780C07F6DD8995732F7D1FF /* Pods-iHabitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHabitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iHabitTests/Pods-iHabitTests.release.xcconfig"; sourceTree = "<group>"; };
 		60C7E73AA0F2F43CD917A9E6 /* Pods-iHabit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHabit.release.xcconfig"; path = "Pods/Target Support Files/Pods-iHabit/Pods-iHabit.release.xcconfig"; sourceTree = "<group>"; };
 		74883FFA65CCAA515622A0F1 /* Pods-iHabit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHabit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHabit/Pods-iHabit.debug.xcconfig"; sourceTree = "<group>"; };
+		CDE29E671A417BFF00DEE2AB /* LineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineView.h; sourceTree = "<group>"; };
+		CDE29E681A417BFF00DEE2AB /* LineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineView.m; sourceTree = "<group>"; };
+		CDE29E6A1A41B24100DEE2AB /* GridPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridPickerViewController.h; sourceTree = "<group>"; };
+		CDE29E6B1A41B24100DEE2AB /* GridPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridPickerViewController.m; sourceTree = "<group>"; };
 		D12863C1136CBB00C1307621 /* Pods-iHabitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHabitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHabitTests/Pods-iHabitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC2466E51A412F6A0046CB2C /* HabitMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HabitMainViewController.h; sourceTree = "<group>"; };
 		EC2466E61A412F6A0046CB2C /* HabitMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitMainViewController.m; sourceTree = "<group>"; };
-		EC4643001A3F1F860098B380 /* HabitBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HabitBaseViewController.h; sourceTree = "<group>"; };
-		EC4643011A3F1F860098B380 /* HabitBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitBaseViewController.m; sourceTree = "<group>"; };
 		EC4C42E51A2EDAEA00A82D8D /* iHabitDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHabitDB.xcdatamodel; sourceTree = "<group>"; };
 		EC4C42E81A2EE35700A82D8D /* HistoryPeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryPeriod.h; sourceTree = "<group>"; };
 		EC4C42E91A2EE35700A82D8D /* HistoryPeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryPeriod.m; sourceTree = "<group>"; };
@@ -239,6 +242,8 @@
 				EC73E7201A35C7AD00E6823E /* InnerShadowView.m */,
 				EC73E7221A35CA0900E6823E /* CellActionView.h */,
 				EC73E7231A35CA0900E6823E /* CellActionView.m */,
+				CDE29E671A417BFF00DEE2AB /* LineView.h */,
+				CDE29E681A417BFF00DEE2AB /* LineView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -253,10 +258,10 @@
 				EC73E7301A383B7400E6823E /* AddHabitViewController.h */,
 				EC73E7311A383B7400E6823E /* AddHabitViewController.m */,
 				EC73E7321A383B7400E6823E /* AddHabitViewController.xib */,
-				EC4643001A3F1F860098B380 /* HabitBaseViewController.h */,
-				EC4643011A3F1F860098B380 /* HabitBaseViewController.m */,
 				EC2466E51A412F6A0046CB2C /* HabitMainViewController.h */,
 				EC2466E61A412F6A0046CB2C /* HabitMainViewController.m */,
+				CDE29E6A1A41B24100DEE2AB /* GridPickerViewController.h */,
+				CDE29E6B1A41B24100DEE2AB /* GridPickerViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -456,14 +461,15 @@
 				EC4C43121A31A3D000A82D8D /* Habit.m in Sources */,
 				EC2466E71A412F6A0046CB2C /* HabitMainViewController.m in Sources */,
 				EC4C42FC1A2EFE0F00A82D8D /* HabitTableCellViewController.m in Sources */,
-				EC4643021A3F1F860098B380 /* HabitBaseViewController.m in Sources */,
 				EC4C42EA1A2EE35700A82D8D /* HistoryPeriod.m in Sources */,
 				EC55A2921A2C2D3E00488D4C /* AppDelegate.m in Sources */,
 				EC4C42F61A2EEE6200A82D8D /* HabitTableViewController.m in Sources */,
 				EC4C42EE1A2EE35800A82D8D /* HistoryAction.m in Sources */,
+				CDE29E691A417BFF00DEE2AB /* LineView.m in Sources */,
 				EC55A28F1A2C2D3E00488D4C /* main.m in Sources */,
 				EC73E7211A35C7AD00E6823E /* InnerShadowView.m in Sources */,
 				EC4C42F91A2EFB3E00A82D8D /* HabitTableViewCell.m in Sources */,
+				CDE29E6C1A41B24100DEE2AB /* GridPickerViewController.m in Sources */,
 				EC73E7241A35CA0900E6823E /* CellActionView.m in Sources */,
 				EC4C43021A2F254E00A82D8D /* TimeLineView.m in Sources */,
 			);

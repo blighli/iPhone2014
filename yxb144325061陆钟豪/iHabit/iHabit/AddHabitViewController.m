@@ -8,6 +8,8 @@
 
 #import "AddHabitViewController.h"
 #import "HabitBiz.h"
+#import "LineView.h"
+#import "GridPickerViewController.h"
 
 @interface AddHabitViewController ()
 
@@ -19,22 +21,71 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIView *navigationBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
+    navigationBarView.backgroundColor = UIColor.whiteColor;
+    
+    // 添加nav阴影
+    navigationBarView.layer.shadowColor = [UIColor blackColor].CGColor;
+    navigationBarView.layer.shadowOffset = CGSizeMake(0, 0);
+    navigationBarView.layer.shadowOpacity = 0.5;
+    navigationBarView.layer.shadowRadius = 5;
+    
+    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 300, 60)];
+    titleLable.font = [UIFont fontWithName:@"Raleway-MediumTracked" size:40];
+    titleLable.text = @"New Habit";
+    
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    backButton.frame = CGRectMake(240, 40, 60, 30);
+    backButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    backButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Tracked" size:16];
+    backButton.tintColor = UIColor.blackColor;
+    [backButton setTitle:@"Back" forState:UIControlStateNormal];
+    UIView *underLineView = [[LineView alloc] initWithFrame:CGRectMake(5, 25, 50, 2)];
+    [backButton addSubview:underLineView];
+    
+    // 绘制按钮背景
+    UIImage *selectedBackgroundImage;
+    UIGraphicsBeginImageContext(backButton.frame.size);
+    CGContextRef contextRef = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(contextRef, UIColor.grayColor.CGColor);
+    CGContextFillRect(contextRef, CGRectMake(0, 0, backButton.frame.size.width, backButton.frame.size.height));
+    selectedBackgroundImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    backButton.layer.masksToBounds = YES;
+    [backButton.layer setCornerRadius:10.0];
+    [backButton setBackgroundImage:selectedBackgroundImage forState:UIControlStateHighlighted];
+    
     _habitBiz = [HabitBiz getInstance];
     PeriodTimesPickerViewController *periodTimesPickerViewController = [[PeriodTimesPickerViewController alloc] init];
     periodTimesPickerViewController.view = _periodTimesPicker;
     [periodTimesPickerViewController viewDidLoad];
     _periodTimesPicker.dataSource = periodTimesPickerViewController;
     _periodTimesPicker.delegate = periodTimesPickerViewController;
-    [self addChildViewController:periodTimesPickerViewController];
     
-    self.navigationItem.hidesBackButton = YES;  //隐藏默认back按钮
-    UIBarButtonItem * transitionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(gotoMenu:)];
-    self.navigationItem.rightBarButtonItem = transitionButton;
-
+    // test grid picker
+    GridPickerViewController *gridPickerViewController = [[GridPickerViewController alloc] init];
+    gridPickerViewController.view.frame = CGRectMake(10, 100, 320, 80);
+    gridPickerViewController.view.backgroundColor = UIColor.blueColor;
+    for(NSInteger i = 1; i <= 6; ++i) {
+        UILabel *timesLable = [[UILabel alloc] init];
+        timesLable.text = [NSString stringWithFormat:@"%ld", i];
+        [gridPickerViewController addCellView:timesLable];
+    }
+    [gridPickerViewController layoutCellViews];
+    
+    [self addChildViewController:periodTimesPickerViewController];
+    [self addChildViewController:gridPickerViewController];
+    
+    [navigationBarView addSubview:titleLable];
+    [navigationBarView addSubview:backButton];
+    [self.view addSubview:navigationBarView];
+    [self.view addSubview:gridPickerViewController.view];
     
 }
 
--(IBAction)gotoMenu:(id)sender {
+-(IBAction)back:(id)sender {
     CATransition *animation = [CATransition animation];
     animation.delegate = self;
     animation.duration = 0.7;
@@ -55,11 +106,6 @@
                           iconName: @"start" period:[_periodTimesPicker selectedRowInComponent:0]
                             times: [NSNumber numberWithInteger:[_periodTimesPicker selectedRowInComponent:1] + 1]];
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-+(HabitBaseViewController*) createHabitViewController {
-    return [[HabitBaseViewController alloc] initWithViewController:[[AddHabitViewController alloc] initWithNibName:@"AddHabitViewController" bundle:nil]];
 }
 
 @end
