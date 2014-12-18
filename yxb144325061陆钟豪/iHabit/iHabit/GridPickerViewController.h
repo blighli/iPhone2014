@@ -17,5 +17,6 @@
 
 -(void)addCellView:(UIView *)view;
 -(void)layoutCellViews;
+-(void)selectCellView:(UIView*) cellView;
 
 @end

@@ -66,14 +66,18 @@
     
     // test grid picker
     GridPickerViewController *gridPickerViewController = [[GridPickerViewController alloc] init];
-    gridPickerViewController.view.frame = CGRectMake(10, 100, 320, 80);
-    gridPickerViewController.view.backgroundColor = UIColor.blueColor;
+    gridPickerViewController.view = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 320, 80)];
+    //gridPickerViewController.view.backgroundColor = UIColor.blueColor;
     for(NSInteger i = 1; i <= 6; ++i) {
-        UILabel *timesLable = [[UILabel alloc] init];
+        UILabel *timesLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         timesLable.text = [NSString stringWithFormat:@"%ld", i];
         [gridPickerViewController addCellView:timesLable];
     }
+    gridPickerViewController.numberOfCellInRow = 6;
+    gridPickerViewController.horizontalSpace = 10;
+    gridPickerViewController.verticalSpace = 10;
     [gridPickerViewController layoutCellViews];
+    gridPickerViewController selectCellView:<#(UIView *)#>
     
     [self addChildViewController:periodTimesPickerViewController];
     [self addChildViewController:gridPickerViewController];

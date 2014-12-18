@@ -53,4 +53,8 @@
     _selectedView.frame = cellView.frame;
 }
 
+-(void)selectCellViewWithIndex:(NSInteger)index{
+    [self selectCellView:[_cellViews objectAtIndex:index]];
+}
+
 @end
