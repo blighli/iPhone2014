@@ -13,10 +13,12 @@
 @property NSInteger numberOfCellInRow;
 @property CGFloat horizontalSpace;
 @property CGFloat verticalSpace;
-
+@property (readonly) UIView *selectedCellView;
+@property (readonly) NSInteger selectedCellViewIndex;
 
 -(void)addCellView:(UIView *)view;
 -(void)layoutCellViews;
 -(void)selectCellView:(UIView*) cellView;
+-(void)selectCellViewWithIndex:(NSInteger)index;
 
 @end

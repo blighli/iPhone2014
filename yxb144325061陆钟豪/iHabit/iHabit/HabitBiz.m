@@ -55,6 +55,7 @@
     _habitArray = [Habit MR_findAll];
     _habitArray = [HabitBiz sortHabit:_habitArray];     // 排序
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait]; //持久化
+    NSLog(@"new Habit:%@", newHabit);
     return newHabit;
 }
 

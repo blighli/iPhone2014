@@ -10,10 +10,11 @@
 
 @interface AddHabitViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *habitTitleTextField;
-@property (weak, nonatomic) IBOutlet UIPickerView *periodTimesPicker;
-
 - (IBAction)addHabit:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *habitTextField;
+@property (weak, nonatomic) IBOutlet UIView *timesPicker;
+@property (weak, nonatomic) IBOutlet UIView *periodPicker;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 

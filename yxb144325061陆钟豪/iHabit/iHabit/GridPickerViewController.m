@@ -12,6 +12,7 @@
 {
     NSMutableArray* _cellViews;
     UIView *_selectedView;
+    UIView *_selectedCellView;
 }
 
 -(void)viewDidLoad {
@@ -49,12 +50,22 @@
 }
 
 -(void)selectCellView:(UIView*) cellView{
-    // TODO 加动画
-    _selectedView.frame = cellView.frame;
+    [UIView animateWithDuration:0.2f animations:^{
+        _selectedView.frame = cellView.frame;
+    }];
+    _selectedCellView = cellView;
 }
 
--(void)selectCellViewWithIndex:(NSInteger)index{
+-(void)selectCellViewWithIndex:(NSInteger)index {
     [self selectCellView:[_cellViews objectAtIndex:index]];
+}
+
+-(UIView *)selectedCellView {
+    return _selectedCellView;
+}
+
+-(NSInteger)selectedCellViewIndex {
+    return [_cellViews indexOfObject:_selectedCellView];
 }
 
 @end

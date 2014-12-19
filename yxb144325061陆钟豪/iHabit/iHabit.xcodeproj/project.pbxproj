@@ -11,6 +11,8 @@
 		96A42CF94F461F5F5B9D86EC /* libPods-iHabitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5D40FCFC579DA59F6D2237 /* libPods-iHabitTests.a */; };
 		CDE29E691A417BFF00DEE2AB /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE29E681A417BFF00DEE2AB /* LineView.m */; };
 		CDE29E6C1A41B24100DEE2AB /* GridPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE29E6B1A41B24100DEE2AB /* GridPickerViewController.m */; };
+		EC22BC9F1A43F92C00515CA9 /* TimesPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC22BC9E1A43F92C00515CA9 /* TimesPickerController.m */; };
+		EC22BCA21A43FE6D00515CA9 /* PeriodPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC22BCA11A43FE6D00515CA9 /* PeriodPickerController.m */; };
 		EC2466E71A412F6A0046CB2C /* HabitMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2466E61A412F6A0046CB2C /* HabitMainViewController.m */; };
 		EC4C42E61A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42E41A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld */; };
 		EC4C42E71A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42E41A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld */; };
@@ -59,6 +61,10 @@
 		CDE29E6A1A41B24100DEE2AB /* GridPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridPickerViewController.h; sourceTree = "<group>"; };
 		CDE29E6B1A41B24100DEE2AB /* GridPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridPickerViewController.m; sourceTree = "<group>"; };
 		D12863C1136CBB00C1307621 /* Pods-iHabitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHabitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHabitTests/Pods-iHabitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC22BC9D1A43F92C00515CA9 /* TimesPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimesPickerController.h; sourceTree = "<group>"; };
+		EC22BC9E1A43F92C00515CA9 /* TimesPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimesPickerController.m; sourceTree = "<group>"; };
+		EC22BCA01A43FE6D00515CA9 /* PeriodPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodPickerController.h; sourceTree = "<group>"; };
+		EC22BCA11A43FE6D00515CA9 /* PeriodPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodPickerController.m; sourceTree = "<group>"; };
 		EC2466E51A412F6A0046CB2C /* HabitMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HabitMainViewController.h; sourceTree = "<group>"; };
 		EC2466E61A412F6A0046CB2C /* HabitMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitMainViewController.m; sourceTree = "<group>"; };
 		EC4C42E51A2EDAEA00A82D8D /* iHabitDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHabitDB.xcdatamodel; sourceTree = "<group>"; };
@@ -262,6 +268,10 @@
 				EC2466E61A412F6A0046CB2C /* HabitMainViewController.m */,
 				CDE29E6A1A41B24100DEE2AB /* GridPickerViewController.h */,
 				CDE29E6B1A41B24100DEE2AB /* GridPickerViewController.m */,
+				EC22BC9D1A43F92C00515CA9 /* TimesPickerController.h */,
+				EC22BC9E1A43F92C00515CA9 /* TimesPickerController.m */,
+				EC22BCA01A43FE6D00515CA9 /* PeriodPickerController.h */,
+				EC22BCA11A43FE6D00515CA9 /* PeriodPickerController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -459,6 +469,7 @@
 				EC73E7271A35D15100E6823E /* HabitBiz.m in Sources */,
 				EC73E7331A383B7400E6823E /* AddHabitViewController.m in Sources */,
 				EC4C43121A31A3D000A82D8D /* Habit.m in Sources */,
+				EC22BC9F1A43F92C00515CA9 /* TimesPickerController.m in Sources */,
 				EC2466E71A412F6A0046CB2C /* HabitMainViewController.m in Sources */,
 				EC4C42FC1A2EFE0F00A82D8D /* HabitTableCellViewController.m in Sources */,
 				EC4C42EA1A2EE35700A82D8D /* HistoryPeriod.m in Sources */,
@@ -469,6 +480,7 @@
 				EC55A28F1A2C2D3E00488D4C /* main.m in Sources */,
 				EC73E7211A35C7AD00E6823E /* InnerShadowView.m in Sources */,
 				EC4C42F91A2EFB3E00A82D8D /* HabitTableViewCell.m in Sources */,
+				EC22BCA21A43FE6D00515CA9 /* PeriodPickerController.m in Sources */,
 				CDE29E6C1A41B24100DEE2AB /* GridPickerViewController.m in Sources */,
 				EC73E7241A35CA0900E6823E /* CellActionView.m in Sources */,
 				EC4C43021A2F254E00A82D8D /* TimeLineView.m in Sources */,

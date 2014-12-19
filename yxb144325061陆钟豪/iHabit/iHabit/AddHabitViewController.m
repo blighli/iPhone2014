@@ -9,7 +9,8 @@
 #import "AddHabitViewController.h"
 #import "HabitBiz.h"
 #import "LineView.h"
-#import "GridPickerViewController.h"
+#import "TimesPickerController.h"
+#import "PeriodPickerController.h"
 
 @interface AddHabitViewController ()
 
@@ -17,10 +18,15 @@
 
 @implementation AddHabitViewController {
     HabitBiz* _habitBiz;
+    TimesPickerController *_timesPickerController;
+    PeriodPickerController *_periodPickerController;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //这个标准默认为YES，如果设置为NO，这消息一旦传递给subView，这scroll事件不会再发生。
+    self.scrollView.canCancelContentTouches = NO;
     
     UIView *navigationBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
     navigationBarView.backgroundColor = UIColor.whiteColor;
@@ -58,35 +64,21 @@
     [backButton setBackgroundImage:selectedBackgroundImage forState:UIControlStateHighlighted];
     
     _habitBiz = [HabitBiz getInstance];
-    PeriodTimesPickerViewController *periodTimesPickerViewController = [[PeriodTimesPickerViewController alloc] init];
-    periodTimesPickerViewController.view = _periodTimesPicker;
-    [periodTimesPickerViewController viewDidLoad];
-    _periodTimesPicker.dataSource = periodTimesPickerViewController;
-    _periodTimesPicker.delegate = periodTimesPickerViewController;
     
-    // test grid picker
-    GridPickerViewController *gridPickerViewController = [[GridPickerViewController alloc] init];
-    gridPickerViewController.view = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 320, 80)];
-    //gridPickerViewController.view.backgroundColor = UIColor.blueColor;
-    for(NSInteger i = 1; i <= 6; ++i) {
-        UILabel *timesLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        timesLable.text = [NSString stringWithFormat:@"%ld", i];
-        [gridPickerViewController addCellView:timesLable];
-    }
-    gridPickerViewController.numberOfCellInRow = 6;
-    gridPickerViewController.horizontalSpace = 10;
-    gridPickerViewController.verticalSpace = 10;
-    [gridPickerViewController layoutCellViews];
-    gridPickerViewController selectCellView:<#(UIView *)#>
+    _timesPickerController = [[TimesPickerController alloc] init];
+    _timesPickerController.view = self.timesPicker;
+    [_timesPickerController viewDidLoad];
     
-    [self addChildViewController:periodTimesPickerViewController];
-    [self addChildViewController:gridPickerViewController];
+    _periodPickerController = [[PeriodPickerController alloc] init];
+    _periodPickerController.view = self.periodPicker;
+    [_periodPickerController viewDidLoad];
+    
+    [self addChildViewController:_timesPickerController];
+    [self addChildViewController:_periodPickerController];
     
     [navigationBarView addSubview:titleLable];
     [navigationBarView addSubview:backButton];
     [self.view addSubview:navigationBarView];
-    [self.view addSubview:gridPickerViewController.view];
-    
 }
 
 -(IBAction)back:(id)sender {
@@ -106,60 +98,10 @@
 }
 
 - (IBAction)addHabit:(id)sender {
-    [_habitBiz saveHabitWithTitle: self.habitTitleTextField.text
-                          iconName: @"start" period:[_periodTimesPicker selectedRowInComponent:0]
-                            times: [NSNumber numberWithInteger:[_periodTimesPicker selectedRowInComponent:1] + 1]];
+    [_habitBiz saveHabitWithTitle: self.habitTextField.text
+                          iconName: @"star" period:[_periodPickerController selectedPeriod]
+                            times: [NSNumber numberWithInteger:[_timesPickerController selectedTimes]]];
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-@end
-
-
-
-
-@implementation PeriodTimesPickerViewController
-{
-    NSArray *_periodTitleArray;
-    NSArray *_timesTitleArray;
-}
-
--(void)viewDidLoad {
-    _periodTitleArray = [NSArray arrayWithObjects:@"Day", @"Week", @"Month", @"Year", nil];
-    _timesTitleArray = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", @"7",nil];
-}
-
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 2;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    switch (component) {
-        case 0:
-            return [_periodTitleArray count];
-        case 1:
-            return [_timesTitleArray count];
-        default:
-            return 0;
-    }
-}
-
--(NSString *)pickerView:(UIPickerView *)pickerView
-            titleForRow:(NSInteger)row
-           forComponent:(NSInteger)component {
-    switch (component) {
-        case 0:
-            return [_periodTitleArray objectAtIndex:row];
-        case 1:
-            return [_timesTitleArray objectAtIndex:row];
-        default:
-            return @"";
-    }
-}
-
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    
-}
-
 
 @end

@@ -3,11 +3,23 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Raleway_Medium_Tracked.ttf">
+            <string>Raleway-MediumTracked</string>
+        </mutableArray>
+        <mutableArray key="Raleway_Regular_Tracked.ttf">
+            <string>Raleway-Tracked</string>
+            <string>Raleway-Tracked</string>
+            <string>Raleway-Tracked</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddHabitViewController">
             <connections>
-                <outlet property="habitTitleTextField" destination="CiV-m3-U6l" id="cmn-ns-D4h"/>
-                <outlet property="periodTimesPicker" destination="7KE-I4-XfX" id="Vp3-iZ-5BK"/>
+                <outlet property="habitTextField" destination="AFQ-R9-0Ca" id="hmD-7e-vnY"/>
+                <outlet property="periodPicker" destination="S4y-UR-uf7" id="Gki-Ar-h6M"/>
+                <outlet property="scrollView" destination="pVI-7d-wc5" id="xFp-NI-CKq"/>
+                <outlet property="timesPicker" destination="xvr-tc-ft3" id="hOb-6U-34y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,44 +28,94 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-m3-U6l">
-                    <rect key="frame" x="0.0" y="120" width="600" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7KE-I4-XfX">
-                    <rect key="frame" x="0.0" y="191" width="600" height="162"/>
-                </pickerView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I should try to do this (?) time a (?) " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kf-Fe-D75">
-                    <rect key="frame" x="0.0" y="160" width="600" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGp-vC-dff">
-                    <rect key="frame" x="0.0" y="363" width="600" height="30"/>
-                    <state key="normal" title="Add">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="addHabit:" destination="-1" eventType="touchUpInside" id="7BK-Za-Cg5"/>
-                    </connections>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUG-fi-mCk" userLabel="scroll content another view">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVI-7d-wc5">
+                    <rect key="frame" x="0.0" y="80" width="600" height="500"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axT-sn-nkz" userLabel="content view">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of habit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AFQ-R9-0Ca">
+                                    <rect key="frame" x="15" y="22" width="570" height="30"/>
+                                    <fontDescription key="fontDescription" name="Raleway-MediumTracked" family="Raleway" pointSize="25"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I should try to do this" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gg4-49-rNg">
+                                    <rect key="frame" x="214" y="102" width="173" height="20"/>
+                                    <fontDescription key="fontDescription" name="Raleway-Tracked" family="Raleway" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4y-UR-uf7">
+                                    <rect key="frame" x="20" y="137" width="560" height="40"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="pgT-W1-5e7"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time a" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6do-VI-pgs">
+                                    <rect key="frame" x="275" y="187" width="51" height="20"/>
+                                    <fontDescription key="fontDescription" name="Raleway-Tracked" family="Raleway" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvr-tc-ft3">
+                                    <rect key="frame" x="15" y="217" width="570" height="40"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="v14-oy-Ybp"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The icon I would like is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPJ-pL-Flk">
+                                    <rect key="frame" x="207" y="305" width="187" height="20"/>
+                                    <fontDescription key="fontDescription" name="Raleway-Tracked" family="Raleway" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="xvr-tc-ft3" firstAttribute="leading" secondItem="axT-sn-nkz" secondAttribute="leading" constant="15" id="1K8-jp-2Xg"/>
+                                <constraint firstItem="AFQ-R9-0Ca" firstAttribute="top" secondItem="axT-sn-nkz" secondAttribute="top" constant="22" id="6Lg-qy-yTh"/>
+                                <constraint firstAttribute="trailing" secondItem="S4y-UR-uf7" secondAttribute="trailing" constant="20" id="BQu-BW-XNC"/>
+                                <constraint firstItem="gg4-49-rNg" firstAttribute="top" secondItem="AFQ-R9-0Ca" secondAttribute="bottom" constant="50" id="DMf-iB-Ofi"/>
+                                <constraint firstItem="AFQ-R9-0Ca" firstAttribute="leading" secondItem="axT-sn-nkz" secondAttribute="leading" constant="15" id="FVw-UY-yP1"/>
+                                <constraint firstItem="S4y-UR-uf7" firstAttribute="top" secondItem="gg4-49-rNg" secondAttribute="bottom" constant="15" id="IUV-hW-Iqi"/>
+                                <constraint firstItem="S4y-UR-uf7" firstAttribute="leading" secondItem="axT-sn-nkz" secondAttribute="leading" constant="20" id="LTR-gD-Yyk"/>
+                                <constraint firstAttribute="centerX" secondItem="6do-VI-pgs" secondAttribute="centerX" id="TEB-uj-Q1l"/>
+                                <constraint firstItem="6do-VI-pgs" firstAttribute="top" secondItem="S4y-UR-uf7" secondAttribute="bottom" constant="10" id="ZPI-9S-egw"/>
+                                <constraint firstItem="xvr-tc-ft3" firstAttribute="top" secondItem="6do-VI-pgs" secondAttribute="bottom" constant="10" id="fAo-80-JaL"/>
+                                <constraint firstAttribute="trailing" secondItem="xvr-tc-ft3" secondAttribute="trailing" constant="15" id="nUk-D6-8Of"/>
+                                <constraint firstItem="pPJ-pL-Flk" firstAttribute="top" secondItem="xvr-tc-ft3" secondAttribute="bottom" constant="48" id="pZQ-yf-b1a"/>
+                                <constraint firstAttribute="centerX" secondItem="gg4-49-rNg" secondAttribute="centerX" id="tWZ-aS-bbl"/>
+                                <constraint firstAttribute="centerX" secondItem="pPJ-pL-Flk" secondAttribute="centerX" id="xz9-cj-EF0"/>
+                                <constraint firstAttribute="trailing" secondItem="AFQ-R9-0Ca" secondAttribute="trailing" constant="15" id="yBu-Vz-wpU"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="axT-sn-nkz" firstAttribute="leading" secondItem="pVI-7d-wc5" secondAttribute="leading" id="EKd-PI-3zm"/>
+                        <constraint firstAttribute="trailing" secondItem="axT-sn-nkz" secondAttribute="trailing" id="PQi-bh-cn9"/>
+                        <constraint firstAttribute="bottom" secondItem="axT-sn-nkz" secondAttribute="bottom" id="gEC-dM-OUj"/>
+                        <constraint firstItem="axT-sn-nkz" firstAttribute="top" secondItem="pVI-7d-wc5" secondAttribute="top" id="oHv-5O-aVL"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="7kf-Fe-D75" firstAttribute="top" secondItem="CiV-m3-U6l" secondAttribute="bottom" constant="10" id="2g3-nI-jdk"/>
-                <constraint firstItem="CiV-m3-U6l" firstAttribute="leading" secondItem="XGp-vC-dff" secondAttribute="leading" id="82n-Ja-bQH"/>
-                <constraint firstItem="CiV-m3-U6l" firstAttribute="trailing" secondItem="7KE-I4-XfX" secondAttribute="trailing" id="8ag-Im-IFO"/>
-                <constraint firstItem="CiV-m3-U6l" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LMs-EZ-0i1"/>
-                <constraint firstItem="7KE-I4-XfX" firstAttribute="top" secondItem="7kf-Fe-D75" secondAttribute="bottom" constant="10" id="OyI-y3-UI1"/>
-                <constraint firstItem="CiV-m3-U6l" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="W7e-ku-ke1"/>
-                <constraint firstItem="CiV-m3-U6l" firstAttribute="trailing" secondItem="XGp-vC-dff" secondAttribute="trailing" id="dDh-Bf-Nvt"/>
-                <constraint firstItem="CiV-m3-U6l" firstAttribute="leading" secondItem="7kf-Fe-D75" secondAttribute="leading" id="e7m-vp-UZo"/>
-                <constraint firstItem="CiV-m3-U6l" firstAttribute="leading" secondItem="7KE-I4-XfX" secondAttribute="leading" id="jvT-XD-SHV"/>
-                <constraint firstItem="CiV-m3-U6l" firstAttribute="trailing" secondItem="7kf-Fe-D75" secondAttribute="trailing" id="nRR-PF-D3N"/>
-                <constraint firstItem="XGp-vC-dff" firstAttribute="top" secondItem="7KE-I4-XfX" secondAttribute="bottom" constant="10" id="xfu-nR-kLc"/>
-                <constraint firstAttribute="trailing" secondItem="CiV-m3-U6l" secondAttribute="trailing" id="yDi-AW-ZI9"/>
+                <constraint firstItem="ZUG-fi-mCk" firstAttribute="height" secondItem="axT-sn-nkz" secondAttribute="height" id="7sx-z6-fFb"/>
+                <constraint firstItem="pVI-7d-wc5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="935-jn-PhH"/>
+                <constraint firstAttribute="trailing" secondItem="pVI-7d-wc5" secondAttribute="trailing" id="F7e-dl-raF"/>
+                <constraint firstItem="ZUG-fi-mCk" firstAttribute="width" secondItem="axT-sn-nkz" secondAttribute="width" id="FPt-Fw-dGZ"/>
+                <constraint firstItem="pVI-7d-wc5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="LY2-Nm-6gG"/>
+                <constraint firstItem="ZUG-fi-mCk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ThU-Ul-Cmj"/>
+                <constraint firstAttribute="trailing" secondItem="ZUG-fi-mCk" secondAttribute="trailing" id="b8x-Go-ana"/>
+                <constraint firstAttribute="bottom" secondItem="ZUG-fi-mCk" secondAttribute="bottom" id="ciO-za-r4b"/>
+                <constraint firstAttribute="bottom" secondItem="pVI-7d-wc5" secondAttribute="bottom" constant="20" id="i2o-jM-7pB"/>
+                <constraint firstItem="ZUG-fi-mCk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="olu-Ha-XjY"/>
             </constraints>
         </view>
     </objects>

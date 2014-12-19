@@ -35,13 +35,25 @@
     static NSDictionary* iconColorDict = nil;
     if(iconColorDict == nil) {
         iconColorDict = @{
-                          @"start" : UIColor.yellowColor
+                          @"star" : UIColor.yellowColor
                           
                           };
     }
     return iconColorDict;
 }
 
-
+-(NSString *)description {
+    return [NSString stringWithFormat:@"title:%@,iconName:%@,period:%@,times:%@,createTime:%@,doTime:%@,skipTime:%@,nextDoTime:%@,nextPeriodBeginTime:%@,surplusTimes:%@",
+            self.title,
+            self.iconName,
+            self.period,
+            self.times,
+            self.createTime,
+            self.doTime,
+            self.skipTime,
+            self.nextDoTime,
+            self.nextPeriodBeginTime,
+            self.surplusTimes];
+}
 
 @end
