@@ -42,7 +42,7 @@
     titleLable.text = @"New Habit";
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside]; // 绑定事件
     backButton.frame = CGRectMake(240, 40, 60, 30);
     backButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     backButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Tracked" size:16];
@@ -79,6 +79,35 @@
     [navigationBarView addSubview:titleLable];
     [navigationBarView addSubview:backButton];
     [self.view addSubview:navigationBarView];
+    
+    _backButton = backButton;
+}
+
+-(IBAction) habitTextFieldValueChanged:(id)sender {
+    UITextField *habitTextField = (UITextField *)sender;
+    if([@"" isEqualToString:habitTextField.text]){
+        [_backButton setTitle:@"Back" forState:UIControlStateNormal];
+        [_backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+        [_backButton removeTarget:self action:@selector(addHabit:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else {
+        [_backButton setTitle:@"Add" forState:UIControlStateNormal];
+        [_backButton removeTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+        [_backButton addTarget:self action:@selector(addHabit:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)addHabit:(id)sender {
+    [_habitBiz saveHabitWithTitle: self.habitTextField.text
+                          iconName: @"star" period:[_periodPickerController selectedPeriod]
+                            times: [NSNumber numberWithInteger:[_timesPickerController selectedTimes]]];
+    [self back:sender];
 }
 
 -(IBAction)back:(id)sender {
@@ -90,18 +119,6 @@
     animation.subtype = kCATransitionFromTop;
     [[self.navigationController.view layer] addAnimation:animation forKey:@"animation"];
     [self.navigationController popViewControllerAnimated:NO];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)addHabit:(id)sender {
-    [_habitBiz saveHabitWithTitle: self.habitTextField.text
-                          iconName: @"star" period:[_periodPickerController selectedPeriod]
-                            times: [NSNumber numberWithInteger:[_timesPickerController selectedTimes]]];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
