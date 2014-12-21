@@ -31,9 +31,6 @@
     _titleArray = [NSMutableArray array];
     _dataDict = [NSMutableDictionary dictionary];
     _dict = @{NSDocumentTypeDocumentAttribute:NSRTFDTextDocumentType};
-
-    
-    
     
 }
 
@@ -47,7 +44,6 @@
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(_database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
         while (sqlite3_step(statement) == SQLITE_ROW) {
-//            int row = sqlite3_column_int(statement, 0);
             char *titleData = (char *)sqlite3_column_text(statement, 1);
             int bytes = sqlite3_column_bytes(statement, 2);
             const void *rowData = (char *)sqlite3_column_blob(statement, 2);

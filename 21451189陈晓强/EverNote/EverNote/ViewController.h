@@ -13,6 +13,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (strong ,nonatomic) NSString *myTitle;
 @property (strong, nonatomic) NSAttributedString *myAttributedString;
-- (IBAction)backgroundTap:(id)sender;
 @end
 

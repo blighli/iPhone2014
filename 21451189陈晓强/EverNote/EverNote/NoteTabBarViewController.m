@@ -95,7 +95,6 @@
     // 创建一个bitmap的context
     // 并把它设置成为当前正在使用的context
     UIGraphicsBeginImageContext(size);
-    
     // 绘制改变大小的图片
     [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
     

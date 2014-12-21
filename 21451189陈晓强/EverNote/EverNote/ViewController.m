@@ -10,7 +10,7 @@
 #import "IQKeyboardManager.h"
 #import "MySqlite.h"
 #import <sqlite3.h>
-#import <MobileCoreServices/MobileCoreServices.h>s
+#import <MobileCoreServices/MobileCoreServices.h>
 @interface ViewController ()
 
 @property (strong, nonatomic) NSAttributedString *textAttributedString;
@@ -44,7 +44,6 @@
 {
     NSError *error;
     NSData *data = [_textAttributedString dataFromRange:NSMakeRange(0, [_textAttributedString length]) documentAttributes:_noteDict error:&error];
-    NSString *string =  _textAttributedString.string;
     return data;
 }
 
@@ -147,10 +146,9 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *image = [self OriginImage:info[UIImagePickerControllerEditedImage] scaleToSize:CGSizeMake(30, 20)];
+    UIImage *image = [self OriginImage:info[UIImagePickerControllerEditedImage] scaleToSize:CGSizeMake(200, 200)];
 //    UIImage *image = info[UIImagePickerControllerEditedImage];
-    if(!image) image = [self OriginImage:info[UIImagePickerControllerEditedImage] scaleToSize:CGSizeMake(30, 20)];
-    NSURL* url = [info objectForKey:UIImagePickerControllerMediaURL];
+    if(!image) image = [self OriginImage:info[UIImagePickerControllerEditedImage] scaleToSize:CGSizeMake(200, 200)];
     _attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:_textView.attributedText];
     NSTextAttachment *textAttachment = [[NSTextAttachment alloc] initWithData:nil ofType:nil];
     textAttachment.image = image;

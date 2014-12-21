@@ -150,7 +150,9 @@
         NSData *pictureData = [_dataDict valueForKey:cell.textLabel.text];
         NSLog(@"mmwitdh=%f mmheight%f",[UIImage imageWithData:pictureData].size.width,[UIImage imageWithData:pictureData].size.height);
         myDrawViewController.myTitle = cell.textLabel.text;
-        myDrawViewController.image = [self OriginImage:[UIImage imageWithData:pictureData] scaleToSize:CGSizeMake(320, 568)];
+        CGRect rx = [ UIScreen mainScreen ].bounds;
+        myDrawViewController.image = [self OriginImage:[UIImage imageWithData:pictureData] scaleToSize:rx.size];
+        
         
     }
 }
