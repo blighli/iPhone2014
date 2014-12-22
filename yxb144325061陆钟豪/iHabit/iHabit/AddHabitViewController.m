@@ -11,6 +11,7 @@
 #import "LineView.h"
 #import "TimesPickerController.h"
 #import "PeriodPickerController.h"
+#import "IconPickerController.h"
 
 @interface AddHabitViewController ()
 
@@ -20,6 +21,7 @@
     HabitBiz* _habitBiz;
     TimesPickerController *_timesPickerController;
     PeriodPickerController *_periodPickerController;
+    IconPickerController *_iconPickerController;
 }
 
 - (void)viewDidLoad {
@@ -73,6 +75,10 @@
     _periodPickerController.view = self.periodPicker;
     [_periodPickerController viewDidLoad];
     
+    _iconPickerController = [[IconPickerController alloc] init];
+    _iconPickerController.view = self.iconPicker;
+    [_iconPickerController viewDidLoad];
+    
     [self addChildViewController:_timesPickerController];
     [self addChildViewController:_periodPickerController];
     
@@ -105,7 +111,7 @@
 
 - (IBAction)addHabit:(id)sender {
     [_habitBiz saveHabitWithTitle: self.habitTextField.text
-                          iconName: @"star" period:[_periodPickerController selectedPeriod]
+                          iconName: [_iconPickerController selectedIconName] period:[_periodPickerController selectedPeriod]
                             times: [NSNumber numberWithInteger:[_timesPickerController selectedTimes]]];
     [self back:sender];
 }

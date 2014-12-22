@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddHabitViewController">
             <connections>
                 <outlet property="habitTextField" destination="AFQ-R9-0Ca" id="hmD-7e-vnY"/>
+                <outlet property="iconPicker" destination="sV9-af-oql" id="aXw-ZS-z6s"/>
                 <outlet property="periodPicker" destination="S4y-UR-uf7" id="Gki-Ar-h6M"/>
                 <outlet property="scrollView" destination="pVI-7d-wc5" id="xFp-NI-CKq"/>
                 <outlet property="timesPicker" destination="xvr-tc-ft3" id="hOb-6U-34y"/>
@@ -78,12 +79,21 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sV9-af-oql">
+                                    <rect key="frame" x="20" y="340" width="560" height="300"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="300" id="vZz-iE-Eff"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="xvr-tc-ft3" firstAttribute="leading" secondItem="axT-sn-nkz" secondAttribute="leading" constant="15" id="1K8-jp-2Xg"/>
+                                <constraint firstItem="sV9-af-oql" firstAttribute="leading" secondItem="axT-sn-nkz" secondAttribute="leading" constant="20" id="5zA-Mq-VxY"/>
                                 <constraint firstItem="AFQ-R9-0Ca" firstAttribute="top" secondItem="axT-sn-nkz" secondAttribute="top" constant="22" id="6Lg-qy-yTh"/>
                                 <constraint firstAttribute="trailing" secondItem="S4y-UR-uf7" secondAttribute="trailing" constant="20" id="BQu-BW-XNC"/>
+                                <constraint firstAttribute="trailing" secondItem="sV9-af-oql" secondAttribute="trailing" constant="20" id="BzC-DU-9SZ"/>
                                 <constraint firstItem="gg4-49-rNg" firstAttribute="top" secondItem="AFQ-R9-0Ca" secondAttribute="bottom" constant="50" id="DMf-iB-Ofi"/>
                                 <constraint firstItem="AFQ-R9-0Ca" firstAttribute="leading" secondItem="axT-sn-nkz" secondAttribute="leading" constant="15" id="FVw-UY-yP1"/>
                                 <constraint firstItem="S4y-UR-uf7" firstAttribute="top" secondItem="gg4-49-rNg" secondAttribute="bottom" constant="15" id="IUV-hW-Iqi"/>
@@ -94,6 +104,7 @@
                                 <constraint firstAttribute="trailing" secondItem="xvr-tc-ft3" secondAttribute="trailing" constant="15" id="nUk-D6-8Of"/>
                                 <constraint firstItem="pPJ-pL-Flk" firstAttribute="top" secondItem="xvr-tc-ft3" secondAttribute="bottom" constant="48" id="pZQ-yf-b1a"/>
                                 <constraint firstAttribute="centerX" secondItem="gg4-49-rNg" secondAttribute="centerX" id="tWZ-aS-bbl"/>
+                                <constraint firstItem="sV9-af-oql" firstAttribute="top" secondItem="pPJ-pL-Flk" secondAttribute="bottom" constant="15" id="xLX-mN-DNs"/>
                                 <constraint firstAttribute="centerX" secondItem="pPJ-pL-Flk" secondAttribute="centerX" id="xz9-cj-EF0"/>
                                 <constraint firstAttribute="trailing" secondItem="AFQ-R9-0Ca" secondAttribute="trailing" constant="15" id="yBu-Vz-wpU"/>
                             </constraints>

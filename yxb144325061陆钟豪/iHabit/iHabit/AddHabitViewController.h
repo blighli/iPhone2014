@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIView *periodPicker;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIView *iconPicker;
 
 @end
 

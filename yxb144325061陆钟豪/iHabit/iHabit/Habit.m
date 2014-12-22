@@ -35,6 +35,10 @@
     static NSDictionary* iconColorDict = nil;
     if(iconColorDict == nil) {
         iconColorDict = @{
+                          @"airplane" : UIColor.blueColor,
+                          @"alarm" : UIColor.blueColor,
+                          @"apple" : UIColor.redColor,
+                          @"archive" : UIColor.redColor,
                           @"star" : UIColor.yellowColor
                           
                           };

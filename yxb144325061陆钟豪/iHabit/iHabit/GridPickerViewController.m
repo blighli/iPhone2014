@@ -7,6 +7,7 @@
 //
 
 #import "GridPickerViewController.h"
+#import <objc/runtime.h>
 
 @implementation GridPickerViewController
 {
@@ -37,7 +38,8 @@
     for(UIView* view in _cellViews) {
         NSInteger numInRow = i % self.numberOfCellInRow;
         NSInteger row = i / self.numberOfCellInRow;
-        if(row > 1 && numInRow == 0) preRowFirstView = preView;
+        if(row >= 1 && numInRow == 0)
+            preRowFirstView = preView;
         CGFloat preCellRightX = numInRow == 0 ? 0 : preView.frame.origin.x + preView.frame.size.width;
         CGFloat preRowBottomY = row == 0 ? 0 : preRowFirstView.frame.origin.y + preRowFirstView.frame.size.height;
         CGRect frame = view.frame;
@@ -50,8 +52,15 @@
 }
 
 -(void)selectCellView:(UIView*) cellView{
+    UIView *selectedView = objc_getAssociatedObject(self, "selectedViewFrame");
     [UIView animateWithDuration:0.2f animations:^{
-        _selectedView.frame = cellView.frame;
+        if(selectedView == nil){
+            _selectedView.frame = cellView.frame;
+        }
+        else {
+            _selectedView.frame = [cellView convertRect:selectedView.frame toView:self.view];
+            NSLog(@"_selectedView.frame %f,%f,%f,%f", _selectedView.frame.origin.x, _selectedView.frame.origin.y, _selectedView.frame.size.width, _selectedView.frame.size.height);
+        }
     }];
     _selectedCellView = cellView;
 }
