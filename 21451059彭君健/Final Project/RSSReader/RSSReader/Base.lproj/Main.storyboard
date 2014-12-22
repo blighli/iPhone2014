@@ -24,6 +24,8 @@
                                             <action selector="add:" destination="9pv-A4-QxB" id="3ci-kA-SRd"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="9Tt-o8-nyN"/>
+                                    <barButtonItem enabled="NO" title="下拉刷新" id="FsI-dn-Ign"/>
                                     <barButtonItem systemItem="flexibleSpace" id="IZc-EG-RAd"/>
                                     <barButtonItem title="编辑" id="Ekq-xb-Puz">
                                         <connections>
@@ -83,7 +85,6 @@
                                     </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="dNV-rP-y2G"/>
                                 </items>
-                                <color key="barTintColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GV0-1s-3Dm">
                                 <rect key="frame" x="0.0" y="108" width="600" height="448"/>
@@ -92,13 +93,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="G6O-uH-ugV" firstAttribute="leading" secondItem="GV0-1s-3Dm" secondAttribute="leading" id="DsA-8x-fAE"/>
-                            <constraint firstItem="GV0-1s-3Dm" firstAttribute="bottom" secondItem="MIf-ZQ-g5Y" secondAttribute="top" id="JgH-Up-nFn"/>
-                            <constraint firstAttribute="trailing" secondItem="G6O-uH-ugV" secondAttribute="trailing" id="Nnl-6b-9oR"/>
-                            <constraint firstItem="G6O-uH-ugV" firstAttribute="top" secondItem="fSa-AO-dlg" secondAttribute="bottom" id="QoT-Sc-cgl"/>
-                            <constraint firstItem="GV0-1s-3Dm" firstAttribute="trailing" secondItem="G6O-uH-ugV" secondAttribute="trailing" id="cyi-y1-gJQ"/>
-                            <constraint firstItem="GV0-1s-3Dm" firstAttribute="leading" secondItem="8BE-DZ-FdX" secondAttribute="leading" id="eec-3j-vdX"/>
-                            <constraint firstItem="GV0-1s-3Dm" firstAttribute="top" secondItem="G6O-uH-ugV" secondAttribute="bottom" id="ss2-je-a2J"/>
+                            <constraint firstItem="G6O-uH-ugV" firstAttribute="leading" secondItem="GV0-1s-3Dm" secondAttribute="leading" id="2Wv-LU-1zP"/>
+                            <constraint firstItem="GV0-1s-3Dm" firstAttribute="bottom" secondItem="MIf-ZQ-g5Y" secondAttribute="top" id="6X2-5R-Whh"/>
+                            <constraint firstAttribute="trailing" secondItem="G6O-uH-ugV" secondAttribute="trailing" id="9H0-xR-fr4"/>
+                            <constraint firstItem="G6O-uH-ugV" firstAttribute="top" secondItem="fSa-AO-dlg" secondAttribute="bottom" id="FWh-X0-dlQ"/>
+                            <constraint firstItem="GV0-1s-3Dm" firstAttribute="leading" secondItem="8BE-DZ-FdX" secondAttribute="leading" id="Not-rK-cNH"/>
+                            <constraint firstItem="GV0-1s-3Dm" firstAttribute="top" secondItem="G6O-uH-ugV" secondAttribute="bottom" id="Sjw-wb-Drl"/>
+                            <constraint firstItem="GV0-1s-3Dm" firstAttribute="trailing" secondItem="G6O-uH-ugV" secondAttribute="trailing" id="cCd-rJ-vub"/>
                         </constraints>
                     </view>
                     <connections>
@@ -239,10 +240,10 @@
             </objects>
             <point key="canvasLocation" x="-54" y="-16"/>
         </scene>
-        <!--About View Controller-->
+        <!--View Controller-->
         <scene sceneID="VBf-WC-K3r">
             <objects>
-                <viewController id="yx7-8m-aJR" customClass="AboutViewController" sceneMemberID="viewController">
+                <viewController id="yx7-8m-aJR" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V8F-Yb-pxj"/>
                         <viewControllerLayoutGuide type="bottom" id="TX8-w4-Ag9"/>
