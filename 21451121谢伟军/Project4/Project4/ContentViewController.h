@@ -12,6 +12,5 @@
 @property Note *note;
 @property (strong, nonatomic) IBOutlet UITextField *notetitle;
 @property (strong, nonatomic) IBOutlet UITextView *content;
-
 -(instancetype)initWithNote:(Note *)note;
 @end
