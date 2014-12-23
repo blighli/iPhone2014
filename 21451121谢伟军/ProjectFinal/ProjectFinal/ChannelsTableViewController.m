@@ -10,6 +10,8 @@
 
 @interface ChannelsTableViewController (){
     AFHTTPRequestOperationManager *manager;
+    AppDelegate *appDelegate;
+    NetworkManager *networkManager;
 }
 
 @end
@@ -34,6 +36,9 @@
     _hotChannelInfo = [[ChannelInfo alloc]init];
     [self setHot_channels];
     [self setPlaylistwithChannelID:@"1"];
+    //self.tableView.delegate = self;
+    appDelegate = [[UIApplication sharedApplication]delegate];
+    networkManager = [[NetworkManager alloc]init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -68,7 +73,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuseIdentifier = @"theReuseIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier
+    ChannelsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier
                                                             forIndexPath:indexPath];
 //    if ([[_channels objectAtIndex:indexPath.section]objectAtIndex:indexPath.row] != nil) {
 //        cell.textLabel.text = [[_channels objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
@@ -151,21 +156,19 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
+    appDelegate.currentChannel = [[_channels objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
+    NSLog(@"%@",appDelegate.currentChannel.ID);
+//    [networkManager loadPlaylistwithType:@"n" Sid:nil];
+    [networkManager loadPlaylistwithType:@"n" Sid:nil];
     // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    //[self.navigationController pushViewController:detailViewController animated:YES];
 }
-*/
+
 
 /*
 #pragma mark - Navigation

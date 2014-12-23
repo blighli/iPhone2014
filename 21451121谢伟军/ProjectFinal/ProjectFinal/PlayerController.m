@@ -9,14 +9,14 @@
 #import "PlayerController.h"
 @interface PlayerController(){
     AppDelegate* appDelegate;
-    NetworkManager *networdManager;
+    NetworkManager *networkManager;
 }
 @end
 @implementation PlayerController
 -(instancetype)init{
     if (self = [super init]) {
         appDelegate = [[UIApplication sharedApplication]delegate];
-        networdManager = [[NetworkManager alloc]init];
+        networkManager = [[NetworkManager alloc]init];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(finishSongNormally)
@@ -33,13 +33,13 @@
 }
 
 -(void)finishSongNormally{
-    if (appDelegate.currentSong.index >= ([appDelegate.playList count]-1)) {
-        [networdManager loadPlaylistwithType:@"n" Sid:nil];
+    if (appDelegate.currentSongIndex >= ([appDelegate.playList count]-1)) {
+        [networkManager loadPlaylistwithType:@"p" Sid:nil];
     }
     else{
-        ++appDelegate.currentSong.index;
-        [self.pictureDelegate setPictureWithURLInString:appDelegate.currentSong.picture];
-        [appDelegate.player setContentURL:[NSURL URLWithString:[[appDelegate.playList objectAtIndex:appDelegate.currentSong.index]valueForKey:@"url"]]];
+        ++appDelegate.currentSongIndex;
+        appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
+        [appDelegate.player setContentURL:[NSURL URLWithString:[appDelegate.currentSong valueForKey:@"url"]]];
         [self.pictureDelegate setPictureWithURLInString:appDelegate.currentSong.picture];
         [appDelegate.player play];
         NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
@@ -48,7 +48,7 @@
 
 //点击下一曲事件，按照豆瓣算法，需要重新载入播放列表
 -(void)skipSong{
-    [networdManager loadPlaylistwithType:@"s" Sid:appDelegate.currentSong.sid];
+    [networkManager loadPlaylistwithType:@"s" Sid:appDelegate.currentSong.sid];
 }
 
 @end

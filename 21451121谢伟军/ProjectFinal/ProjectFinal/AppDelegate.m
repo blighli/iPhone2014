@@ -24,11 +24,7 @@
         _currentChannel.name = @"我的私人";
         _currentChannel.ID = @"0";
     }
-    
-    
-    
-
-
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
 

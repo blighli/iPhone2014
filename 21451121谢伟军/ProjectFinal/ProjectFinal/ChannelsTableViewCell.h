@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ChannelInfo.h"
 @interface ChannelsTableViewCell : UITableViewCell
-
+@property ChannelInfo *channelInfo;
 @end

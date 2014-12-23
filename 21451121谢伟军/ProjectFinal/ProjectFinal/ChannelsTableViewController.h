@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AFNetworking/AFNetworking.h>
 #import "ChannelsTableViewCell.h"
 #import "ChannelInfo.h"
-#import <AFNetworking/AFNetworking.h>
+#import "AppDelegate.h"
+#import "NetworkManager.h"
 @interface ChannelsTableViewController : UITableViewController
 @property NSMutableArray *channels;
 @property NSArray *channelsTitle;

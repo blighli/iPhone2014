@@ -70,21 +70,18 @@
         playlistURL = [NSString stringWithFormat:@"http://douban.fm/j/mine/playlist?type=%@&sid=%@&channel=%@&from=mainsite",type,sid,appDelegate.currentChannel.ID];
     }
     [appDelegate.playList removeAllObjects];
-    NSString *playlistUrl = @"http://douban.fm";
-    playlistUrl = [playlistUrl stringByAppendingString:@"/j/mine/playlist?type=s&sid=1395079&pt=3.3&channel=0&pb=64&from=mainsite&r=41c64da174"];
+//    playlistUrl = [playlistUrl stringByAppendingString:@"/j/mine/playlist?type=s&sid=1395079&pt=3.3&channel=0&pb=64&from=mainsite&r=41c64da174"];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager GET:playlistUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:playlistURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *songDictionary = responseObject;
         NSLog(@"JSON: %@", songDictionary);
-        int index = 0;
         for (NSDictionary *song in [songDictionary objectForKey:@"song"]) {
             //subtype=T为广告标识位，如果是T，则不加入播放列表(去广告)
             if ([[song objectForKey:@"subtype"] isEqualToString:@"T"]) {
                 continue;
             }
             SongInfo *tempSong = [[SongInfo alloc] init];
-            [tempSong setIndex:index];
             [tempSong setArtist:[song objectForKey:@"artist"]];
             [tempSong setTitle:[song objectForKey:@"title"]];
             [tempSong setUrl:[song objectForKey:@"url"]];
@@ -93,10 +90,10 @@
             [tempSong setLike:[song objectForKey:@"like"]];
             [tempSong setSid:[song objectForKey:@"sid"]];
             [appDelegate.playList addObject:tempSong];
-            ++index;
         }
-        [appDelegate.player setContentURL:[NSURL URLWithString:[[appDelegate.playList objectAtIndex:0]valueForKey:@"url"]]];
-        appDelegate.currentSong.index  = 0;
+        appDelegate.currentSongIndex  = 0;
+        appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
+        [appDelegate.player setContentURL:[NSURL URLWithString:[appDelegate.currentSong valueForKey:@"url"]]];
         NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
         [appDelegate.player play];
         

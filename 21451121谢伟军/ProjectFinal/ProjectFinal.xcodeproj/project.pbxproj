@@ -72,8 +72,8 @@
 		F9FEB2E21A46F2D3009DB0A7 /* ChannelsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelsTableViewController.h; sourceTree = "<group>"; };
 		F9FEB2E31A46F2D3009DB0A7 /* ChannelsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelsTableViewController.m; sourceTree = "<group>"; };
 		F9FEB2E41A46F2D3009DB0A7 /* ChannelsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelsTableViewController.xib; sourceTree = "<group>"; };
-		F9FEB3191A470DA9009DB0A7 /* ChannelsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelsTableViewCell.h; sourceTree = "<group>"; };
-		F9FEB31A1A470DA9009DB0A7 /* ChannelsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelsTableViewCell.m; sourceTree = "<group>"; };
+		F9FEB3191A470DA9009DB0A7 /* ChannelsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelsTableViewCell.h; path = ProjectFinal/ChannelsTableViewCell.h; sourceTree = "<group>"; };
+		F9FEB31A1A470DA9009DB0A7 /* ChannelsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelsTableViewCell.m; path = ProjectFinal/ChannelsTableViewCell.m; sourceTree = "<group>"; };
 		F9FEB31B1A470DA9009DB0A7 /* ChannelsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelsTableViewCell.xib; sourceTree = "<group>"; };
 		F9FEB31E1A472AB9009DB0A7 /* ChannelInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelInfo.h; path = ProjectFinal/ChannelInfo.h; sourceTree = "<group>"; };
 		F9FEB31F1A472AB9009DB0A7 /* ChannelInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelInfo.m; path = ProjectFinal/ChannelInfo.m; sourceTree = "<group>"; };
@@ -159,8 +159,6 @@
 				F9FEB2E21A46F2D3009DB0A7 /* ChannelsTableViewController.h */,
 				F9FEB2E31A46F2D3009DB0A7 /* ChannelsTableViewController.m */,
 				F9FEB2E41A46F2D3009DB0A7 /* ChannelsTableViewController.xib */,
-				F9FEB3191A470DA9009DB0A7 /* ChannelsTableViewCell.h */,
-				F9FEB31A1A470DA9009DB0A7 /* ChannelsTableViewCell.m */,
 				F9FEB31B1A470DA9009DB0A7 /* ChannelsTableViewCell.xib */,
 				F90BEF411A48084E00C4CF92 /* PlayerController.h */,
 				F90BEF421A48084E00C4CF92 /* PlayerController.m */,
@@ -203,6 +201,8 @@
 				F9FEB31F1A472AB9009DB0A7 /* ChannelInfo.m */,
 				F9A701731A47D0B10081DA64 /* SongInfo.h */,
 				F9A701741A47D0B10081DA64 /* SongInfo.m */,
+				F9FEB3191A470DA9009DB0A7 /* ChannelsTableViewCell.h */,
+				F9FEB31A1A470DA9009DB0A7 /* ChannelsTableViewCell.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -267,6 +267,11 @@
 				TargetAttributes = {
 					F91B40191A42AFB8006876DE = {
 						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					F91B40321A42AFB8006876DE = {
 						CreatedOnToolsVersion = 6.1.1;

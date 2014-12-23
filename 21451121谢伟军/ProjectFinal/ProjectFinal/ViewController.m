@@ -29,11 +29,13 @@
     sideBar.delegate = self;
     
     channelsTableViewController = [[ChannelsTableViewController alloc]init];
-    
     // Do any additional setup after loading the view, typically from a nib.
     networkManager = [[NetworkManager alloc]init];
     networkManager.CaptchaImageDelegate = self;
-
+    
+    
+    self.picture.layer.masksToBounds =YES;
+    self.picture.layer.cornerRadius =128;
     [self loadCaptchaImage];
     [self loadPlaylist];
     //[_appDelegate.player setContentURL:(NSURL *)[[_appDelegate.playList objectAtIndex:0]valueForKey:@"url"]];
@@ -92,11 +94,10 @@
         case 1:
             //
             [self presentViewController:channelsTableViewController animated:YES completion:^{
-                NSLog(@"load channelsTableViewController successfull");
+                nil;
             }];
             break;
-        case 2:
-            
+
         default:
             break;
     }
