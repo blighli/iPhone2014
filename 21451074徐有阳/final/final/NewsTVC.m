@@ -9,7 +9,6 @@
 #import "NewsTVC.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "PostDetailVC.h"
-#import "PostCell.h"
 #import "MJRefresh/MJRefresh.h"
 
 @interface NewsTVC ()
@@ -32,7 +31,7 @@
     
     // 添加下拉刷新控件
     [self.tableView addHeaderWithCallback:^{
-        NSLog(@"刷新中");
+        [self.tableView headerEndRefreshing];
     }];
 }
 
@@ -54,15 +53,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell" forIndexPath:indexPath];
-    cell.postTitle.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"title"];
-    cell.publishTime.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"publish_time"];
-//    cell.postTitle.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"title"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell" forIndexPath:indexPath];
+    cell.textLabel.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"title"];
+    cell.detailTextLabel.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"publish_time"];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70;
+    return 60;
 }
 
 /*
