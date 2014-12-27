@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dIe-Jy-Iwg">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Dependent-->
+        <scene sceneID="UH4-aa-86E">
+            <objects>
+                <viewController id="dam-UG-la4" customClass="DependentConponentPickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="daQ-gU-50d"/>
+                        <viewControllerLayoutGuide type="bottom" id="XFo-i6-gTU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZDw-Z9-5HH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rs-B1-KnE">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="selected">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="171" y="276" width="58" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonPressed:" destination="dam-UG-la4" eventType="touchUpInside" id="h2e-Qf-8Lw"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k89-N8-BXh">
+                                <rect key="frame" x="0.0" y="-162" width="320" height="162"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="162"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="dam-UG-la4" id="ZXw-OS-1Nu"/>
+                                    <outlet property="delegate" destination="dam-UG-la4" id="fVv-oq-Xzh"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="5Rs-B1-KnE"/>
+                                <exclude reference="k89-N8-BXh"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="5Rs-B1-KnE"/>
+                                <include reference="k89-N8-BXh"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Dependent" image="dependenticon.png" id="1ew-lK-Clm"/>
+                    <connections>
+                        <outlet property="dependentPick" destination="k89-N8-BXh" id="4NT-Fm-2ie"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pLt-fq-8Og" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463.5" y="-120"/>
+        </scene>
+        <!--Double-->
+        <scene sceneID="ARb-HG-FZQ">
+            <objects>
+                <viewController id="bSe-92-XcY" customClass="DoubleConponentPickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="66G-v0-1BE"/>
+                        <viewControllerLayoutGuide type="bottom" id="guB-xZ-jaV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EhB-kd-ZSc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDh-8R-Zwc">
+                                <rect key="frame" x="0.0" y="-162" width="320" height="162"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="-9" width="400" height="162"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="bSe-92-XcY" id="Jwg-uj-X07"/>
+                                    <outlet property="delegate" destination="bSe-92-XcY" id="H2c-NB-kXO"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKv-Uy-MEq">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="select">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="180" y="235" width="41" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="bSe-92-XcY" eventType="touchUpInside" id="EJl-Ff-Xtb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="zDh-8R-Zwc"/>
+                                <exclude reference="eKv-Uy-MEq"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="zDh-8R-Zwc"/>
+                                <include reference="eKv-Uy-MEq"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Double" image="doubleicon.png" id="59l-dd-J30"/>
+                    <connections>
+                        <outlet property="DoublePicker" destination="zDh-8R-Zwc" id="Paa-dg-tJU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfN-uF-OPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="519" y="41"/>
+        </scene>
+        <!--Custom-->
+        <scene sceneID="Uan-Nm-7Ef">
+            <objects>
+                <viewController id="q6Q-ce-xe6" customClass="CustomPickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p3H-IL-0fh"/>
+                        <viewControllerLayoutGuide type="bottom" id="fGl-EI-vCh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eQ4-YP-4Z4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="angry_00.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="mlB-cT-i9G">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="-31" width="400" height="600"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rta-Iu-IOX">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="drink" image="milk.png">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="467" width="121" height="60"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonAction:" destination="q6Q-ce-xe6" eventType="touchUpInside" id="UGJ-DD-qfZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knl-JV-Zea">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="fart" image="fart.png">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="327" width="111" height="60"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonAction:" destination="q6Q-ce-xe6" eventType="touchUpInside" id="ikb-yR-44q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8N-eJ-7V8">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="cymbal" image="cynbals.png">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="393" width="111" height="66"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonAction:" destination="q6Q-ce-xe6" eventType="touchUpInside" id="feQ-UR-sCE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0e-AS-rXu">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="eat" image="larry.png">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="307" y="327" width="115" height="60"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonAction:" destination="q6Q-ce-xe6" eventType="touchUpInside" id="cOE-vu-UCY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXD-h0-E2C">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="scratch" image="pawn.png">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="320" y="467" width="115" height="60"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonAction:" destination="q6Q-ce-xe6" eventType="touchUpInside" id="0uN-Qf-qV4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwK-Av-acv">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="pie" image="pie.png">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="305" y="393" width="115" height="60"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonAction:" destination="q6Q-ce-xe6" eventType="touchUpInside" id="APA-Wn-ckO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKZ-AU-zFY">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="knockout">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="81" y="63" width="236" height="199"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonAction:" destination="q6Q-ce-xe6" eventType="touchUpInside" id="l3r-XB-UJP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWP-47-QpW">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="stomach">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="134" y="347" width="128" height="161"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonAction:" destination="q6Q-ce-xe6" eventType="touchUpInside" id="uLh-1B-Ldq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ing-Uf-aZS">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="foot_right">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="142" y="513" width="44" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonAction:" destination="q6Q-ce-xe6" eventType="touchUpInside" id="rAb-pl-tqT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uby-Ed-PnJ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="foot_left">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="199" y="513" width="56" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonAction:" destination="q6Q-ce-xe6" eventType="touchUpInside" id="VjU-oU-EY0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="mlB-cT-i9G"/>
+                                <exclude reference="rta-Iu-IOX"/>
+                                <exclude reference="Knl-JV-Zea"/>
+                                <exclude reference="o8N-eJ-7V8"/>
+                                <exclude reference="f0e-AS-rXu"/>
+                                <exclude reference="aXD-h0-E2C"/>
+                                <exclude reference="iwK-Av-acv"/>
+                                <exclude reference="fKZ-AU-zFY"/>
+                                <exclude reference="rWP-47-QpW"/>
+                                <exclude reference="ing-Uf-aZS"/>
+                                <exclude reference="Uby-Ed-PnJ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="mlB-cT-i9G"/>
+                                <include reference="rta-Iu-IOX"/>
+                                <include reference="Knl-JV-Zea"/>
+                                <include reference="o8N-eJ-7V8"/>
+                                <include reference="f0e-AS-rXu"/>
+                                <include reference="aXD-h0-E2C"/>
+                                <include reference="iwK-Av-acv"/>
+                                <include reference="fKZ-AU-zFY"/>
+                                <include reference="rWP-47-QpW"/>
+                                <include reference="ing-Uf-aZS"/>
+                                <include reference="Uby-Ed-PnJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Custom" image="toolicon.png" id="iP9-3V-6wW"/>
+                    <connections>
+                        <outlet property="cat" destination="mlB-cT-i9G" id="ZK5-PS-Znq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PsM-hs-6YU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="546" y="943"/>
+        </scene>
+        <!--Single-->
+        <scene sceneID="vMT-Gu-1aY">
+            <objects>
+                <viewController id="eJf-7s-lne" customClass="SingleConponentPickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7ae-S9-BfK"/>
+                        <viewControllerLayoutGuide type="bottom" id="NFG-ZY-KMG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nug-xE-ZFr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5T-zA-1fd">
+                                <rect key="frame" x="0.0" y="-162" width="320" height="162"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="162"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="eJf-7s-lne" id="u8e-lc-nUW"/>
+                                    <outlet property="delegate" destination="eJf-7s-lne" id="98l-Gb-bA9"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEs-B2-Kng">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="select">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="180" y="257" width="41" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="eJf-7s-lne" eventType="touchUpInside" id="sDC-oB-paq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="v5T-zA-1fd"/>
+                                <exclude reference="PEs-B2-Kng"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="v5T-zA-1fd"/>
+                                <include reference="PEs-B2-Kng"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Single" image="singleicon.png" id="ZQ8-cq-DcE"/>
+                    <connections>
+                        <outlet property="singlePiker" destination="v5T-zA-1fd" id="TLh-gb-j18"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igm-yf-A1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="705" y="765"/>
+        </scene>
+        <!--Date-->
+        <scene sceneID="wFb-Dq-C5d">
+            <objects>
+                <viewController id="exX-Uc-6PK" customClass="DatePickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uyh-nI-erF"/>
+                        <viewControllerLayoutGuide type="bottom" id="vrG-Mg-nVd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w7c-ue-6de">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="YIR-iO-em8">
+                                <rect key="frame" x="-160" y="-81" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="439025175.48717397">
+                                    <!--2014-11-30 07:26:15 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                    <!--1970-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="6311300400">
+                                    <!--2200-12-31 11:00:00 +0000-->
+                                </date>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="162"/>
+                                </variation>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpM-nN-RDg">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="select">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="177" y="199" width="41" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ButtonPressed:" destination="exX-Uc-6PK" eventType="touchUpInside" id="xZ9-W6-cab"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="YIR-iO-em8"/>
+                                <exclude reference="YpM-nN-RDg"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="YIR-iO-em8"/>
+                                <include reference="YpM-nN-RDg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Date" image="clockicon.png" id="rFA-X6-FqM"/>
+                    <connections>
+                        <outlet property="datePicker" destination="YIR-iO-em8" id="Vxp-YV-4bl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5J1-OO-kYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="631.5" y="96"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="xUq-MN-35g">
+            <objects>
+                <tabBarController id="dIe-Jy-Iwg" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="8fH-7i-6Wo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="exX-Uc-6PK" kind="relationship" relationship="viewControllers" id="Wht-nS-xMe"/>
+                        <segue destination="eJf-7s-lne" kind="relationship" relationship="viewControllers" id="cpo-d0-yMK"/>
+                        <segue destination="bSe-92-XcY" kind="relationship" relationship="viewControllers" id="00X-1v-MAb"/>
+                        <segue destination="dam-UG-la4" kind="relationship" relationship="viewControllers" id="nAm-pe-OIu"/>
+                        <segue destination="q6Q-ce-xe6" kind="relationship" relationship="viewControllers" id="iSJ-yd-BmQ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUc-SE-gCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-265.5" y="433"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="angry_00.jpg" width="640" height="1024"/>
+        <image name="clockicon.png" width="24" height="24"/>
+        <image name="cynbals.png" width="60" height="60"/>
+        <image name="dependenticon.png" width="25" height="24"/>
+        <image name="doubleicon.png" width="25" height="24"/>
+        <image name="fart.png" width="60" height="60"/>
+        <image name="larry.png" width="60" height="60"/>
+        <image name="milk.png" width="60" height="60"/>
+        <image name="pawn.png" width="60" height="60"/>
+        <image name="pie.png" width="60" height="60"/>
+        <image name="singleicon.png" width="25" height="24"/>
+        <image name="toolicon.png" width="24" height="24"/>
+    </resources>
+</document>
