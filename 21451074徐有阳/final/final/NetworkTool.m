@@ -11,4 +11,8 @@
 
 @implementation NetworkTool
 
+- (void)getDataWithUrl:(NSString *)url completion:(void (^)(id))completion {
+    
+}
+
 @end

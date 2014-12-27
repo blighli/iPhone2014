@@ -10,6 +10,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "PostDetailVC.h"
 #import "MJRefresh/MJRefresh.h"
+#import "MRProgress.h"
 
 @interface NewsTVC ()
 @property (nonatomic, strong)NSMutableDictionary *news;
@@ -20,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%@", self.title);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"type": @"news"};
     [manager GET:@"http://crawler-cst.herokuapp.com/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -28,10 +30,16 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
     }];
-    
     // 添加下拉刷新控件
     [self.tableView addHeaderWithCallback:^{
-        [self.tableView headerEndRefreshing];
+        [manager GET:@"http://crawler-cst.herokuapp.com/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self.tableView headerEndRefreshing];
+            self.news = responseObject;
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self.tableView headerEndRefreshing];
+            NSLog(@"%@", error);
+        }];
     }];
 }
 
@@ -60,7 +68,19 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    NSString *title = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"title"];
+    CGSize titleSize = [title sizeWithAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0]}];
+    float lineNumber = titleSize.width / (self.view.frame.size.width - 40);
+    // 一行
+    if (lineNumber <= 1) {
+        return 60;
+    }
+    // 两行
+    if (lineNumber > 1 && lineNumber <= 2) {
+        return 80;
+    }
+    // 三行
+    return 100;
 }
 
 /*

@@ -10,4 +10,6 @@
 
 @interface NetworkTool : NSObject
 
+- (void)getDataWithUrl:(NSString *)url completion:(void (^)(id responseData))completion;
+
 @end
