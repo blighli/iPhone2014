@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSM-iD-rmd">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="New" image="图标4.jpg">
+                                    <color key="titleColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shootPicture:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HGm-dU-1VW"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xgX-Ne-ef3">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="23" y="90" width="354" height="372"/>
+                                </variation>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvB-8o-cvA" customClass="View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="23" y="90" width="354" height="372"/>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzD-UD-BK4">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Back" image="图标6.jpg">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CuZ-MI-nq7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeL-dK-kUr">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="图标5.jpg">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dws-Zy-Q7m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeL-ZQ-I3c">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Save" image="保存.jpg">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="OQO-Rn-87P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ox2-Wu-5of">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Pick from Library" image="相册3.jpg">
+                                    <color key="titleColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="275" y="29" width="206" height="45"/>
+                                </variation>
+                                <connections>
+                                    <action selector="slectExistingPicture:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Eqb-d7-Rh6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.98039215686274506" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="OeL-ZQ-I3c" firstAttribute="top" secondItem="rvB-8o-cvA" secondAttribute="bottom" constant="65" id="0DX-Wa-uvN"/>
+                            <constraint firstItem="xgX-Ne-ef3" firstAttribute="trailing" secondItem="rvB-8o-cvA" secondAttribute="trailing" id="3O8-zT-mg1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AeL-dK-kUr" secondAttribute="trailing" constant="5" id="3dn-0L-3J2"/>
+                            <constraint firstItem="nSM-iD-rmd" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="4yv-MU-pKk"/>
+                            <constraint firstItem="rvB-8o-cvA" firstAttribute="leading" secondItem="xgX-Ne-ef3" secondAttribute="leading" id="6Q2-93-7JK"/>
+                            <constraint firstItem="nSM-iD-rmd" firstAttribute="baseline" secondItem="Ox2-Wu-5of" secondAttribute="firstBaseline" id="Bzl-CQ-gWF"/>
+                            <constraint firstItem="nSM-iD-rmd" firstAttribute="leading" secondItem="xgX-Ne-ef3" secondAttribute="leading" id="DHh-jb-r00"/>
+                            <constraint firstItem="AeL-dK-kUr" firstAttribute="baseline" secondItem="wzD-UD-BK4" secondAttribute="baseline" id="HnH-bn-yfJ"/>
+                            <constraint firstItem="wzD-UD-BK4" firstAttribute="baseline" secondItem="OeL-ZQ-I3c" secondAttribute="baseline" id="I8F-Mu-VFU"/>
+                            <constraint firstItem="nSM-iD-rmd" firstAttribute="centerY" secondItem="Ox2-Wu-5of" secondAttribute="centerY" id="Ipf-rO-cBu"/>
+                            <constraint firstItem="rvB-8o-cvA" firstAttribute="centerX" secondItem="wzD-UD-BK4" secondAttribute="centerX" id="KUF-aG-cPZ"/>
+                            <constraint firstItem="xgX-Ne-ef3" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="L9i-VB-39y"/>
+                            <constraint firstItem="Ox2-Wu-5of" firstAttribute="baseline" secondItem="nSM-iD-rmd" secondAttribute="firstBaseline" id="Obd-a3-POf"/>
+                            <constraint firstItem="rvB-8o-cvA" firstAttribute="bottom" secondItem="xgX-Ne-ef3" secondAttribute="bottom" id="WJX-da-F7n"/>
+                            <constraint firstItem="OeL-ZQ-I3c" firstAttribute="leading" secondItem="xgX-Ne-ef3" secondAttribute="leading" id="XnA-1r-QdA"/>
+                            <constraint firstAttribute="bottom" secondItem="OeL-ZQ-I3c" secondAttribute="bottom" constant="20" symbolic="YES" id="eLt-j7-kfW"/>
+                            <constraint firstItem="xgX-Ne-ef3" firstAttribute="top" secondItem="Ox2-Wu-5of" secondAttribute="bottom" constant="16" id="f55-uB-wX2"/>
+                            <constraint firstItem="xgX-Ne-ef3" firstAttribute="top" secondItem="rvB-8o-cvA" secondAttribute="top" id="mHY-6q-5ag"/>
+                            <constraint firstItem="nSM-iD-rmd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="7" id="rvn-He-AGL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ox2-Wu-5of" secondAttribute="trailing" constant="-97" id="wqJ-iH-nML"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="nSM-iD-rmd"/>
+                                <exclude reference="xgX-Ne-ef3"/>
+                                <exclude reference="rvB-8o-cvA"/>
+                                <exclude reference="wzD-UD-BK4"/>
+                                <exclude reference="AeL-dK-kUr"/>
+                                <exclude reference="OeL-ZQ-I3c"/>
+                                <exclude reference="Ox2-Wu-5of"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="3dn-0L-3J2"/>
+                                <exclude reference="HnH-bn-yfJ"/>
+                                <exclude reference="0DX-Wa-uvN"/>
+                                <exclude reference="XnA-1r-QdA"/>
+                                <exclude reference="eLt-j7-kfW"/>
+                                <exclude reference="Obd-a3-POf"/>
+                                <exclude reference="wqJ-iH-nML"/>
+                                <exclude reference="4yv-MU-pKk"/>
+                                <exclude reference="Bzl-CQ-gWF"/>
+                                <exclude reference="DHh-jb-r00"/>
+                                <exclude reference="Ipf-rO-cBu"/>
+                                <exclude reference="rvn-He-AGL"/>
+                                <exclude reference="I8F-Mu-VFU"/>
+                                <exclude reference="3O8-zT-mg1"/>
+                                <exclude reference="L9i-VB-39y"/>
+                                <exclude reference="f55-uB-wX2"/>
+                                <exclude reference="mHY-6q-5ag"/>
+                                <exclude reference="6Q2-93-7JK"/>
+                                <exclude reference="KUF-aG-cPZ"/>
+                                <exclude reference="WJX-da-F7n"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="nSM-iD-rmd"/>
+                                <include reference="xgX-Ne-ef3"/>
+                                <include reference="rvB-8o-cvA"/>
+                                <include reference="wzD-UD-BK4"/>
+                                <include reference="AeL-dK-kUr"/>
+                                <include reference="OeL-ZQ-I3c"/>
+                                <include reference="Ox2-Wu-5of"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="3dn-0L-3J2"/>
+                                <include reference="HnH-bn-yfJ"/>
+                                <include reference="0DX-Wa-uvN"/>
+                                <include reference="XnA-1r-QdA"/>
+                                <include reference="eLt-j7-kfW"/>
+                                <include reference="Obd-a3-POf"/>
+                                <include reference="wqJ-iH-nML"/>
+                                <include reference="4yv-MU-pKk"/>
+                                <include reference="Bzl-CQ-gWF"/>
+                                <include reference="DHh-jb-r00"/>
+                                <include reference="Ipf-rO-cBu"/>
+                                <include reference="rvn-He-AGL"/>
+                                <include reference="I8F-Mu-VFU"/>
+                                <include reference="3O8-zT-mg1"/>
+                                <include reference="L9i-VB-39y"/>
+                                <include reference="f55-uB-wX2"/>
+                                <include reference="mHY-6q-5ag"/>
+                                <include reference="6Q2-93-7JK"/>
+                                <include reference="KUF-aG-cPZ"/>
+                                <include reference="WJX-da-F7n"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="xgX-Ne-ef3" id="Ap6-dD-tiK"/>
+                        <outlet property="paintView" destination="rvB-8o-cvA" id="nkF-lj-nfW"/>
+                        <outlet property="takePictureButton" destination="nSM-iD-rmd" id="Rlk-i8-MBI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="97.5" y="119"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="保存.jpg" width="66" height="53"/>
+        <image name="图标4.jpg" width="60" height="46"/>
+        <image name="图标5.jpg" width="60" height="48"/>
+        <image name="图标6.jpg" width="70" height="45"/>
+        <image name="相册3.jpg" width="69" height="45"/>
+    </resources>
+</document>
