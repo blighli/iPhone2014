@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 @protocol CDSideBarControllerDelegate <NSObject>
 
 - (void)menuButtonClicked:(int)index;

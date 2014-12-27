@@ -12,11 +12,13 @@
 #import "ViewController.h"
 #import "ChannelsTableViewCell.h"
 #import "LoginViewController.h"
+#import "TestViewController.h"
 @interface SidebarController : UITabBarController<CDSideBarControllerDelegate>{
     CDSideBarController *sideBar;
     ViewController *playerVC;
     ChannelsTableViewController *channelsVC;
     LoginViewController *loginVC;
+    TestViewController *test;
 }
 
 @end

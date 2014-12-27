@@ -9,14 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "NetworkManager.h"
 #import <AFNetworking/AFNetworking.h>
-#import "CDSideBarController.h"
 #import "ChannelsTableViewController.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "SongInfo.h"
 #import "PlayerController.h"
-@interface ViewController : UIViewController <CDSideBarControllerDelegate, NetworManagerDelegate, PlayerControllerDelegate>{
-    CDSideBarController *sideBar;
+@interface ViewController : UIViewController < NetworManagerDelegate, PlayerControllerDelegate>{
 }
 @property (strong, nonatomic) IBOutlet UILabel *songTitle;
 @property (strong, nonatomic) IBOutlet UILabel *songArtist;

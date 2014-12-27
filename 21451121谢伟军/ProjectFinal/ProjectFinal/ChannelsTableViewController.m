@@ -166,8 +166,7 @@
     appDelegate.currentChannel = [[_channels objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
     NSLog(@"%@",appDelegate.currentChannel.ID);
     [networkManager loadPlaylistwithType:@"n"];
-    [self dismissViewControllerAnimated:YES completion:nil];
-
+    [self.delegate menuButtonClicked:0];
 
     // Push the view controller.
     //[self.navigationController pushViewController:detailViewController animated:YES];

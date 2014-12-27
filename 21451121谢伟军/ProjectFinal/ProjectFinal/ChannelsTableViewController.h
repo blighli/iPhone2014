@@ -13,7 +13,16 @@
 #import "AppDelegate.h"
 #import "NetworkManager.h"
 #import "PlayerController.h"
+@protocol ChannelsTableViewController <NSObject>
+
+- (void)menuButtonClicked:(int)index;
+
+@end
 @interface ChannelsTableViewController : UITableViewController
+
+@property (nonatomic, retain) id<ChannelsTableViewController> delegate;
+
+
 @property NSMutableArray *channels;
 @property NSArray *channelsTitle;
 @property NSArray *myChannels;

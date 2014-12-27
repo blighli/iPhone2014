@@ -41,9 +41,7 @@
     [super viewDidLoad];
     manager = [AFHTTPRequestOperationManager manager];
     appDelegate = [[UIApplication sharedApplication]delegate];
-    NSArray *imageList = @[[UIImage imageNamed:@"menuChat.png"], [UIImage imageNamed:@"menuUsers.png"], [UIImage imageNamed:@"menuMap.png"], [UIImage imageNamed:@"menuClose.png"]];
-    sideBar = [[CDSideBarController alloc] initWithImages:imageList];
-    sideBar.delegate = self;
+
     
     channelsTableViewController = [[ChannelsTableViewController alloc]init];
     loginViewController = [[LoginViewController alloc]init];

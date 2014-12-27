@@ -44,6 +44,7 @@
             appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
             [appDelegate.player setContentURL:[NSURL URLWithString:[appDelegate.currentSong valueForKey:@"url"]]];
             [appDelegate.player play];
+            //[[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryPlayback error:nil];
             NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
         }
     }

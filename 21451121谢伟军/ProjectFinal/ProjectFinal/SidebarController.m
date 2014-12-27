@@ -25,11 +25,14 @@
     sideBar = [[CDSideBarController alloc] initWithImages:imageList];
     sideBar.delegate = self;
     
-    playerVC = [[ViewController alloc]init];
-    channelsVC = [[ChannelsTableViewController alloc]init];
-    loginVC = [[LoginViewController alloc]init];
     
-    self.viewControllers = @[channelsVC, loginVC];
+    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    playerVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"playerVC"];
+    channelsVC = [[ChannelsTableViewController alloc]init];
+    channelsVC.delegate = (id)self;
+    loginVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginVC"];
+    test = [[TestViewController alloc]init];
+    self.viewControllers = @[playerVC, channelsVC, loginVC, test];
 
 }
 
@@ -41,47 +44,26 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBar.hidden = YES;
-    
-    //[sideBar insertMenuButtonOnView:[UIApplication sharedApplication].delegate.window atPosition:CGPointMake(self.view.frame.size.width - 50, 40)];
-        [sideBar insertMenuButtonOnView:self.view atPosition:CGPointMake(self.view.frame.size.width - 50, 40)];
-//    self.tabBar.frame = CGRectMake(0, 460-40, 320, 40);
-//    for (UIView *child in self.tabBar.subviews)
-//    {
-//        if ([child isKindOfClass:[UIControl class]])
-//        {
-//            [child removeFromSuperview];
-//        }
-//    }
+    [sideBar insertMenuButtonOnView:self.view atPosition:CGPointMake(self.view.frame.size.width - 50, 40)];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-#pragma SDSidebar Delegate
+#pragma mark - SDSidebar Delegate
 -(void)menuButtonClicked:(int)index{
-    NSLog(@"%i",index);
-    switch (index) {
-        case 0:
-            //
-            self.selectedIndex = index;
-            break;
-        case 1:
-            //
-            self.selectedIndex = index;
-            currentPage = index;
-            break;
-        case 2:
-            if (currentPage != loginPage) {
-                
-            }
-        default:
-            break;
-    }
+    self.selectedIndex = index;
+//    switch (index) {
+//        case 0:
+//            //
+//            self.selectedIndex = index;
+//            break;
+//        case 1:
+//            //
+//            self.selectedIndex = 1;
+//            break;
+//        case 2:
+//
+//        default:
+//            break;
+//    }
 }
 
 @end
