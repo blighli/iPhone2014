@@ -13,15 +13,14 @@
 #import "SongInfo.h"
 @protocol NetworManagerDelegate <NSObject>
 -(void)setCaptchaImageWithURLInString:(NSString *)url;
--(void)setPictureWithURLInString:(NSString *)url;
 @end
 
 @interface NetworkManager : NSObject
-@property id<NetworManagerDelegate>CaptchaImageDelegate;
+@property id<NetworManagerDelegate>captchaImageDelegate;
 @property NSMutableString *captchaID;
 
 -(instancetype)init;
 -(void)LoginwithUsername:(NSString *)username Password:(NSString *)password CaptchaID:(NSString *)captchaID Captcha:(NSString *)captcha RememberOnorOff:(NSString *)rememberOnorOff;
 -(void)loadCaptchaImage;
--(void)loadPlaylistwithType:(NSString *)type Sid:(NSString *)sid;
+-(void)loadPlaylistwithType:(NSString *)type;
 @end

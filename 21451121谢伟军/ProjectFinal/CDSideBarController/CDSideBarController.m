@@ -96,7 +96,7 @@
 - (void)onMenuButtonClick:(UIButton*)button
 {
     if ([self.delegate respondsToSelector:@selector(menuButtonClicked:)])
-        [self.delegate menuButtonClicked:button.tag];
+        [self.delegate menuButtonClicked:(int)button.tag];
     [self dismissMenuWithSelection:button];
 }
 

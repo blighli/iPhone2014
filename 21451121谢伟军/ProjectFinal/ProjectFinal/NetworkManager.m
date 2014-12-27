@@ -61,13 +61,13 @@
 
 //sid
 //the song's id
--(void)loadPlaylistwithType:(NSString *)type Sid:(NSString *)sid{
+-(void)loadPlaylistwithType:(NSString *)type{
     NSString *playlistURL;
-    if (sid == nil) {
+    if ([type isEqualToString:@"n"] || [type isEqualToString:@"p"]) {
         playlistURL = [NSString stringWithFormat:@"http://douban.fm/j/mine/playlist?type=%@&channel=%@&from=mainsite",type,appDelegate.currentChannel.ID];
     }
     else{
-        playlistURL = [NSString stringWithFormat:@"http://douban.fm/j/mine/playlist?type=%@&sid=%@&channel=%@&from=mainsite",type,sid,appDelegate.currentChannel.ID];
+        playlistURL = [NSString stringWithFormat:@"http://douban.fm/j/mine/playlist?type=%@&sid=%@&channel=%@&from=mainsite",type,appDelegate.currentSong.sid,appDelegate.currentChannel.ID];
     }
     [appDelegate.playList removeAllObjects];
 //    playlistUrl = [playlistUrl stringByAppendingString:@"/j/mine/playlist?type=s&sid=1395079&pt=3.3&channel=0&pb=64&from=mainsite&r=41c64da174"];
@@ -91,12 +91,16 @@
             [tempSong setSid:[song objectForKey:@"sid"]];
             [appDelegate.playList addObject:tempSong];
         }
-        appDelegate.currentSongIndex  = 0;
-        appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
-        [appDelegate.player setContentURL:[NSURL URLWithString:[appDelegate.currentSong valueForKey:@"url"]]];
-        NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
-        [appDelegate.player play];
-        
+        if ([type isEqualToString:@"r"]) {
+            appDelegate.currentSongIndex = -1;
+        }
+        else{
+            appDelegate.currentSongIndex = 0;
+            appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
+            [appDelegate.player setContentURL:[NSURL URLWithString:appDelegate.currentSong.url]];
+            NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
+            [appDelegate.player play];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -114,11 +118,13 @@
         NSLog(@"%@",tempCaptchaID);
         NSString *chatchaURL = [NSString stringWithFormat:@"http://douban.fm/misc/captcha?size=m&id=%@",tempCaptchaID];
         //加载验证码图片
-        [self.CaptchaImageDelegate setCaptchaImageWithURLInString:chatchaURL];
+        [self.captchaImageDelegate setCaptchaImageWithURLInString:chatchaURL];
         //[self.imageview setImageWithURL:[NSURL URLWithString:chatchaURL]];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
 }
+
+
 
 @end

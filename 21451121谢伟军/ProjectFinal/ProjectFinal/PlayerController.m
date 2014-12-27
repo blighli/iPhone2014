@@ -19,36 +19,73 @@
         networkManager = [[NetworkManager alloc]init];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(finishSongNormally)
+                                             selector:@selector(startPlay)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
                                                object:appDelegate.player];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readyForDisplay) name: MPMoviePlayerLoadStateDidChangeNotification object:appDelegate.player];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initSongInfomation)
+                                                 name: MPMoviePlayerLoadStateDidChangeNotification
+                                               object:appDelegate.player];
 
     
     return self;
 }
 
--(void)readyForDisplay{
-    [self.pictureDelegate setPictureWithURLInString:appDelegate.currentSong.picture];
+-(void)initSongInfomation{
+    [self.songInfoDelegate initSongInfomation];
+}
+
+-(void)startPlay{
+    @try {
+        if (appDelegate.currentSongIndex >= ((int)[appDelegate.playList count]-1)) {
+            [networkManager loadPlaylistwithType:@"p"];
+        }
+        else{
+            ++appDelegate.currentSongIndex;
+            appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
+            [appDelegate.player setContentURL:[NSURL URLWithString:[appDelegate.currentSong valueForKey:@"url"]]];
+            [appDelegate.player play];
+            NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",exception);
+    }
 }
 
 -(void)finishSongNormally{
-    if (appDelegate.currentSongIndex >= ([appDelegate.playList count]-1)) {
-        [networkManager loadPlaylistwithType:@"p" Sid:nil];
-    }
-    else{
-        ++appDelegate.currentSongIndex;
-        appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
-        [appDelegate.player setContentURL:[NSURL URLWithString:[appDelegate.currentSong valueForKey:@"url"]]];
-        [self.pictureDelegate setPictureWithURLInString:appDelegate.currentSong.picture];
-        [appDelegate.player play];
-        NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
-    }
+//    if (appDelegate.currentSongIndex >= ([appDelegate.playList count]-1)) {
+//        [networkManager loadPlaylistwithType:@"p" WithSidorNot:NO];
+//    }
+//    else{
+//        ++appDelegate.currentSongIndex;
+//        appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
+//        [appDelegate.player setContentURL:[NSURL URLWithString:[appDelegate.currentSong valueForKey:@"url"]]];
+//        //[self.songInfoDelegate initSongInfomation];
+//        [appDelegate.player play];
+//        NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
+//    }
 }
 
+#pragma mark - PlayerButtonTask
 //点击下一曲事件，按照豆瓣算法，需要重新载入播放列表
--(void)skipSong{
-    [networkManager loadPlaylistwithType:@"s" Sid:appDelegate.currentSong.sid];
+-(void)pauseSong{
+    [appDelegate.player pause];
 }
+-(void)restartSong{
+    [appDelegate.player play];
+}
+-(void)likeSong{
+    [networkManager loadPlaylistwithType:@"r"];
+}
+-(void)dislikesong{
+    [networkManager loadPlaylistwithType:@"u"];
+}
+-(void)deleteSong{
+    [networkManager loadPlaylistwithType:@"b"];
+}
+-(void)skipSong{
+    [networkManager loadPlaylistwithType:@"s"];
+}
+
 
 @end

@@ -12,6 +12,7 @@
     AFHTTPRequestOperationManager *manager;
     AppDelegate *appDelegate;
     NetworkManager *networkManager;
+    PlayerController *playerController;
 }
 
 @end
@@ -39,6 +40,7 @@
     //self.tableView.delegate = self;
     appDelegate = [[UIApplication sharedApplication]delegate];
     networkManager = [[NetworkManager alloc]init];
+    playerController = [[PlayerController alloc]init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -163,12 +165,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     appDelegate.currentChannel = [[_channels objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
     NSLog(@"%@",appDelegate.currentChannel.ID);
-//    [networkManager loadPlaylistwithType:@"n" Sid:nil];
-    [networkManager loadPlaylistwithType:@"n" Sid:nil];
+    [networkManager loadPlaylistwithType:@"n"];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+
     // Push the view controller.
     //[self.navigationController pushViewController:detailViewController animated:YES];
 }
-
 
 /*
 #pragma mark - Navigation

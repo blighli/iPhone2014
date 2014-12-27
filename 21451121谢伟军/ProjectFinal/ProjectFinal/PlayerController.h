@@ -12,12 +12,19 @@
 #import "NetworkManager.h"
 
 @protocol PlayerControllerDelegate <NSObject>
--(void)setPictureWithURLInString:(NSString *)url;
+-(void)initSongInfomation;
 @end
 @interface PlayerController : NSObject
-@property id<PlayerControllerDelegate> pictureDelegate;
+@property id<PlayerControllerDelegate> songInfoDelegate;
 -(instancetype)init;
 -(void)startPlay;
 -(void)finishSongNormally;
+
+//播放操作
+-(void)pauseSong;
+-(void)restartSong;
+-(void)likeSong;
+-(void)dislikesong;
+-(void)deleteSong;
 -(void)skipSong;
 @end

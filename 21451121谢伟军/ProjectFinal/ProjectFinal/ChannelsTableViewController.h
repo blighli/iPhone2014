@@ -12,6 +12,7 @@
 #import "ChannelInfo.h"
 #import "AppDelegate.h"
 #import "NetworkManager.h"
+#import "PlayerController.h"
 @interface ChannelsTableViewController : UITableViewController
 @property NSMutableArray *channels;
 @property NSArray *channelsTitle;
