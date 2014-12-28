@@ -20,7 +20,7 @@
 @property NSMutableString *captchaID;
 
 -(instancetype)init;
--(void)LoginwithUsername:(NSString *)username Password:(NSString *)password CaptchaID:(NSString *)captchaID Captcha:(NSString *)captcha RememberOnorOff:(NSString *)rememberOnorOff;
+-(void)LoginwithUsername:(NSString *)username Password:(NSString *)password  Captcha:(NSString *)captcha RememberOnorOff:(NSString *)rememberOnorOff;
 -(void)loadCaptchaImage;
 -(void)loadPlaylistwithType:(NSString *)type;
 @end

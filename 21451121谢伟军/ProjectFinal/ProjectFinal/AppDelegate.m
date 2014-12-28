@@ -18,6 +18,7 @@
     // Override point for customization after application launch.
     _currentChannel = [[ChannelInfo alloc]init];
     _player = [[MPMoviePlayerController alloc]init];
+
     _playList = [NSMutableArray array];
     _currentSong = [[SongInfo alloc]init];
     if (_currentChannel.ID == nil) {

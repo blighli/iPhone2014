@@ -8,7 +8,7 @@
 #import "ViewController.h"
 #import <UIKit+AFNetworking.h>
 @interface ViewController (){
-    NSMutableString *captchaID;
+    
     AppDelegate *appDelegate;
     
     ChannelsTableViewController *channelsTableViewController;
@@ -47,24 +47,11 @@
     loginViewController = [[LoginViewController alloc]init];
     // Do any additional setup after loading the view, typically from a nib.
     networkManager = [[NetworkManager alloc]init];
-    networkManager.CaptchaImageDelegate = self;
-    isPlaying = YES;
-    currentPage = playerPage;
-    //self.picture.layer.masksToBounds = YES;
-    //self.picture.layer.cornerRadius = 150;    
     
-    [self loadCaptchaImage];
+    isPlaying = YES;
     [self loadPlaylist];
     //[_appDelegate.player setContentURL:(NSURL *)[[_appDelegate.playList objectAtIndex:0]valueForKey:@"url"]];
-    //初始化图片点击事件
-    self.imageview.userInteractionEnabled = YES;
-    //UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loadCaptchaImage)];
-    
-    //刷新验证码图片
-//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loadCaptchaImage)];
-//    [singleTap setNumberOfTapsRequired:1];
-//    [self.imageview addGestureRecognizer:singleTap];
-    self.picture.userInteractionEnabled = YES;
+        self.picture.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pauseButton:)];
     [singleTap setNumberOfTapsRequired:1];
     [self.picture addGestureRecognizer:singleTap];
@@ -110,10 +97,7 @@
 
 
 - (IBAction)submitButton:(UIButton *)sender {
-    NSString *username = _username.text;
-    NSString *password = _password.text;
-    NSString *captcha = _captcha.text;
-    [networkManager LoginwithUsername:username Password:password CaptchaID:captchaID Captcha:captcha RememberOnorOff:@"off"];
+
 }
 
 - (IBAction)pauseButton:(UIButton *)sender {
@@ -165,14 +149,12 @@
     NSLog(@"%i",index);
     switch (index) {
         case 0:
-            //
         {
             [self dismissViewControllerAnimated:YES completion:nil];
              currentPage = index;
         }
             break;
         case 1:
-            //
             if (currentPage != playlistPage) {
                 [self presentViewController:channelsTableViewController animated:YES completion:nil];
             }
@@ -215,10 +197,7 @@
     }
 }
 
-//验证码图片点击刷新验证码事件
--(void)loadCaptchaImage{
-    [networkManager loadCaptchaImage];
-}
+
 
 
 @end

@@ -26,11 +26,8 @@
 @property NSMutableArray *channels;
 @property NSArray *channelsTitle;
 @property NSArray *myChannels;
-@property NSMutableArray *myPrivateChannel;
-@property NSMutableArray *myRedheartChannel;
+@property NSMutableArray *recommendChannels;
+@property NSMutableArray *upTrendingChannels;
 @property NSMutableArray *hotChannels;
 
-@property ChannelInfo *hotChannelInfo;
--(void)setHot_channels;
--(void)setPlaylistwithChannelID:(NSString *)ID;
 @end

@@ -8,6 +8,7 @@
 
 #import "NetworkManager.h"
 #import <AFNetworking/AFNetworking.h>
+static NSMutableString *captchaID;
 @interface NetworkManager(){
     AppDelegate *appDelegate;
     AFHTTPRequestOperationManager *manager;
@@ -30,12 +31,18 @@
 //alias:xxxx%40gmail.com
 //form_password:password
 //captcha_id:jOtEZsPFiDVRR9ldW3ELsy57%3en
--(void)LoginwithUsername:(NSString *)username Password:(NSString *)password CaptchaID:(NSString *)captchaID Captcha:(NSString *)captcha RememberOnorOff:(NSString *)rememberOnorOff{
+-(void)LoginwithUsername:(NSString *)username Password:(NSString *)password  Captcha:(NSString *)captcha RememberOnorOff:(NSString *)rememberOnorOff{
+//    NSDictionary *loginParameters = @{@"remember": rememberOnorOff,
+//                                      @"source": @"radio",
+//                                      @"captcha_solution": captcha,
+//                                      @"alias": username,
+//                                      @"form_password":password,
+//                                      @"captcha_id":captchaID};
     NSDictionary *loginParameters = @{@"remember": rememberOnorOff,
                                       @"source": @"radio",
                                       @"captcha_solution": captcha,
-                                      @"alias": username,
-                                      @"form_password":password,
+                                      @"alias": @"373203339@qq.com",
+                                      @"form_password":@"ws00663335",
                                       @"captcha_id":captchaID};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString *loginURL = @"http://douban.fm/j/login";
@@ -45,7 +52,7 @@
         NSString *msg = [responseObject objectForKey:@"err_msg"];
         NSLog(@"%@",msg);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"0");
+        NSLog(@"LOGIN ERROR:%@",error);
     }];
 }
 
@@ -115,7 +122,8 @@
     [manager GET:captchaIDURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSMutableString *tempCaptchaID = [[NSMutableString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         [tempCaptchaID replaceOccurrencesOfString:@"\"" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [tempCaptchaID length])];
-        NSLog(@"%@",tempCaptchaID);
+        captchaID = tempCaptchaID;
+        NSLog(@"%@",captchaID);
         NSString *chatchaURL = [NSString stringWithFormat:@"http://douban.fm/misc/captcha?size=m&id=%@",tempCaptchaID];
         //加载验证码图片
         [self.captchaImageDelegate setCaptchaImageWithURLInString:chatchaURL];
