@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PlayerViewController.h
 //  ProjectFinal
 //
 //  Created by xvxvxxx on 12/18/14.
@@ -14,7 +14,7 @@
 #import "AppDelegate.h"
 #import "SongInfo.h"
 #import "PlayerController.h"
-@interface ViewController : UIViewController < NetworManagerDelegate, PlayerControllerDelegate>{
+@interface PlayerViewController : UIViewController < NetworManagerDelegate, PlayerControllerDelegate>{
 }
 @property (strong, nonatomic) IBOutlet UILabel *songTitle;
 @property (strong, nonatomic) IBOutlet UILabel *songArtist;
@@ -37,7 +37,6 @@
 - (IBAction)likeButton:(UIButton *)sender;
 - (IBAction)deleteButton:(UIButton *)sender;
 - (IBAction)skipButton:(UIButton *)sender;
--(void)loadCaptchaImage;
 -(void)loadPlaylist;
 @end
 

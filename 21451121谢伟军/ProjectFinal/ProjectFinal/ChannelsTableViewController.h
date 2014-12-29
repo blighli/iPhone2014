@@ -18,7 +18,7 @@
 - (void)menuButtonClicked:(int)index;
 
 @end
-@interface ChannelsTableViewController : UITableViewController
+@interface ChannelsTableViewController : UITableViewController <NetworManagerDelegate>
 
 @property (nonatomic, retain) id<ChannelsTableViewController> delegate;
 

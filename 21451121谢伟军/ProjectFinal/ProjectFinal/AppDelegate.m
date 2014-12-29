@@ -25,10 +25,37 @@
         _currentChannel.name = @"我的私人";
         _currentChannel.ID = @"0";
     }
+    _isLogin = NO;
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    [self initChannelsData];
     return YES;
 }
 
+
+- (void)initChannelsData{
+    //初始化数据源Array
+    _channelsTitle = @[@"我的兆赫",@"推荐频道",@"上升最快兆赫",@"热门兆赫"];
+    _channels = [NSMutableArray array];
+    //我的兆赫
+    ChannelInfo *myPrivateChannel = [[ChannelInfo alloc]init];
+    myPrivateChannel.name = @"我的私人";
+    myPrivateChannel.ID = @"0";
+    ChannelInfo *myRedheartChannel = [[ChannelInfo alloc]init];
+    myRedheartChannel.name = @"我的红心";
+    myRedheartChannel.ID = @"-3";
+    NSArray *myChannels = @[myPrivateChannel, myRedheartChannel];
+    [_channels addObject:myChannels];
+    //推荐兆赫
+    NSArray *recommendChannels = [NSMutableArray array];
+    [_channels addObject:recommendChannels];
+    //上升最快兆赫
+    NSMutableArray *upTrendingChannels = [NSMutableArray array];
+    [_channels addObject:upTrendingChannels];
+    //热门兆赫
+    NSMutableArray *hotChannels = [NSMutableArray array];
+    [_channels addObject:hotChannels];
+
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

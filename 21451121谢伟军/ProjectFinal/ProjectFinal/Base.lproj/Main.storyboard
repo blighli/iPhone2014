@@ -7,10 +7,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Player View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="playerVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="playerVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="PlayerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -424,7 +424,109 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-972" y="-365"/>
+            <point key="canvasLocation" x="-1101" y="-383"/>
+        </scene>
+        <!--User Info View Controller-->
+        <scene sceneID="UbN-I9-fDr">
+            <objects>
+                <viewController storyboardIdentifier="userInfoVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Lg-35-sMd" customClass="UserInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z6f-Cj-jld"/>
+                        <viewControllerLayoutGuide type="bottom" id="TIJ-eZ-Bfd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yPo-ez-H8e">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mW9-9N-Y2S">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.83921568629999999" green="0.81568627449999997" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mW9-9N-Y2S" secondAttribute="height" multiplier="100:19" id="A4i-wc-xsd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="登出">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="A4i-wc-xsd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="A4i-wc-xsd"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="logoutButtonTapped:" destination="0Lg-35-sMd" eventType="touchUpInside" id="VH6-Zx-qJk"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login" translatesAutoresizingMaskIntoConstraints="NO" id="Myz-CF-E9x">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Myz-CF-E9x" secondAttribute="height" multiplier="1:1" id="dhm-dF-JxI"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="dhm-dF-JxI"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="dhm-dF-JxI"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Myz-CF-E9x" secondAttribute="centerX" id="8Y0-zx-C31"/>
+                            <constraint firstItem="TIJ-eZ-Bfd" firstAttribute="top" secondItem="mW9-9N-Y2S" secondAttribute="bottom" id="9gT-mY-YiF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mW9-9N-Y2S" secondAttribute="trailing" constant="-16" id="F8j-SF-csK"/>
+                            <constraint firstItem="Myz-CF-E9x" firstAttribute="leading" secondItem="yPo-ez-H8e" secondAttribute="leadingMargin" constant="34" id="RJj-kA-NMj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Myz-CF-E9x" secondAttribute="trailing" constant="34" id="acY-dz-QrH"/>
+                            <constraint firstItem="mW9-9N-Y2S" firstAttribute="leading" secondItem="yPo-ez-H8e" secondAttribute="leadingMargin" constant="-16" id="k6d-6O-UMg"/>
+                            <constraint firstItem="Myz-CF-E9x" firstAttribute="top" secondItem="z6f-Cj-jld" secondAttribute="bottom" constant="31" id="nlY-g2-X7a"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="mW9-9N-Y2S"/>
+                                <exclude reference="Myz-CF-E9x"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8Y0-zx-C31"/>
+                                <exclude reference="RJj-kA-NMj"/>
+                                <exclude reference="acY-dz-QrH"/>
+                                <exclude reference="nlY-g2-X7a"/>
+                                <exclude reference="F8j-SF-csK"/>
+                                <exclude reference="k6d-6O-UMg"/>
+                                <exclude reference="9gT-mY-YiF"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="mW9-9N-Y2S"/>
+                                <include reference="Myz-CF-E9x"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8Y0-zx-C31"/>
+                                <include reference="RJj-kA-NMj"/>
+                                <include reference="acY-dz-QrH"/>
+                                <include reference="nlY-g2-X7a"/>
+                                <include reference="F8j-SF-csK"/>
+                                <include reference="k6d-6O-UMg"/>
+                                <include reference="9gT-mY-YiF"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="loginImage" destination="Myz-CF-E9x" id="doT-DU-BKX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qK0-W3-0Fx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1101" y="357"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="kAn-9b-8YG">
@@ -625,7 +727,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UIg-xi-spO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-132" y="387"/>
+            <point key="canvasLocation" x="-300" y="363"/>
         </scene>
         <!--Sidebar Controller-->
         <scene sceneID="vap-pC-3qM">
@@ -647,6 +749,7 @@
         <image name="albumBlock" width="1063" height="1063"/>
         <image name="delete" width="48" height="48"/>
         <image name="heart1" width="48" height="48"/>
+        <image name="login" width="300" height="300"/>
         <image name="next" width="48" height="48"/>
         <image name="pause" width="48" height="48"/>
     </resources>

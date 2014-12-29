@@ -17,6 +17,10 @@
 @property SongInfo *currentSong;
 @property int currentSongIndex;
 @property ChannelInfo *currentChannel;
+@property BOOL isLogin;
+
+@property NSArray *channelsTitle;
+@property NSMutableArray *channels;
 
 @end
 

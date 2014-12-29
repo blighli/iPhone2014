@@ -23,6 +23,47 @@ static NSMutableString *captchaID;
     return self;
 }
 
+//设置播放列表
+-(void)setChannel:(NSUInteger)channelIndex withURLWithString:(NSString *)urlWithString{
+    [manager GET:urlWithString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[appDelegate.channels objectAtIndex:channelIndex]removeAllObjects];
+        NSDictionary *channelsDictionary = responseObject;
+        NSLog(@"JSON: %@", channelsDictionary);
+        NSDictionary *tempChannel = [channelsDictionary objectForKey:@"data"];
+        if (channelIndex != 1) {
+            for (NSDictionary *channels in [tempChannel objectForKey:@"channels"]) {
+                ChannelInfo *channelInfo = [[ChannelInfo alloc]init];
+                [channelInfo setID:[channels objectForKey:@"id"]];
+                [channelInfo setName:[channels objectForKey:@"name"]];
+                [[appDelegate.channels objectAtIndex:channelIndex] addObject:channelInfo];
+            }
+        }
+        else{
+            NSDictionary *channels = [tempChannel objectForKey:@"res"];
+            if ([[channels allKeys]containsObject:@"rec_chls"]) {
+                for (NSDictionary *tempRecCannels in [channels objectForKey:@"rec_chls"]) {
+                    ChannelInfo *channelInfo = [[ChannelInfo alloc]init];
+                    [channelInfo setID:[tempRecCannels objectForKey:@"id"]];
+                    [channelInfo setName:[tempRecCannels objectForKey:@"name"]];
+                    [[appDelegate.channels objectAtIndex:channelIndex] addObject:channelInfo];
+                }
+            }
+            else{
+                NSDictionary *channels = [tempChannel objectForKey:@"res"];
+                ChannelInfo *channelInfo = [[ChannelInfo alloc]init];
+                [channelInfo setID:[channels objectForKey:@"id"]];
+                [channelInfo setName:[channels objectForKey:@"name"]];
+                [[appDelegate.channels objectAtIndex:channelIndex] addObject:channelInfo];
+            }
+            
+        }
+        [self.delegate reloadTableviewData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+
 //登陆数据格式
 //POST Params:
 //remember:on/off
@@ -42,7 +83,7 @@ static NSMutableString *captchaID;
                                       @"source": @"radio",
                                       @"captcha_solution": captcha,
                                       @"alias": @"373203339@qq.com",
-                                      @"form_password":@"ws00663335",
+                                      @"form_password":password,
                                       @"captcha_id":captchaID};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString *loginURL = @"http://douban.fm/j/login";
@@ -56,6 +97,10 @@ static NSMutableString *captchaID;
     }];
 }
 
+-(void)Logout{
+    
+}
+
 //获取播放列表信息
 //type
 //n : None. Used for get a song list only.
@@ -65,20 +110,10 @@ static NSMutableString *captchaID;
 //s : Skip a song.
 //b : Trash a song.
 //p : Use to get a song list when the song in playlist was all played.
-
-//sid
-//the song's id
+//sid : the song's id
 -(void)loadPlaylistwithType:(NSString *)type{
-    NSString *playlistURL;
-    if ([type isEqualToString:@"n"] || [type isEqualToString:@"p"]) {
-        playlistURL = [NSString stringWithFormat:@"http://douban.fm/j/mine/playlist?type=%@&channel=%@&from=mainsite",type,appDelegate.currentChannel.ID];
-    }
-    else{
-        playlistURL = [NSString stringWithFormat:@"http://douban.fm/j/mine/playlist?type=%@&sid=%@&channel=%@&from=mainsite",type,appDelegate.currentSong.sid,appDelegate.currentChannel.ID];
-    }
+    NSString *playlistURL = [NSString stringWithFormat:@"http://douban.fm/j/mine/playlist?type=%@&sid=%@&pt=%f&channel=%@&from=mainsite",type,appDelegate.currentSong.sid,appDelegate.player.currentPlaybackTime,appDelegate.currentChannel.ID];
     [appDelegate.playList removeAllObjects];
-//    playlistUrl = [playlistUrl stringByAppendingString:@"/j/mine/playlist?type=s&sid=1395079&pt=3.3&channel=0&pb=64&from=mainsite&r=41c64da174"];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager GET:playlistURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *songDictionary = responseObject;
@@ -89,13 +124,13 @@ static NSMutableString *captchaID;
                 continue;
             }
             SongInfo *tempSong = [[SongInfo alloc] init];
-            [tempSong setArtist:[song objectForKey:@"artist"]];
-            [tempSong setTitle:[song objectForKey:@"title"]];
-            [tempSong setUrl:[song objectForKey:@"url"]];
-            [tempSong setPicture:[song objectForKey:@"picture"]];
-            [tempSong setLength:[song objectForKey:@"length"]];
-            [tempSong setLike:[song objectForKey:@"like"]];
-            [tempSong setSid:[song objectForKey:@"sid"]];
+            tempSong.artist = [song objectForKey:@"artist"];
+            tempSong.title = [song objectForKey:@"title"];
+            tempSong.url = [song objectForKey:@"url"];
+            tempSong.picture = [song objectForKey:@"picture"];
+            tempSong.length = [song objectForKey:@"length"];
+            tempSong.like = [song objectForKey:@"like"];
+            tempSong.sid = [song objectForKey:@"sid"];
             [appDelegate.playList addObject:tempSong];
         }
         if ([type isEqualToString:@"r"]) {
@@ -108,6 +143,7 @@ static NSMutableString *captchaID;
             NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
             [appDelegate.player play];
         }
+        [self.delegate reloadTableviewData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -115,7 +151,7 @@ static NSMutableString *captchaID;
 
 
 
-//验证码图片点击刷新验证码事件
+//验证码图片
 -(void)loadCaptchaImage{
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *captchaIDURL = @"http://douban.fm/j/new_captcha";
@@ -126,7 +162,7 @@ static NSMutableString *captchaID;
         NSLog(@"%@",captchaID);
         NSString *chatchaURL = [NSString stringWithFormat:@"http://douban.fm/misc/captcha?size=m&id=%@",tempCaptchaID];
         //加载验证码图片
-        [self.captchaImageDelegate setCaptchaImageWithURLInString:chatchaURL];
+        [self.delegate setCaptchaImageWithURLInString:chatchaURL];
         //[self.imageview setImageWithURL:[NSURL URLWithString:chatchaURL]];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

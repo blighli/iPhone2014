@@ -1,13 +1,13 @@
 //
-//  ViewController.m
+//  PlayerViewController.m
 //  ProjectFinal
 //
 //  Created by xvxvxxx on 12/18/14.
 //  Copyright (c) 2014 谢伟军. All rights reserved.
 //
-#import "ViewController.h"
+#import "PlayerViewController.h"
 #import <UIKit+AFNetworking.h>
-@interface ViewController (){
+@interface PlayerViewController (){
     
     AppDelegate *appDelegate;
     
@@ -35,7 +35,7 @@
 
 @end
 
-@implementation ViewController
+@implementation PlayerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

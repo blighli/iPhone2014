@@ -9,9 +9,12 @@
 #import "SidebarController.h"
 
 @interface SidebarController (){
-    enum page{
-        playerPage,playlistPage,loginPage
-    } currentPage;
+    CDSideBarController *sideBar;
+    PlayerViewController *playerVC;
+    ChannelsTableViewController *channelsVC;
+    UserInfoViewController *userInfoVC;
+    LoginViewController *loginVC;
+    TestViewController *test;
 }
 
 @end
@@ -30,9 +33,10 @@
     playerVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"playerVC"];
     channelsVC = [[ChannelsTableViewController alloc]init];
     channelsVC.delegate = (id)self;
+    userInfoVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"userInfoVC"];
     loginVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginVC"];
     test = [[TestViewController alloc]init];
-    self.viewControllers = @[playerVC, channelsVC, loginVC, test];
+    self.viewControllers = @[playerVC, channelsVC, userInfoVC, test];
 
 }
 

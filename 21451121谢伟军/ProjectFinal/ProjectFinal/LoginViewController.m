@@ -22,16 +22,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     networkManager = [[NetworkManager alloc]init];
-    networkManager.CaptchaImageDelegate = self;
-    [self loadCaptchaImage];
+    networkManager.delegate = (id)self;
     //初始化图片点击事件
-    self.captchaImageview.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loadCaptchaImage)];
-    
-        [singleTap setNumberOfTapsRequired:1];
-        [self.captchaImageview addGestureRecognizer:singleTap];
+    [singleTap setNumberOfTapsRequired:1];
+    self.captchaImageview.userInteractionEnabled = YES;
+    [self.captchaImageview addGestureRecognizer:singleTap];
+}
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [self loadCaptchaImage];
 }
 
 - (void)didReceiveMemoryWarning {
