@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseWebViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="M47-Il-USM" id="5Gh-aw-phs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M47-Il-USM">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="320" id="sXU-Hj-otu"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="xe4-hJ-RBK"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="079-Vq-YdM"/>
+                    </connections>
+                </webView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pN5-0O-ZDs">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <items>
+                        <barButtonItem image="后退.png" style="done" id="iyv-Ic-jyk">
+                            <connections>
+                                <action selector="goBack:" destination="-1" id="RHK-5b-u0w"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="BgA-ro-74W"/>
+                        <barButtonItem image="前进.png" style="plain" id="T6U-OG-mqg">
+                            <connections>
+                                <action selector="goForward:" destination="-1" id="sIX-ai-XFF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5In-6T-Xz1"/>
+                        <barButtonItem image="刷新.png" style="plain" id="MS5-rz-ncZ">
+                            <connections>
+                                <action selector="refresh:" destination="-1" id="sxe-G3-VsN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="EfW-Y0-buK"/>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="pN5-0O-ZDs" secondAttribute="bottom" id="9ZF-3B-vDb"/>
+                <constraint firstItem="M47-Il-USM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YT1-4l-owF"/>
+                <constraint firstAttribute="trailing" secondItem="M47-Il-USM" secondAttribute="trailing" id="egL-d8-exA"/>
+                <constraint firstItem="pN5-0O-ZDs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iam-Km-3NH"/>
+                <constraint firstItem="M47-Il-USM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j7q-gu-j82"/>
+                <constraint firstAttribute="trailing" secondItem="pN5-0O-ZDs" secondAttribute="trailing" id="jDv-AW-VR1"/>
+                <constraint firstItem="pN5-0O-ZDs" firstAttribute="top" secondItem="M47-Il-USM" secondAttribute="bottom" id="l0J-jJ-eZo"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="刷新.png" width="30" height="30"/>
+        <image name="前进.png" width="30" height="30"/>
+        <image name="后退.png" width="30" height="30"/>
+    </resources>
+</document>
