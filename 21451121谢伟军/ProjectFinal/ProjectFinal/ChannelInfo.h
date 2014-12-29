@@ -11,4 +11,5 @@
 @interface ChannelInfo : NSObject
 @property NSString *ID;
 @property NSString *name;
+-(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

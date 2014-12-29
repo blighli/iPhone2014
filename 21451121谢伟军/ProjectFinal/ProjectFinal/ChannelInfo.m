@@ -9,5 +9,11 @@
 #import "ChannelInfo.h"
 
 @implementation ChannelInfo
-
+-(instancetype)initWithDictionary:(NSDictionary *)dictionary{
+    if (self = [super init]) {
+        self.ID = [dictionary objectForKey:@"id"];
+        self.name = [dictionary objectForKey:@"name"];
+    }
+    return self;
+}
 @end

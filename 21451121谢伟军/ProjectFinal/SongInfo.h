@@ -18,4 +18,5 @@
 @property NSString *url;
 @property NSString *sid;
 
+- (instancetype) initWithDictionary:(NSDictionary *)dictionary;
 @end

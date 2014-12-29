@@ -32,9 +32,7 @@ static NSMutableString *captchaID;
         NSDictionary *tempChannel = [channelsDictionary objectForKey:@"data"];
         if (channelIndex != 1) {
             for (NSDictionary *channels in [tempChannel objectForKey:@"channels"]) {
-                ChannelInfo *channelInfo = [[ChannelInfo alloc]init];
-                [channelInfo setID:[channels objectForKey:@"id"]];
-                [channelInfo setName:[channels objectForKey:@"name"]];
+                ChannelInfo *channelInfo = [[ChannelInfo alloc]initWithDictionary:channels];
                 [[appDelegate.channels objectAtIndex:channelIndex] addObject:channelInfo];
             }
         }
@@ -42,20 +40,15 @@ static NSMutableString *captchaID;
             NSDictionary *channels = [tempChannel objectForKey:@"res"];
             if ([[channels allKeys]containsObject:@"rec_chls"]) {
                 for (NSDictionary *tempRecCannels in [channels objectForKey:@"rec_chls"]) {
-                    ChannelInfo *channelInfo = [[ChannelInfo alloc]init];
-                    [channelInfo setID:[tempRecCannels objectForKey:@"id"]];
-                    [channelInfo setName:[tempRecCannels objectForKey:@"name"]];
+                    ChannelInfo *channelInfo = [[ChannelInfo alloc]initWithDictionary:tempRecCannels];
                     [[appDelegate.channels objectAtIndex:channelIndex] addObject:channelInfo];
                 }
             }
             else{
                 NSDictionary *channels = [tempChannel objectForKey:@"res"];
-                ChannelInfo *channelInfo = [[ChannelInfo alloc]init];
-                [channelInfo setID:[channels objectForKey:@"id"]];
-                [channelInfo setName:[channels objectForKey:@"name"]];
+                ChannelInfo *channelInfo = [[ChannelInfo alloc]initWithDictionary:channels];
                 [[appDelegate.channels objectAtIndex:channelIndex] addObject:channelInfo];
             }
-            
         }
         [self.delegate reloadTableviewData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -73,12 +66,6 @@ static NSMutableString *captchaID;
 //form_password:password
 //captcha_id:jOtEZsPFiDVRR9ldW3ELsy57%3en
 -(void)LoginwithUsername:(NSString *)username Password:(NSString *)password  Captcha:(NSString *)captcha RememberOnorOff:(NSString *)rememberOnorOff{
-//    NSDictionary *loginParameters = @{@"remember": rememberOnorOff,
-//                                      @"source": @"radio",
-//                                      @"captcha_solution": captcha,
-//                                      @"alias": username,
-//                                      @"form_password":password,
-//                                      @"captcha_id":captchaID};
     NSDictionary *loginParameters = @{@"remember": rememberOnorOff,
                                       @"source": @"radio",
                                       @"captcha_solution": captcha,
@@ -123,14 +110,7 @@ static NSMutableString *captchaID;
             if ([[song objectForKey:@"subtype"] isEqualToString:@"T"]) {
                 continue;
             }
-            SongInfo *tempSong = [[SongInfo alloc] init];
-            tempSong.artist = [song objectForKey:@"artist"];
-            tempSong.title = [song objectForKey:@"title"];
-            tempSong.url = [song objectForKey:@"url"];
-            tempSong.picture = [song objectForKey:@"picture"];
-            tempSong.length = [song objectForKey:@"length"];
-            tempSong.like = [song objectForKey:@"like"];
-            tempSong.sid = [song objectForKey:@"sid"];
+            SongInfo *tempSong = [[SongInfo alloc] initWithDictionary:song];
             [appDelegate.playList addObject:tempSong];
         }
         if ([type isEqualToString:@"r"]) {
