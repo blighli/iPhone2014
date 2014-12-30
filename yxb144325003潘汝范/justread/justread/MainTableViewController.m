@@ -212,7 +212,8 @@
                         self.story.id = [dictionary objectForKey:@"id"];
                         self.story.title = [dictionary objectForKey:@"title"];
                         self.story.images = [dictionary objectForKey:@"images"];
-                        self.story.share_url = [dictionary objectForKey:@"share_url"];
+                        NSString *share = @"http://daily.zhihu.com/story/";
+                        self.story.share_url = [share stringByAppendingString:[self.story.id stringValue]] ;
                         self.story.ga_prefix = [dictionary objectForKey:@"ga_prefix"];
                         self.story.date = self.date;
                         self.story.type = @([[dictionary objectForKey:@"type"] integerValue]);

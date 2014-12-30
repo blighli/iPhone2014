@@ -185,7 +185,7 @@
                 self.shareUrl = [json objectForKey:@"share_url"];
                 NSString *imageSource = [json objectForKey:@"image_source"];
                 if(imageSrc){
-                        insertDayImgScript = [NSString stringWithFormat:@"<script type='text/javascript'>window.onload = function(){var elem = document.createElement('img');elem.setAttribute('src', '%@');        elem.setAttribute('style', 'max-width: 100%;vertical-align:middle;margin-top: -100px;');var div = document.getElementsByClassName('img-place-holder')[0];div.style.overflow = 'hidden';div.appendChild(elem);var h2 = document.createElement('h2');h2.innerHTML='%@';h2.style.position = 'absolute';h2.style.top = '100px';h2.style.width = '100%'; h2.style.color ='white';h2.style.font = '22px Helvetica, Sans-Serif';h2.style.paddingRight = '8px';h2.style.paddingLeft = '8px';div.appendChild(h2); var h7 = document.createElement('h7');h7.innerHTML='图片: %@';h7.style.position = 'absolute';h7.style.top = '170px';h7.style.maxWidth = '100%';h7.style.color ='white';h7.style.paddingRight = '8px'; h7.style.paddingBottom ='18px';h7.style.right = '8px';h7.style.font = '10px Helvetica-Light, Sans-Serif';div.appendChild(h7);}</script>",imageSrc,title,imageSource];
+                        insertDayImgScript = [NSString stringWithFormat:@"<script type='text/javascript'>window.onload = function(){var elem = document.createElement('img');elem.setAttribute('src', '%@');        elem.setAttribute('style', 'max-width: 100%;vertical-align:middle;margin-top: -100px;');var div = document.getElementsByClassName('img-place-holder')[0];div.style.overflow = 'hidden';div.appendChild(elem);var h2 = document.createElement('h2');h2.innerHTML='%@';h2.style.position = 'absolute';h2.style.top = '100px';h2.style.width = '100%'; h2.style.color ='white';h2.style.font = '22px Helvetica, Sans-Serif';h2.style.paddingRight = '8px';h2.style.paddingLeft = '8px';div.appendChild(h2); var h7 = document.createElement('h7');h7.innerHTML='图片: %@';h7.style.position = 'absolute';h7.style.top = '170px';h7.style.maxWidth = '100%';h7.style.color ='white';h7.style.paddingRight = '8px'; h7.style.paddingBottom ='18px';h7.style.right = '8px';h7.style.font = '10px Helvetica-Light, Sans-Serif';div.appendChild(h7);var names = []; var a = document.getElementsByTagName(\"img\");for (var i=0, len=a.length; i<len; i++){names.push(document.images[i].src);document.images[i].src = null;}String(names);}</script>",imageSrc,title,imageSource];
                         insertNightImgScript = [NSString stringWithFormat:@"<script type='text/javascript'>window.onload = function(){var elem = document.createElement('img');elem.setAttribute('src', '%@');        elem.setAttribute('style', 'max-width: 100%;vertical-align:middle;margin-top: -100px;');var div = document.getElementsByClassName('img-place-holder')[0];div.style.overflow = 'hidden';div.appendChild(elem);var h2 = document.createElement('h2');h2.innerHTML='%@';h2.style.position = 'absolute';h2.style.top = '100px';h2.style.width = '100%'; h2.style.color ='white';h2.style.font = '22px Helvetica, Sans-Serif';h2.style.paddingRight = '8px';h2.style.paddingLeft = '8px';div.appendChild(h2); var h7 = document.createElement('h7');h7.innerHTML='图片: %@';h7.style.position = 'absolute';h7.style.top = '170px';h7.style.maxWidth = '100%';h7.style.color ='white';h7.style.paddingRight = '8px'; h7.style.paddingBottom ='18px';h7.style.right = '8px';h7.style.font = '10px Helvetica-Light, Sans-Serif';div.appendChild(h7);document.body.className = 'night';}</script>",imageSrc,title,imageSource];
                 }else{
                     insertDayImgScript = @"<script type='text/javascript'>window.onload = function(){}</script>";
@@ -207,6 +207,13 @@
                                              htmlPreFix,headPreFix,cssPreFix,cssString,cssSufFix,insertDayImgScript,headSuffFix,body,htmlSuffFix];
                      NSLog(@"html is %@",pageContent);
                     [self.webView loadHTMLString:pageContent baseURL:nil];
+                    UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapGesture:)];
+                    //Set the no. of taps
+                    doubleTapGesture.numberOfTapsRequired = 2;
+                    //Set the delegate
+                    doubleTapGesture.delegate = self;
+                    //Add the gesture to the webview
+                    [self.webView addGestureRecognizer:doubleTapGesture];
                 }
 
                 
@@ -229,4 +236,18 @@
     }
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    //    if ([otherGestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+    //        [otherGestureRecognizer requireGestureRecognizerToFail:gestureRecognizer];
+    //
+    //        NSLog(@"added failure requirement to: %@", otherGestureRecognizer);
+    //    }
+    
+    return YES;
+}
+
+- (void)doubleTapGesture:(UITapGestureRecognizer *)sender {
+    NSString *script = @"var names = []; var a = document.getElementsByTagName(\"IMG\");for (var i=0, len=a.length; i<len; i++){names.push(document.images[i].src);document.images[i].src = '';}String(names);";
+    NSString *urls = [self.webView stringByEvaluatingJavaScriptFromString:script];
+}
 @end
