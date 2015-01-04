@@ -12,6 +12,7 @@
 @interface LoginViewController (){
     NSMutableString *captchaID;
     NetworkManager *networkManager;
+    AppDelegate *appDelegate;
 }
 
 @end
@@ -20,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    appDelegate = [UIApplication sharedApplication].delegate;
     // Do any additional setup after loading the view from its nib.
     networkManager = [[NetworkManager alloc]init];
     networkManager.delegate = (id)self;
@@ -41,25 +43,34 @@
 
 -(void)setCaptchaImageWithURLInString:(NSString *)url{
     [self.captchaImageview setImageWithURL:[NSURL URLWithString:url]];
-}
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
--(void)submitButton:(UIButton *)sender{
+
+- (IBAction)submitButtonTapped:(UIButton *)sender{
     NSString *username = _username.text;
     NSString *password = _password.text;
     NSString *captcha = _captcha.text;
     [networkManager LoginwithUsername:username Password:password Captcha:captcha RememberOnorOff:@"off"];
 }
 
+- (IBAction)cancelButtonTapped:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 //验证码图片点击刷新验证码事件
 -(void)loadCaptchaImage{
     [networkManager loadCaptchaImage];
 }
+
+-(void)loginSuccess{
+    [_delegate setUserInfo];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)backgroundTap:(id)sender{
+    [_username resignFirstResponder];
+    [_password resignFirstResponder];
+    [_captcha resignFirstResponder];
+}
+
 @end

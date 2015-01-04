@@ -9,11 +9,21 @@
 #import <UIKit/UIKit.h>
 #import <AFNetworking/AFNetworking.h>
 #import "NetworkManager.h"
-@interface LoginViewController : UIViewController
+#import "AppDelegate.h"
+
+@protocol LoginViewControllerDelegate <NSObject>
+@optional
+-(void)setUserInfo;
+@end
+
+@interface LoginViewController : UIViewController <NetworManagerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *captchaImageview;
 @property (strong, nonatomic) IBOutlet UITextField *username;
 @property (strong, nonatomic) IBOutlet UITextField *password;
 @property (strong, nonatomic) IBOutlet UITextField *captcha;
-- (IBAction)submitButton:(UIButton *)sender;
+@property id<LoginViewControllerDelegate>delegate;
+- (IBAction)submitButtonTapped:(UIButton *)sender;
+- (IBAction)cancelButtonTapped:(UIButton *)sender;
+- (IBAction)backgroundTap:(id)sender;
 
 @end

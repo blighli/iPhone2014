@@ -35,11 +35,11 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    if (appDelegate.isLogin) {
-        [networkManager setChannel:1 withURLWithString:@"http://douban.fm/j/explore/get_login_chls?uk=4391875"];
+    if (appDelegate.userInfo.cookies == nil) {
+        [networkManager setChannel:1 withURLWithString:@"http://douban.fm/j/explore/get_recommend_chl"];
     }
     else{
-        [networkManager setChannel:1 withURLWithString:@"http://douban.fm/j/explore/get_recommend_chl"];
+        [networkManager setChannel:1 withURLWithString:[NSString stringWithFormat:@"http://douban.fm/j/explore/get_login_chls?uk=%@",appDelegate.userInfo.userID]];
     }
     [networkManager setChannel:2 withURLWithString:@"http://douban.fm/j/explore/up_trending_channels"];
     [networkManager setChannel:3 withURLWithString:@"http://douban.fm/j/explore/hot_channels"];
@@ -48,7 +48,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -74,57 +73,15 @@
     return cell;
 }
 
-#pragma mark - NET
-//-(void)setChannel:(NSUInteger)channelIndex withURLWithString:(NSString *)urlWithString{
-//    [manager GET:urlWithString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSDictionary *channelsDictionary = responseObject;
-//        NSLog(@"JSON: %@", channelsDictionary);
-//        NSDictionary *tempChannel = [channelsDictionary objectForKey:@"data"];
-//        if (channelIndex != 1) {
-//            for (NSDictionary *channels in [tempChannel objectForKey:@"channels"]) {
-//                ChannelInfo *channelInfo = [[ChannelInfo alloc]init];
-//                [channelInfo setID:[channels objectForKey:@"id"]];
-//                [channelInfo setName:[channels objectForKey:@"name"]];
-//                [[_channels objectAtIndex:channelIndex] addObject:channelInfo];
-//            }
-//        }
-//        else{
-//            NSDictionary *channels = [tempChannel objectForKey:@"res"];
-//                ChannelInfo *channelInfo = [[ChannelInfo alloc]init];
-//                [channelInfo setID:[channels objectForKey:@"id"]];
-//                [channelInfo setName:[channels objectForKey:@"name"]];
-//                [[_channels objectAtIndex:channelIndex] addObject:channelInfo];
-//        }
-//        [self.tableView reloadData];
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"%@",error);
-//    }];
-//}
-
-
-
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     appDelegate.currentChannel = [[appDelegate.channels objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
-    NSLog(@"%@",appDelegate.currentChannel.ID);
     [networkManager loadPlaylistwithType:@"n"];
     [self.delegate menuButtonClicked:0];
-
-    // Push the view controller.
-    //[self.navigationController pushViewController:detailViewController animated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (void)reloadTableviewData{
     [self.tableView reloadData];
 }

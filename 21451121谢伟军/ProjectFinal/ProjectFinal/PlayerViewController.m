@@ -8,12 +8,7 @@
 #import "PlayerViewController.h"
 #import <UIKit+AFNetworking.h>
 @interface PlayerViewController (){
-    
     AppDelegate *appDelegate;
-    
-    ChannelsTableViewController *channelsTableViewController;
-    LoginViewController *loginViewController;
-    
     AFHTTPRequestOperationManager *manager;
     NetworkManager *networkManager;
     PlayerController *playerController;
@@ -27,10 +22,7 @@
     int TotalTimeSeconds;
     NSMutableString *totalTimeString;
     NSMutableString *timerLabelString;
-    
-    enum page{
-        playerPage,playlistPage,loginPage
-    } currentPage;
+
 }
 
 @end
@@ -41,23 +33,16 @@
     [super viewDidLoad];
     manager = [AFHTTPRequestOperationManager manager];
     appDelegate = [[UIApplication sharedApplication]delegate];
-
-    
-    channelsTableViewController = [[ChannelsTableViewController alloc]init];
-    loginViewController = [[LoginViewController alloc]init];
     // Do any additional setup after loading the view, typically from a nib.
     networkManager = [[NetworkManager alloc]init];
-    
     isPlaying = YES;
     [self loadPlaylist];
-    //[_appDelegate.player setContentURL:(NSURL *)[[_appDelegate.playList objectAtIndex:0]valueForKey:@"url"]];
-        self.picture.userInteractionEnabled = YES;
+    self.picture.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pauseButton:)];
     [singleTap setNumberOfTapsRequired:1];
     [self.picture addGestureRecognizer:singleTap];
     playerController = [[PlayerController alloc]init];
     playerController.songInfoDelegate = self;
-    
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
 }
 
@@ -76,7 +61,6 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-//    [sideBar insertMenuButtonOnView:appDelegate.window atPosition:CGPointMake(self.view.frame.size.width - 50, 40)];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -96,9 +80,6 @@
 
 
 
-- (IBAction)submitButton:(UIButton *)sender {
-
-}
 
 - (IBAction)pauseButton:(UIButton *)sender {
     if (isPlaying) {
@@ -141,37 +122,18 @@
 }
 
 - (IBAction)deleteButton:(UIButton *)sender {
-}
-
-
-
--(void)menuButtonClicked:(int)index{
-    NSLog(@"%i",index);
-    switch (index) {
-        case 0:
-        {
-            [self dismissViewControllerAnimated:YES completion:nil];
-             currentPage = index;
-        }
-            break;
-        case 1:
-            if (currentPage != playlistPage) {
-                [self presentViewController:channelsTableViewController animated:YES completion:nil];
-            }
-            currentPage = index;
-            break;
-        case 2:
-            if (currentPage != loginPage) {
-                [self presentViewController:loginViewController animated:YES completion:nil];
-            }
-        default:
-            break;
+    if(isPlaying == NO){
+        isPlaying = YES;
+        self.picture.alpha = 1.0f;
+        self.pictureBlock.image = [UIImage imageNamed:@"albumBlock"];
+        [playerController restartSong];
+        [self.pauseButton setBackgroundImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
     }
+    [playerController deleteSong];
 }
 
--(void)setCaptchaImageWithURLInString:(NSString *)url{
-    [self.imageview setImageWithURL:[NSURL URLWithString:url]];
-}
+
+
 -(void)initSongInfomation{
     [self.picture setImageWithURL:[NSURL URLWithString:appDelegate.currentSong.picture]];
     self.songArtist.text = appDelegate.currentSong.artist;

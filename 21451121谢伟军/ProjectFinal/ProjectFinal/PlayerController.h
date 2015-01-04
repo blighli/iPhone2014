@@ -19,7 +19,6 @@
 @property id<PlayerControllerDelegate> songInfoDelegate;
 -(instancetype)init;
 -(void)startPlay;
--(void)finishSongNormally;
 
 //播放操作
 -(void)pauseSong;

@@ -15,6 +15,8 @@
 @optional
 -(void)setCaptchaImageWithURLInString:(NSString *)url;
 -(void)reloadTableviewData;
+-(void)loginSuccess;
+-(void)logoutSuccess;
 @end
 
 @interface NetworkManager : NSObject
@@ -24,7 +26,7 @@
 -(instancetype)init;
 -(void)setChannel:(NSUInteger)channelIndex withURLWithString:(NSString *)urlWithString;
 -(void)LoginwithUsername:(NSString *)username Password:(NSString *)password  Captcha:(NSString *)captcha RememberOnorOff:(NSString *)rememberOnorOff;
--(void)Logout;
+-(void)logout;
 -(void)loadCaptchaImage;
 -(void)loadPlaylistwithType:(NSString *)type;
 @end

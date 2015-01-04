@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h> 
 #import "ChannelInfo.h"
 #import "SongInfo.h"
+#import "UserInfo.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
 @property MPMoviePlayerController *player;
@@ -17,7 +19,7 @@
 @property SongInfo *currentSong;
 @property int currentSongIndex;
 @property ChannelInfo *currentChannel;
-@property BOOL isLogin;
+@property UserInfo *userInfo;
 
 @property NSArray *channelsTitle;
 @property NSMutableArray *channels;

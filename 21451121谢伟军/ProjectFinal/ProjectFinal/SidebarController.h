@@ -13,9 +13,6 @@
 #import "ChannelsTableViewCell.h"
 #import "UserInfoViewController.h"
 #import "LoginViewController.h"
-#import "TestViewController.h"
 @interface SidebarController : UITabBarController<CDSideBarControllerDelegate>{
-
 }
-
 @end

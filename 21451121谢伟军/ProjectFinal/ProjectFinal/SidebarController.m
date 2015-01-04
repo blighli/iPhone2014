@@ -14,7 +14,6 @@
     ChannelsTableViewController *channelsVC;
     UserInfoViewController *userInfoVC;
     LoginViewController *loginVC;
-    TestViewController *test;
 }
 
 @end
@@ -24,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSArray *imageList = @[[UIImage imageNamed:@"menuChat.png"], [UIImage imageNamed:@"menuUsers.png"], [UIImage imageNamed:@"menuMap.png"], [UIImage imageNamed:@"menuClose.png"]];
+    NSArray *imageList = @[[UIImage imageNamed:@"menuPlayer"], [UIImage imageNamed:@"menuChannel"], [UIImage imageNamed:@"menuLogin"], [UIImage imageNamed:@"menuClose.png"]];
     sideBar = [[CDSideBarController alloc] initWithImages:imageList];
     sideBar.delegate = self;
     
@@ -35,8 +34,7 @@
     channelsVC.delegate = (id)self;
     userInfoVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"userInfoVC"];
     loginVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginVC"];
-    test = [[TestViewController alloc]init];
-    self.viewControllers = @[playerVC, channelsVC, userInfoVC, test];
+    self.viewControllers = @[playerVC, channelsVC, userInfoVC];
 
 }
 
@@ -54,20 +52,15 @@
 #pragma mark - SDSidebar Delegate
 -(void)menuButtonClicked:(int)index{
     self.selectedIndex = index;
-//    switch (index) {
-//        case 0:
-//            //
-//            self.selectedIndex = index;
-//            break;
-//        case 1:
-//            //
-//            self.selectedIndex = 1;
-//            break;
-//        case 2:
-//
-//        default:
-//            break;
-//    }
+    switch (index) {
+        case 0:
+        case 1:
+        case 2:
+            self.selectedIndex = index;
+            break;
+        case 3:
+            break;
+    }
 }
 
 @end

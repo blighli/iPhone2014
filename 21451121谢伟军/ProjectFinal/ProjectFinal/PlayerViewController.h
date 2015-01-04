@@ -21,18 +21,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *ChannelTitle;
 @property (strong, nonatomic) IBOutlet UILabel *timerLabel;
 @property (strong, nonatomic) IBOutlet UIProgressView *timerProgressBar;
-
-@property (strong, nonatomic) IBOutlet UIImageView *imageview;
-@property (strong, nonatomic) IBOutlet UITextField *username;
-@property (strong, nonatomic) IBOutlet UITextField *password;
-@property (strong, nonatomic) IBOutlet UITextField *captcha;
-
 @property (strong, nonatomic) IBOutlet UIImageView *picture;
 @property (strong, nonatomic) IBOutlet UIImageView *pictureBlock;
 @property (strong, nonatomic) IBOutlet UIButton *pauseButton;
 @property (strong, nonatomic) IBOutlet UIButton *likeButton;
-
-- (IBAction)submitButton:(UIButton *)sender;
 - (IBAction)pauseButton:(UIButton *)sender;
 - (IBAction)likeButton:(UIButton *)sender;
 - (IBAction)deleteButton:(UIButton *)sender;

@@ -44,7 +44,6 @@
             appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
             [appDelegate.player setContentURL:[NSURL URLWithString:[appDelegate.currentSong valueForKey:@"url"]]];
             [appDelegate.player play];
-            //[[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryPlayback error:nil];
             NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
         }
     }
@@ -53,19 +52,6 @@
     }
 }
 
--(void)finishSongNormally{
-//    if (appDelegate.currentSongIndex >= ([appDelegate.playList count]-1)) {
-//        [networkManager loadPlaylistwithType:@"p" WithSidorNot:NO];
-//    }
-//    else{
-//        ++appDelegate.currentSongIndex;
-//        appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
-//        [appDelegate.player setContentURL:[NSURL URLWithString:[appDelegate.currentSong valueForKey:@"url"]]];
-//        //[self.songInfoDelegate initSongInfomation];
-//        [appDelegate.player play];
-//        NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
-//    }
-}
 
 #pragma mark - PlayerButtonTask
 //点击下一曲事件，按照豆瓣算法，需要重新载入播放列表
