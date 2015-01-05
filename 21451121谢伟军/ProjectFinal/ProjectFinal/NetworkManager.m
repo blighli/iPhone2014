@@ -83,6 +83,11 @@ static NSMutableString *captchaID;
             NSLog(@"COOKIES:%@",appDelegate.userInfo.cookies);
             [self.delegate loginSuccess];
         }
+        else{
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"登陆失败" message:[tempLoginInfoDictionary valueForKey:@"err_msg"] delegate:self cancelButtonTitle:@"GET" otherButtonTitles: nil];
+            [alertView show];
+            [self loadCaptchaImage];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"LOGIN_ERROR:%@",error);
     }];
@@ -158,7 +163,7 @@ static NSMutableString *captchaID;
         }
         [self.delegate reloadTableviewData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"HeyMan" message:@"登陆失败啦" delegate:self cancelButtonTitle:@"哦" otherButtonTitles: nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"HeyMan" message:@"载入失败啦" delegate:self cancelButtonTitle:@"哦" otherButtonTitles: nil];
         [alertView show];
         NSLog(@"LOADPLAYLIST_ERROR:%@",error);
     }];
