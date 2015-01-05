@@ -22,18 +22,16 @@
     int TotalTimeSeconds;
     NSMutableString *totalTimeString;
     NSMutableString *timerLabelString;
-
 }
-
 @end
 
 @implementation PlayerViewController
-
+#pragma mark - System
 - (void)viewDidLoad {
     [super viewDidLoad];
     manager = [AFHTTPRequestOperationManager manager];
     appDelegate = [[UIApplication sharedApplication]delegate];
-    // Do any additional setup after loading the view, typically from a nib.
+    
     networkManager = [[NetworkManager alloc]init];
     isPlaying = YES;
     [self loadPlaylist];
@@ -46,20 +44,6 @@
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
 }
 
--(void)updateProgress{
-    currentTimeMinutes = (unsigned)appDelegate.player.currentPlaybackTime/60;
-    currentTimeSeconds = (unsigned)appDelegate.player.currentPlaybackTime%60;
-    if (currentTimeSeconds < 10) {
-        currentTimeString = [NSMutableString stringWithFormat:@"%d:0%d",currentTimeMinutes,currentTimeSeconds];
-    }
-    else{
-        currentTimeString = [NSMutableString stringWithFormat:@"%d:%d",currentTimeMinutes,currentTimeSeconds];
-    }
-    timerLabelString = [NSMutableString stringWithFormat:@"%@/%@",currentTimeString,totalTimeString];
-    self.timerLabel.text = timerLabelString;
-    self.timerProgressBar.progress = appDelegate.player.currentPlaybackTime/[appDelegate.currentSong.length intValue];
-}
-
 -(void)viewDidAppear:(BOOL)animated{
 }
 
@@ -67,10 +51,11 @@
     [self initSongInfomation];
 }
 
--(void)loadPlaylist{
-    [networkManager loadPlaylistwithType:@"n"];
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -80,7 +65,7 @@
 
 
 
-
+#pragma mark - Buttons
 - (IBAction)pauseButton:(UIButton *)sender {
     if (isPlaying) {
         isPlaying = NO;
@@ -131,10 +116,17 @@
     }
     [playerController deleteSong];
 }
-
-
+#pragma mark - SongInfomation
+-(void)loadPlaylist{
+    [networkManager loadPlaylistwithType:@"n"];
+}
 
 -(void)initSongInfomation{
+    if (![self isFirstResponder]) {
+        //远程控制
+        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+        [self becomeFirstResponder];
+    }
     [self.picture setImageWithURL:[NSURL URLWithString:appDelegate.currentSong.picture]];
     self.songArtist.text = appDelegate.currentSong.artist;
     self.songTitle.text = appDelegate.currentSong.title;
@@ -157,9 +149,61 @@
     else{
         [self.likeButton setBackgroundImage:[UIImage imageNamed:@"heart2"] forState:UIControlStateNormal];
     }
+    
+    [self configPlayingInfo];
+}
+- (void)configPlayingInfo
+{
+    if (NSClassFromString(@"MPNowPlayingInfoCenter")) {
+        if (appDelegate.currentSong.title != nil) {
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            [dict setObject:appDelegate.currentSong.title
+                     forKey:MPMediaItemPropertyTitle];
+            [dict setObject:appDelegate.currentSong.artist
+                     forKey:MPMediaItemPropertyArtist];
+            UIImage *tempImage = _picture.image;
+            if (tempImage != nil) {
+                [dict setObject:[[MPMediaItemArtwork alloc]initWithImage:tempImage] forKey:MPMediaItemPropertyArtwork];
+            }
+            [dict
+             setObject:[NSNumber numberWithFloat:[appDelegate.currentSong.length floatValue]]
+                forKey:MPMediaItemPropertyPlaybackDuration];
+            [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
+        }
+    }
 }
 
+#pragma mark - RemoteControl
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    if (event.type == UIEventTypeRemoteControl) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlPause:
+            case UIEventSubtypeRemoteControlPlay:
+                [self pauseButton:nil]; // 切换播放、暂停按钮
+                break;
+            case UIEventSubtypeRemoteControlNextTrack:
+                [self skipButton:nil]; // 播放下一曲按钮
+                break;
+            default:
+                break;
+        }
+    }
+}
 
+-(void)updateProgress{
+    currentTimeMinutes = (unsigned)appDelegate.player.currentPlaybackTime/60;
+    currentTimeSeconds = (unsigned)appDelegate.player.currentPlaybackTime%60;
+    if (currentTimeSeconds < 10) {
+        currentTimeString = [NSMutableString stringWithFormat:@"%d:0%d",currentTimeMinutes,currentTimeSeconds];
+    }
+    else{
+        currentTimeString = [NSMutableString stringWithFormat:@"%d:%d",currentTimeMinutes,currentTimeSeconds];
+    }
+    timerLabelString = [NSMutableString stringWithFormat:@"%@/%@",currentTimeString,totalTimeString];
+    self.timerLabel.text = timerLabelString;
+    self.timerProgressBar.progress = appDelegate.player.currentPlaybackTime/[appDelegate.currentSong.length intValue];
+}
 
 
 @end

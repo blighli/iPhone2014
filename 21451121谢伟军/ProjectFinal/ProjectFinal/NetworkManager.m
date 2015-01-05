@@ -74,7 +74,6 @@ static NSMutableString *captchaID;
     NSString *loginURL = @"http://douban.fm/j/login";
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager POST:loginURL parameters:loginParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"LOGIN_SUCCESSFUL:%@",responseObject);
         NSDictionary *tempLoginInfoDictionary = responseObject;
         //r=0 登陆成功
         if ([(NSNumber *)[tempLoginInfoDictionary valueForKey:@"r"] intValue] == 0) {
@@ -149,7 +148,6 @@ static NSMutableString *captchaID;
             }
             //如果是未登录用户第一次使用红心列表，会导致列表中无歌曲
             else{
-                NSLog(@"播放列表中没有歌曲，请先登录或者加红心");
                 UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"HeyMan" message:@"红心列表中没有歌曲，请您先登陆，或者添加红心歌曲" delegate:self cancelButtonTitle:@"GET" otherButtonTitles: nil];
                 [alertView show];
                 ChannelInfo *myPrivateChannel = [[ChannelInfo alloc]init];
@@ -160,6 +158,8 @@ static NSMutableString *captchaID;
         }
         [self.delegate reloadTableviewData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"HeyMan" message:@"登陆失败啦" delegate:self cancelButtonTitle:@"哦" otherButtonTitles: nil];
+        [alertView show];
         NSLog(@"LOADPLAYLIST_ERROR:%@",error);
     }];
 }
@@ -180,7 +180,6 @@ static NSMutableString *captchaID;
         [self.delegate setCaptchaImageWithURLInString:chatchaURL];
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"CAPTCHAID_ERROR: %@", error);
     }];
 }
 

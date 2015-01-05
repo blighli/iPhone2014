@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import <AVFoundation/AVFoundation.h> 
+#import <AVFoundation/AVFoundation.h>
 #import "ChannelInfo.h"
 #import "SongInfo.h"
 #import "UserInfo.h"

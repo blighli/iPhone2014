@@ -14,6 +14,7 @@
     ChannelsTableViewController *channelsVC;
     UserInfoViewController *userInfoVC;
     LoginViewController *loginVC;
+    AppDelegate *appDelegate;
 }
 
 @end
@@ -22,11 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    appDelegate = [[UIApplication sharedApplication]delegate];
     // Do any additional setup after loading the view from its nib.
     NSArray *imageList = @[[UIImage imageNamed:@"menuPlayer"], [UIImage imageNamed:@"menuChannel"], [UIImage imageNamed:@"menuLogin"], [UIImage imageNamed:@"menuClose.png"]];
     sideBar = [[CDSideBarController alloc] initWithImages:imageList];
     sideBar.delegate = self;
-    
     
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     playerVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"playerVC"];
@@ -35,7 +36,15 @@
     userInfoVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"userInfoVC"];
     loginVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginVC"];
     self.viewControllers = @[playerVC, channelsVC, userInfoVC];
+}
 
+
+
+
+
+-(BOOL)canBecomeFirstResponder
+{
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NetworkManager.h"
 #import <AFNetworking/AFNetworking.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import "NetworkManager.h"
 #import "ChannelsTableViewController.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"

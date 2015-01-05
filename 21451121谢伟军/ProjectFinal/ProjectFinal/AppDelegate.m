@@ -14,23 +14,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-
-    
     _player = [[MPMoviePlayerController alloc]init];
     _playList = [NSMutableArray array];
     _currentSong = [[SongInfo alloc]init];
     
     [self loadArchiver];
-    if (_currentChannel == nil) {
-        _currentChannel = [[ChannelInfo alloc]init];
-        _currentChannel.name = @"我的私人";
-        _currentChannel.ID = @"0";
-    }
-    if (_userInfo == nil) {
-        _userInfo = [[UserInfo alloc]init];
-    }
-    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    //[application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     [self initChannelsData];
     //后台播放
     AVAudioSession *session = [AVAudioSession sharedInstance];
@@ -38,6 +27,10 @@
     [session setActive:YES error:nil];
     return YES;
 }
+
+
+
+
 - (void)loadArchiver{
     
     NSString *homePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
@@ -46,6 +39,15 @@
     NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
     _userInfo = [unarchiver decodeObjectForKey:@"userInfo"];
     [unarchiver finishDecoding];
+    
+    if (_currentChannel == nil) {
+        _currentChannel = [[ChannelInfo alloc]init];
+        _currentChannel.name = @"我的私人";
+        _currentChannel.ID = @"0";
+    }
+    if (_userInfo == nil) {
+        _userInfo = [[UserInfo alloc]init];
+    }
 }
 
 - (void)initChannelsData{

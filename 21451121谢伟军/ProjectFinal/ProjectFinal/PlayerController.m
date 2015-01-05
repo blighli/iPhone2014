@@ -44,11 +44,9 @@
             appDelegate.currentSong = [appDelegate.playList objectAtIndex:appDelegate.currentSongIndex];
             [appDelegate.player setContentURL:[NSURL URLWithString:[appDelegate.currentSong valueForKey:@"url"]]];
             [appDelegate.player play];
-            NSLog(@"SongIndex:%d",appDelegate.currentSong.index);
         }
     }
     @catch (NSException *exception) {
-        NSLog(@"%@",exception);
     }
 }
 
