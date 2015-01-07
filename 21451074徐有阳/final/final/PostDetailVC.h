@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
 @interface PostDetailVC : UIViewController
 
-@property(nonatomic, strong)NSDictionary *post;
+@property(nonatomic, strong)Post *post;
 
 @end

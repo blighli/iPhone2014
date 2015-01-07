@@ -10,11 +10,12 @@
 
 @interface Post : NSObject
 
+@property (nonatomic, strong) NSString* _id;
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, strong) NSString* publishTime;
 @property (nonatomic, strong) NSString* url;
 @property (nonatomic, strong) NSString* type;
 
-- getPostCompletion:(void (^)(id responseData))completion;
+- (void)getPostWithType:(NSString *)type success:(void (^)(id responseData))success failure:(void (^)(NSError *error))failure;
 
 @end

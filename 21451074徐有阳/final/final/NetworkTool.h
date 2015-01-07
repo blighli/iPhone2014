@@ -11,5 +11,6 @@
 @interface NetworkTool : NSObject
 
 - (void)getDataWithUrl:(NSString *)url completion:(void (^)(id responseData))completion;
+- (void)getPostWithType:(NSString *)type success:(void (^)(id responseData))success failure:(void (^)(NSError *error))failure;
 
 @end

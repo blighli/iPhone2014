@@ -7,40 +7,58 @@
 //
 
 #import "NewsTVC.h"
-#import "AFHTTPRequestOperationManager.h"
 #import "PostDetailVC.h"
 #import "MJRefresh/MJRefresh.h"
 #import "MRProgress.h"
+#import "NetworkTool.h"
+#import "Post.h"
+#import "CycleScrollView.h"
 
 @interface NewsTVC ()
-@property (nonatomic, strong)NSMutableDictionary *news;
-@property (nonatomic, strong)UILabel *label;
+
+@property (nonatomic, strong)NSMutableArray *news;
+
 @end
 
 @implementation NewsTVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@", self.title);
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"type": @"news"};
-    [manager GET:@"http://crawler-cst.herokuapp.com/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.news = responseObject;
+    
+    NetworkTool *networkTool = [[NetworkTool alloc]init];
+    [networkTool getPostWithType:@"news" success:^(id responseData) {
+        self.news = responseData;
         [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
+    } failure:^(NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"出错啦" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];;
+        [alert show];
     }];
+
+    // 添加顶部图片滚动栏
+    CycleScrollView *scrollImageView = [[CycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 180) animationDuration:2.0];
+    scrollImageView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+//        UIView *imageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ScrollView_Image1"]];
+        imageView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 180);
+        return imageView;
+    };
+    scrollImageView.totalPagesCount =  ^NSInteger(void){
+        return 1;
+    };
+
+    self.tableView.tableHeaderView = scrollImageView;
+    
     // 添加下拉刷新控件
-    [self.tableView addHeaderWithCallback:^{
-        [manager GET:@"http://crawler-cst.herokuapp.com/post" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self.tableView headerEndRefreshing];
-            self.news = responseObject;
-            [self.tableView reloadData];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [self.tableView headerEndRefreshing];
-            NSLog(@"%@", error);
-        }];
-    }];
+//    [self.tableView addHeaderWithCallback:^{
+//        [networkTool getPostWithType:@"news" success:^(id responseData) {
+//            self.news = responseData;
+//            [self.tableView reloadData];
+//            [self.tableView headerEndRefreshing];
+//        } failure:^(NSError *error) {
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"出错啦" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];;
+//            [alert show];
+//        }];
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,18 +75,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [[self.news objectForKey:@"posts"] count];
+    return [self.news count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell" forIndexPath:indexPath];
-    cell.textLabel.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"title"];
-    cell.detailTextLabel.text = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"publish_time"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    Post *post = [self.news objectAtIndex:indexPath.row];
+    cell.textLabel.text = post.title;
+    cell.detailTextLabel.text = post.publishTime;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *title = [[[self.news objectForKey:@"posts"] objectAtIndex:indexPath.row] valueForKey:@"title"];
+    Post *post = [self.news objectAtIndex:indexPath.row];
+    NSString *title = post.title;
     CGSize titleSize = [title sizeWithAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0]}];
     float lineNumber = titleSize.width / (self.view.frame.size.width - 40);
     // 一行
@@ -123,7 +143,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     PostDetailVC *postDetailViewControl = [segue destinationViewController];
     NSInteger index = [self.tableView indexPathForCell:(UITableViewCell *)sender].row;
-    postDetailViewControl.post = [[self.news objectForKey:@"posts"] objectAtIndex:index];
+    postDetailViewControl.post = [self.news objectAtIndex:index];
 }
 
 @end
