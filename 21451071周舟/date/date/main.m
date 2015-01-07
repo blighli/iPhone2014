@@ -24,9 +24,9 @@ int main(int argc, const char * argv[]) {
         NSDateComponents *component = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit fromDate:now];
         
         year =(int ) component.year;
-        month = (int ) component.month;
+        month   = (int ) component.month;
         weekday = (int) component.weekday;
-        day = (int) component.day;
+        day     = (int) component.day;
         
         NSString *dateString = [NSString stringWithFormat:@"%d-%d-01",year, month];
         NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
@@ -48,8 +48,8 @@ int main(int argc, const char * argv[]) {
                 
                 int year;
                
-                NSDate *now = [NSDate date];
-                NSCalendar *calendar = [NSCalendar currentCalendar];
+                NSDate *now                 = [NSDate date];
+                NSCalendar *calendar        = [NSCalendar currentCalendar];
                 NSDateComponents *component = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit fromDate:now];
             
                 year =(int ) component.year;
@@ -93,9 +93,9 @@ int main(int argc, const char * argv[]) {
                  NSString *dateString = [NSString stringWithFormat:@"%d-%d-01",year, month];
                  NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
                  [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-                 
+
                  NSDate *date=[dateFormatter dateFromString:dateString];
-                 
+
                  NSCalendar *calendar = [NSCalendar currentCalendar];
                  NSDateComponents *pon = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit fromDate:date];
                  
