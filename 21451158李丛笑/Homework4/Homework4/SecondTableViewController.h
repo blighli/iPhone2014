@@ -12,5 +12,6 @@
 @interface SecondTableViewController : UITableViewController
 
 - (IBAction)TEST:(id)sender;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *imageTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *imageBox;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScoller;
+@property (strong, nonatomic) NSString *imagecount;
 - (IBAction)imageSave:(id)sender;
 - (IBAction)addImage:(id)sender;
 

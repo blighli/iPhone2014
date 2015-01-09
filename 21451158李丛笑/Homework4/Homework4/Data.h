@@ -12,6 +12,7 @@
 
 @property(copy,nonatomic)NSString * title;
 @property(copy,nonatomic)NSString * text;
-@property(nonatomic) int id;
+@property(copy,nonatomic)NSString *contentid;
+//@property(nonatomic) int id;
 
 @end

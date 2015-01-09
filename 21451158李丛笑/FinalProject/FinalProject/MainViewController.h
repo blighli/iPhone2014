@@ -10,6 +10,8 @@
 
 @interface MainViewController : UIViewController
 - (IBAction)addTable:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundimageView;
+
 
 
 @end

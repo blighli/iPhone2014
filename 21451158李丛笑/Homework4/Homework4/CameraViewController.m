@@ -9,6 +9,10 @@
 #import "CameraViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "Data.h"
+#import "DBHelper.h"
+#import "GTMBase64.h"
+#import "GTMDefines.h"
 
 
 @interface CameraViewController ()
@@ -16,34 +20,174 @@
 @end
 
 @implementation CameraViewController
-int i = 0;
- NSMutableArray *results;
+@synthesize imagecount;
+@synthesize imageTitle;
+@synthesize imageBox;
+//int i = 0;
+ //NSMutableArray *results;
+NSMutableString *results;
+NSMutableString *contentid;
 NSMutableArray *images;
+NSMutableArray *datas;
+
+DBHelper *db;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UInt16 h = 6;
-    UInt16 w = 6;
-    for (UInt16 i = 0; i < h; i++) {
-        //CGRectMake(X轴坐标,Y轴坐标,宽,高)
-        for (UInt16 j = 0; j < w; j++) {
-            //设置图片位置
-            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(self.imageScoller.frame.size.width * i, self.imageScoller.frame.size.height * j, self.imageScoller.frame.size.width,self.imageScoller.frame.size.height)];
-            
-            // 指定URL生成UIImage
-            [button setTitle:@"按钮" forState:UIControlStateNormal]; //设置button的标题
-            //[button addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchUpInside]; //定义点击时的响应函数
-            [button setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",i+1]] forState:UIControlStateNormal];
-            [self.imageScoller addSubview:button];
+    results = [[NSMutableString alloc]init];
+    datas = [[NSMutableArray alloc]init];
+    images = [[NSMutableArray alloc]init];
+    db = [[DBHelper alloc]init];
+    [db CreateDB];
+    datas = [db QueryDB];
+    for (int i = 0; i<[datas count]; i++) {
+        Data *data = [datas objectAtIndex:i];
+        if ([data.contentid hasSuffix:@"0"]) {
+            [datas removeObjectAtIndex:i];
+            i--;
+            continue;
         }
-        
+        if ([[data.contentid substringToIndex:[data.contentid length]-2] isEqualToString:imagecount]) {
+            imageTitle.text = data.title;
+            if([data.text length]>0){
+                [results appendString:data.text];
+                [results appendString:@" "];
             }
+            break;
+        }
+    }
+
     
+
+   // results = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view.
+    NSMutableArray *itembutton = [[NSMutableArray alloc]init];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存储"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(saveContent:)];
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"添加"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(addContent:)];
+    
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"删除"
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(deleteContent:)];
+    
+    [itembutton addObject:saveButton];
+    [itembutton addObject:addButton];
+    [itembutton addObject:deleteButton];
+    
+    self.navigationItem.rightBarButtonItems = itembutton;
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)saveContent:(UIBarButtonItem *)sender{
+    [db CreateDB];
+    contentid = [[NSMutableString alloc]init];
+    [contentid appendString:imagecount];
+    [contentid appendString:@" 1"];
+    NSString *insertresult = [db InsertDB:contentid Title:imageTitle.text Text:results];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+-(void)addContent:(UIBarButtonItem *)sender{
+    UIActionSheet* mySheet = [[UIActionSheet alloc]
+                              initWithTitle:@"选择背景"
+                              delegate:self
+                              cancelButtonTitle:@"取消"
+                              destructiveButtonTitle:nil
+                              otherButtonTitles:@"打开本地相册",@"打开照相机", @"转向绘图",nil];
+    [mySheet showInView:self.view];
+}
+
+-(void)deleteContent:(UIBarButtonItem *)sender{
+    [db CreateDB];
+    contentid = [[NSMutableString alloc]init];
+    [contentid appendString:imagecount];
+    [contentid appendString:@" 1"];
+    [db deleteData:contentid];
+    datas = [db QueryDB];
+    for (int i = 0; i<[datas count]; i++) {
+        Data *data = [datas objectAtIndex:i];
+        if([data.contentid hasSuffix:@"1"] ){
+        int textid = [[data.contentid substringToIndex:[data.contentid length]-2] intValue];
+        if (textid>[imagecount intValue]) {
+            NSMutableString *newcontentid = [[NSMutableString alloc]init];
+            NSMutableString *oldcontentid = [[NSMutableString alloc]init];
+            [oldcontentid appendString:[NSString stringWithFormat:@"%d",textid]];
+            [oldcontentid appendString:@" 1"];
+            [newcontentid appendString:[NSString stringWithFormat:@"%d",textid-1]];
+            [newcontentid appendString:@" 1"];
+            [db deleteData:oldcontentid];
+            [db CreateDB];
+            [db InsertDB:newcontentid Title:data.title Text:data.text];
+        }
+        }
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+
 {
-   
+    if (buttonIndex == 0) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        [self presentModalViewController:picker animated:YES];
+
+
+    }
+    if (buttonIndex == 1) {
+        UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+        if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+        {
+            
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            //设置拍照后的图片可被编辑
+            picker.allowsEditing = YES;
+            picker.sourceType = sourceType;
+            [self presentModalViewController:picker animated:YES];
+        }else
+        {
+            
+            NSLog(@"模拟其中无法打开照相机,请在真机中使用");
+            
+        }
+
+            }
+    if (buttonIndex == 2) {
+        [self performSegueWithIdentifier:@"toDraw" sender:self];
+        
+    }
+    
+    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    
+    if([results length]>0){
+    images = [results componentsSeparatedByString:@" "];
+    [images removeObject:@""];
+    for(int i = 0;i<[images count];i++)
+    {
+        
+    NSData *temp = [GTMBase64 decodeString:[images objectAtIndex:i]];
+    
+    UIImageView *smallimage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 80+350*i, 350, 350)] ;
+    
+    smallimage.image = [UIImage imageWithData:temp];
+    //加在视图中
+    [self.view addSubview:smallimage];
+    }}
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,30 +214,13 @@ NSMutableArray *images;
             data = UIImageJPEGRepresentation(image, 1.0);
         else
             data = UIImagePNGRepresentation(image);
-        NSString *result = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding];
-        [results addObject:result];
-        //图片保存的路径
-        //这里将图片放在沙盒的documents文件夹中
-       
-        //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
-        // for (int j = 0; results[j]!=nil; j++) {
-        NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-        //文件管理器
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
-        [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:[results[0] dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
-        //得到选择后沙盒中图片的完整路径
-        NSString *filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,  @"/image.png"];
-        //关闭相册界面
+               NSString *result = [GTMBase64 stringByEncodingData:data];
+        [results appendString:result];
+        [results appendString:@" "];
         [picker dismissModalViewControllerAnimated:YES];
         //创建一个选择后图片的小图标放在下方
         //类似微薄选择图后的效果
-        
-        UIImageView *smallimage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 80+350*i, 350, 350)] ;
-         i++;
-        smallimage.image = image;
-        //加在视图中
-        [self.view addSubview:smallimage];
+       
         //  }
        
 
@@ -152,16 +279,7 @@ NSMutableArray *images;
 }
 
 - (IBAction)addImage:(id)sender {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    picker.delegate = self;
-    
-    
-    picker.allowsEditing = YES;
-    [self presentModalViewController:picker animated:YES];
-
     
 
 }

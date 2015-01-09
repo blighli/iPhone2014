@@ -16,24 +16,6 @@
 
 @implementation SetButton
 
--(NSArray *)getTableArray
-{
-    DBHelper *db = [[DBHelper alloc]init];
-    CourseData *coursedata = [[CourseData alloc]init];
-    [db CreateDB];
-    NSArray *datas = [db QueryDB:@" " IfByClassid:NO];
-    NSMutableArray *tablearray = [[NSMutableArray alloc]init];
-    for (int i = 0; i<[datas count]; i++) {
-        coursedata = [datas objectAtIndex:i];
-        NSString *cid = coursedata.classid;
-        NSArray *ids = [cid componentsSeparatedByString:@" "];
-        if (![tablearray containsObject:[ids objectAtIndex:0]]) {
-            [tablearray addObject:[ids objectAtIndex:0]];
-        }
-    }
-    return tablearray;
-    
-}
 
 -(int)getButtonCount:(int)tableid
 {

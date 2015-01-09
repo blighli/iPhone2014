@@ -1,40 +1,29 @@
 //
-//  SecondTableViewController.m
+//  ImageTableViewController.m
 //  Homework4
 //
-//  Created by 李丛笑 on 14/11/24.
-//  Copyright (c) 2014年 lcx. All rights reserved.
+//  Created by 李丛笑 on 15/1/9.
+//  Copyright (c) 2015年 lcx. All rights reserved.
 //
 
-#import "SecondTableViewController.h"
-#import "FirstViewController.h"
+#import "ImageTableViewController.h"
+#import "CameraViewController.h"
 #import "DBHelper.h"
 #import "Data.h"
-#import <sqlite3.h>
-#define kFilename @"data.sqlite3"
-
-
-
-@interface SecondTableViewController ()<UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
-
-
+@interface ImageTableViewController ()
 
 @end
 
-@implementation SecondTableViewController
-@synthesize tableView;
-
+@implementation ImageTableViewController
+@synthesize imagetableView;
 NSMutableArray *datas;
 NSString *indexrow;
-
-    DBHelper *db;
-
+DBHelper *db;
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [self viewDidLoad];
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,16 +31,22 @@ NSString *indexrow;
     datas = [[NSMutableArray alloc]init];
     [db CreateDB];
     datas = [db QueryDB];
-    for (int i = 0; i<[datas count]; i++) {
+    int count = [datas count];
+    for (int i = 0; i < [datas count]; i++) {
         Data *data = [datas objectAtIndex:i];
-        if ([data.contentid hasSuffix:@"1"]) {
+        if ([data.contentid hasSuffix:@"0"]) {
             [datas removeObjectAtIndex:i];
             i--;
         }
     }
-    [tableView reloadData];
-   
- }
+    [imagetableView reloadData];
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -74,12 +69,11 @@ NSString *indexrow;
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
     Data *data = [[Data alloc]init];
     data = [datas objectAtIndex:indexPath.row];
     cell.textLabel.text = data.title;
-   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-   // indexs = indexPath;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     // Configure the cell...
     
@@ -92,39 +86,23 @@ NSString *indexrow;
     return 50;
 }
 
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-      indexrow = [NSString stringWithFormat:@"%ld",(long)(indexPath.row+1)];
+    indexrow = [NSString stringWithFormat:@"%ld",(long)(indexPath.row+1)];
     NSLog(indexrow);
-//    if(delete ==1)
-//    {
-//        [db deleteData:indexrow];
-//        [self.tableView reloadData];
-//    }
-//    else
-     // [self performSegueWithIdentifier:@"tothird" sender:self];
-    //indexs = indexPath;
-  
-   
-   // FirstViewController *first = [[FirstViewController alloc]init];
+    
+    // FirstViewController *first = [[FirstViewController alloc]init];
     if([indexrow intValue]<=[datas count])
-    [self performSegueWithIdentifier:@"oldone" sender:self];
+        [self performSegueWithIdentifier:@"oldCamera" sender:self];
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
 /*
 // Override to support editing the table view.
@@ -159,15 +137,15 @@ NSString *indexrow;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UIViewController* view = segue.destinationViewController;
     NSString *indexnumber = indexrow;
- //   NSString *count = [NSString stringWithFormat:@"%d",[datas count]];
-   
-    if ([segue.identifier isEqualToString:@"oldone"]==YES ) {
-        FirstViewController *firstview =(FirstViewController *)view;
-        [firstview setValue:indexrow forKey:@"textcount"];
+    //   NSString *count = [NSString stringWithFormat:@"%d",[datas count]];
+    
+    if ([segue.identifier isEqualToString:@"oldCamera"]==YES ) {
+        CameraViewController *cameraview =(CameraViewController *)view;
+        [cameraview setValue:indexrow forKey:@"imagecount"];
     }
-    if ([segue.identifier isEqualToString:@"newone"]==YES ) {
-        FirstViewController *firstview =(FirstViewController *)view;
-        [firstview setValue:[NSString stringWithFormat:@"%d",[datas count]+1] forKey:@"textcount"];
+    if ([segue.identifier isEqualToString:@"newCamera"]==YES ) {
+        CameraViewController *cameraview = (CameraViewController *)view;
+        [cameraview setValue:[NSString stringWithFormat:@"%d",(int)[datas count]+1] forKey:@"imagecount"];
     }
 
     // Get the new view controller using [segue destinationViewController].
@@ -175,9 +153,6 @@ NSString *indexrow;
 }
 
 
-- (IBAction)TEST:(id)sender {
-    [db CreateDB];
-    NSArray *RE = [db QueryDB];
-    [db deleteData:@"1 0"];
-}
+
+
 @end

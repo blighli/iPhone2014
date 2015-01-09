@@ -25,8 +25,7 @@
 
 @property (strong, nonatomic) NSString *thistitle;
 @property (strong, nonatomic) NSString *thistext;
-@property (strong, nonatomic) NSString *thisnumber;
-@property (strong, nonatomic) NSString *thiscount;
+@property (strong, nonatomic) NSString *textcount;
 
 
 

@@ -15,6 +15,6 @@
 @property NSIndexPath *indexPath;
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (strong, nonatomic) NSString *param;
+@property (strong, nonatomic) NSString *textnumber;
 
 @end

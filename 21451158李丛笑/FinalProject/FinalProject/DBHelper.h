@@ -20,6 +20,11 @@
 -(NSString *)QueryDB:(NSString *)classid IfByClassid:(BOOL)ifbytableid;
 -(NSString *)DeleteDB:(NSString *)classid IfByTableid:(BOOL)ifbyclassid;
 
+-(NSString *)CreateTableDB;
+-(NSString *)InsertTableDB:(NSString *)tableid Tablename:(NSString *)tablename Tabletheme:(NSString *)tabletheme;
+-(NSString *)QueryTableDB;
+-(NSString *)DeleteTableDB:(NSString *)tableid;
+
 
 
 @end

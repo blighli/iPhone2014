@@ -8,7 +8,8 @@
 
 #import "FirstViewController.h"
 //#import "SecondTableViewController.h"
-#import "DB.h"
+#import "DBHelper.h"
+#import "Data.h"
 #import <sqlite3.h>
 #define kFilename @"data.sqlite3"
 
@@ -24,18 +25,52 @@
 @synthesize titlebox;
 @synthesize thistitle;
 @synthesize thistext;
-@synthesize thisnumber;
-@synthesize thiscount;
+@synthesize textcount;
 
+NSMutableString *contentid;
+NSMutableArray *datas;
+DBHelper *db;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    titlebox.text = thistitle;
-    textbox.text = thistext;
-  //  NSLog(thistext);
+    NSMutableArray *itembutton = [[NSMutableArray alloc]init];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存储"
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                  action:@selector(saveContent:)];
+   
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"删除"
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(DeleteContent:)];
+   
+    [itembutton addObject:saveButton];
+    [itembutton addObject:deleteButton];
     
+    self.navigationItem.rightBarButtonItems = itembutton;
+    
+    
+    db = [[DBHelper alloc]init];
+    datas = [[NSMutableArray alloc]init];
+    [db CreateDB];
+     datas = [db QueryDB];
+    for (int i = 0; i<[datas count]; i++) {
+        Data *data = [datas objectAtIndex:i];
+        if ([data.contentid hasSuffix:@"1"]) {
+            [datas removeObjectAtIndex:i];
+            i--;
+            continue;
+        }
+        if ([[data.contentid substringToIndex:[data.contentid length]-2] isEqualToString:textcount]) {
+            titlebox.text = data.title;
+            textbox.text = data.text;
+            break;
+        }
+    }
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,28 +94,42 @@
     return _se;
     }
 
-
-- (IBAction)save:(id)sender {
-    DB *db = [[DB alloc]init];
+-(void)saveContent:(UIBarButtonItem *)sender{
+    //DBHelper *db = [[DBHelper alloc]init];
+    contentid = [[NSMutableString alloc]init];
+    [contentid appendString:textcount];
+    [contentid appendString:@" 0"];
     [db CreateDB];
-    if (thistitle == nil) {
-        [db InsertDB:[thiscount intValue] Title:titlebox.text Text:textbox.text];
-    }
-    else
-        [db updateData:[thisnumber intValue] Newtitle:titlebox.text Newtext:textbox.text];
- 
+    [db InsertDB:contentid Title:titlebox.text Text:textbox.text];
     [self.navigationController popViewControllerAnimated:YES];
-    }
-//   
-
--(NSArray *)gettexts
-{
-    return texts;
+    
 }
 
--(NSArray *)gettitles
-{
-    return titles;
+-(void)DeleteContent:(UIBarButtonItem *)sender{
+    [db CreateDB];
+    contentid = [[NSMutableString alloc]init];
+    [contentid appendString:textcount];
+    [contentid appendString:@" 0"];
+    [db deleteData:contentid];
+    datas = [db QueryDB];
+    for (int i = 0; i<[datas count]; i++) {
+        Data *data = [datas objectAtIndex:i];
+        if([data.contentid hasSuffix:@"0"]){
+        int textid = [[data.contentid substringToIndex:[data.contentid length]-2] intValue];
+        if (textid>[textcount intValue]) {
+            NSMutableString *newcontentid = [[NSMutableString alloc]init];
+            NSMutableString *oldcontentid = [[NSMutableString alloc]init];
+            [oldcontentid appendString:[NSString stringWithFormat:@"%d",textid]];
+            [oldcontentid appendString:@" 0"];
+            [newcontentid appendString:[NSString stringWithFormat:@"%d",textid-1]];
+            [newcontentid appendString:@" 0"];
+            [db deleteData:oldcontentid];
+            [db CreateDB];
+            [db InsertDB:newcontentid Title:data.title Text:data.text];
+        }
+        }
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

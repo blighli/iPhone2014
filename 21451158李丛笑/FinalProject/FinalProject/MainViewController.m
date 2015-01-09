@@ -9,42 +9,51 @@
 #import "MainViewController.h"
 #import "SetButton.h"
 #import "ViewController.h"
+#import "DBHelper.h"
+#import "CourseData.h"
+#import "GTMBase64.h"
+#import "GTMDefines.h"
 
 @interface MainViewController ()
 
 @end
 
 @implementation MainViewController
+@synthesize backgroundimageView;
 int tableid=0;
 NSArray *tablearray;
+UIImage *mainbgimage;
+CourseData *tabledata;
+DBHelper *db;
 
-//- (void)viewDidLoad {
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    db = [[DBHelper alloc]init];
+    mainbgimage = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"theme_bg_01.png"]];
+    [backgroundimageView setImage:mainbgimage];
+}
 -(void)viewDidAppear:(BOOL)animated{
     [self loadView];
-  //  mainscrollView = nil;
-    SetButton *stb = [[SetButton alloc]init];
-   // tablearray = [[NSMutableArray alloc]init];
-    tablearray = [stb getTableArray];
-  //  [super viewDidLoad];
-    for (int i=0; i<[tablearray count]; i++) {
-        [self createTableButton:[[tablearray objectAtIndex:i] intValue] Pos:i];
+    [db CreateTableDB];
+   
+    NSArray *tabledatas = [db QueryTableDB];
+    for (int i = 0; i<[tabledatas count]; i++) {
+        tabledata = [tabledatas objectAtIndex:i];
+        [self createTableButton:[tabledata.classid intValue] Pos:i Tablename:tabledata.classname];
     }
-    
-  //  [self createTableButton];
-    // Do any additional setup after loading the view.
 }
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+//{
+//    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+//}
 
-- (void)createTableButton:(int)buttontag Pos:(int)pos{
+- (void)createTableButton:(int)buttontag Pos:(int)pos Tablename:(NSString *)tablename{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button setTitle:@"table" forState: UIControlStateNormal];
-
-    button.frame = CGRectMake(50.f+pos*80.f, 50.f, 70.f, 50.f);;
+    [button setTitle:tablename forState: UIControlStateNormal];
+    button.frame = CGRectMake(20.f+(pos%4)*100.f, +(pos/4+1)*70.f, 80.f, 60.f);;
     button.backgroundColor = [UIColor colorWithRed:0.f green:0.f blue:0.f alpha:0.5f];
+    [button setBackgroundImage:[UIImage imageWithData:[GTMBase64 decodeString:tabledata.classtime]] forState:UIControlStateNormal];
     button.clipsToBounds = YES;
     button.tag = buttontag;
     [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -82,15 +91,13 @@ NSArray *tablearray;
 
 
 - (IBAction)addTable:(id)sender {
-    NSLog(@"DDD");
-    for (int i=0; i<100; i++) {
-        NSString *tid = [NSString stringWithFormat:@"%d",i+1];
-        if (![tablearray containsObject:tid]) {
-            tableid = i+1;
-           // [tablearray addObject:tableid];
-            break;
-        }
-    }
+//        for (int i=0; i<100; i++) {
+//        NSString *tid = [NSString stringWithFormat:@"%d",i+1];
+//        if (![tablearray containsObject:tid]) {
+//            tableid = i+1;
+//            break;
+//        }
+//    }
     [self performSegueWithIdentifier:@"toTableview" sender:self];
     
 }

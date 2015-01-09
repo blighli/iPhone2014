@@ -12,6 +12,8 @@
 #import "SetButton.h"
 #import "CourseData.h"
 #import "EditViewController.h"
+#import "GTMBase64.h"
+#import "GTMDefines.h"
 #import <sqlite3.h>
 #define kFilename @"data.sqlite3"
 #define kTheme_Backgound_Format @"theme_bg_01.png"
@@ -24,35 +26,62 @@
 @synthesize backgroundimageView;
 @synthesize ttag;
 int tableid ;
+NSString *tablename;
+NSString *tabletheme;
+UIScrollView *scrollview;
 int buttoncount;
 SetButton *stb;
 int buttontag=0;
 NSString *bgimage = kTheme_Backgound_Format;
 UIImage *backgroundimage;
+DBHelper *db;
 
 NSMutableDictionary *dic;
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    db = [[DBHelper alloc]init];
+    tablename = @"默认名称";
+    
+
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     // Create down menu button
     
     [self loadView];
-      tableid = [ttag intValue];
-       [self plist];
-    [backgroundimageView setImage:backgroundimage];
+    scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 20, 568, 300)];
+    scrollview.contentSize = CGSizeMake(700, 600);
+    [self.view addSubview:scrollview];
+    tableid = [ttag intValue];
+    [db CreateTableDB];
+    NSArray *tabledatas = [db QueryTableDB];
+    for (int i = 0; i<[tabledatas count]; i++) {
+        CourseData *tabledata = [tabledatas objectAtIndex:i];
+        if ([tabledata.classid isEqualToString:ttag]) {
+            tablename = tabledata.classname;
+            tabletheme = tabledata.classtime;
+            break;
+        }
+    }
+    self.title = tablename;
+    NSData *temp = [GTMBase64 decodeString:tabletheme];
+    [backgroundimageView setImage:[UIImage imageWithData:temp]];
 
     stb = [[SetButton alloc]init];
     buttoncount = [stb getButtonCount:tableid];
-    UIScrollView *scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, 568, 256)];
-    scrollview.contentSize = CGSizeMake(700, 600);
-    [self.view addSubview:scrollview];
-    [self createItemButton];
+    if (buttoncount>0) {
+        [db CreateTableDB];
+        [db InsertTableDB:ttag Tablename:tablename Tabletheme:tabletheme];
+    }
+        [self createItemButton];
     UILabel *homeLabel;
     DWBubbleMenuButton *downMenuButton;
     UIButton *button;
     NSArray *weekdays = @[@"周一",@"周二",@"周三",@"周四",@"周五",@"周六",@"周日"];
     UILabel *label;
     for (int i = 0;i<7;i++) {
-        label = [[UILabel alloc] initWithFrame:CGRectMake(75+70.f*i, 20.f,70.f,40.f)];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(30+70.f*i, 20.f,70.f,40.f)];
         label.text = [weekdays objectAtIndex:i];
         label.textColor = [UIColor blackColor];
         label.textAlignment = NSTextAlignmentCenter;
@@ -60,7 +89,7 @@ NSMutableDictionary *dic;
         [scrollview addSubview:label];
     }
     for (int i = 0; i<buttoncount; i++) {
-        label = [[UILabel alloc] initWithFrame:CGRectMake(20.f, 70.f+50.f*i, 40.f,40.f)];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 70.f+50.f*i, 40.f,40.f)];
         label.text = [NSString stringWithFormat:@"%d",i+1];
         label.textColor = [UIColor blackColor];
         label.textAlignment = NSTextAlignmentCenter;
@@ -74,7 +103,7 @@ NSMutableDictionary *dic;
         
     }
     homeLabel = [self createHomeButtonView:buttoncount+1];
-    downMenuButton = [[DWBubbleMenuButton alloc] initWithFrame:CGRectMake(20.f,70+50.f*buttoncount,
+    downMenuButton = [[DWBubbleMenuButton alloc] initWithFrame:CGRectMake(0.f,70+50.f*buttoncount,
                                                                           homeLabel.frame.size.width,
                                                                           homeLabel.frame.size.height)
                                             expansionDirection:DirectionRight];
@@ -97,7 +126,7 @@ NSMutableDictionary *dic;
     UIBarButtonItem *renameButton = [[UIBarButtonItem alloc] initWithTitle:@"名称"
                                                                            style:UIBarButtonItemStyleBordered
                                                                           target:self
-                                                                          action:@selector(EditCurriculumTitle:)];
+                                                                          action:@selector(RenameTable:)];
     UIBarButtonItem *themeButton = [[UIBarButtonItem alloc] initWithTitle:@"主题"
                                                                            style:UIBarButtonItemStyleBordered
                                                                           target:self
@@ -141,7 +170,7 @@ NSMutableDictionary *dic;
         
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [button setTitle:title forState:UIControlStateNormal];
-        button.frame = CGRectMake(20.f+70.f*(i+1),30.f+50.f*classid, 50.f, 30.f);
+        button.frame = CGRectMake(70.f*(i+1)-20,30.f+50.f*classid, 50.f, 30.f);
         button.backgroundColor = [UIColor colorWithRed:0.f green:0.f blue:0.f alpha:0.5f];
         button.clipsToBounds = NO;
         i++;
@@ -157,13 +186,21 @@ NSMutableDictionary *dic;
     
     return [buttonsMutable copy];
 }
-
+//-------------命名课程表-----------------
+-(void)RenameTable:(UIBarButtonItem *)sender{
+    UIAlertView *renamealert = [[UIAlertView alloc] initWithTitle:@"命名课程表" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    
+    renamealert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    
+    [renamealert textFieldAtIndex:0].text = tablename;
+    
+    [renamealert show];
+    
+   }
 //-------------删除课程表ItemButton-------------
 -(void)DeleteTable:(UIBarButtonItem *)sender{
     DBHelper *db = [[DBHelper alloc]init];
     UIAlertView *alert3 = [[UIAlertView alloc] initWithTitle:@"删除所有课程?" message:@" " delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
-    
-    // optional - add more buttons:
     [alert3 addButtonWithTitle:@"确认"];
     [alert3 show];
 
@@ -176,91 +213,63 @@ NSMutableDictionary *dic;
                               delegate:self
                               cancelButtonTitle:@"取消"
                               destructiveButtonTitle:nil
-                              otherButtonTitles:@"选择默认主题",@"打开本地相册",@"打开照相机", nil];
+                              otherButtonTitles:@"打开本地相册",@"打开照相机", nil];
     [mySheet showInView:self.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 
 {
-    if (buttonIndex == 1) {
-        NSLog(@"SSS");
-    }
-    if (buttonIndex == 2) {
+    
+    if (buttonIndex == 0) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         picker.delegate = self;
         picker.allowsEditing = YES;
         [self presentModalViewController:picker animated:YES];
     }
-    if (buttonIndex == 3) {
+    if (buttonIndex == 1) {
         UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
         
         if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
             
         {
-            
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-            
             picker.delegate = self;
-            
-            //设置拍照后的图片可被编辑
-            
             picker.allowsEditing = YES;
-            
             picker.sourceType = sourceType;
-            
             [self presentModalViewController:picker animated:YES];
             
-        }else
-            
-        {
-            
-            NSLog(@"模拟其中无法打开照相机,请在真机中使用");
-            
         }
-        
-
     }
     
    
 }
 
+
+
 -(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 {
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    UIImage *image = [info  objectForKey:@"UIImagePickerControllerOriginalImage"];
-    backgroundimage = image;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"pic_100.png"]];   // 保存文件的名称
-    [UIImagePNGRepresentation(image)writeToFile: filePath    atomically:YES];
-    
-    [self dicPaths];
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    //当选择的类型是图片
+    if ([type isEqualToString:@"public.image"])
+    {
+        //先把图片转成NSData
+        UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        NSData *data;
+        if (UIImagePNGRepresentation(image) == nil)
+            data = UIImageJPEGRepresentation(image, 1.0);
+        else
+            data = UIImagePNGRepresentation(image);
+        NSString *result = [GTMBase64 stringByEncodingData:data];
+        tabletheme = result;
+        [db CreateTableDB];
+        [db InsertTableDB:ttag Tablename:tablename Tabletheme:tabletheme];
+        [picker dismissModalViewControllerAnimated:YES];
 }
 
--(void)dicPaths
-{
-    NSMutableArray *specialArr = [[NSMutableArray alloc] initWithCapacity:0];
-    
-    dic = [[NSMutableDictionary alloc]init];
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    
-    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"pic_100.png"]];   // 保存文件的名称
-    
-    [dic setObject:filePath forKey:@"img"];
-    [specialArr addObject:dic];
 }
-
--(void)plist
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"pic_100.png"]];   // 保存文件的名称
-    UIImage *img = [UIImage imageWithContentsOfFile:filePath];
-    backgroundimage = img;
-}
-
 
 
 - (void)test:(UIButton *)sender{
@@ -293,7 +302,9 @@ NSMutableDictionary *dic;
             DBHelper *db = [[DBHelper alloc]init];
             [db CreateDB];
             [db DeleteDB:classid IfByTableid:NO];
-            [self viewDidAppear:YES];
+            [db CreateTableDB];
+            [db DeleteTableDB:ttag];
+           // [self viewDidAppear:YES];
         }
     }
     else if([alertView.title isEqualToString:@"删除所有课程?"]){
@@ -307,6 +318,13 @@ NSMutableDictionary *dic;
             [db DeleteDB:classid IfByTableid:YES];
             [self.navigationController popViewControllerAnimated:NO];
 
+        }
+    }
+    else if ([alertView.title isEqualToString:@"命名课程表"]){
+        if (buttonIndex == 1) {
+            tablename = [alertView textFieldAtIndex:0].text;
+            [db CreateTableDB];
+            [db InsertTableDB:ttag Tablename:tablename Tabletheme:tabletheme];
         }
     }
     else{

@@ -13,7 +13,7 @@
 
 @interface SetButton : NSObject
 
--(NSArray *)getTableArray;
+
 -(int)getButtonCount:(int)tableid;
 -(NSString *)getButtonText:(int)tableid Classid:(int)classid;
 -(NSString *)getButtonInfo:(int)tag Tableid:(int)tableid;
