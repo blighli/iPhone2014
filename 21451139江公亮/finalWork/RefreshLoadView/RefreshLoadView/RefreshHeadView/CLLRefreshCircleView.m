@@ -1,10 +1,4 @@
-//
-//  CLLRefreshCircleView.m
-//  RefreshLoadView
-//
-//  Created by chuliangliang on 14-6-13.
-//  Copyright (c) 2014年 aikaola. All rights reserved.
-//
+
 
 #import "CLLRefreshCircleView.h"
 

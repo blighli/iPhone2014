@@ -1,10 +1,4 @@
-//
-//  CLLRefreshFooterView.m
-//  RefreshLoadView
-//
-//  Created by chuliangliang on 14-12-26.
-//  Copyright (c) 2014年 aikaola. All rights reserved.
-//
+
 
 #import "CLLRefreshFooterView.h"
 

@@ -1,10 +1,4 @@
-//
-//  CLLRefreshHeadView.m
-//  RefreshLoadView
-//
-//  Created by chuliangliang on 14-6-12.
-//  Copyright (c) 2014年 aikaola. All rights reserved.
-//
+
 
 #import "CLLRefreshHeadView.h"
 
