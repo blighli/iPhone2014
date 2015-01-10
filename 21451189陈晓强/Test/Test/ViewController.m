@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "SmoothLineView.h"
+#import "AFNetworking.h"
+
 @interface ViewController ()
 @end
 
@@ -17,8 +19,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
-    [self.view addSubview:[[SmoothLineView alloc] initWithFrame:self.view.bounds]];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"foo": @"bar"};
+    [manager POST:@"http://localhost:8080/Groose/UserInfo/MyUser" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        NSDictionary *dict = (NSDictionary *)responseObject;
+        NSLog(@"JSON: %@", [dict objectForKey:@"Sec"]);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 
