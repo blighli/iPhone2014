@@ -35,15 +35,26 @@
     }];
 
     // 添加顶部图片滚动栏
-    CycleScrollView *scrollImageView = [[CycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 180) animationDuration:2.0];
+    NSArray *scrollViewTitles = @[@"我院与新昌县政府签订全面战略合作协议",
+                                  @"学院隆重召开2014年度政产学研合作会议",
+                                  @"学院举行2014年度合作伙伴经验交流会",
+                                  @"学院与上海信投公司签署合作"];
+    NSArray *scrollViewImageNames = @[@"ScrollView_Image1",
+                                      @"ScrollView_Image2",
+                                      @"ScrollView_Image3",
+                                      @"ScrollView_Image4"];
+    CycleScrollView *scrollImageView = [[CycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 180) animationDuration:4.0];
     scrollImageView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-//        UIView *imageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ScrollView_Image1"]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:scrollViewImageNames[pageIndex]]];
         imageView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 180);
+        UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(10, 150, self.tableView.frame.size.width, 30)];
+        title.text = scrollViewTitles[pageIndex];
+        title.textColor = [UIColor whiteColor];
+        [imageView addSubview:title];
         return imageView;
     };
     scrollImageView.totalPagesCount =  ^NSInteger(void){
-        return 1;
+        return 4;
     };
 
     self.tableView.tableHeaderView = scrollImageView;
