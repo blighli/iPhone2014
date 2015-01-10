@@ -2,7 +2,7 @@
 //  MainScene.m
 //  FlappyRect
 //
-//  Created by Pandara on 14-12-23.
+//  Created by Pandara on 14-12-24.
 //  Copyright (c) 2014年 Pandara. All rights reserved.
 //
 
