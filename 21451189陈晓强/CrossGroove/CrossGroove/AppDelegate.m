@@ -7,16 +7,35 @@
 //
 
 #import "AppDelegate.h"
-
+#import "TopicTableViewController.h"
+#import "ViewController.h"
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+//    // Override point for customization after application launch.
+//    NSDate *date = [NSDate date];
+//    NSLog(@"come = %@ ",    [NSString stringWithFormat:@"%@",date]);
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [userDefaults objectForKey:@"username"];
+    if (username == nil) {
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"viewController"];
+        UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:viewController];
+
+        self.window.rootViewController = naviController;
+
+    }else{
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TopicStoryboard" bundle:nil];
+        TopicTableViewController *topicViewController = [storyboard instantiateViewControllerWithIdentifier:@"topicViewController"];
+        UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:topicViewController];
+        self.window.rootViewController = naviController;
+    }
     return YES;
 }
 
