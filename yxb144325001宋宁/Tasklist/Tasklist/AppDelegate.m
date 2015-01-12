@@ -156,10 +156,17 @@ NSString *docPath(){
         
     }
     
+    
     NSString *item=[tasks objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:item];
     cell.selectedBackgroundView=[[UIView alloc] initWithFrame:cell.frame];
     cell.selectedBackgroundView.backgroundColor=[UIColor colorWithRed:0/255.0 green:122/255.0 blue:255/255.0 alpha:0.5];
+    
+    
+    
+//    if ([indexPath row]%2==0) {
+//        cell.backgroundColor=[UIColor colorWithRed:226/255.0 green:226/255.0 blue:226/255.0 alpha:0.5];
+//    }
     return  cell;
 }
 
@@ -287,8 +294,30 @@ NSString *docPath(){
 
 //设置隔行换色
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([indexPath row]%2==0) {
-        cell.backgroundColor=[UIColor colorWithRed:226/255.0 green:226/255.0 blue:226/255.0 alpha:0.5];
+    NSLog(@"%ld",(long)indexPath.row);
+    if (indexPath.row>0) {
+        
+        UITableViewCell *precell=[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(indexPath.row-1) inSection:indexPath.section]];
+        
+        UIColor *colorequal=[UIColor blueColor];
+        UIColor *precolor=precell.backgroundColor;
+        
+        NSInteger number=CGColorGetNumberOfComponents(precolor.CGColor);
+        const CGFloat *com=CGColorGetComponents(precolor.CGColor);
+        NSLog(@"%ld",(long)number);
+        for (int i=0; i<number; i++) {
+            NSLog(@"color %d is %f",i,com[i]);
+        }
+        
+        
+        if (CGColorEqualToColor(precolor.CGColor, colorequal.CGColor)) {
+            cell.backgroundColor=[UIColor redColor];
+        }else{
+            NSLog(@"in");
+            cell.backgroundColor=[UIColor blueColor];
+        }
+    }else{
+        cell.backgroundColor=[UIColor redColor];
     }
 }
 
