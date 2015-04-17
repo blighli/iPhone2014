@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9250112F1A2EA50E00706FF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9250112E1A2EA50E00706FF9 /* Main.storyboard */; };
+		925011321A2EE02000706FF9 /* NotePictureTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 925011311A2EE02000706FF9 /* NotePictureTableViewController.m */; };
+		92726B6F1A3064E80040B5F6 /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = 92726B6E1A3064E80040B5F6 /* a.png */; };
+		92B596091A2F1C96005BBD79 /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B596081A2F1C96005BBD79 /* DrawViewController.m */; };
+		92BA720A1A27FF7600C52C05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72091A27FF7600C52C05 /* main.m */; };
+		92BA720D1A27FF7600C52C05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA720C1A27FF7600C52C05 /* AppDelegate.m */; };
+		92BA72101A27FF7600C52C05 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA720F1A27FF7600C52C05 /* ViewController.m */; };
+		92BA72151A27FF7600C52C05 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BA72141A27FF7600C52C05 /* Images.xcassets */; };
+		92BA72181A27FF7600C52C05 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BA72161A27FF7600C52C05 /* LaunchScreen.xib */; };
+		92BA72241A27FF7600C52C05 /* EverNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72231A27FF7600C52C05 /* EverNoteTests.m */; };
+		92BA722F1A2952C600C52C05 /* NoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA722E1A2952C600C52C05 /* NoteTableViewController.m */; };
+		92BA72321A2954BD00C52C05 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72311A2954BD00C52C05 /* DrawView.m */; };
+		92BA72351A29559F00C52C05 /* NoteTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72341A29559F00C52C05 /* NoteTabBarViewController.m */; };
+		92BA72391A29677D00C52C05 /* MySqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72381A29677D00C52C05 /* MySqlite.m */; };
+		92BA723B1A29685500C52C05 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BA723A1A29685500C52C05 /* libsqlite3.dylib */; };
+		92BA72F61A2B570D00C52C05 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 92BA72E01A2B570D00C52C05 /* IQKeyboardManager.bundle */; };
+		92BA72F71A2B570D00C52C05 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72E21A2B570D00C52C05 /* IQKeyboardManager.m */; };
+		92BA72F81A2B570D00C52C05 /* IQSegmentedNextPrevious.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72E61A2B570D00C52C05 /* IQSegmentedNextPrevious.m */; };
+		92BA72F91A2B570D00C52C05 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72E81A2B570D00C52C05 /* IQTextView.m */; };
+		92BA72FA1A2B570D00C52C05 /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72EA1A2B570D00C52C05 /* IQTitleBarButtonItem.m */; };
+		92BA72FB1A2B570D00C52C05 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72EC1A2B570D00C52C05 /* IQToolbar.m */; };
+		92BA72FC1A2B570D00C52C05 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72EF1A2B570D00C52C05 /* NSArray+Sort.m */; };
+		92BA72FD1A2B570D00C52C05 /* UIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72F11A2B570D00C52C05 /* UIView+Hierarchy.m */; };
+		92BA72FE1A2B570D00C52C05 /* UIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72F31A2B570D00C52C05 /* UIView+IQKeyboardToolbar.m */; };
+		92BA72FF1A2B570D00C52C05 /* UIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA72F51A2B570D00C52C05 /* UIWindow+Hierarchy.m */; };
+		92BA73021A2C014200C52C05 /* DrawViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA73011A2C014200C52C05 /* DrawViewModel.m */; };
+		92D2406E1A2F0F4C00269463 /* SmoothLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D2406D1A2F0F4C00269463 /* SmoothLineView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		92BA721E1A27FF7600C52C05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92BA71FC1A27FF7600C52C05 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92BA72031A27FF7600C52C05;
+			remoteInfo = EverNote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9250112E1A2EA50E00706FF9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		925011301A2EE02000706FF9 /* NotePictureTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotePictureTableViewController.h; sourceTree = "<group>"; };
+		925011311A2EE02000706FF9 /* NotePictureTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePictureTableViewController.m; sourceTree = "<group>"; };
+		92726B6E1A3064E80040B5F6 /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
+		92B596071A2F1C96005BBD79 /* DrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawViewController.h; sourceTree = "<group>"; };
+		92B596081A2F1C96005BBD79 /* DrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewController.m; sourceTree = "<group>"; };
+		92BA72041A27FF7600C52C05 /* EverNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EverNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92BA72081A27FF7600C52C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92BA72091A27FF7600C52C05 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		92BA720B1A27FF7600C52C05 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		92BA720C1A27FF7600C52C05 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		92BA720E1A27FF7600C52C05 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		92BA720F1A27FF7600C52C05 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		92BA72141A27FF7600C52C05 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		92BA72171A27FF7600C52C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		92BA721D1A27FF7600C52C05 /* EverNoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverNoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92BA72221A27FF7600C52C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92BA72231A27FF7600C52C05 /* EverNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverNoteTests.m; sourceTree = "<group>"; };
+		92BA722D1A2952C600C52C05 /* NoteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableViewController.h; sourceTree = "<group>"; };
+		92BA722E1A2952C600C52C05 /* NoteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewController.m; sourceTree = "<group>"; };
+		92BA72301A2954BD00C52C05 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
+		92BA72311A2954BD00C52C05 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
+		92BA72331A29559F00C52C05 /* NoteTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTabBarViewController.h; sourceTree = "<group>"; };
+		92BA72341A29559F00C52C05 /* NoteTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTabBarViewController.m; sourceTree = "<group>"; };
+		92BA72371A29677D00C52C05 /* MySqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySqlite.h; sourceTree = "<group>"; };
+		92BA72381A29677D00C52C05 /* MySqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySqlite.m; sourceTree = "<group>"; };
+		92BA723A1A29685500C52C05 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		92BA72E01A2B570D00C52C05 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		92BA72E11A2B570D00C52C05 /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
+		92BA72E21A2B570D00C52C05 /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
+		92BA72E31A2B570D00C52C05 /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		92BA72E41A2B570D00C52C05 /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		92BA72E51A2B570D00C52C05 /* IQSegmentedNextPrevious.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQSegmentedNextPrevious.h; sourceTree = "<group>"; };
+		92BA72E61A2B570D00C52C05 /* IQSegmentedNextPrevious.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQSegmentedNextPrevious.m; sourceTree = "<group>"; };
+		92BA72E71A2B570D00C52C05 /* IQTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
+		92BA72E81A2B570D00C52C05 /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
+		92BA72E91A2B570D00C52C05 /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		92BA72EA1A2B570D00C52C05 /* IQTitleBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTitleBarButtonItem.m; sourceTree = "<group>"; };
+		92BA72EB1A2B570D00C52C05 /* IQToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
+		92BA72EC1A2B570D00C52C05 /* IQToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQToolbar.m; sourceTree = "<group>"; };
+		92BA72ED1A2B570D00C52C05 /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
+		92BA72EE1A2B570D00C52C05 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
+		92BA72EF1A2B570D00C52C05 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
+		92BA72F01A2B570D00C52C05 /* UIView+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Hierarchy.h"; sourceTree = "<group>"; };
+		92BA72F11A2B570D00C52C05 /* UIView+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Hierarchy.m"; sourceTree = "<group>"; };
+		92BA72F21A2B570D00C52C05 /* UIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		92BA72F31A2B570D00C52C05 /* UIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
+		92BA72F41A2B570D00C52C05 /* UIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Hierarchy.h"; sourceTree = "<group>"; };
+		92BA72F51A2B570D00C52C05 /* UIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		92BA73001A2C014200C52C05 /* DrawViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawViewModel.h; sourceTree = "<group>"; };
+		92BA73011A2C014200C52C05 /* DrawViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewModel.m; sourceTree = "<group>"; };
+		92D2406C1A2F0F4C00269463 /* SmoothLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmoothLineView.h; sourceTree = "<group>"; };
+		92D2406D1A2F0F4C00269463 /* SmoothLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmoothLineView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		92BA72011A27FF7600C52C05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92BA723B1A29685500C52C05 /* libsqlite3.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92BA721A1A27FF7600C52C05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		92BA71FB1A27FF7600C52C05 = {
+			isa = PBXGroup;
+			children = (
+				92BA72061A27FF7600C52C05 /* EverNote */,
+				92BA72201A27FF7600C52C05 /* EverNoteTests */,
+				92BA72051A27FF7600C52C05 /* Products */,
+				92BA723D1A29691000C52C05 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		92BA72051A27FF7600C52C05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92BA72041A27FF7600C52C05 /* EverNote.app */,
+				92BA721D1A27FF7600C52C05 /* EverNoteTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		92BA72061A27FF7600C52C05 /* EverNote */ = {
+			isa = PBXGroup;
+			children = (
+				92726B6E1A3064E80040B5F6 /* a.png */,
+				92BA73061A2C08C700C52C05 /* Controller */,
+				92BA72361A29675B00C52C05 /* SqliteHandle */,
+				92BA72301A2954BD00C52C05 /* DrawView.h */,
+				92BA72311A2954BD00C52C05 /* DrawView.m */,
+				9250112E1A2EA50E00706FF9 /* Main.storyboard */,
+				92BA73001A2C014200C52C05 /* DrawViewModel.h */,
+				92BA73011A2C014200C52C05 /* DrawViewModel.m */,
+				92D2406C1A2F0F4C00269463 /* SmoothLineView.h */,
+				92D2406D1A2F0F4C00269463 /* SmoothLineView.m */,
+				92BA72DF1A2B570C00C52C05 /* IQKeyBoardManager */,
+				92BA72071A27FF7600C52C05 /* Supporting Files */,
+			);
+			path = EverNote;
+			sourceTree = "<group>";
+		};
+		92BA72071A27FF7600C52C05 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				92BA720B1A27FF7600C52C05 /* AppDelegate.h */,
+				92BA720C1A27FF7600C52C05 /* AppDelegate.m */,
+				92BA72141A27FF7600C52C05 /* Images.xcassets */,
+				92BA72161A27FF7600C52C05 /* LaunchScreen.xib */,
+				92BA72081A27FF7600C52C05 /* Info.plist */,
+				92BA72091A27FF7600C52C05 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		92BA72201A27FF7600C52C05 /* EverNoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				92BA72231A27FF7600C52C05 /* EverNoteTests.m */,
+				92BA72211A27FF7600C52C05 /* Supporting Files */,
+			);
+			path = EverNoteTests;
+			sourceTree = "<group>";
+		};
+		92BA72211A27FF7600C52C05 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				92BA72221A27FF7600C52C05 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		92BA72361A29675B00C52C05 /* SqliteHandle */ = {
+			isa = PBXGroup;
+			children = (
+				92BA72371A29677D00C52C05 /* MySqlite.h */,
+				92BA72381A29677D00C52C05 /* MySqlite.m */,
+			);
+			name = SqliteHandle;
+			sourceTree = "<group>";
+		};
+		92BA723D1A29691000C52C05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				92BA723A1A29685500C52C05 /* libsqlite3.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		92BA72DF1A2B570C00C52C05 /* IQKeyBoardManager */ = {
+			isa = PBXGroup;
+			children = (
+				92BA72E01A2B570D00C52C05 /* IQKeyboardManager.bundle */,
+				92BA72E11A2B570D00C52C05 /* IQKeyboardManager.h */,
+				92BA72E21A2B570D00C52C05 /* IQKeyboardManager.m */,
+				92BA72E31A2B570D00C52C05 /* IQKeyboardManagerConstants.h */,
+				92BA72E41A2B570D00C52C05 /* IQKeyboardManagerConstantsInternal.h */,
+				92BA72E51A2B570D00C52C05 /* IQSegmentedNextPrevious.h */,
+				92BA72E61A2B570D00C52C05 /* IQSegmentedNextPrevious.m */,
+				92BA72E71A2B570D00C52C05 /* IQTextView.h */,
+				92BA72E81A2B570D00C52C05 /* IQTextView.m */,
+				92BA72E91A2B570D00C52C05 /* IQTitleBarButtonItem.h */,
+				92BA72EA1A2B570D00C52C05 /* IQTitleBarButtonItem.m */,
+				92BA72EB1A2B570D00C52C05 /* IQToolbar.h */,
+				92BA72EC1A2B570D00C52C05 /* IQToolbar.m */,
+				92BA72ED1A2B570D00C52C05 /* KeyboardManager.h */,
+				92BA72EE1A2B570D00C52C05 /* NSArray+Sort.h */,
+				92BA72EF1A2B570D00C52C05 /* NSArray+Sort.m */,
+				92BA72F01A2B570D00C52C05 /* UIView+Hierarchy.h */,
+				92BA72F11A2B570D00C52C05 /* UIView+Hierarchy.m */,
+				92BA72F21A2B570D00C52C05 /* UIView+IQKeyboardToolbar.h */,
+				92BA72F31A2B570D00C52C05 /* UIView+IQKeyboardToolbar.m */,
+				92BA72F41A2B570D00C52C05 /* UIWindow+Hierarchy.h */,
+				92BA72F51A2B570D00C52C05 /* UIWindow+Hierarchy.m */,
+			);
+			path = IQKeyBoardManager;
+			sourceTree = "<group>";
+		};
+		92BA73061A2C08C700C52C05 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				92BA720E1A27FF7600C52C05 /* ViewController.h */,
+				92BA720F1A27FF7600C52C05 /* ViewController.m */,
+				92BA722D1A2952C600C52C05 /* NoteTableViewController.h */,
+				92BA722E1A2952C600C52C05 /* NoteTableViewController.m */,
+				92BA72331A29559F00C52C05 /* NoteTabBarViewController.h */,
+				92BA72341A29559F00C52C05 /* NoteTabBarViewController.m */,
+				925011301A2EE02000706FF9 /* NotePictureTableViewController.h */,
+				925011311A2EE02000706FF9 /* NotePictureTableViewController.m */,
+				92B596071A2F1C96005BBD79 /* DrawViewController.h */,
+				92B596081A2F1C96005BBD79 /* DrawViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		92BA72031A27FF7600C52C05 /* EverNote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92BA72271A27FF7600C52C05 /* Build configuration list for PBXNativeTarget "EverNote" */;
+			buildPhases = (
+				92BA72001A27FF7600C52C05 /* Sources */,
+				92BA72011A27FF7600C52C05 /* Frameworks */,
+				92BA72021A27FF7600C52C05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EverNote;
+			productName = EverNote;
+			productReference = 92BA72041A27FF7600C52C05 /* EverNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		92BA721C1A27FF7600C52C05 /* EverNoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92BA722A1A27FF7600C52C05 /* Build configuration list for PBXNativeTarget "EverNoteTests" */;
+			buildPhases = (
+				92BA72191A27FF7600C52C05 /* Sources */,
+				92BA721A1A27FF7600C52C05 /* Frameworks */,
+				92BA721B1A27FF7600C52C05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				92BA721F1A27FF7600C52C05 /* PBXTargetDependency */,
+			);
+			name = EverNoteTests;
+			productName = EverNoteTests;
+			productReference = 92BA721D1A27FF7600C52C05 /* EverNoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		92BA71FC1A27FF7600C52C05 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "陈晓强";
+				TargetAttributes = {
+					92BA72031A27FF7600C52C05 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					92BA721C1A27FF7600C52C05 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 92BA72031A27FF7600C52C05;
+					};
+				};
+			};
+			buildConfigurationList = 92BA71FF1A27FF7600C52C05 /* Build configuration list for PBXProject "EverNote" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 92BA71FB1A27FF7600C52C05;
+			productRefGroup = 92BA72051A27FF7600C52C05 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92BA72031A27FF7600C52C05 /* EverNote */,
+				92BA721C1A27FF7600C52C05 /* EverNoteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		92BA72021A27FF7600C52C05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92BA72181A27FF7600C52C05 /* LaunchScreen.xib in Resources */,
+				92BA72F61A2B570D00C52C05 /* IQKeyboardManager.bundle in Resources */,
+				92BA72151A27FF7600C52C05 /* Images.xcassets in Resources */,
+				92726B6F1A3064E80040B5F6 /* a.png in Resources */,
+				9250112F1A2EA50E00706FF9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92BA721B1A27FF7600C52C05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		92BA72001A27FF7600C52C05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D2406E1A2F0F4C00269463 /* SmoothLineView.m in Sources */,
+				92BA72391A29677D00C52C05 /* MySqlite.m in Sources */,
+				92BA72351A29559F00C52C05 /* NoteTabBarViewController.m in Sources */,
+				92BA72F81A2B570D00C52C05 /* IQSegmentedNextPrevious.m in Sources */,
+				92BA72F91A2B570D00C52C05 /* IQTextView.m in Sources */,
+				92BA72101A27FF7600C52C05 /* ViewController.m in Sources */,
+				92BA722F1A2952C600C52C05 /* NoteTableViewController.m in Sources */,
+				92BA73021A2C014200C52C05 /* DrawViewModel.m in Sources */,
+				92BA72F71A2B570D00C52C05 /* IQKeyboardManager.m in Sources */,
+				92BA720D1A27FF7600C52C05 /* AppDelegate.m in Sources */,
+				925011321A2EE02000706FF9 /* NotePictureTableViewController.m in Sources */,
+				92BA72FD1A2B570D00C52C05 /* UIView+Hierarchy.m in Sources */,
+				92BA72FE1A2B570D00C52C05 /* UIView+IQKeyboardToolbar.m in Sources */,
+				92BA720A1A27FF7600C52C05 /* main.m in Sources */,
+				92BA72FA1A2B570D00C52C05 /* IQTitleBarButtonItem.m in Sources */,
+				92BA72321A2954BD00C52C05 /* DrawView.m in Sources */,
+				92B596091A2F1C96005BBD79 /* DrawViewController.m in Sources */,
+				92BA72FC1A2B570D00C52C05 /* NSArray+Sort.m in Sources */,
+				92BA72FB1A2B570D00C52C05 /* IQToolbar.m in Sources */,
+				92BA72FF1A2B570D00C52C05 /* UIWindow+Hierarchy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92BA72191A27FF7600C52C05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92BA72241A27FF7600C52C05 /* EverNoteTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		92BA721F1A27FF7600C52C05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92BA72031A27FF7600C52C05 /* EverNote */;
+			targetProxy = 92BA721E1A27FF7600C52C05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		92BA72161A27FF7600C52C05 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92BA72171A27FF7600C52C05 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		92BA72251A27FF7600C52C05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		92BA72261A27FF7600C52C05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		92BA72281A27FF7600C52C05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EverNote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		92BA72291A27FF7600C52C05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EverNote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		92BA722B1A27FF7600C52C05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EverNoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EverNote.app/EverNote";
+			};
+			name = Debug;
+		};
+		92BA722C1A27FF7600C52C05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EverNoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EverNote.app/EverNote";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92BA71FF1A27FF7600C52C05 /* Build configuration list for PBXProject "EverNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92BA72251A27FF7600C52C05 /* Debug */,
+				92BA72261A27FF7600C52C05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92BA72271A27FF7600C52C05 /* Build configuration list for PBXNativeTarget "EverNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92BA72281A27FF7600C52C05 /* Debug */,
+				92BA72291A27FF7600C52C05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92BA722A1A27FF7600C52C05 /* Build configuration list for PBXNativeTarget "EverNoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92BA722B1A27FF7600C52C05 /* Debug */,
+				92BA722C1A27FF7600C52C05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 92BA71FC1A27FF7600C52C05 /* Project object */;
+}
