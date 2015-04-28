@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BB18D5D179F573D66F16D218 /* libPods-NetMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE32BBE9A4325BEFD70233F5 /* libPods-NetMusic.a */; };
+		CD0E457B1A2C626300389DF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0E457A1A2C626300389DF4 /* main.m */; };
+		CD0E457E1A2C626300389DF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0E457D1A2C626300389DF4 /* AppDelegate.m */; };
+		CD0E45861A2C626300389DF4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD0E45851A2C626300389DF4 /* Images.xcassets */; };
+		CD0E45891A2C626300389DF4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD0E45871A2C626300389DF4 /* LaunchScreen.xib */; };
+		CD0E45951A2C626300389DF4 /* NetMusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0E45941A2C626300389DF4 /* NetMusicTests.m */; };
+		CD0E45A31A2C63F800389DF4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0E45A21A2C63F800389DF4 /* BaseViewController.m */; };
+		CD0E45A71A2C675D00389DF4 /* GlobalDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0E45A61A2C675D00389DF4 /* GlobalDefine.m */; };
+		CD0E45AA1A2C798100389DF4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0E45A91A2C798100389DF4 /* MainViewController.m */; };
+		CD16851F1A2F77D800D47E45 /* ChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD16851E1A2F77D800D47E45 /* ChannelViewController.m */; };
+		CD1685261A30930A00D47E45 /* ShadeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1685251A30930A00D47E45 /* ShadeView.m */; };
+		CD16852F1A30A87500D47E45 /* QCBBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD16852E1A30A87500D47E45 /* QCBBaseRequest.m */; };
+		CD1685331A30BE7300D47E45 /* QCBBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1685321A30BE7300D47E45 /* QCBBaseModel.m */; };
+		CD1685361A30BF8200D47E45 /* QCBChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1685351A30BF8200D47E45 /* QCBChannelModel.m */; };
+		CD1685391A31398A00D47E45 /* QCBBaseRequest+ChannelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1685381A31398A00D47E45 /* QCBBaseRequest+ChannelRequest.m */; };
+		CD327BAF1A3191D300EF5A4A /* QCBSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD327BAE1A3191D300EF5A4A /* QCBSongModel.m */; };
+		CD327BB21A31BD4F00EF5A4A /* QCBBaseRequest+SongRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD327BB11A31BD4F00EF5A4A /* QCBBaseRequest+SongRequest.m */; };
+		CD327BB51A3216BB00EF5A4A /* SongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD327BB41A3216BB00EF5A4A /* SongTableViewController.m */; };
+		CD327BB81A32DA0200EF5A4A /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD327BB71A32DA0200EF5A4A /* PlayerViewController.m */; };
+		CD540CF51A2D882C00C5D8E1 /* UIButtonMake.m in Sources */ = {isa = PBXBuildFile; fileRef = CD540CF41A2D882C00C5D8E1 /* UIButtonMake.m */; };
+		CD6EDB061A337129008333A4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6EDB051A337128008333A4 /* CFNetwork.framework */; };
+		CD6EDB081A337135008333A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6EDB071A337135008333A4 /* AudioToolbox.framework */; };
+		CD6EDB0A1A33714F008333A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6EDB091A33714F008333A4 /* AVFoundation.framework */; };
+		CD6EDB0C1A337173008333A4 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6EDB0B1A337173008333A4 /* libxml2.dylib */; };
+		CD6EDB0E1A337184008333A4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6EDB0D1A337184008333A4 /* MediaPlayer.framework */; };
+		CDC0C6751A2D591700657E55 /* CRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0C6721A2D591700657E55 /* CRNavigationBar.m */; };
+		CDC0C6761A2D591700657E55 /* CRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0C6741A2D591700657E55 /* CRNavigationController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD0E458F1A2C626300389DF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD0E456D1A2C626300389DF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD0E45741A2C626300389DF4;
+			remoteInfo = NetMusic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		270E8F26FFE97BE1C4BD901E /* Pods-NetMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetMusic/Pods-NetMusic.debug.xcconfig"; sourceTree = "<group>"; };
+		334E48235EBA44D1677708BB /* Pods-NetMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetMusic/Pods-NetMusic.release.xcconfig"; sourceTree = "<group>"; };
+		CD0E45751A2C626300389DF4 /* NetMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD0E45791A2C626300389DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD0E457A1A2C626300389DF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CD0E457C1A2C626300389DF4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CD0E457D1A2C626300389DF4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CD0E45851A2C626300389DF4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CD0E45881A2C626300389DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		CD0E458E1A2C626300389DF4 /* NetMusicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetMusicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD0E45931A2C626300389DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD0E45941A2C626300389DF4 /* NetMusicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetMusicTests.m; sourceTree = "<group>"; };
+		CD0E45A11A2C63F800389DF4 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		CD0E45A21A2C63F800389DF4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		CD0E45A51A2C675D00389DF4 /* GlobalDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDefine.h; sourceTree = "<group>"; };
+		CD0E45A61A2C675D00389DF4 /* GlobalDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalDefine.m; sourceTree = "<group>"; };
+		CD0E45A81A2C798100389DF4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		CD0E45A91A2C798100389DF4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		CD16851D1A2F77D800D47E45 /* ChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelViewController.h; sourceTree = "<group>"; };
+		CD16851E1A2F77D800D47E45 /* ChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelViewController.m; sourceTree = "<group>"; };
+		CD1685241A30930A00D47E45 /* ShadeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadeView.h; sourceTree = "<group>"; };
+		CD1685251A30930A00D47E45 /* ShadeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadeView.m; sourceTree = "<group>"; };
+		CD16852B1A3094B400D47E45 /* ShadeViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadeViewDelegate.h; sourceTree = "<group>"; };
+		CD16852D1A30A87500D47E45 /* QCBBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCBBaseRequest.h; sourceTree = "<group>"; };
+		CD16852E1A30A87500D47E45 /* QCBBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCBBaseRequest.m; sourceTree = "<group>"; };
+		CD1685311A30BE7300D47E45 /* QCBBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCBBaseModel.h; sourceTree = "<group>"; };
+		CD1685321A30BE7300D47E45 /* QCBBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCBBaseModel.m; sourceTree = "<group>"; };
+		CD1685341A30BF8200D47E45 /* QCBChannelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCBChannelModel.h; sourceTree = "<group>"; };
+		CD1685351A30BF8200D47E45 /* QCBChannelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCBChannelModel.m; sourceTree = "<group>"; };
+		CD1685371A31398A00D47E45 /* QCBBaseRequest+ChannelRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QCBBaseRequest+ChannelRequest.h"; sourceTree = "<group>"; };
+		CD1685381A31398A00D47E45 /* QCBBaseRequest+ChannelRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QCBBaseRequest+ChannelRequest.m"; sourceTree = "<group>"; };
+		CD327BAD1A3191D300EF5A4A /* QCBSongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCBSongModel.h; sourceTree = "<group>"; };
+		CD327BAE1A3191D300EF5A4A /* QCBSongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCBSongModel.m; sourceTree = "<group>"; };
+		CD327BB01A31BD4F00EF5A4A /* QCBBaseRequest+SongRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QCBBaseRequest+SongRequest.h"; sourceTree = "<group>"; };
+		CD327BB11A31BD4F00EF5A4A /* QCBBaseRequest+SongRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QCBBaseRequest+SongRequest.m"; sourceTree = "<group>"; };
+		CD327BB31A3216BB00EF5A4A /* SongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewController.h; sourceTree = "<group>"; };
+		CD327BB41A3216BB00EF5A4A /* SongTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewController.m; sourceTree = "<group>"; };
+		CD327BB61A32DA0200EF5A4A /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		CD327BB71A32DA0200EF5A4A /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		CD540CF31A2D882C00C5D8E1 /* UIButtonMake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIButtonMake.h; sourceTree = "<group>"; };
+		CD540CF41A2D882C00C5D8E1 /* UIButtonMake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIButtonMake.m; sourceTree = "<group>"; };
+		CD6EDB051A337128008333A4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CD6EDB071A337135008333A4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CD6EDB091A33714F008333A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CD6EDB0B1A337173008333A4 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		CD6EDB0D1A337184008333A4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		CDC0C6711A2D591700657E55 /* CRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRNavigationBar.h; sourceTree = "<group>"; };
+		CDC0C6721A2D591700657E55 /* CRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRNavigationBar.m; sourceTree = "<group>"; };
+		CDC0C6731A2D591700657E55 /* CRNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRNavigationController.h; sourceTree = "<group>"; };
+		CDC0C6741A2D591700657E55 /* CRNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRNavigationController.m; sourceTree = "<group>"; };
+		FE32BBE9A4325BEFD70233F5 /* libPods-NetMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NetMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD0E45721A2C626300389DF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD6EDB0E1A337184008333A4 /* MediaPlayer.framework in Frameworks */,
+				CD6EDB0C1A337173008333A4 /* libxml2.dylib in Frameworks */,
+				CD6EDB0A1A33714F008333A4 /* AVFoundation.framework in Frameworks */,
+				CD6EDB081A337135008333A4 /* AudioToolbox.framework in Frameworks */,
+				CD6EDB061A337129008333A4 /* CFNetwork.framework in Frameworks */,
+				BB18D5D179F573D66F16D218 /* libPods-NetMusic.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD0E458B1A2C626300389DF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4ADF903640E57D4ECE323064 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				270E8F26FFE97BE1C4BD901E /* Pods-NetMusic.debug.xcconfig */,
+				334E48235EBA44D1677708BB /* Pods-NetMusic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6BD97E40131735959EAA927C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD6EDB0D1A337184008333A4 /* MediaPlayer.framework */,
+				CD6EDB0B1A337173008333A4 /* libxml2.dylib */,
+				CD6EDB091A33714F008333A4 /* AVFoundation.framework */,
+				CD6EDB071A337135008333A4 /* AudioToolbox.framework */,
+				CD6EDB051A337128008333A4 /* CFNetwork.framework */,
+				FE32BBE9A4325BEFD70233F5 /* libPods-NetMusic.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD0E456C1A2C626300389DF4 = {
+			isa = PBXGroup;
+			children = (
+				CD0E45771A2C626300389DF4 /* NetMusic */,
+				CD0E45911A2C626300389DF4 /* NetMusicTests */,
+				CD0E45761A2C626300389DF4 /* Products */,
+				4ADF903640E57D4ECE323064 /* Pods */,
+				6BD97E40131735959EAA927C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CD0E45761A2C626300389DF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD0E45751A2C626300389DF4 /* NetMusic.app */,
+				CD0E458E1A2C626300389DF4 /* NetMusicTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD0E45771A2C626300389DF4 /* NetMusic */ = {
+			isa = PBXGroup;
+			children = (
+				CD16852C1A30A30B00D47E45 /* Network */,
+				CD1685271A30942B00D47E45 /* Views */,
+				CD1685201A30502200D47E45 /* models */,
+				CD0E45A41A2C645E00389DF4 /* Utils */,
+				CD0E45A01A2C639E00389DF4 /* Controllers */,
+				CD0E457C1A2C626300389DF4 /* AppDelegate.h */,
+				CD0E457D1A2C626300389DF4 /* AppDelegate.m */,
+				CD0E45851A2C626300389DF4 /* Images.xcassets */,
+				CD0E45871A2C626300389DF4 /* LaunchScreen.xib */,
+				CD0E45781A2C626300389DF4 /* Supporting Files */,
+			);
+			path = NetMusic;
+			sourceTree = "<group>";
+		};
+		CD0E45781A2C626300389DF4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD0E45791A2C626300389DF4 /* Info.plist */,
+				CD0E457A1A2C626300389DF4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD0E45911A2C626300389DF4 /* NetMusicTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD0E45941A2C626300389DF4 /* NetMusicTests.m */,
+				CD0E45921A2C626300389DF4 /* Supporting Files */,
+			);
+			path = NetMusicTests;
+			sourceTree = "<group>";
+		};
+		CD0E45921A2C626300389DF4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD0E45931A2C626300389DF4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD0E45A01A2C639E00389DF4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CDC0C6701A2D591700657E55 /* CRNavigationController */,
+				CD0E45A11A2C63F800389DF4 /* BaseViewController.h */,
+				CD0E45A21A2C63F800389DF4 /* BaseViewController.m */,
+				CD0E45A81A2C798100389DF4 /* MainViewController.h */,
+				CD0E45A91A2C798100389DF4 /* MainViewController.m */,
+				CD16851D1A2F77D800D47E45 /* ChannelViewController.h */,
+				CD16851E1A2F77D800D47E45 /* ChannelViewController.m */,
+				CD327BB31A3216BB00EF5A4A /* SongTableViewController.h */,
+				CD327BB41A3216BB00EF5A4A /* SongTableViewController.m */,
+				CD327BB61A32DA0200EF5A4A /* PlayerViewController.h */,
+				CD327BB71A32DA0200EF5A4A /* PlayerViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CD0E45A41A2C645E00389DF4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CD0E45A51A2C675D00389DF4 /* GlobalDefine.h */,
+				CD0E45A61A2C675D00389DF4 /* GlobalDefine.m */,
+				CD540CF31A2D882C00C5D8E1 /* UIButtonMake.h */,
+				CD540CF41A2D882C00C5D8E1 /* UIButtonMake.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		CD1685201A30502200D47E45 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				CD1685311A30BE7300D47E45 /* QCBBaseModel.h */,
+				CD1685321A30BE7300D47E45 /* QCBBaseModel.m */,
+				CD1685341A30BF8200D47E45 /* QCBChannelModel.h */,
+				CD1685351A30BF8200D47E45 /* QCBChannelModel.m */,
+				CD327BAD1A3191D300EF5A4A /* QCBSongModel.h */,
+				CD327BAE1A3191D300EF5A4A /* QCBSongModel.m */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		CD1685271A30942B00D47E45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD1685241A30930A00D47E45 /* ShadeView.h */,
+				CD1685251A30930A00D47E45 /* ShadeView.m */,
+				CD16852B1A3094B400D47E45 /* ShadeViewDelegate.h */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CD16852C1A30A30B00D47E45 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CD16852D1A30A87500D47E45 /* QCBBaseRequest.h */,
+				CD16852E1A30A87500D47E45 /* QCBBaseRequest.m */,
+				CD1685371A31398A00D47E45 /* QCBBaseRequest+ChannelRequest.h */,
+				CD1685381A31398A00D47E45 /* QCBBaseRequest+ChannelRequest.m */,
+				CD327BB01A31BD4F00EF5A4A /* QCBBaseRequest+SongRequest.h */,
+				CD327BB11A31BD4F00EF5A4A /* QCBBaseRequest+SongRequest.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		CDC0C6701A2D591700657E55 /* CRNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				CDC0C6711A2D591700657E55 /* CRNavigationBar.h */,
+				CDC0C6721A2D591700657E55 /* CRNavigationBar.m */,
+				CDC0C6731A2D591700657E55 /* CRNavigationController.h */,
+				CDC0C6741A2D591700657E55 /* CRNavigationController.m */,
+			);
+			path = CRNavigationController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD0E45741A2C626300389DF4 /* NetMusic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD0E45981A2C626300389DF4 /* Build configuration list for PBXNativeTarget "NetMusic" */;
+			buildPhases = (
+				D63851D3AEA18B2EA667C197 /* Check Pods Manifest.lock */,
+				CD0E45711A2C626300389DF4 /* Sources */,
+				CD0E45721A2C626300389DF4 /* Frameworks */,
+				CD0E45731A2C626300389DF4 /* Resources */,
+				74123F2BB868C6D23E8F3000 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NetMusic;
+			productName = NetMusic;
+			productReference = CD0E45751A2C626300389DF4 /* NetMusic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CD0E458D1A2C626300389DF4 /* NetMusicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD0E459B1A2C626300389DF4 /* Build configuration list for PBXNativeTarget "NetMusicTests" */;
+			buildPhases = (
+				CD0E458A1A2C626300389DF4 /* Sources */,
+				CD0E458B1A2C626300389DF4 /* Frameworks */,
+				CD0E458C1A2C626300389DF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD0E45901A2C626300389DF4 /* PBXTargetDependency */,
+			);
+			name = NetMusicTests;
+			productName = NetMusicTests;
+			productReference = CD0E458E1A2C626300389DF4 /* NetMusicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD0E456D1A2C626300389DF4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = xsdlr;
+				TargetAttributes = {
+					CD0E45741A2C626300389DF4 = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 6ADJ2TL5DB;
+					};
+					CD0E458D1A2C626300389DF4 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = CD0E45741A2C626300389DF4;
+					};
+				};
+			};
+			buildConfigurationList = CD0E45701A2C626300389DF4 /* Build configuration list for PBXProject "NetMusic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD0E456C1A2C626300389DF4;
+			productRefGroup = CD0E45761A2C626300389DF4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD0E45741A2C626300389DF4 /* NetMusic */,
+				CD0E458D1A2C626300389DF4 /* NetMusicTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD0E45731A2C626300389DF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD0E45891A2C626300389DF4 /* LaunchScreen.xib in Resources */,
+				CD0E45861A2C626300389DF4 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD0E458C1A2C626300389DF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		74123F2BB868C6D23E8F3000 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetMusic/Pods-NetMusic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D63851D3AEA18B2EA667C197 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD0E45711A2C626300389DF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD16851F1A2F77D800D47E45 /* ChannelViewController.m in Sources */,
+				CD1685391A31398A00D47E45 /* QCBBaseRequest+ChannelRequest.m in Sources */,
+				CD1685331A30BE7300D47E45 /* QCBBaseModel.m in Sources */,
+				CDC0C6761A2D591700657E55 /* CRNavigationController.m in Sources */,
+				CD540CF51A2D882C00C5D8E1 /* UIButtonMake.m in Sources */,
+				CD0E45AA1A2C798100389DF4 /* MainViewController.m in Sources */,
+				CD0E45A31A2C63F800389DF4 /* BaseViewController.m in Sources */,
+				CD327BB51A3216BB00EF5A4A /* SongTableViewController.m in Sources */,
+				CD1685261A30930A00D47E45 /* ShadeView.m in Sources */,
+				CDC0C6751A2D591700657E55 /* CRNavigationBar.m in Sources */,
+				CD0E45A71A2C675D00389DF4 /* GlobalDefine.m in Sources */,
+				CD1685361A30BF8200D47E45 /* QCBChannelModel.m in Sources */,
+				CD16852F1A30A87500D47E45 /* QCBBaseRequest.m in Sources */,
+				CD327BB21A31BD4F00EF5A4A /* QCBBaseRequest+SongRequest.m in Sources */,
+				CD0E457E1A2C626300389DF4 /* AppDelegate.m in Sources */,
+				CD0E457B1A2C626300389DF4 /* main.m in Sources */,
+				CD327BAF1A3191D300EF5A4A /* QCBSongModel.m in Sources */,
+				CD327BB81A32DA0200EF5A4A /* PlayerViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD0E458A1A2C626300389DF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD0E45951A2C626300389DF4 /* NetMusicTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD0E45901A2C626300389DF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD0E45741A2C626300389DF4 /* NetMusic */;
+			targetProxy = CD0E458F1A2C626300389DF4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CD0E45871A2C626300389DF4 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD0E45881A2C626300389DF4 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD0E45961A2C626300389DF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD0E45971A2C626300389DF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD0E45991A2C626300389DF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 270E8F26FFE97BE1C4BD901E /* Pods-NetMusic.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = NetMusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD0E459A1A2C626300389DF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 334E48235EBA44D1677708BB /* Pods-NetMusic.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = NetMusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CD0E459C1A2C626300389DF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NetMusicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetMusic.app/NetMusic";
+			};
+			name = Debug;
+		};
+		CD0E459D1A2C626300389DF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NetMusicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetMusic.app/NetMusic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD0E45701A2C626300389DF4 /* Build configuration list for PBXProject "NetMusic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD0E45961A2C626300389DF4 /* Debug */,
+				CD0E45971A2C626300389DF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD0E45981A2C626300389DF4 /* Build configuration list for PBXNativeTarget "NetMusic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD0E45991A2C626300389DF4 /* Debug */,
+				CD0E459A1A2C626300389DF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD0E459B1A2C626300389DF4 /* Build configuration list for PBXNativeTarget "NetMusicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD0E459C1A2C626300389DF4 /* Debug */,
+				CD0E459D1A2C626300389DF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD0E456D1A2C626300389DF4 /* Project object */;
+}
