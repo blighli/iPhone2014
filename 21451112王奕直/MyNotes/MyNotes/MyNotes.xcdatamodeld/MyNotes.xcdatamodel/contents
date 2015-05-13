@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DrawingNote" syncable="YES">
+        <attribute name="drawingRoot" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="PictureNote" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picRoot" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TextNote" syncable="YES">
+        <attribute name="textItem" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TextNote" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="PictureNote" positionX="-54" positionY="-9" width="128" height="88"/>
+        <element name="DrawingNote" positionX="-36" positionY="9" width="128" height="88"/>
+    </elements>
+</model>
