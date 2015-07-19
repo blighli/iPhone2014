@@ -1,0 +1,725 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4BBC0F4413DC9B9C8D5D144C /* libPods-iHabit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4999720AA74C0E5AD0D5903C /* libPods-iHabit.a */; };
+		96A42CF94F461F5F5B9D86EC /* libPods-iHabitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5D40FCFC579DA59F6D2237 /* libPods-iHabitTests.a */; };
+		CDE29E691A417BFF00DEE2AB /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE29E681A417BFF00DEE2AB /* LineView.m */; };
+		CDE29E6C1A41B24100DEE2AB /* GridPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE29E6B1A41B24100DEE2AB /* GridPickerViewController.m */; };
+		EC22BC9F1A43F92C00515CA9 /* TimesPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC22BC9E1A43F92C00515CA9 /* TimesPickerController.m */; };
+		EC22BCA21A43FE6D00515CA9 /* PeriodPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC22BCA11A43FE6D00515CA9 /* PeriodPickerController.m */; };
+		EC2466E71A412F6A0046CB2C /* HabitMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2466E61A412F6A0046CB2C /* HabitMainViewController.m */; };
+		EC402A7C1A456C27008ABFAE /* IconPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC402A7B1A456C27008ABFAE /* IconPickerController.m */; };
+		EC4C42E61A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42E41A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld */; };
+		EC4C42E71A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42E41A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld */; };
+		EC4C42EA1A2EE35700A82D8D /* HistoryPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42E91A2EE35700A82D8D /* HistoryPeriod.m */; };
+		EC4C42EB1A2EE35700A82D8D /* HistoryPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42E91A2EE35700A82D8D /* HistoryPeriod.m */; };
+		EC4C42EE1A2EE35800A82D8D /* HistoryAction.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42ED1A2EE35800A82D8D /* HistoryAction.m */; };
+		EC4C42EF1A2EE35800A82D8D /* HistoryAction.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42ED1A2EE35800A82D8D /* HistoryAction.m */; };
+		EC4C42F61A2EEE6200A82D8D /* HabitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42F51A2EEE6200A82D8D /* HabitTableViewController.m */; };
+		EC4C42F91A2EFB3E00A82D8D /* HabitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42F81A2EFB3E00A82D8D /* HabitTableViewCell.m */; };
+		EC4C42FC1A2EFE0F00A82D8D /* HabitTableCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C42FB1A2EFE0F00A82D8D /* HabitTableCellViewController.m */; };
+		EC4C43021A2F254E00A82D8D /* TimeLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C43011A2F254E00A82D8D /* TimeLineView.m */; };
+		EC4C430B1A30953D00A82D8D /* Raleway_Medium_Tracked.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4C43091A30953D00A82D8D /* Raleway_Medium_Tracked.ttf */; };
+		EC4C430C1A30953D00A82D8D /* Raleway_Regular_Tracked.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4C430A1A30953D00A82D8D /* Raleway_Regular_Tracked.ttf */; };
+		EC4C43121A31A3D000A82D8D /* Habit.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C43111A31A3D000A82D8D /* Habit.m */; };
+		EC55A28F1A2C2D3E00488D4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC55A28E1A2C2D3E00488D4C /* main.m */; };
+		EC55A2921A2C2D3E00488D4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC55A2911A2C2D3E00488D4C /* AppDelegate.m */; };
+		EC55A2951A2C2D3E00488D4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC55A2941A2C2D3E00488D4C /* ViewController.m */; };
+		EC55A29A1A2C2D3E00488D4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC55A2991A2C2D3E00488D4C /* Images.xcassets */; };
+		EC55A2A91A2C2D3E00488D4C /* iHabitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC55A2A81A2C2D3E00488D4C /* iHabitTests.m */; };
+		EC5A19511A3D835C00BA8092 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC5A194D1A3D835C00BA8092 /* LaunchScreen.xib */; };
+		EC5A19521A3D835C00BA8092 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5A194F1A3D835C00BA8092 /* Main.storyboard */; };
+		EC73E7211A35C7AD00E6823E /* InnerShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73E7201A35C7AD00E6823E /* InnerShadowView.m */; };
+		EC73E7241A35CA0900E6823E /* CellActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73E7231A35CA0900E6823E /* CellActionView.m */; };
+		EC73E7271A35D15100E6823E /* HabitBiz.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73E7261A35D15100E6823E /* HabitBiz.m */; };
+		EC73E7331A383B7400E6823E /* AddHabitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73E7311A383B7400E6823E /* AddHabitViewController.m */; };
+		EC73E7341A383B7400E6823E /* AddHabitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC73E7321A383B7400E6823E /* AddHabitViewController.xib */; };
+		ECF241851A48120300B10EBC /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF241841A48120300B10EBC /* Util.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC55A2A31A2C2D3E00488D4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC55A2811A2C2D3E00488D4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC55A2881A2C2D3E00488D4C;
+			remoteInfo = iHabit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4999720AA74C0E5AD0D5903C /* libPods-iHabit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iHabit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5780C07F6DD8995732F7D1FF /* Pods-iHabitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHabitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iHabitTests/Pods-iHabitTests.release.xcconfig"; sourceTree = "<group>"; };
+		60C7E73AA0F2F43CD917A9E6 /* Pods-iHabit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHabit.release.xcconfig"; path = "Pods/Target Support Files/Pods-iHabit/Pods-iHabit.release.xcconfig"; sourceTree = "<group>"; };
+		74883FFA65CCAA515622A0F1 /* Pods-iHabit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHabit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHabit/Pods-iHabit.debug.xcconfig"; sourceTree = "<group>"; };
+		CDE29E671A417BFF00DEE2AB /* LineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineView.h; sourceTree = "<group>"; };
+		CDE29E681A417BFF00DEE2AB /* LineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineView.m; sourceTree = "<group>"; };
+		CDE29E6A1A41B24100DEE2AB /* GridPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridPickerViewController.h; sourceTree = "<group>"; };
+		CDE29E6B1A41B24100DEE2AB /* GridPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridPickerViewController.m; sourceTree = "<group>"; };
+		D12863C1136CBB00C1307621 /* Pods-iHabitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHabitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHabitTests/Pods-iHabitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC22BC9D1A43F92C00515CA9 /* TimesPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimesPickerController.h; sourceTree = "<group>"; };
+		EC22BC9E1A43F92C00515CA9 /* TimesPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimesPickerController.m; sourceTree = "<group>"; };
+		EC22BCA01A43FE6D00515CA9 /* PeriodPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodPickerController.h; sourceTree = "<group>"; };
+		EC22BCA11A43FE6D00515CA9 /* PeriodPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodPickerController.m; sourceTree = "<group>"; };
+		EC2466E51A412F6A0046CB2C /* HabitMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HabitMainViewController.h; sourceTree = "<group>"; };
+		EC2466E61A412F6A0046CB2C /* HabitMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitMainViewController.m; sourceTree = "<group>"; };
+		EC402A7A1A456C27008ABFAE /* IconPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconPickerController.h; sourceTree = "<group>"; };
+		EC402A7B1A456C27008ABFAE /* IconPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconPickerController.m; sourceTree = "<group>"; };
+		EC4C42E51A2EDAEA00A82D8D /* iHabitDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHabitDB.xcdatamodel; sourceTree = "<group>"; };
+		EC4C42E81A2EE35700A82D8D /* HistoryPeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryPeriod.h; sourceTree = "<group>"; };
+		EC4C42E91A2EE35700A82D8D /* HistoryPeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryPeriod.m; sourceTree = "<group>"; };
+		EC4C42EC1A2EE35800A82D8D /* HistoryAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryAction.h; sourceTree = "<group>"; };
+		EC4C42ED1A2EE35800A82D8D /* HistoryAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryAction.m; sourceTree = "<group>"; };
+		EC4C42F41A2EEE6200A82D8D /* HabitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HabitTableViewController.h; sourceTree = "<group>"; };
+		EC4C42F51A2EEE6200A82D8D /* HabitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitTableViewController.m; sourceTree = "<group>"; };
+		EC4C42F71A2EFB3E00A82D8D /* HabitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HabitTableViewCell.h; sourceTree = "<group>"; };
+		EC4C42F81A2EFB3E00A82D8D /* HabitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitTableViewCell.m; sourceTree = "<group>"; };
+		EC4C42FA1A2EFE0F00A82D8D /* HabitTableCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HabitTableCellViewController.h; sourceTree = "<group>"; };
+		EC4C42FB1A2EFE0F00A82D8D /* HabitTableCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitTableCellViewController.m; sourceTree = "<group>"; };
+		EC4C43001A2F254E00A82D8D /* TimeLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineView.h; sourceTree = "<group>"; };
+		EC4C43011A2F254E00A82D8D /* TimeLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineView.m; sourceTree = "<group>"; };
+		EC4C43091A30953D00A82D8D /* Raleway_Medium_Tracked.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Raleway_Medium_Tracked.ttf; sourceTree = "<group>"; };
+		EC4C430A1A30953D00A82D8D /* Raleway_Regular_Tracked.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Raleway_Regular_Tracked.ttf; sourceTree = "<group>"; };
+		EC4C43101A31A3D000A82D8D /* Habit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Habit.h; sourceTree = "<group>"; };
+		EC4C43111A31A3D000A82D8D /* Habit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Habit.m; sourceTree = "<group>"; };
+		EC55A2891A2C2D3E00488D4C /* iHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC55A28D1A2C2D3E00488D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC55A28E1A2C2D3E00488D4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EC55A2901A2C2D3E00488D4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EC55A2911A2C2D3E00488D4C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EC55A2931A2C2D3E00488D4C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EC55A2941A2C2D3E00488D4C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EC55A2991A2C2D3E00488D4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EC55A2A21A2C2D3E00488D4C /* iHabitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iHabitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC55A2A71A2C2D3E00488D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC55A2A81A2C2D3E00488D4C /* iHabitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iHabitTests.m; sourceTree = "<group>"; };
+		EC5A194E1A3D835C00BA8092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		EC5A19501A3D835C00BA8092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		EC73E71F1A35C7AD00E6823E /* InnerShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnerShadowView.h; sourceTree = "<group>"; };
+		EC73E7201A35C7AD00E6823E /* InnerShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnerShadowView.m; sourceTree = "<group>"; };
+		EC73E7221A35CA0900E6823E /* CellActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellActionView.h; sourceTree = "<group>"; };
+		EC73E7231A35CA0900E6823E /* CellActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellActionView.m; sourceTree = "<group>"; };
+		EC73E7251A35D15100E6823E /* HabitBiz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HabitBiz.h; sourceTree = "<group>"; };
+		EC73E7261A35D15100E6823E /* HabitBiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitBiz.m; sourceTree = "<group>"; };
+		EC73E7301A383B7400E6823E /* AddHabitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddHabitViewController.h; sourceTree = "<group>"; };
+		EC73E7311A383B7400E6823E /* AddHabitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHabitViewController.m; sourceTree = "<group>"; };
+		EC73E7321A383B7400E6823E /* AddHabitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddHabitViewController.xib; sourceTree = "<group>"; };
+		ECF241831A48120300B10EBC /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		ECF241841A48120300B10EBC /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		FE5D40FCFC579DA59F6D2237 /* libPods-iHabitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iHabitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC55A2861A2C2D3E00488D4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BBC0F4413DC9B9C8D5D144C /* libPods-iHabit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC55A29F1A2C2D3E00488D4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96A42CF94F461F5F5B9D86EC /* libPods-iHabitTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		459DD1A24354887D9EE47FAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74883FFA65CCAA515622A0F1 /* Pods-iHabit.debug.xcconfig */,
+				60C7E73AA0F2F43CD917A9E6 /* Pods-iHabit.release.xcconfig */,
+				D12863C1136CBB00C1307621 /* Pods-iHabitTests.debug.xcconfig */,
+				5780C07F6DD8995732F7D1FF /* Pods-iHabitTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC55A2801A2C2D3E00488D4C = {
+			isa = PBXGroup;
+			children = (
+				EC55A28B1A2C2D3E00488D4C /* iHabit */,
+				EC55A2A51A2C2D3E00488D4C /* iHabitTests */,
+				EC55A28A1A2C2D3E00488D4C /* Products */,
+				459DD1A24354887D9EE47FAB /* Pods */,
+				EF4B7C91BCFB7136CCB08CE8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EC55A28A1A2C2D3E00488D4C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC55A2891A2C2D3E00488D4C /* iHabit.app */,
+				EC55A2A21A2C2D3E00488D4C /* iHabitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC55A28B1A2C2D3E00488D4C /* iHabit */ = {
+			isa = PBXGroup;
+			children = (
+				EC5A194C1A3D835C00BA8092 /* Base.lproj */,
+				EC73E72C1A38384D00E6823E /* CoreBiz */,
+				EC73E72B1A38383000E6823E /* Controller */,
+				EC73E72A1A38381500E6823E /* View */,
+				EC73E7291A3837E700E6823E /* Resource */,
+				EC73E7281A3837D300E6823E /* Data */,
+				EC55A2901A2C2D3E00488D4C /* AppDelegate.h */,
+				EC55A2911A2C2D3E00488D4C /* AppDelegate.m */,
+				EC55A2931A2C2D3E00488D4C /* ViewController.h */,
+				EC55A2941A2C2D3E00488D4C /* ViewController.m */,
+				EC55A28C1A2C2D3E00488D4C /* Supporting Files */,
+				ECF241831A48120300B10EBC /* Util.h */,
+				ECF241841A48120300B10EBC /* Util.m */,
+			);
+			path = iHabit;
+			sourceTree = "<group>";
+		};
+		EC55A28C1A2C2D3E00488D4C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC55A28D1A2C2D3E00488D4C /* Info.plist */,
+				EC55A28E1A2C2D3E00488D4C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC55A2A51A2C2D3E00488D4C /* iHabitTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC55A2A81A2C2D3E00488D4C /* iHabitTests.m */,
+				EC55A2A61A2C2D3E00488D4C /* Supporting Files */,
+			);
+			path = iHabitTests;
+			sourceTree = "<group>";
+		};
+		EC55A2A61A2C2D3E00488D4C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC55A2A71A2C2D3E00488D4C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC5A194C1A3D835C00BA8092 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				EC5A194D1A3D835C00BA8092 /* LaunchScreen.xib */,
+				EC5A194F1A3D835C00BA8092 /* Main.storyboard */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		EC73E7281A3837D300E6823E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EC4C42E41A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld */,
+				EC4C43101A31A3D000A82D8D /* Habit.h */,
+				EC4C43111A31A3D000A82D8D /* Habit.m */,
+				EC4C42EC1A2EE35800A82D8D /* HistoryAction.h */,
+				EC4C42ED1A2EE35800A82D8D /* HistoryAction.m */,
+				EC4C42E81A2EE35700A82D8D /* HistoryPeriod.h */,
+				EC4C42E91A2EE35700A82D8D /* HistoryPeriod.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		EC73E7291A3837E700E6823E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				EC55A2991A2C2D3E00488D4C /* Images.xcassets */,
+				EC4C43091A30953D00A82D8D /* Raleway_Medium_Tracked.ttf */,
+				EC4C430A1A30953D00A82D8D /* Raleway_Regular_Tracked.ttf */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		EC73E72A1A38381500E6823E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC4C42F71A2EFB3E00A82D8D /* HabitTableViewCell.h */,
+				EC4C42F81A2EFB3E00A82D8D /* HabitTableViewCell.m */,
+				EC4C43001A2F254E00A82D8D /* TimeLineView.h */,
+				EC4C43011A2F254E00A82D8D /* TimeLineView.m */,
+				EC73E71F1A35C7AD00E6823E /* InnerShadowView.h */,
+				EC73E7201A35C7AD00E6823E /* InnerShadowView.m */,
+				EC73E7221A35CA0900E6823E /* CellActionView.h */,
+				EC73E7231A35CA0900E6823E /* CellActionView.m */,
+				CDE29E671A417BFF00DEE2AB /* LineView.h */,
+				CDE29E681A417BFF00DEE2AB /* LineView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		EC73E72B1A38383000E6823E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EC4C42F41A2EEE6200A82D8D /* HabitTableViewController.h */,
+				EC4C42F51A2EEE6200A82D8D /* HabitTableViewController.m */,
+				EC4C42FA1A2EFE0F00A82D8D /* HabitTableCellViewController.h */,
+				EC4C42FB1A2EFE0F00A82D8D /* HabitTableCellViewController.m */,
+				EC73E7301A383B7400E6823E /* AddHabitViewController.h */,
+				EC73E7311A383B7400E6823E /* AddHabitViewController.m */,
+				EC73E7321A383B7400E6823E /* AddHabitViewController.xib */,
+				EC2466E51A412F6A0046CB2C /* HabitMainViewController.h */,
+				EC2466E61A412F6A0046CB2C /* HabitMainViewController.m */,
+				CDE29E6A1A41B24100DEE2AB /* GridPickerViewController.h */,
+				CDE29E6B1A41B24100DEE2AB /* GridPickerViewController.m */,
+				EC22BC9D1A43F92C00515CA9 /* TimesPickerController.h */,
+				EC22BC9E1A43F92C00515CA9 /* TimesPickerController.m */,
+				EC22BCA01A43FE6D00515CA9 /* PeriodPickerController.h */,
+				EC22BCA11A43FE6D00515CA9 /* PeriodPickerController.m */,
+				EC402A7A1A456C27008ABFAE /* IconPickerController.h */,
+				EC402A7B1A456C27008ABFAE /* IconPickerController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		EC73E72C1A38384D00E6823E /* CoreBiz */ = {
+			isa = PBXGroup;
+			children = (
+				EC73E7251A35D15100E6823E /* HabitBiz.h */,
+				EC73E7261A35D15100E6823E /* HabitBiz.m */,
+			);
+			name = CoreBiz;
+			sourceTree = "<group>";
+		};
+		EF4B7C91BCFB7136CCB08CE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4999720AA74C0E5AD0D5903C /* libPods-iHabit.a */,
+				FE5D40FCFC579DA59F6D2237 /* libPods-iHabitTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC55A2881A2C2D3E00488D4C /* iHabit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC55A2AC1A2C2D3E00488D4C /* Build configuration list for PBXNativeTarget "iHabit" */;
+			buildPhases = (
+				5D8688A2CF83CF37104E9575 /* Check Pods Manifest.lock */,
+				EC55A2851A2C2D3E00488D4C /* Sources */,
+				EC55A2861A2C2D3E00488D4C /* Frameworks */,
+				EC55A2871A2C2D3E00488D4C /* Resources */,
+				12706CB5999595FF76321234 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iHabit;
+			productName = iHabit;
+			productReference = EC55A2891A2C2D3E00488D4C /* iHabit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC55A2A11A2C2D3E00488D4C /* iHabitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC55A2AF1A2C2D3E00488D4C /* Build configuration list for PBXNativeTarget "iHabitTests" */;
+			buildPhases = (
+				63ED9AE7BF250DF690224151 /* Check Pods Manifest.lock */,
+				EC55A29E1A2C2D3E00488D4C /* Sources */,
+				EC55A29F1A2C2D3E00488D4C /* Frameworks */,
+				EC55A2A01A2C2D3E00488D4C /* Resources */,
+				D19B6EFFC9FECB9B00BE0BD4 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC55A2A41A2C2D3E00488D4C /* PBXTargetDependency */,
+			);
+			name = iHabitTests;
+			productName = iHabitTests;
+			productReference = EC55A2A21A2C2D3E00488D4C /* iHabitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC55A2811A2C2D3E00488D4C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = lzh;
+				TargetAttributes = {
+					EC55A2881A2C2D3E00488D4C = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					EC55A2A11A2C2D3E00488D4C = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = EC55A2881A2C2D3E00488D4C;
+					};
+				};
+			};
+			buildConfigurationList = EC55A2841A2C2D3E00488D4C /* Build configuration list for PBXProject "iHabit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC55A2801A2C2D3E00488D4C;
+			productRefGroup = EC55A28A1A2C2D3E00488D4C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC55A2881A2C2D3E00488D4C /* iHabit */,
+				EC55A2A11A2C2D3E00488D4C /* iHabitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC55A2871A2C2D3E00488D4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC5A19511A3D835C00BA8092 /* LaunchScreen.xib in Resources */,
+				EC4C430B1A30953D00A82D8D /* Raleway_Medium_Tracked.ttf in Resources */,
+				EC4C430C1A30953D00A82D8D /* Raleway_Regular_Tracked.ttf in Resources */,
+				EC5A19521A3D835C00BA8092 /* Main.storyboard in Resources */,
+				EC55A29A1A2C2D3E00488D4C /* Images.xcassets in Resources */,
+				EC73E7341A383B7400E6823E /* AddHabitViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC55A2A01A2C2D3E00488D4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12706CB5999595FF76321234 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iHabit/Pods-iHabit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D8688A2CF83CF37104E9575 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		63ED9AE7BF250DF690224151 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D19B6EFFC9FECB9B00BE0BD4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iHabitTests/Pods-iHabitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC55A2851A2C2D3E00488D4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC4C42E61A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld in Sources */,
+				EC55A2951A2C2D3E00488D4C /* ViewController.m in Sources */,
+				EC73E7271A35D15100E6823E /* HabitBiz.m in Sources */,
+				EC73E7331A383B7400E6823E /* AddHabitViewController.m in Sources */,
+				EC4C43121A31A3D000A82D8D /* Habit.m in Sources */,
+				EC402A7C1A456C27008ABFAE /* IconPickerController.m in Sources */,
+				EC22BC9F1A43F92C00515CA9 /* TimesPickerController.m in Sources */,
+				EC2466E71A412F6A0046CB2C /* HabitMainViewController.m in Sources */,
+				EC4C42FC1A2EFE0F00A82D8D /* HabitTableCellViewController.m in Sources */,
+				EC4C42EA1A2EE35700A82D8D /* HistoryPeriod.m in Sources */,
+				EC55A2921A2C2D3E00488D4C /* AppDelegate.m in Sources */,
+				EC4C42F61A2EEE6200A82D8D /* HabitTableViewController.m in Sources */,
+				EC4C42EE1A2EE35800A82D8D /* HistoryAction.m in Sources */,
+				CDE29E691A417BFF00DEE2AB /* LineView.m in Sources */,
+				EC55A28F1A2C2D3E00488D4C /* main.m in Sources */,
+				EC73E7211A35C7AD00E6823E /* InnerShadowView.m in Sources */,
+				EC4C42F91A2EFB3E00A82D8D /* HabitTableViewCell.m in Sources */,
+				EC22BCA21A43FE6D00515CA9 /* PeriodPickerController.m in Sources */,
+				CDE29E6C1A41B24100DEE2AB /* GridPickerViewController.m in Sources */,
+				ECF241851A48120300B10EBC /* Util.m in Sources */,
+				EC73E7241A35CA0900E6823E /* CellActionView.m in Sources */,
+				EC4C43021A2F254E00A82D8D /* TimeLineView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC55A29E1A2C2D3E00488D4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC4C42E71A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld in Sources */,
+				EC55A2A91A2C2D3E00488D4C /* iHabitTests.m in Sources */,
+				EC4C42EF1A2EE35800A82D8D /* HistoryAction.m in Sources */,
+				EC4C42EB1A2EE35700A82D8D /* HistoryPeriod.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC55A2A41A2C2D3E00488D4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC55A2881A2C2D3E00488D4C /* iHabit */;
+			targetProxy = EC55A2A31A2C2D3E00488D4C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EC5A194D1A3D835C00BA8092 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC5A194E1A3D835C00BA8092 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		EC5A194F1A3D835C00BA8092 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC5A19501A3D835C00BA8092 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EC55A2AA1A2C2D3E00488D4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC55A2AB1A2C2D3E00488D4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC55A2AD1A2C2D3E00488D4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74883FFA65CCAA515622A0F1 /* Pods-iHabit.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = iHabit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EC55A2AE1A2C2D3E00488D4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60C7E73AA0F2F43CD917A9E6 /* Pods-iHabit.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = iHabit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EC55A2B01A2C2D3E00488D4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D12863C1136CBB00C1307621 /* Pods-iHabitTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = iHabitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iHabit.app/iHabit";
+			};
+			name = Debug;
+		};
+		EC55A2B11A2C2D3E00488D4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5780C07F6DD8995732F7D1FF /* Pods-iHabitTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = iHabitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iHabit.app/iHabit";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC55A2841A2C2D3E00488D4C /* Build configuration list for PBXProject "iHabit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC55A2AA1A2C2D3E00488D4C /* Debug */,
+				EC55A2AB1A2C2D3E00488D4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC55A2AC1A2C2D3E00488D4C /* Build configuration list for PBXNativeTarget "iHabit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC55A2AD1A2C2D3E00488D4C /* Debug */,
+				EC55A2AE1A2C2D3E00488D4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC55A2AF1A2C2D3E00488D4C /* Build configuration list for PBXNativeTarget "iHabitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC55A2B01A2C2D3E00488D4C /* Debug */,
+				EC55A2B11A2C2D3E00488D4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EC4C42E41A2EDAEA00A82D8D /* iHabitDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EC4C42E51A2EDAEA00A82D8D /* iHabitDB.xcdatamodel */,
+			);
+			currentVersion = EC4C42E51A2EDAEA00A82D8D /* iHabitDB.xcdatamodel */;
+			path = iHabitDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EC55A2811A2C2D3E00488D4C /* Project object */;
+}
