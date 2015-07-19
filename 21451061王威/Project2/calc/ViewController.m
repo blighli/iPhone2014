@@ -39,6 +39,7 @@ int priority[] = {-1, -1, 2, 2, 2, 1, 1};
     [opVal setObject:@"*" forKey:@24];
     [opVal setObject:@"-" forKey:@25];
     [opVal setObject:@"+" forKey:@26];
+    
 }
 
 - (void)didReceiveMemoryWarning {
