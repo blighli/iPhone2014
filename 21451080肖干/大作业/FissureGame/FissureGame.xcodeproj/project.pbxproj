@@ -1,0 +1,623 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		434C3FB21A49C477006CF3D8 /* Projectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 434C3FB11A49C477006CF3D8 /* Projectile.m */; };
+		436DEC8A1A46E786006710F1 /* LevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 436DEC891A46E786006710F1 /* LevelManager.m */; };
+		436DEC8C1A46E9A7006710F1 /* level_info.json in Resources */ = {isa = PBXBuildFile; fileRef = 436DEC8B1A46E9A7006710F1 /* level_info.json */; };
+		436DEC931A47BE48006710F1 /* projectile_trail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 436DEC8E1A47BE48006710F1 /* projectile_trail.sks */; };
+		436DEC941A47BE48006710F1 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 436DEC8F1A47BE48006710F1 /* spark.png */; };
+		436DEC951A47BE48006710F1 /* fissure.sks in Resources */ = {isa = PBXBuildFile; fileRef = 436DEC901A47BE48006710F1 /* fissure.sks */; };
+		436DEC971A47BE48006710F1 /* warp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 436DEC921A47BE48006710F1 /* warp.sks */; };
+		437606B41A552AD70035DDA7 /* disc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 437606B31A552AD60035DDA7 /* disc@2x.png */; };
+		43EB5BDE1A455B5A00D475A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5BDD1A455B5A00D475A6 /* main.m */; };
+		43EB5BE11A455B5A00D475A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5BE01A455B5A00D475A6 /* AppDelegate.m */; };
+		43EB5BE61A455B5A00D475A6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 43EB5BE51A455B5A00D475A6 /* GameScene.sks */; };
+		43EB5BE91A455B5A00D475A6 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5BE81A455B5A00D475A6 /* GameViewController.m */; };
+		43EB5BEC1A455B5A00D475A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43EB5BEA1A455B5A00D475A6 /* Main.storyboard */; };
+		43EB5BEE1A455B5A00D475A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43EB5BED1A455B5A00D475A6 /* Images.xcassets */; };
+		43EB5BF11A455B5A00D475A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43EB5BEF1A455B5A00D475A6 /* LaunchScreen.xib */; };
+		43EB5C101A455B9A00D475A6 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C071A455B9A00D475A6 /* GameScene.m */; };
+		43EB5C111A455B9A00D475A6 /* GameControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C091A455B9A00D475A6 /* GameControl.m */; };
+		43EB5C121A455B9A00D475A6 /* Fissure.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C0B1A455B9A00D475A6 /* Fissure.m */; };
+		43EB5C131A455B9A00D475A6 /* Target.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C0D1A455B9A00D475A6 /* Target.m */; };
+		43EB5C141A455B9A00D475A6 /* SpawnPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C0F1A455B9A00D475A6 /* SpawnPoint.m */; };
+		43EB5C291A455C5100D475A6 /* EXRemoteLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C1A1A455C5100D475A6 /* EXRemoteLog.m */; };
+		43EB5C2A1A455C5100D475A6 /* MathHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C1C1A455C5100D475A6 /* MathHelper.m */; };
+		43EB5C2B1A455C5100D475A6 /* NS+Hashes.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C1E1A455C5100D475A6 /* NS+Hashes.m */; };
+		43EB5C2C1A455C5100D475A6 /* PersistentDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C201A455C5100D475A6 /* PersistentDictionary.m */; };
+		43EB5C2D1A455C5100D475A6 /* SingletonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C221A455C5100D475A6 /* SingletonHelper.m */; };
+		43EB5C2E1A455C5100D475A6 /* SKBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C241A455C5100D475A6 /* SKBounceAnimation.m */; };
+		43EB5C2F1A455C5100D475A6 /* SKNode+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C261A455C5100D475A6 /* SKNode+Animations.m */; };
+		43EB5C301A455C5100D475A6 /* EXDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EB5C281A455C5100D475A6 /* EXDebug.m */; };
+		43EB5DC61A456F8B00D475A6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EB5DC51A456F8B00D475A6 /* Security.framework */; };
+		43EB5DC81A456F9500D475A6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EB5DC71A456F9500D475A6 /* SystemConfiguration.framework */; };
+		43EB5DCA1A456F9C00D475A6 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EB5DC91A456F9C00D475A6 /* SpriteKit.framework */; };
+		43EB5DCC1A456FA600D475A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EB5DCB1A456FA600D475A6 /* UIKit.framework */; };
+		43EB5DCE1A456FAE00D475A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EB5DCD1A456FAE00D475A6 /* Foundation.framework */; };
+		43EB5DD01A456FB500D475A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EB5DCF1A456FB500D475A6 /* CoreGraphics.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		43EB5BF71A455B5A00D475A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43EB5BD01A455B5A00D475A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43EB5BD71A455B5A00D475A6;
+			remoteInfo = FissureGame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		434C3FB01A49C477006CF3D8 /* Projectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Projectile.h; sourceTree = "<group>"; };
+		434C3FB11A49C477006CF3D8 /* Projectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Projectile.m; sourceTree = "<group>"; };
+		436DEC881A46E786006710F1 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
+		436DEC891A46E786006710F1 /* LevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelManager.m; sourceTree = "<group>"; };
+		436DEC8B1A46E9A7006710F1 /* level_info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level_info.json; sourceTree = "<group>"; };
+		436DEC8E1A47BE48006710F1 /* projectile_trail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = projectile_trail.sks; sourceTree = "<group>"; };
+		436DEC8F1A47BE48006710F1 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		436DEC901A47BE48006710F1 /* fissure.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fissure.sks; sourceTree = "<group>"; };
+		436DEC921A47BE48006710F1 /* warp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = warp.sks; sourceTree = "<group>"; };
+		437606B31A552AD60035DDA7 /* disc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disc@2x.png"; sourceTree = "<group>"; };
+		43EB5BD81A455B5A00D475A6 /* FissureGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FissureGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43EB5BDC1A455B5A00D475A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43EB5BDD1A455B5A00D475A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		43EB5BDF1A455B5A00D475A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		43EB5BE01A455B5A00D475A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		43EB5BE51A455B5A00D475A6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		43EB5BE71A455B5A00D475A6 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		43EB5BE81A455B5A00D475A6 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		43EB5BEB1A455B5A00D475A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		43EB5BED1A455B5A00D475A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		43EB5BF01A455B5A00D475A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		43EB5BF61A455B5A00D475A6 /* FissureGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FissureGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		43EB5BFB1A455B5A00D475A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43EB5C061A455B9A00D475A6 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		43EB5C071A455B9A00D475A6 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		43EB5C081A455B9A00D475A6 /* GameControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameControl.h; sourceTree = "<group>"; };
+		43EB5C091A455B9A00D475A6 /* GameControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameControl.m; sourceTree = "<group>"; };
+		43EB5C0A1A455B9A00D475A6 /* Fissure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fissure.h; sourceTree = "<group>"; };
+		43EB5C0B1A455B9A00D475A6 /* Fissure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fissure.m; sourceTree = "<group>"; };
+		43EB5C0C1A455B9A00D475A6 /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target.h; sourceTree = "<group>"; };
+		43EB5C0D1A455B9A00D475A6 /* Target.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target.m; sourceTree = "<group>"; };
+		43EB5C0E1A455B9A00D475A6 /* SpawnPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpawnPoint.h; sourceTree = "<group>"; };
+		43EB5C0F1A455B9A00D475A6 /* SpawnPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpawnPoint.m; sourceTree = "<group>"; };
+		43EB5C191A455C5100D475A6 /* EXRemoteLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXRemoteLog.h; sourceTree = "<group>"; };
+		43EB5C1A1A455C5100D475A6 /* EXRemoteLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXRemoteLog.m; sourceTree = "<group>"; };
+		43EB5C1B1A455C5100D475A6 /* MathHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathHelper.h; sourceTree = "<group>"; };
+		43EB5C1C1A455C5100D475A6 /* MathHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathHelper.m; sourceTree = "<group>"; };
+		43EB5C1D1A455C5100D475A6 /* NS+Hashes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NS+Hashes.h"; sourceTree = "<group>"; };
+		43EB5C1E1A455C5100D475A6 /* NS+Hashes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS+Hashes.m"; sourceTree = "<group>"; };
+		43EB5C1F1A455C5100D475A6 /* PersistentDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentDictionary.h; sourceTree = "<group>"; };
+		43EB5C201A455C5100D475A6 /* PersistentDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentDictionary.m; sourceTree = "<group>"; };
+		43EB5C211A455C5100D475A6 /* SingletonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonHelper.h; sourceTree = "<group>"; };
+		43EB5C221A455C5100D475A6 /* SingletonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonHelper.m; sourceTree = "<group>"; };
+		43EB5C231A455C5100D475A6 /* SKBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBounceAnimation.h; sourceTree = "<group>"; };
+		43EB5C241A455C5100D475A6 /* SKBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBounceAnimation.m; sourceTree = "<group>"; };
+		43EB5C251A455C5100D475A6 /* SKNode+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+Animations.h"; sourceTree = "<group>"; };
+		43EB5C261A455C5100D475A6 /* SKNode+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+Animations.m"; sourceTree = "<group>"; };
+		43EB5C271A455C5100D475A6 /* EXDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXDebug.h; sourceTree = "<group>"; };
+		43EB5C281A455C5100D475A6 /* EXDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXDebug.m; sourceTree = "<group>"; };
+		43EB5C311A455C7E00D475A6 /* FissureGame-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FissureGame-Prefix.pch"; sourceTree = "<group>"; };
+		43EB5DC51A456F8B00D475A6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		43EB5DC71A456F9500D475A6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		43EB5DC91A456F9C00D475A6 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		43EB5DCB1A456FA600D475A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		43EB5DCD1A456FAE00D475A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		43EB5DCF1A456FB500D475A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		43EB5BD51A455B5A00D475A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43EB5DD01A456FB500D475A6 /* CoreGraphics.framework in Frameworks */,
+				43EB5DCE1A456FAE00D475A6 /* Foundation.framework in Frameworks */,
+				43EB5DCC1A456FA600D475A6 /* UIKit.framework in Frameworks */,
+				43EB5DCA1A456F9C00D475A6 /* SpriteKit.framework in Frameworks */,
+				43EB5DC81A456F9500D475A6 /* SystemConfiguration.framework in Frameworks */,
+				43EB5DC61A456F8B00D475A6 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43EB5BF31A455B5A00D475A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		434C3FAF1A49B6C0006CF3D8 /* levels */ = {
+			isa = PBXGroup;
+			children = (
+				437606B31A552AD60035DDA7 /* disc@2x.png */,
+				436DEC8B1A46E9A7006710F1 /* level_info.json */,
+			);
+			name = levels;
+			sourceTree = "<group>";
+		};
+		436DEC861A46E6ED006710F1 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				43EB5C061A455B9A00D475A6 /* GameScene.h */,
+				43EB5C071A455B9A00D475A6 /* GameScene.m */,
+				43EB5C081A455B9A00D475A6 /* GameControl.h */,
+				43EB5C091A455B9A00D475A6 /* GameControl.m */,
+				43EB5C0A1A455B9A00D475A6 /* Fissure.h */,
+				43EB5C0B1A455B9A00D475A6 /* Fissure.m */,
+				43EB5C0C1A455B9A00D475A6 /* Target.h */,
+				43EB5C0D1A455B9A00D475A6 /* Target.m */,
+				43EB5C0E1A455B9A00D475A6 /* SpawnPoint.h */,
+				43EB5C0F1A455B9A00D475A6 /* SpawnPoint.m */,
+				436DEC881A46E786006710F1 /* LevelManager.h */,
+				436DEC891A46E786006710F1 /* LevelManager.m */,
+				434C3FB01A49C477006CF3D8 /* Projectile.h */,
+				434C3FB11A49C477006CF3D8 /* Projectile.m */,
+			);
+			name = class;
+			sourceTree = "<group>";
+		};
+		436DEC871A46E712006710F1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				43EB5BE71A455B5A00D475A6 /* GameViewController.h */,
+				43EB5BE81A455B5A00D475A6 /* GameViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		436DEC8D1A47BE32006710F1 /* projectiles */ = {
+			isa = PBXGroup;
+			children = (
+				436DEC8E1A47BE48006710F1 /* projectile_trail.sks */,
+				436DEC8F1A47BE48006710F1 /* spark.png */,
+				436DEC901A47BE48006710F1 /* fissure.sks */,
+				436DEC921A47BE48006710F1 /* warp.sks */,
+			);
+			name = projectiles;
+			sourceTree = "<group>";
+		};
+		43EB5BCF1A455B5A00D475A6 = {
+			isa = PBXGroup;
+			children = (
+				43EB5BDA1A455B5A00D475A6 /* FissureGame */,
+				43EB5BF91A455B5A00D475A6 /* FissureGameTests */,
+				43EB5BD91A455B5A00D475A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		43EB5BD91A455B5A00D475A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43EB5BD81A455B5A00D475A6 /* FissureGame.app */,
+				43EB5BF61A455B5A00D475A6 /* FissureGameTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43EB5BDA1A455B5A00D475A6 /* FissureGame */ = {
+			isa = PBXGroup;
+			children = (
+				434C3FAF1A49B6C0006CF3D8 /* levels */,
+				436DEC8D1A47BE32006710F1 /* projectiles */,
+				436DEC871A46E712006710F1 /* controller */,
+				436DEC861A46E6ED006710F1 /* class */,
+				43EB5C181A455C3200D475A6 /* libs */,
+				43EB5C311A455C7E00D475A6 /* FissureGame-Prefix.pch */,
+				43EB5BDF1A455B5A00D475A6 /* AppDelegate.h */,
+				43EB5BE01A455B5A00D475A6 /* AppDelegate.m */,
+				43EB5BE51A455B5A00D475A6 /* GameScene.sks */,
+				43EB5BEA1A455B5A00D475A6 /* Main.storyboard */,
+				43EB5BED1A455B5A00D475A6 /* Images.xcassets */,
+				43EB5BEF1A455B5A00D475A6 /* LaunchScreen.xib */,
+				43EB5BDB1A455B5A00D475A6 /* Supporting Files */,
+			);
+			path = FissureGame;
+			sourceTree = "<group>";
+		};
+		43EB5BDB1A455B5A00D475A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43EB5DCF1A456FB500D475A6 /* CoreGraphics.framework */,
+				43EB5DCD1A456FAE00D475A6 /* Foundation.framework */,
+				43EB5DCB1A456FA600D475A6 /* UIKit.framework */,
+				43EB5DC91A456F9C00D475A6 /* SpriteKit.framework */,
+				43EB5DC71A456F9500D475A6 /* SystemConfiguration.framework */,
+				43EB5DC51A456F8B00D475A6 /* Security.framework */,
+				43EB5BDC1A455B5A00D475A6 /* Info.plist */,
+				43EB5BDD1A455B5A00D475A6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43EB5BF91A455B5A00D475A6 /* FissureGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				43EB5BFA1A455B5A00D475A6 /* Supporting Files */,
+			);
+			path = FissureGameTests;
+			sourceTree = "<group>";
+		};
+		43EB5BFA1A455B5A00D475A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43EB5BFB1A455B5A00D475A6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43EB5C181A455C3200D475A6 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				43EB5C191A455C5100D475A6 /* EXRemoteLog.h */,
+				43EB5C1A1A455C5100D475A6 /* EXRemoteLog.m */,
+				43EB5C1B1A455C5100D475A6 /* MathHelper.h */,
+				43EB5C1C1A455C5100D475A6 /* MathHelper.m */,
+				43EB5C1D1A455C5100D475A6 /* NS+Hashes.h */,
+				43EB5C1E1A455C5100D475A6 /* NS+Hashes.m */,
+				43EB5C1F1A455C5100D475A6 /* PersistentDictionary.h */,
+				43EB5C201A455C5100D475A6 /* PersistentDictionary.m */,
+				43EB5C211A455C5100D475A6 /* SingletonHelper.h */,
+				43EB5C221A455C5100D475A6 /* SingletonHelper.m */,
+				43EB5C231A455C5100D475A6 /* SKBounceAnimation.h */,
+				43EB5C241A455C5100D475A6 /* SKBounceAnimation.m */,
+				43EB5C251A455C5100D475A6 /* SKNode+Animations.h */,
+				43EB5C261A455C5100D475A6 /* SKNode+Animations.m */,
+				43EB5C271A455C5100D475A6 /* EXDebug.h */,
+				43EB5C281A455C5100D475A6 /* EXDebug.m */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		43EB5BD71A455B5A00D475A6 /* FissureGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43EB5C001A455B5A00D475A6 /* Build configuration list for PBXNativeTarget "FissureGame" */;
+			buildPhases = (
+				43EB5BD41A455B5A00D475A6 /* Sources */,
+				43EB5BD51A455B5A00D475A6 /* Frameworks */,
+				43EB5BD61A455B5A00D475A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FissureGame;
+			productName = FissureGame;
+			productReference = 43EB5BD81A455B5A00D475A6 /* FissureGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		43EB5BF51A455B5A00D475A6 /* FissureGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43EB5C031A455B5A00D475A6 /* Build configuration list for PBXNativeTarget "FissureGameTests" */;
+			buildPhases = (
+				43EB5BF21A455B5A00D475A6 /* Sources */,
+				43EB5BF31A455B5A00D475A6 /* Frameworks */,
+				43EB5BF41A455B5A00D475A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43EB5BF81A455B5A00D475A6 /* PBXTargetDependency */,
+			);
+			name = FissureGameTests;
+			productName = FissureGameTests;
+			productReference = 43EB5BF61A455B5A00D475A6 /* FissureGameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		43EB5BD01A455B5A00D475A6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = xiaoo_gan;
+				TargetAttributes = {
+					43EB5BD71A455B5A00D475A6 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					43EB5BF51A455B5A00D475A6 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 43EB5BD71A455B5A00D475A6;
+					};
+				};
+			};
+			buildConfigurationList = 43EB5BD31A455B5A00D475A6 /* Build configuration list for PBXProject "FissureGame" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 43EB5BCF1A455B5A00D475A6;
+			productRefGroup = 43EB5BD91A455B5A00D475A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				43EB5BD71A455B5A00D475A6 /* FissureGame */,
+				43EB5BF51A455B5A00D475A6 /* FissureGameTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		43EB5BD61A455B5A00D475A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				436DEC8C1A46E9A7006710F1 /* level_info.json in Resources */,
+				436DEC931A47BE48006710F1 /* projectile_trail.sks in Resources */,
+				43EB5BF11A455B5A00D475A6 /* LaunchScreen.xib in Resources */,
+				437606B41A552AD70035DDA7 /* disc@2x.png in Resources */,
+				436DEC951A47BE48006710F1 /* fissure.sks in Resources */,
+				436DEC941A47BE48006710F1 /* spark.png in Resources */,
+				43EB5BEE1A455B5A00D475A6 /* Images.xcassets in Resources */,
+				436DEC971A47BE48006710F1 /* warp.sks in Resources */,
+				43EB5BE61A455B5A00D475A6 /* GameScene.sks in Resources */,
+				43EB5BEC1A455B5A00D475A6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43EB5BF41A455B5A00D475A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		43EB5BD41A455B5A00D475A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43EB5C2D1A455C5100D475A6 /* SingletonHelper.m in Sources */,
+				43EB5BE91A455B5A00D475A6 /* GameViewController.m in Sources */,
+				43EB5C2F1A455C5100D475A6 /* SKNode+Animations.m in Sources */,
+				43EB5C101A455B9A00D475A6 /* GameScene.m in Sources */,
+				43EB5C131A455B9A00D475A6 /* Target.m in Sources */,
+				43EB5C2C1A455C5100D475A6 /* PersistentDictionary.m in Sources */,
+				43EB5C121A455B9A00D475A6 /* Fissure.m in Sources */,
+				43EB5C2A1A455C5100D475A6 /* MathHelper.m in Sources */,
+				434C3FB21A49C477006CF3D8 /* Projectile.m in Sources */,
+				43EB5C2E1A455C5100D475A6 /* SKBounceAnimation.m in Sources */,
+				43EB5C301A455C5100D475A6 /* EXDebug.m in Sources */,
+				43EB5BE11A455B5A00D475A6 /* AppDelegate.m in Sources */,
+				43EB5C2B1A455C5100D475A6 /* NS+Hashes.m in Sources */,
+				43EB5C141A455B9A00D475A6 /* SpawnPoint.m in Sources */,
+				436DEC8A1A46E786006710F1 /* LevelManager.m in Sources */,
+				43EB5C291A455C5100D475A6 /* EXRemoteLog.m in Sources */,
+				43EB5C111A455B9A00D475A6 /* GameControl.m in Sources */,
+				43EB5BDE1A455B5A00D475A6 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43EB5BF21A455B5A00D475A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		43EB5BF81A455B5A00D475A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43EB5BD71A455B5A00D475A6 /* FissureGame */;
+			targetProxy = 43EB5BF71A455B5A00D475A6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		43EB5BEA1A455B5A00D475A6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43EB5BEB1A455B5A00D475A6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		43EB5BEF1A455B5A00D475A6 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43EB5BF01A455B5A00D475A6 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		43EB5BFE1A455B5A00D475A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		43EB5BFF1A455B5A00D475A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43EB5C011A455B5A00D475A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FissureGame/FissureGame-Prefix.pch";
+				INFOPLIST_FILE = FissureGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FissureGame",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		43EB5C021A455B5A00D475A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FissureGame/FissureGame-Prefix.pch";
+				INFOPLIST_FILE = FissureGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FissureGame",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		43EB5C041A455B5A00D475A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FissureGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FissureGame.app/FissureGame";
+			};
+			name = Debug;
+		};
+		43EB5C051A455B5A00D475A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FissureGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FissureGame.app/FissureGame";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		43EB5BD31A455B5A00D475A6 /* Build configuration list for PBXProject "FissureGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43EB5BFE1A455B5A00D475A6 /* Debug */,
+				43EB5BFF1A455B5A00D475A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43EB5C001A455B5A00D475A6 /* Build configuration list for PBXNativeTarget "FissureGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43EB5C011A455B5A00D475A6 /* Debug */,
+				43EB5C021A455B5A00D475A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43EB5C031A455B5A00D475A6 /* Build configuration list for PBXNativeTarget "FissureGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43EB5C041A455B5A00D475A6 /* Debug */,
+				43EB5C051A455B5A00D475A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 43EB5BD01A455B5A00D475A6 /* Project object */;
+}
