@@ -1,0 +1,503 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		35A2896A1A3AE50D0050B5FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A289691A3AE50D0050B5FB /* main.m */; };
+		35A2896D1A3AE50D0050B5FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A2896C1A3AE50D0050B5FB /* AppDelegate.m */; };
+		35A289701A3AE50D0050B5FB /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A2896F1A3AE50D0050B5FB /* GameScene.m */; };
+		35A289721A3AE50D0050B5FB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 35A289711A3AE50D0050B5FB /* GameScene.sks */; };
+		35A289751A3AE50D0050B5FB /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A289741A3AE50D0050B5FB /* GameViewController.m */; };
+		35A289781A3AE50D0050B5FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35A289761A3AE50D0050B5FB /* Main.storyboard */; };
+		35A2897A1A3AE50D0050B5FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35A289791A3AE50D0050B5FB /* Images.xcassets */; };
+		35A2897D1A3AE50D0050B5FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35A2897B1A3AE50D0050B5FB /* LaunchScreen.xib */; };
+		35A289891A3AE50D0050B5FB /* weixinPlayPlaneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A289881A3AE50D0050B5FB /* weixinPlayPlaneTests.m */; };
+		35A289941A3AE5C60050B5FB /* SKFoePlane.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A289931A3AE5C60050B5FB /* SKFoePlane.m */; };
+		35A289971A3AE61F0050B5FB /* SKSharedAtles.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A289961A3AE61F0050B5FB /* SKSharedAtles.m */; };
+		35A289A41A3AE93C0050B5FB /* bullet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 35A289991A3AE93C0050B5FB /* bullet.mp3 */; };
+		35A289A51A3AE93C0050B5FB /* BurstAircraftPause.png in Resources */ = {isa = PBXBuildFile; fileRef = 35A2899A1A3AE93C0050B5FB /* BurstAircraftPause.png */; };
+		35A289A61A3AE93C0050B5FB /* BurstAircraftPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35A2899B1A3AE93C0050B5FB /* BurstAircraftPause@2x.png */; };
+		35A289A71A3AE93C0050B5FB /* enemy1_down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 35A2899C1A3AE93C0050B5FB /* enemy1_down.mp3 */; };
+		35A289A81A3AE93C0050B5FB /* enemy2_down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 35A2899D1A3AE93C0050B5FB /* enemy2_down.mp3 */; };
+		35A289A91A3AE93C0050B5FB /* enemy2_out.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 35A2899E1A3AE93C0050B5FB /* enemy2_out.mp3 */; };
+		35A289AA1A3AE93C0050B5FB /* enemy3_down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 35A2899F1A3AE93C0050B5FB /* enemy3_down.mp3 */; };
+		35A289AB1A3AE93C0050B5FB /* game_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 35A289A01A3AE93C0050B5FB /* game_music.mp3 */; };
+		35A289AC1A3AE93C0050B5FB /* game_over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 35A289A11A3AE93C0050B5FB /* game_over.mp3 */; };
+		35A289AD1A3AE93C0050B5FB /* gameArts-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35A289A21A3AE93C0050B5FB /* gameArts-hd.plist */; };
+		35A289AE1A3AE93C0050B5FB /* gameArts-hd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35A289A31A3AE93C0050B5FB /* gameArts-hd@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		35A289831A3AE50D0050B5FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35A2895C1A3AE50D0050B5FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35A289631A3AE50D0050B5FB;
+			remoteInfo = weixinPlayPlane;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		35A289641A3AE50D0050B5FB /* weixinPlayPlane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weixinPlayPlane.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		35A289681A3AE50D0050B5FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35A289691A3AE50D0050B5FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		35A2896B1A3AE50D0050B5FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		35A2896C1A3AE50D0050B5FB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		35A2896E1A3AE50D0050B5FB /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		35A2896F1A3AE50D0050B5FB /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		35A289711A3AE50D0050B5FB /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		35A289731A3AE50D0050B5FB /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		35A289741A3AE50D0050B5FB /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		35A289771A3AE50D0050B5FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		35A289791A3AE50D0050B5FB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		35A2897C1A3AE50D0050B5FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		35A289821A3AE50D0050B5FB /* weixinPlayPlaneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weixinPlayPlaneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		35A289871A3AE50D0050B5FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35A289881A3AE50D0050B5FB /* weixinPlayPlaneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = weixinPlayPlaneTests.m; sourceTree = "<group>"; };
+		35A289921A3AE5C60050B5FB /* SKFoePlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKFoePlane.h; sourceTree = "<group>"; };
+		35A289931A3AE5C60050B5FB /* SKFoePlane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKFoePlane.m; sourceTree = "<group>"; };
+		35A289951A3AE61F0050B5FB /* SKSharedAtles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSharedAtles.h; sourceTree = "<group>"; };
+		35A289961A3AE61F0050B5FB /* SKSharedAtles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSharedAtles.m; sourceTree = "<group>"; };
+		35A289991A3AE93C0050B5FB /* bullet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bullet.mp3; sourceTree = "<group>"; };
+		35A2899A1A3AE93C0050B5FB /* BurstAircraftPause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BurstAircraftPause.png; sourceTree = "<group>"; };
+		35A2899B1A3AE93C0050B5FB /* BurstAircraftPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BurstAircraftPause@2x.png"; sourceTree = "<group>"; };
+		35A2899C1A3AE93C0050B5FB /* enemy1_down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemy1_down.mp3; sourceTree = "<group>"; };
+		35A2899D1A3AE93C0050B5FB /* enemy2_down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemy2_down.mp3; sourceTree = "<group>"; };
+		35A2899E1A3AE93C0050B5FB /* enemy2_out.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemy2_out.mp3; sourceTree = "<group>"; };
+		35A2899F1A3AE93C0050B5FB /* enemy3_down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enemy3_down.mp3; sourceTree = "<group>"; };
+		35A289A01A3AE93C0050B5FB /* game_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_music.mp3; sourceTree = "<group>"; };
+		35A289A11A3AE93C0050B5FB /* game_over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_over.mp3; sourceTree = "<group>"; };
+		35A289A21A3AE93C0050B5FB /* gameArts-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gameArts-hd.plist"; sourceTree = "<group>"; };
+		35A289A31A3AE93C0050B5FB /* gameArts-hd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameArts-hd@2x.png"; sourceTree = "<group>"; };
+		35A289B01A3AE9C20050B5FB /* SpriteKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpriteKit-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		35A289611A3AE50D0050B5FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35A2897F1A3AE50D0050B5FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		35A2895B1A3AE50D0050B5FB = {
+			isa = PBXGroup;
+			children = (
+				35A289661A3AE50D0050B5FB /* weixinPlayPlane */,
+				35A289851A3AE50D0050B5FB /* weixinPlayPlaneTests */,
+				35A289651A3AE50D0050B5FB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		35A289651A3AE50D0050B5FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				35A289641A3AE50D0050B5FB /* weixinPlayPlane.app */,
+				35A289821A3AE50D0050B5FB /* weixinPlayPlaneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		35A289661A3AE50D0050B5FB /* weixinPlayPlane */ = {
+			isa = PBXGroup;
+			children = (
+				35A2896B1A3AE50D0050B5FB /* AppDelegate.h */,
+				35A2896C1A3AE50D0050B5FB /* AppDelegate.m */,
+				35A2896E1A3AE50D0050B5FB /* GameScene.h */,
+				35A2896F1A3AE50D0050B5FB /* GameScene.m */,
+				35A289711A3AE50D0050B5FB /* GameScene.sks */,
+				35A289921A3AE5C60050B5FB /* SKFoePlane.h */,
+				35A289931A3AE5C60050B5FB /* SKFoePlane.m */,
+				35A289951A3AE61F0050B5FB /* SKSharedAtles.h */,
+				35A289961A3AE61F0050B5FB /* SKSharedAtles.m */,
+				35A289731A3AE50D0050B5FB /* GameViewController.h */,
+				35A289741A3AE50D0050B5FB /* GameViewController.m */,
+				35A289761A3AE50D0050B5FB /* Main.storyboard */,
+				35A289791A3AE50D0050B5FB /* Images.xcassets */,
+				35A2897B1A3AE50D0050B5FB /* LaunchScreen.xib */,
+				35A289671A3AE50D0050B5FB /* Supporting Files */,
+			);
+			path = weixinPlayPlane;
+			sourceTree = "<group>";
+		};
+		35A289671A3AE50D0050B5FB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				35A289981A3AE93C0050B5FB /* Resources */,
+				35A289681A3AE50D0050B5FB /* Info.plist */,
+				35A289691A3AE50D0050B5FB /* main.m */,
+				35A289B01A3AE9C20050B5FB /* SpriteKit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		35A289851A3AE50D0050B5FB /* weixinPlayPlaneTests */ = {
+			isa = PBXGroup;
+			children = (
+				35A289881A3AE50D0050B5FB /* weixinPlayPlaneTests.m */,
+				35A289861A3AE50D0050B5FB /* Supporting Files */,
+			);
+			path = weixinPlayPlaneTests;
+			sourceTree = "<group>";
+		};
+		35A289861A3AE50D0050B5FB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				35A289871A3AE50D0050B5FB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		35A289981A3AE93C0050B5FB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				35A289991A3AE93C0050B5FB /* bullet.mp3 */,
+				35A2899A1A3AE93C0050B5FB /* BurstAircraftPause.png */,
+				35A2899B1A3AE93C0050B5FB /* BurstAircraftPause@2x.png */,
+				35A2899C1A3AE93C0050B5FB /* enemy1_down.mp3 */,
+				35A2899D1A3AE93C0050B5FB /* enemy2_down.mp3 */,
+				35A2899E1A3AE93C0050B5FB /* enemy2_out.mp3 */,
+				35A2899F1A3AE93C0050B5FB /* enemy3_down.mp3 */,
+				35A289A01A3AE93C0050B5FB /* game_music.mp3 */,
+				35A289A11A3AE93C0050B5FB /* game_over.mp3 */,
+				35A289A21A3AE93C0050B5FB /* gameArts-hd.plist */,
+				35A289A31A3AE93C0050B5FB /* gameArts-hd@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		35A289631A3AE50D0050B5FB /* weixinPlayPlane */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35A2898C1A3AE50D0050B5FB /* Build configuration list for PBXNativeTarget "weixinPlayPlane" */;
+			buildPhases = (
+				35A289601A3AE50D0050B5FB /* Sources */,
+				35A289611A3AE50D0050B5FB /* Frameworks */,
+				35A289621A3AE50D0050B5FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = weixinPlayPlane;
+			productName = weixinPlayPlane;
+			productReference = 35A289641A3AE50D0050B5FB /* weixinPlayPlane.app */;
+			productType = "com.apple.product-type.application";
+		};
+		35A289811A3AE50D0050B5FB /* weixinPlayPlaneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35A2898F1A3AE50D0050B5FB /* Build configuration list for PBXNativeTarget "weixinPlayPlaneTests" */;
+			buildPhases = (
+				35A2897E1A3AE50D0050B5FB /* Sources */,
+				35A2897F1A3AE50D0050B5FB /* Frameworks */,
+				35A289801A3AE50D0050B5FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35A289841A3AE50D0050B5FB /* PBXTargetDependency */,
+			);
+			name = weixinPlayPlaneTests;
+			productName = weixinPlayPlaneTests;
+			productReference = 35A289821A3AE50D0050B5FB /* weixinPlayPlaneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		35A2895C1A3AE50D0050B5FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = com.jikexueyuan;
+				TargetAttributes = {
+					35A289631A3AE50D0050B5FB = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					35A289811A3AE50D0050B5FB = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 35A289631A3AE50D0050B5FB;
+					};
+				};
+			};
+			buildConfigurationList = 35A2895F1A3AE50D0050B5FB /* Build configuration list for PBXProject "weixinPlayPlane" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 35A2895B1A3AE50D0050B5FB;
+			productRefGroup = 35A289651A3AE50D0050B5FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				35A289631A3AE50D0050B5FB /* weixinPlayPlane */,
+				35A289811A3AE50D0050B5FB /* weixinPlayPlaneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		35A289621A3AE50D0050B5FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35A289A61A3AE93C0050B5FB /* BurstAircraftPause@2x.png in Resources */,
+				35A2897D1A3AE50D0050B5FB /* LaunchScreen.xib in Resources */,
+				35A289A81A3AE93C0050B5FB /* enemy2_down.mp3 in Resources */,
+				35A2897A1A3AE50D0050B5FB /* Images.xcassets in Resources */,
+				35A289A71A3AE93C0050B5FB /* enemy1_down.mp3 in Resources */,
+				35A289A41A3AE93C0050B5FB /* bullet.mp3 in Resources */,
+				35A289AC1A3AE93C0050B5FB /* game_over.mp3 in Resources */,
+				35A289AB1A3AE93C0050B5FB /* game_music.mp3 in Resources */,
+				35A289A51A3AE93C0050B5FB /* BurstAircraftPause.png in Resources */,
+				35A289AE1A3AE93C0050B5FB /* gameArts-hd@2x.png in Resources */,
+				35A289AA1A3AE93C0050B5FB /* enemy3_down.mp3 in Resources */,
+				35A289AD1A3AE93C0050B5FB /* gameArts-hd.plist in Resources */,
+				35A289721A3AE50D0050B5FB /* GameScene.sks in Resources */,
+				35A289781A3AE50D0050B5FB /* Main.storyboard in Resources */,
+				35A289A91A3AE93C0050B5FB /* enemy2_out.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35A289801A3AE50D0050B5FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		35A289601A3AE50D0050B5FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35A289751A3AE50D0050B5FB /* GameViewController.m in Sources */,
+				35A2896D1A3AE50D0050B5FB /* AppDelegate.m in Sources */,
+				35A289941A3AE5C60050B5FB /* SKFoePlane.m in Sources */,
+				35A289701A3AE50D0050B5FB /* GameScene.m in Sources */,
+				35A289971A3AE61F0050B5FB /* SKSharedAtles.m in Sources */,
+				35A2896A1A3AE50D0050B5FB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35A2897E1A3AE50D0050B5FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35A289891A3AE50D0050B5FB /* weixinPlayPlaneTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		35A289841A3AE50D0050B5FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35A289631A3AE50D0050B5FB /* weixinPlayPlane */;
+			targetProxy = 35A289831A3AE50D0050B5FB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		35A289761A3AE50D0050B5FB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35A289771A3AE50D0050B5FB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		35A2897B1A3AE50D0050B5FB /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35A2897C1A3AE50D0050B5FB /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		35A2898A1A3AE50D0050B5FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		35A2898B1A3AE50D0050B5FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		35A2898D1A3AE50D0050B5FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = weixinPlayPlane/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		35A2898E1A3AE50D0050B5FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = weixinPlayPlane/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		35A289901A3AE50D0050B5FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = weixinPlayPlaneTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/weixinPlayPlane.app/weixinPlayPlane";
+			};
+			name = Debug;
+		};
+		35A289911A3AE50D0050B5FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = weixinPlayPlaneTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/weixinPlayPlane.app/weixinPlayPlane";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		35A2895F1A3AE50D0050B5FB /* Build configuration list for PBXProject "weixinPlayPlane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35A2898A1A3AE50D0050B5FB /* Debug */,
+				35A2898B1A3AE50D0050B5FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35A2898C1A3AE50D0050B5FB /* Build configuration list for PBXNativeTarget "weixinPlayPlane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35A2898D1A3AE50D0050B5FB /* Debug */,
+				35A2898E1A3AE50D0050B5FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		35A2898F1A3AE50D0050B5FB /* Build configuration list for PBXNativeTarget "weixinPlayPlaneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35A289901A3AE50D0050B5FB /* Debug */,
+				35A289911A3AE50D0050B5FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 35A2895C1A3AE50D0050B5FB /* Project object */;
+}
