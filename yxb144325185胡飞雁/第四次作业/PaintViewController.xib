@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaintViewController">
+            <connections>
+                <outlet property="colorControl" destination="bur-qG-Gvt" id="Y6b-YP-eqR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="QuartzView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVJ-09-UqC">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <items>
+                        <navigationItem id="LPN-fe-Fd7">
+                            <nil key="title"/>
+                            <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="bur-qG-Gvt">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Red"/>
+                                    <segment title="Blue"/>
+                                    <segment title="Yellow"/>
+                                    <segment title="Green"/>
+                                    <segment title="Random"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeColor:" destination="-1" eventType="valueChanged" id="TMf-Ij-bXB"/>
+                                </connections>
+                            </segmentedControl>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pK7-FH-2Zo">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <items>
+                        <barButtonItem width="300" style="plain" id="TXv-fW-AoM">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="T8A-x4-XCZ">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Line"/>
+                                    <segment title="Rect"/>
+                                    <segment title="Ellipse"/>
+                                    <segment title="Image"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeShape:" destination="-1" eventType="valueChanged" id="d2i-9I-j7z"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="pK7-FH-2Zo" secondAttribute="trailing" id="805-Xq-5jR"/>
+                <constraint firstItem="pK7-FH-2Zo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ktw-24-xYq"/>
+                <constraint firstItem="GVJ-09-UqC" firstAttribute="trailing" secondItem="pK7-FH-2Zo" secondAttribute="trailing" id="RbF-Fg-dyt"/>
+                <constraint firstItem="GVJ-09-UqC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="ajZ-Zx-R8x"/>
+                <constraint firstItem="GVJ-09-UqC" firstAttribute="leading" secondItem="pK7-FH-2Zo" secondAttribute="leading" id="lio-c7-yaI"/>
+                <constraint firstAttribute="bottom" secondItem="pK7-FH-2Zo" secondAttribute="bottom" constant="46" id="sgM-4X-tQ1"/>
+            </constraints>
+            <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="GVJ-09-UqC"/>
+                    <exclude reference="pK7-FH-2Zo"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="RbF-Fg-dyt"/>
+                    <exclude reference="ajZ-Zx-R8x"/>
+                    <exclude reference="lio-c7-yaI"/>
+                    <exclude reference="805-Xq-5jR"/>
+                    <exclude reference="Ktw-24-xYq"/>
+                    <exclude reference="sgM-4X-tQ1"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="GVJ-09-UqC"/>
+                    <include reference="pK7-FH-2Zo"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="RbF-Fg-dyt"/>
+                    <include reference="ajZ-Zx-R8x"/>
+                    <include reference="lio-c7-yaI"/>
+                    <include reference="805-Xq-5jR"/>
+                    <include reference="Ktw-24-xYq"/>
+                    <include reference="sgM-4X-tQ1"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="11" y="293.5"/>
+        </view>
+    </objects>
+</document>
