@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12A269" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ImageData" representedClassName="ImageData" syncable="YES">
+        <attribute name="image_path" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="imageTONote" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MyNote" inverseName="noteAndImage" inverseEntity="MyNote" syncable="YES"/>
+    </entity>
+    <entity name="MyNote" representedClassName="MyNote" syncable="YES">
+        <attribute name="note_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="note_Text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="note_title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="noteAndImage" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImageData" inverseName="imageTONote" inverseEntity="ImageData" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="MyNote" positionX="124" positionY="228" width="128" height="105"/>
+        <element name="ImageData" positionX="502" positionY="258" width="128" height="73"/>
+    </elements>
+</model>
